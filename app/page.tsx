@@ -1,7 +1,8 @@
 "use client";
+import { useEffect } from "react";
+
 import useUserActions from "@/application/user/actions";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
-import { useEffect } from "react";
 
 export default function Home() {
   const { userState } = useSystemFunctions();
