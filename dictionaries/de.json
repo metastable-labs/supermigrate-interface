@@ -1,0 +1,17 @@
+{
+  "navigation": {
+    "home": "Startseite",
+    "about": "Über"
+  },
+  "page": {
+    "home": {
+      "title": "Willkommen bei Superbridge",
+      "description": "Ihre Wallet-Adresse",
+      "btn": "Wallet verbinden"
+    },
+    "about": {
+      "title": "Über uns",
+      "description": "Dies ist die About-Seite"
+    }
+  }
+}
