@@ -1,3 +1,4 @@
+import { Lang } from "@/application/locale/types";
 import { useAppDispatch, useAppSelector } from "./useRedux";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
@@ -16,6 +17,8 @@ const useSystemFunctions = () => {
 
   // states
   const userState = useAppSelector((state) => state.user);
+  const localeState = useAppSelector((state) => state.locale);
+  const locale = localeState.locale as Lang;
 
   return {
     dispatch,
@@ -24,6 +27,7 @@ const useSystemFunctions = () => {
 
     // states
     userState,
+    locale,
   };
 };
 

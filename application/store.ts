@@ -2,6 +2,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import userReducer from "./user";
+import localeReducer from "./locale";
 
 export interface CallbackProps {
   onSuccess?: Function;
@@ -11,6 +12,7 @@ export interface CallbackProps {
 export const store = configureStore({
   reducer: {
     user: userReducer,
+    locale: localeReducer,
   },
 });
 
