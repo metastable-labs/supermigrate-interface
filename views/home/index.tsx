@@ -7,6 +7,7 @@ import { useConnectModal } from "@rainbow-me/rainbowkit";
 import useUserActions from "@/application/user/actions";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
 import { LangParamProp } from "@/config/internationalization/i18n";
+import { Logo } from "@/public/icons";
 
 export default function HomeView({ lang }: LangParamProp) {
   const { userState, locale } = useSystemFunctions();
@@ -40,6 +41,7 @@ export default function HomeView({ lang }: LangParamProp) {
         {locale?.page?.home?.description}:{" "}
         <span className="font-semibold">{address}</span>
       </div>
+      <Logo />
     </main>
   );
 }
