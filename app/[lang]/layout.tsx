@@ -21,7 +21,7 @@ export default function RootLayout({ params, children }: Readonly<RootProps>) {
   return (
     <html lang={params.lang}>
       <body className={inter.className} suppressHydrationWarning={true}>
-        <App>{children}</App>
+        <App locale={params}>{children}</App>
       </body>
     </html>
   );
