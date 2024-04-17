@@ -4,13 +4,20 @@ import { Provider as ReduxProvider } from "react-redux";
 
 import { store } from "@/application/store";
 import RainbowProvider from "@/config/rainbow/rainbowkit";
+import { LangParamProp } from "@/config/internationalization/i18n";
 import AppHome from ".";
 
-const App = ({ children }: { children: ReactNode }) => {
+const App = ({
+  locale,
+  children,
+}: {
+  locale: LangParamProp;
+  children: ReactNode;
+}) => {
   return (
     <RainbowProvider>
       <ReduxProvider store={store}>
-        <AppHome>{children}</AppHome>
+        <AppHome locale={locale}>{children}</AppHome>
       </ReduxProvider>
     </RainbowProvider>
   );
