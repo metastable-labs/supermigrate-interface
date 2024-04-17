@@ -30,7 +30,7 @@ export default function HomeView({ lang }: LangParamProp) {
   return (
     <SMContainer>
       <LandingNav lang={lang} />
-      <Hero lang={lang} />
+      {/* <Hero lang={lang} /> */}
     </SMContainer>
   );
 }
