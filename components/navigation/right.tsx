@@ -16,6 +16,7 @@ interface SelectButtonProps {
   isWallet?: boolean;
   onClick: () => void;
 }
+
 const SelectButton = ({
   icon,
   secondaryIcon,
