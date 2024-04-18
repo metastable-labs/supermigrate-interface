@@ -10,6 +10,8 @@ import { LangParamProp } from "@/config/internationalization/i18n";
 import { SMContainer } from "@/components";
 import Hero from "./hero";
 import LandingNav from "./nav";
+import { Logo } from "@/public/icons";
+import HeroSection from "./hero";
 
 export default function HomeView({ lang }: LangParamProp) {
   const { userState, locale } = useSystemFunctions();
@@ -30,7 +32,9 @@ export default function HomeView({ lang }: LangParamProp) {
   return (
     <SMContainer>
       <LandingNav lang={lang} />
-      {/* <Hero lang={lang} /> */}
+      <main>
+        <HeroSection />
+      </main>
     </SMContainer>
   );
 }

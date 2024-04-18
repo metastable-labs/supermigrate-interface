@@ -19,6 +19,9 @@ const config: Config = {
           50: "#0A0D14",
           100: "#505050",
         },
+        grey: {
+          50: "#717184",
+        },
       },
       boxShadow: {
         "landing-nav":

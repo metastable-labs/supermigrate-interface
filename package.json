@@ -12,6 +12,7 @@
     "@formatjs/intl-localematcher": "^0.5.4",
     "@rainbow-me/rainbowkit": "^2.0.5",
     "@reduxjs/toolkit": "^2.2.3",
+    "@svgr/webpack": "^8.1.0",
     "@tanstack/react-query": "^5.29.0",
     "@wagmi/connectors": "^4.1.25",
     "@wagmi/core": "^2.6.16",
