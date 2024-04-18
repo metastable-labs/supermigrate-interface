@@ -20,6 +20,7 @@ const config: Config = {
           100: "#505050",
           150: "#F6F8FA",
           200: "#525866",
+          250: "#E2E4E9",
         },
         grey: {
           50: "#717184",
@@ -28,6 +29,9 @@ const config: Config = {
       boxShadow: {
         "landing-nav":
           "0px 20px 25px -5px rgba(0, 0, 0, 0.10), 0px 8px 10px -6px rgba(0, 0, 0, 0.10)",
+        "nav-select-shadow": "0px 1px 2px 0px rgba(228, 229, 231, 0.24)",
+        "wallet-icon-shadow":
+          "0px -8px 16px 0px rgba(197, 199, 201, 0.48) inset",
       },
     },
   },
