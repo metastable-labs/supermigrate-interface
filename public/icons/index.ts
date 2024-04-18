@@ -7,6 +7,8 @@ import GitHubIcon from "./github-icon.svg";
 import BasePrimaryIcon from "./base-primary-icon.svg";
 import SelectIcon from "./select-icon.svg";
 import VerifiedIcon from "./verified-icon.svg";
+import HamIcon from "./ham-icon.svg";
+import CloseIcon from "./close-icon.svg";
 
 export {
   Logo,
@@ -18,4 +20,6 @@ export {
   BasePrimaryIcon,
   SelectIcon,
   VerifiedIcon,
+  HamIcon,
+  CloseIcon,
 };
