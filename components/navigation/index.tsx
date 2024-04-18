@@ -1,5 +1,7 @@
 import { usePathname } from "next/navigation";
 import classNames from "classnames";
+import Left from "./left";
+import Right from "./right";
 
 const isHomePage = (path: string): boolean => {
   const homePageRegex = /^\/[a-z]{2}\/?$/;
@@ -19,8 +21,9 @@ const SMNavigation = () => {
         }
       )}
     >
-      <nav className="flex-1 bg-white px-4 py-[14px] md:px-11 md:py-5 items-center justify-between">
-        this is nav
+      <nav className="flex-1 flex bg-white px-4 py-[14px] md:px-11 md:py-5 items-center justify-between">
+        <Left />
+        <Right />
       </nav>
     </div>
   );
