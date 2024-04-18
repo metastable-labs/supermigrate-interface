@@ -1,10 +1,10 @@
 import { LangParamProp } from "@/config/internationalization/i18n";
-import { MigrateView } from "@/views";
+import { LiquidityView } from "@/views";
 
-export default function Migrate({
+export default function Liquidity({
   params: { lang },
 }: {
   params: LangParamProp;
 }) {
-  return <MigrateView lang={lang} />;
+  return <LiquidityView lang={lang} />;
 }

@@ -1,10 +1,10 @@
 import { LangParamProp } from "@/config/internationalization/i18n";
-import { MigrateView } from "@/views";
+import { BridgeView } from "@/views";
 
-export default function Migrate({
+export default function Bridge({
   params: { lang },
 }: {
   params: LangParamProp;
 }) {
-  return <MigrateView lang={lang} />;
+  return <BridgeView lang={lang} />;
 }
