@@ -8,6 +8,7 @@ import useUserActions from "@/application/user/actions";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
 import { LangParamProp } from "@/config/internationalization/i18n";
 import { Logo } from "@/public/icons";
+import HeroSection from "./hero";
 
 export default function HomeView({ lang }: LangParamProp) {
   const { userState, locale } = useSystemFunctions();
@@ -26,22 +27,8 @@ export default function HomeView({ lang }: LangParamProp) {
   }, []);
 
   return (
-    <main className="flex flex-col gap-10 min-h-screen items-center justify-center">
-      <h1>
-        {locale?.page?.home?.title}, {userState.user?.name}
-      </h1>
-
-      {!isConnected && !address && (
-        <button className="h-14 w-24 bg-blue-300" onClick={connect}>
-          {locale?.page?.home?.btn}
-        </button>
-      )}
-
-      <div className="text-right">
-        {locale?.page?.home?.description}:{" "}
-        <span className="font-semibold">{address}</span>
-      </div>
-      <Logo />
+    <main>
+      <HeroSection />
     </main>
   );
 }
