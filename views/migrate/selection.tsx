@@ -1,22 +1,24 @@
-import { Dispatch, SetStateAction } from "react";
-import Card, { CardProps } from "./card";
-import { Network } from ".";
-
-interface ISelectionComponent {
-  setMigrateNetwork: Dispatch<SetStateAction<Network>>;
-}
+import Card from "./card";
+import { CardProps, ISelectionComponent } from "./types";
 
 const SelectionComponent = ({ setMigrateNetwork }: ISelectionComponent) => {
-  const baseAction = () => setMigrateNetwork(Network.base);
-  const optimismAction = () => setMigrateNetwork(Network.optimism);
-  const modeAction = () => setMigrateNetwork(Network.mode);
-  const scrollAction = () => setMigrateNetwork(Network.scroll);
-
   const cards: CardProps[] = [
-    { title: "Base", variant: "base", onClick: baseAction },
-    { title: "Optimism", variant: "optimism", onClick: optimismAction },
-    { title: "Mode", variant: "mode", onClick: modeAction },
-    { title: "Scroll", variant: "scroll", onClick: scrollAction },
+    {
+      title: "Base",
+      variant: "base",
+    },
+    {
+      title: "Optimism",
+      variant: "optimism",
+    },
+    {
+      title: "Mode",
+      variant: "mode",
+    },
+    {
+      title: "Scroll",
+      variant: "scroll",
+    },
   ];
   return (
     <div className="flex mt-7 md:mt-24 justify-center">
@@ -30,9 +32,9 @@ const SelectionComponent = ({ setMigrateNetwork }: ISelectionComponent) => {
           </span>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full">
           {cards.map((card, index) => (
-            <Card key={index} {...card} />
+            <Card key={index} {...card} onClick={setMigrateNetwork} />
           ))}
         </div>
 

@@ -11,16 +11,14 @@ import {
   ScrollDesktopIcon,
   ScrollMobileIcon,
 } from "@/public/icons";
-
-export interface CardProps {
-  title: string;
-  variant?: "base" | "optimism" | "mode" | "scroll";
-  onClick: () => void;
-}
+import { CardProps } from "./types";
 
 const Card = ({ onClick, title, variant = "base" }: CardProps) => {
   return (
-    <SMClickAnimation onClick={onClick} className="w-full">
+    <SMClickAnimation
+      onClick={() => onClick && onClick(variant)}
+      className="w-full"
+    >
       <div
         className={classNames(
           "flex flex-col items-center justify-center rounded-xl border-[0.701px] border-primary-250 px-12 py-[54px]",

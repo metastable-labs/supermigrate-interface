@@ -1,8 +1,4 @@
-import { Network } from "..";
-
-interface INetwork {
-  network: Network;
-}
+import { INetwork } from "../types";
 
 const NetworkComponent = ({ network }: INetwork) => {
   return <div>{network}</div>;
