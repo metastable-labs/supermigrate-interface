@@ -11,6 +11,8 @@ import GitHubDesktopIcon from "./github-desktop-icon.svg";
 import GitHubMobileIcon from "./github-mobile-icon.svg";
 import BasePrimaryDesktopIcon from "./base-primary-desktop-icon.svg";
 import BasePrimaryMobileIcon from "./base-primary-mobile-icon.svg";
+import DesktopTilesIcon from "./desktop-tiles.svg";
+import MobileTilesIcon from "./mobile-tiles.svg";
 
 export {
   Logo,
@@ -26,4 +28,6 @@ export {
   VerifiedIcon,
   HamIcon,
   CloseIcon,
+  DesktopTilesIcon,
+  MobileTilesIcon,
 };
