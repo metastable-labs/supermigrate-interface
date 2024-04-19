@@ -82,7 +82,7 @@ const SMNavigation = () => {
   return (
     <div
       className={classNames(
-        "fixed w-screen flex justify-center items-center pt-[55.013px] md:pt-0 bg-white",
+        "fixed w-screen z-10 flex justify-center items-center pt-[55.013px] md:pt-0 bg-white",
         {
           hidden: isHome,
         }
