@@ -13,6 +13,14 @@ import BasePrimaryDesktopIcon from "./base-primary-desktop-icon.svg";
 import BasePrimaryMobileIcon from "./base-primary-mobile-icon.svg";
 import DesktopTilesIcon from "./desktop-tiles.svg";
 import MobileTilesIcon from "./mobile-tiles.svg";
+import BaseSecondaryDesktopIcon from "./base-secondary-desktop-icon.svg";
+import BaseSecondaryMobileIcon from "./base-secondary-mobile-icon.svg";
+import OptimismDesktopIcon from "./optimism-desktop-icon.svg";
+import OptimismMobileIcon from "./optimism-mobile-icon.svg";
+import ModeDesktopIcon from "./mode-desktop-icon.svg";
+import ModeMobileIcon from "./mode-mobile-icon.svg";
+import ScrollDesktopIcon from "./scroll-desktop-icon.svg";
+import ScrollMobileIcon from "./scroll-mobile-icon.svg";
 
 export {
   Logo,
@@ -30,4 +38,12 @@ export {
   CloseIcon,
   DesktopTilesIcon,
   MobileTilesIcon,
+  BaseSecondaryDesktopIcon,
+  BaseSecondaryMobileIcon,
+  OptimismDesktopIcon,
+  OptimismMobileIcon,
+  ModeDesktopIcon,
+  ModeMobileIcon,
+  ScrollDesktopIcon,
+  ScrollMobileIcon,
 };
