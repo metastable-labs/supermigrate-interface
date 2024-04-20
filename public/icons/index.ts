@@ -21,6 +21,8 @@ import ModeDesktopIcon from "./mode-desktop-icon.svg";
 import ModeMobileIcon from "./mode-mobile-icon.svg";
 import ScrollDesktopIcon from "./scroll-desktop-icon.svg";
 import ScrollMobileIcon from "./scroll-mobile-icon.svg";
+import GithubButtonIcon from "./github-button-icon";
+import PlusIcon from "./plus-icon";
 
 export {
   Logo,
@@ -46,4 +48,6 @@ export {
   ModeMobileIcon,
   ScrollDesktopIcon,
   ScrollMobileIcon,
+  GithubButtonIcon,
+  PlusIcon,
 };
