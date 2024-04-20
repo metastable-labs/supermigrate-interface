@@ -13,6 +13,14 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "base-github-button":
+          "linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.00) 100%), #375DFB",
+        "optimism-github-button":
+          "linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.00) 100%), #DF1C41",
+        "mode-github-button":
+          "linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.00) 100%), #CDFF00",
+        "scroll-github-button":
+          "linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.00) 100%), #FFEDD8",
       },
       colors: {
         primary: {
@@ -30,6 +38,10 @@ const config: Config = {
           600: "#6E330C",
           650: "#EBF1FF",
           700: "#162664",
+          750: "#253EA7",
+          800: "#710E21",
+          850: "#242D01",
+          900: "#281D11",
         },
         grey: {
           50: "#717184",
@@ -41,6 +53,14 @@ const config: Config = {
         "nav-select-shadow": "0px 1px 2px 0px rgba(228, 229, 231, 0.24)",
         "wallet-icon-shadow":
           "0px -8px 16px 0px rgba(197, 199, 201, 0.48) inset",
+        "base-github-button":
+          "0px 1px 2px 0px rgba(37, 62, 167, 0.48), 0px 0px 0px 1px #375DFB",
+        "optimism-github-button":
+          "0px 1px 2px 0px rgba(175, 29, 29, 0.48), 0px 0px 0px 1px #E93535",
+        "mode-github-button":
+          "0px 1px 2px 0px rgba(36, 45, 1, 0.48), 0px 0px 0px 1px #CDFF00",
+        "scroll-github-button":
+          "0px 1px 2px 0px rgba(228, 195, 160, 0.48), 0px 0px 0px 1px #FFEEDA",
       },
     },
   },
