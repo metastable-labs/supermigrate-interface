@@ -14,13 +14,15 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "base-github-button":
-          "linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.00) 100%), #375DFB",
+          "linear-gradient(180deg, rgba(55, 93, 251, 0.7) 0%, rgba(55, 93, 251, 1) 100%)",
         "optimism-github-button":
-          "linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.00) 100%), #DF1C41",
+          "linear-gradient(180deg, rgba(223, 28, 65, 0.7) 0%, rgba(223, 28, 65, 1) 100%)",
         "mode-github-button":
-          "linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.00) 100%), #CDFF00",
+          "linear-gradient(180deg, rgba(205, 255, 0, 0.7) 0%, rgba(205, 255, 0, 1) 100%)",
         "scroll-github-button":
-          "linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.00) 100%), #FFEDD8",
+          "linear-gradient(180deg, rgba(255, 237, 216, 0.7) 0%, rgba(255, 237, 216, 1) 100%)",
+        "light-button-border":
+          "linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%)",
       },
       colors: {
         primary: {
@@ -42,6 +44,16 @@ const config: Config = {
           800: "#710E21",
           850: "#242D01",
           900: "#281D11",
+          950: "#281D11",
+          1000: "#C2D6FF",
+          1050: "#FDEDF0",
+          1100: "#F8C9D2",
+          1150: "#D3E978",
+          1200: "#F0FDBD",
+          1250: "#F9E9D6",
+          1300: "#CDD0D5",
+          1350: "#EAECF0",
+          1400: "#FFFFFF33",
         },
         grey: {
           50: "#717184",
@@ -61,6 +73,8 @@ const config: Config = {
           "0px 1px 2px 0px rgba(36, 45, 1, 0.48), 0px 0px 0px 1px #CDFF00",
         "scroll-github-button":
           "0px 1px 2px 0px rgba(228, 195, 160, 0.48), 0px 0px 0px 1px #FFEEDA",
+        "bland-new-button":
+          "0px 1px 2px 0px rgba(188, 189, 196, 0.48), 0px 0px 0px 1px #EDEFF7",
       },
     },
   },
