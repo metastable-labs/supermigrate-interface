@@ -7,10 +7,12 @@ const Menu = ({
   menuOpen,
   links,
   actionItems,
+  handleModal,
 }: {
   menuOpen: boolean;
   links: INavLinks;
   actionItems: INavActions;
+  handleModal: (type: "account" | "wallet" | "network") => void;
 }) => {
   return (
     <AnimatePresence>
@@ -29,7 +31,12 @@ const Menu = ({
 
           <div className="flex items-center justify-start gap-4">
             {actionItems.map((item, index) => (
-              <NavAction key={index} {...item} isMobile />
+              <NavAction
+                key={index}
+                {...item}
+                isMobile
+                onClick={() => handleModal(item.variant)}
+              />
             ))}
           </div>
         </motion.div>

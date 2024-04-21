@@ -44,16 +44,22 @@ const Right = ({
   menuOpen,
   toggleMenu,
   actionItems,
+  handleModal,
 }: {
   menuOpen: boolean;
   toggleMenu: () => void;
   actionItems: INavActions;
+  handleModal: (variant: "account" | "wallet" | "network") => void;
 }) => {
   return (
     <div>
       <div className="hidden md:flex gap-4 items-center justify-center">
         {actionItems?.map((item, index) => (
-          <NavAction key={index} {...item} />
+          <NavAction
+            key={index}
+            {...item}
+            onClick={() => handleModal(item.variant)}
+          />
         ))}
       </div>
 

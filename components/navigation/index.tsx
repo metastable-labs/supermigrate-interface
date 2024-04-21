@@ -7,15 +7,15 @@ import Right from "./right";
 import Menu from "./menu";
 import {
   BridgeLinkIcon,
-  GitHubDesktopIcon,
-  GitHubMobileIcon,
-  BasePrimaryDesktopIcon,
-  BasePrimaryMobileIcon,
   LiquidityLinkIcon,
   MigrateLinkIcon,
-  VerifiedIcon,
 } from "@/public/icons";
 import { INavActions, INavLinks } from "./types";
+import SMModal from "../modal";
+import { ModalType } from "./modal/types";
+import AccountModal from "./modal/account";
+import WalletModal from "./modal/wallet";
+import NetworkModal from "./modal/network";
 
 const isHomePage = (path: string): boolean => {
   const homePageRegex = /^\/[a-z]{2}\/?$/;
@@ -46,26 +46,24 @@ const links: INavLinks = [
 const actionItems: INavActions = [
   {
     text: "Meister",
-    primaryDesktopIcon: <GitHubDesktopIcon />,
-    primaryMobileIcon: <GitHubMobileIcon />,
     onClick: () => {},
+    variant: "account",
   },
   {
-    primaryDesktopIcon: <BasePrimaryDesktopIcon />,
-    primaryMobileIcon: <BasePrimaryMobileIcon />,
     onClick: () => {},
+    variant: "network",
   },
   {
     text: "0x1234567890abcdef1234567890abcdef12345678",
-    isWallet: true,
-    secondaryIcon: <VerifiedIcon />,
     onClick: () => {},
+    variant: "wallet",
   },
 ];
 
 const SMNavigation = () => {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [modalType, setModalType] = useState<ModalType>();
 
   const isHome = isHomePage(pathname);
 
@@ -77,7 +75,27 @@ const SMNavigation = () => {
     };
   });
 
+  let modalTitle;
+
+  switch (modalType) {
+    case "account":
+      modalTitle = `@${"Meistergit"}`;
+      break;
+    case "wallet":
+      modalTitle = "0x1234567890abcdef1234567890abcdef12345678";
+      break;
+    case "network":
+      modalTitle = "Select chain";
+      break;
+    default:
+      modalTitle = "Select chain";
+  }
+
   const toggleMenu = () => setMenuOpen((prev) => !prev);
+
+  const closeModal = () => setModalType(undefined);
+
+  const handleModal = (type: ModalType) => setModalType(type);
 
   return (
     <div
@@ -94,13 +112,22 @@ const SMNavigation = () => {
           menuOpen={menuOpen}
           toggleMenu={toggleMenu}
           actionItems={actionItems}
+          handleModal={handleModal}
         />
+
         <Menu
           menuOpen={menuOpen}
           links={updatedLinks}
           actionItems={actionItems}
+          handleModal={handleModal}
         />
       </nav>
+
+      <SMModal show={Boolean(modalType)} title={modalTitle} close={closeModal}>
+        {modalType === "account" && <AccountModal close={closeModal} />}
+        {modalType === "wallet" && <WalletModal close={closeModal} />}
+        {modalType === "network" && <NetworkModal close={closeModal} />}
+      </SMModal>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import { ModalType } from "./modal/types";
 
 interface INavLink {
   title: string;
@@ -10,12 +11,9 @@ interface INavLink {
 type INavLinks = INavLink[];
 
 interface INavAction {
-  primaryMobileIcon?: ReactElement;
-  primaryDesktopIcon?: ReactElement;
-  secondaryIcon?: ReactElement;
   text?: string;
-  isWallet?: boolean;
   onClick: () => void;
+  variant: ModalType;
 }
 
 type INavActions = INavAction[];
