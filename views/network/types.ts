@@ -1,3 +1,5 @@
+import { Network } from "../migrate/types";
+
 type PullStatus = "merged" | "pending" | "rejected";
 
 interface TableItem {
@@ -8,6 +10,7 @@ interface TableItem {
 
 interface TableProps {
   data: TableItem[];
+  network: Network;
 }
 
 export type { TableItem, TableProps, PullStatus };
