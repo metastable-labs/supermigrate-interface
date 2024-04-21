@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { useRouter } from "next/navigation";
 
 import { SMClickAnimation } from "@/components";
 import {
@@ -13,12 +14,15 @@ import {
 } from "@/public/icons";
 import { CardProps } from "./types";
 
-const Card = ({ onClick, title, variant = "base" }: CardProps) => {
+const Card = ({ title, variant = "base" }: CardProps) => {
+  const router = useRouter();
+
+  const handleOnClick = () => {
+    router.push(`migrate/${variant}`);
+  };
+
   return (
-    <SMClickAnimation
-      onClick={() => onClick && onClick(variant)}
-      className="w-full"
-    >
+    <SMClickAnimation onClick={handleOnClick} className="w-full">
       <div
         className={classNames(
           "flex flex-col items-center justify-center rounded-xl border-[0.701px] border-primary-250 px-12 py-[54px]",
