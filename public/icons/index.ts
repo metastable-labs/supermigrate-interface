@@ -23,6 +23,9 @@ import ScrollDesktopIcon from "./scroll-desktop-icon.svg";
 import ScrollMobileIcon from "./scroll-mobile-icon.svg";
 import GithubButtonIcon from "./github-button-icon";
 import PlusIcon from "./plus-icon";
+import LinkRightArrow from "./link-right-arrow.svg";
+import DoubleCheckIcon from "./double-check-icon.svg";
+import MergedIcon from "./merged-icon.svg";
 
 export {
   Logo,
@@ -50,4 +53,7 @@ export {
   ScrollMobileIcon,
   GithubButtonIcon,
   PlusIcon,
+  LinkRightArrow,
+  DoubleCheckIcon,
+  MergedIcon,
 };
