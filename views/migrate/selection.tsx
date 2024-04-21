@@ -1,7 +1,9 @@
-import Card from "./card";
-import { CardProps, ISelectionComponent } from "./types";
+import { motion } from "framer-motion";
 
-const SelectionComponent = ({ setMigrateNetwork }: ISelectionComponent) => {
+import Card from "./card";
+import { CardProps } from "./types";
+
+const SelectionComponent = () => {
   const cards: CardProps[] = [
     {
       title: "Base",
@@ -20,8 +22,15 @@ const SelectionComponent = ({ setMigrateNetwork }: ISelectionComponent) => {
       variant: "scroll",
     },
   ];
+
   return (
-    <div className="flex mt-7 md:mt-24 justify-center">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      className="flex mt-7 md:mt-24 justify-center"
+    >
       <div className="flex flex-col items-start gap-6">
         <div>
           <h1 className="text-2xl font-medium text-primary-300">
@@ -34,7 +43,7 @@ const SelectionComponent = ({ setMigrateNetwork }: ISelectionComponent) => {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full">
           {cards.map((card, index) => (
-            <Card key={index} {...card} onClick={setMigrateNetwork} />
+            <Card key={index} {...card} />
           ))}
         </div>
 
@@ -55,7 +64,7 @@ const SelectionComponent = ({ setMigrateNetwork }: ISelectionComponent) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
