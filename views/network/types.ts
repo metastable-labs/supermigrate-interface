@@ -11,6 +11,7 @@ interface TableItem {
 interface TableProps {
   data: TableItem[];
   network: Network;
+  isConnected: boolean;
 }
 
 export type { TableItem, TableProps, PullStatus };
