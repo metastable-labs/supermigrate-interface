@@ -54,6 +54,11 @@ const config: Config = {
           1300: "#CDD0D5",
           1350: "#EAECF0",
           1400: "#FFFFFF33",
+          1450: "#F9FAFB",
+          1500: "#475467",
+          1550: "#D0D5DD",
+          1600: "#344054",
+          1650: "#375DFB",
         },
         grey: {
           50: "#717184",
@@ -75,6 +80,7 @@ const config: Config = {
           "0px 1px 2px 0px rgba(228, 195, 160, 0.48), 0px 0px 0px 1px #FFEEDA",
         "bland-new-button":
           "0px 1px 2px 0px rgba(188, 189, 196, 0.48), 0px 0px 0px 1px #EDEFF7",
+        "table-cta": "0px 1px 2px 0px rgba(16, 24, 40, 0.05)",
       },
     },
   },
