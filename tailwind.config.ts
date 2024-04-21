@@ -23,6 +23,8 @@ const config: Config = {
           "linear-gradient(180deg, rgba(255, 237, 216, 0.7) 0%, rgba(255, 237, 216, 1) 100%)",
         "light-button-border":
           "linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%)",
+        "very-light-gray":
+          "linear-gradient(180deg, rgba(228, 229, 231, 0.48) 0%, rgba(247, 248, 248, 0.00) 100%, rgba(228, 229, 231, 0.00) 100%)",
       },
       colors: {
         primary: {
@@ -59,6 +61,8 @@ const config: Config = {
           1550: "#D0D5DD",
           1600: "#344054",
           1650: "#375DFB",
+          1700: "#E4E5E7",
+          1750: "#131316",
         },
         grey: {
           50: "#717184",
@@ -81,6 +85,7 @@ const config: Config = {
         "bland-new-button":
           "0px 1px 2px 0px rgba(188, 189, 196, 0.48), 0px 0px 0px 1px #EDEFF7",
         "table-cta": "0px 1px 2px 0px rgba(16, 24, 40, 0.05)",
+        "fade-light": "0px 1.591px 3.182px 0px rgba(27, 28, 29, 0.04)",
       },
     },
   },
