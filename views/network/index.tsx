@@ -110,7 +110,7 @@ const NetworkComponent = ({ network }: INetwork) => {
               />
             </div>
 
-            <Table data={tableData} />
+            <Table data={tableData} network={network} />
           </div>
         </motion.div>
       </SMContainer>
