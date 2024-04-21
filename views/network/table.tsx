@@ -18,14 +18,13 @@ const Status = ({ status }: { status: PullStatus }) => (
     <DoubleCheckIcon />
   </div>
 );
-const Table = ({ data, network }: TableProps) => {
-  const [isConnected, setIsConnected] = useState(false);
+const Table = ({ data, network, isConnected }: TableProps) => {
   const [loading, setLoading] = useState(false);
 
   return (
     <div
       className={classNames(
-        "self-stretch overflow-x-auto rounded-xl border border-primary-1350 flex flex-col justify-between",
+        "self-stretch overflow-x-auto rounded-xl border border-primary-1350 flex flex-col justify-between bg-white",
         {
           "min-h-[324px]": Boolean(data.length),
           "min-h-[410px] md:min-h-[408px]": !Boolean(data.length),
