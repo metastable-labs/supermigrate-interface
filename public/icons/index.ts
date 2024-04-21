@@ -26,6 +26,14 @@ import PlusIcon from "./plus-icon";
 import LinkRightArrow from "./link-right-arrow.svg";
 import DoubleCheckIcon from "./double-check-icon.svg";
 import MergedIcon from "./merged-icon.svg";
+import RoundedCloseIcon from "./rounded-close-icon.svg";
+import OptimismPrimaryMobileIcon from "./optimism-primary-mobile-icon.svg";
+import ModePrimaryMobileIcon from "./mode-primary-mobile-icon.svg";
+import ScrollPrimaryMobileIcon from "./scroll-primary-mobile-icon.svg";
+import DisconnectIcon from "./disconnect-icon.svg";
+import CopyIcon from "./copy-icon.svg";
+import SelectSecondaryIcon from "./select-secondary-icon.svg";
+import WalletIcon from "./wallet-icon.svg";
 
 export {
   Logo,
@@ -56,4 +64,12 @@ export {
   LinkRightArrow,
   DoubleCheckIcon,
   MergedIcon,
+  RoundedCloseIcon,
+  OptimismPrimaryMobileIcon,
+  ModePrimaryMobileIcon,
+  ScrollPrimaryMobileIcon,
+  DisconnectIcon,
+  CopyIcon,
+  SelectSecondaryIcon,
+  WalletIcon,
 };
