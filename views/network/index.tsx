@@ -9,6 +9,8 @@ import { DesktopTilesIcon, MobileTilesIcon } from "@/public/icons";
 import { SMContainer } from "@/components";
 import Table from "./table";
 import { PullStatus } from "./types";
+import { useState } from "react";
+import Connect from "./connect";
 
 const tableData = [
   {
@@ -29,12 +31,14 @@ const tableData = [
 ];
 
 const NetworkComponent = ({ network }: INetwork) => {
+  const [isConnected, setIsConnected] = useState(false);
+
   const buttonText = "connect github";
   const buttonVariant = "git";
-  const action = () => {};
+  const action = () => setIsConnected((prev) => !prev);
 
   return (
-    <div className="pt-[123px] md:pt-[82px]">
+    <div className="pt-[123px] md:pt-[82px] pb-10">
       <SMContainer>
         <motion.div
           className="mt-5 md:mt-12"
@@ -44,54 +48,11 @@ const NetworkComponent = ({ network }: INetwork) => {
           transition={{ duration: 0.5 }}
         >
           <div className="flex flex-col items-center gap-8 w-full">
-            <div
-              className={classNames(
-                "py-6 px-4 md:px-8 rounded-xl self-stretch flex flex-col md:flex-row md:justify-between items-start md:items-end gap-[18px] md:gap-[10px]",
-                {
-                  "bg-primary-750": network === "base",
-                  "bg-primary-800": network === "optimism",
-                  "bg-primary-850": network === "mode",
-                  "bg-primary-900": network === "scroll",
-                }
-              )}
-            >
-              <div className="flex-1 flex flex-col gap-[10px] md:gap-2 items-start">
-                <h1
-                  className={classNames(
-                    "text-[20px] leading-[30px] md:text-[24px] md:leading-[38px] font-medium",
-                    {
-                      "text-primary-650": network === "base",
-                      "text-primary-1050": network === "optimism",
-                      "text-primary-1150": network === "mode",
-                      "text-primary-550": network === "scroll",
-                    }
-                  )}
-                >
-                  Please connect Github to continue
-                </h1>
-                <p
-                  className={classNames(
-                    "text-sm md:text-base max-w-[399px] text-wrap",
-                    {
-                      "text-primary-1000": network === "base",
-                      "text-primary-1100": network === "optimism",
-                      "text-primary-1200": network === "mode",
-                      "text-primary-1250": network === "scroll",
-                    }
-                  )}
-                >
-                  The Github account connected will be used to fork and create a
-                  PR on the Superchain token list repo
-                </p>
-              </div>
-
-              <Button
-                network={network}
-                onClick={action}
-                text={buttonText}
-                variant={buttonVariant}
-              />
-            </div>
+            <Connect
+              action={action}
+              isConnected={isConnected}
+              network={network}
+            />
 
             <div className="self-stretch pb-5 border-b border-l-primary-1350 flex flex-col md:flex-row md:justify-between items-start md:items-end gap-[14px] md:gap-8">
               <div className="flex-1 flex flex-col gap-1 items-start">
@@ -110,7 +71,11 @@ const NetworkComponent = ({ network }: INetwork) => {
               />
             </div>
 
-            <Table data={tableData} network={network} />
+            <Table
+              isConnected={isConnected}
+              data={tableData}
+              network={network}
+            />
           </div>
         </motion.div>
       </SMContainer>
