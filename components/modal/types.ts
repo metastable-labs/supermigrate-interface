@@ -1,5 +1,6 @@
 export interface Modal {
-  close: () => void;
-  variant?: "normal" | "large";
   children: React.ReactNode;
+  show: boolean;
+  close?: () => void;
+  title?: string;
 }
