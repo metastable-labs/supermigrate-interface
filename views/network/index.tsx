@@ -1,41 +1,35 @@
 "use client";
-
-import classNames from "classnames";
 import { motion } from "framer-motion";
 
 import { INetwork } from "../migrate/types";
-import Button from "../migrate/button";
 import { DesktopTilesIcon, MobileTilesIcon } from "@/public/icons";
-import { SMContainer } from "@/components";
-import Table from "./table";
-import { PullStatus } from "./types";
+import { SMContainer, SMTable, SMButton } from "@/components";
+import { PullStatus } from "@/components/table/types";
 import { useState } from "react";
 import Connect from "./connect";
-
-const tableData = [
-  {
-    tokenIcon: "/public/images/grin.png",
-    tokenName: "$NJOKU",
-    pullStatus: "merged" as PullStatus,
-  },
-  {
-    tokenIcon: "/public/images/gulden.png",
-    tokenName: "$GULDEN",
-    pullStatus: "merged" as PullStatus,
-  },
-  {
-    tokenIcon: "/public/images/handshake.png",
-    tokenName: "$Handshake",
-    pullStatus: "merged" as PullStatus,
-  },
-];
 
 const NetworkComponent = ({ network }: INetwork) => {
   const [isConnected, setIsConnected] = useState(false);
 
-  const buttonText = "connect github";
-  const buttonVariant = "git";
   const action = () => setIsConnected((prev) => !prev);
+
+  const tableData = [
+    {
+      tokenIcon: "/images/grin.png",
+      tokenName: "$NJOKU",
+      pullStatus: "merged" as PullStatus,
+    },
+    {
+      tokenIcon: "/images/gulden.png",
+      tokenName: "$GULDEN",
+      pullStatus: "merged" as PullStatus,
+    },
+    {
+      tokenIcon: "/images/handshake.png",
+      tokenName: "$Handshake",
+      pullStatus: "merged" as PullStatus,
+    },
+  ];
 
   return (
     <div className="pt-[123px] md:pt-[82px] pb-10">
@@ -60,14 +54,14 @@ const NetworkComponent = ({ network }: INetwork) => {
                 </p>
               </div>
 
-              <Button
+              <SMButton
                 onClick={action}
                 text="new migration"
                 variant="bland-new"
               />
             </div>
 
-            <Table
+            <SMTable
               isConnected={isConnected}
               data={tableData}
               network={network}
