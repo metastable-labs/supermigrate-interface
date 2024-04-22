@@ -2,14 +2,14 @@ import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import classNames from "classnames";
 
-import { Network } from "@/views/migrate/types";
+import { Network } from "@/components/button/types";
 import {
   BasePrimaryMobileIcon,
   OptimismPrimaryMobileIcon,
   ModePrimaryMobileIcon,
   ScrollPrimaryMobileIcon,
 } from "@/public/icons";
-import SMClickAnimation from "@/components/click-animation";
+import { SMClickAnimation } from "@/components";
 
 const networks = [
   { icon: <OptimismPrimaryMobileIcon />, name: "optimism" as Network },
