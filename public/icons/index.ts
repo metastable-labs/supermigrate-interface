@@ -38,6 +38,7 @@ import RightArrowIcon from "./right-arrow-icon.svg";
 import LeftArrowIcon from "./left-arrow-icon.svg";
 import AccountIcon from "./account-icon";
 import AuthorizeIcon from "./authorize-icon";
+import BlueCheckMarkIcon from "./blue-check-mark-icon.svg";
 
 export {
   Logo,
@@ -80,4 +81,5 @@ export {
   LeftArrowIcon,
   AccountIcon,
   AuthorizeIcon,
+  BlueCheckMarkIcon,
 };

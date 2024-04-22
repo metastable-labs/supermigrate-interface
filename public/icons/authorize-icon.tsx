@@ -1,6 +1,18 @@
 const AuthorizeIcon = () => {
   return (
-    <div className="flex items-center justify-center bg-primary-1900 rounded-[6.667px] p-2 w-8 h-8">
+    <div
+      className="flex items-center justify-center authorize-icon-color rounded-[6.667px] p-2 w-8 h-8"
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: "6.667px",
+        padding: "8px",
+        width: "32px",
+        height: "32px",
+        backgroundColor: "rgba(27, 162, 122, 0.1)",
+      }}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"

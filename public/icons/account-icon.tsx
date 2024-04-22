@@ -1,6 +1,17 @@
 const AccountIcon = () => {
   return (
-    <div className="flex items-center justify-center bg-primary-1850 rounded-[6.667px] p-2 w-8 h-8">
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: "6.667px",
+        padding: "8px",
+        width: "32px",
+        height: "32px",
+        backgroundColor: "rgba(0, 82, 255, 0.1)",
+      }}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
