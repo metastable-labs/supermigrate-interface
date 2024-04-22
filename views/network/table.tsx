@@ -43,26 +43,26 @@ const Table = ({ data, network, isConnected }: TableProps) => {
             <tr>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium"
+                className="px-4 md:px-6 py-3 text-left text-xs font-medium whitespace-nowrap"
               >
                 Token Name
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium"
+                className="px-4 md:px-6 py-3 text-left text-xs font-medium"
               >
                 <span className="hidden md:block">Pull Request Status</span>
                 <span className="md:hidden">Status</span>
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium whitespace-nowrap"
+                className="px-4 md:px-6 py-3 text-left text-xs font-medium whitespace-nowrap"
               >
                 Contract on Base
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium md:table-cell hidden"
+                className="px-4 md:px-6 py-3 text-left text-xs font-medium md:table-cell hidden"
               >
                 Action
               </th>
@@ -72,30 +72,30 @@ const Table = ({ data, network, isConnected }: TableProps) => {
           <tbody className="bg-white divide-y divide-gray-200">
             {data.map((item, index) => (
               <tr key={index}>
-                <td className="min-h-[71px] px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 flex items-center gap-3">
+                <td className="min-h-[71px] px-4 md:px-6 py-4 text-sm font-medium text-gray-900 flex items-center gap-3">
                   <Image
                     src={item.tokenIcon || ""}
                     alt={`${item.tokenName} icon`}
                     width={20}
                     height={20}
                   />
-                  <span className="">{item.tokenName}</span>
+                  {"NJOKU"}
                 </td>
-                <td className="min-h-[71px] px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   <Status status={item.pullStatus} />
                 </td>
-                <td className="min-h-[71px] px-6 py-4 whitespace-nowrap text-sm text-gray-500 flex justify-start items-center gap-2">
+                <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 flex justify-center md:justify-start items-center gap-2">
                   <a
                     href={`https://basescan.io/address/${item.tokenName}`}
                     target="_blank"
-                    className="text-[14px] leading-[20px]  text-primary-1650 border-b border-b-primary-1650"
+                    className="text-[14px] leading-[20px]  text-primary-1650 border-b border-b-primary-1650 flex items-center justify-center gap-1"
                   >
                     View <span className="hidden md:block">on basescan</span>
                   </a>
 
                   <LinkRightArrow />
                 </td>
-                <td className="min-h-[71px] px-6 py-4 whitespace-nowrap text-sm font-medium md:table-cell hidden">
+                <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm font-medium md:table-cell hidden">
                   <CTA title="Add Liquidity" onClick={() => {}} />
                 </td>
               </tr>
