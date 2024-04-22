@@ -1,15 +1,25 @@
+import { useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 
-import { SMModal } from "@/components";
-import { AccountIcon, AuthorizeIcon } from "@/public/icons";
+import { SMModal, SMButton } from "@/components";
+import { AccountIcon, AuthorizeIcon, BlueCheckMarkIcon } from "@/public/icons";
+import { Network } from "@/components/button/types";
 
 const ConnectModal = ({
   connectModalOpen,
   handleConnectModal,
+  network,
 }: {
+  network: Network;
   connectModalOpen: boolean;
   handleConnectModal: () => void;
 }) => {
+  const [hasReadInstructions, setHasReadInstructions] = useState(false);
+
+  const toggleReadInstructions = () => setHasReadInstructions((prev) => !prev);
+  const connectToGithub = () => {};
+
   return (
     <SMModal
       show={connectModalOpen}
@@ -76,7 +86,7 @@ const ConnectModal = ({
             </div>
           </div>
 
-          <div className="bg-primary-2000 px-[25.61px] py-[20.51px] flex items-center justify-center">
+          <div className="bg-primary-2000 px-[25.61px] py-[20.51px] flex items-center justify-center max-w-[448px] rounded-[10px]">
             <p className="text-[14px] leading-[24px] text-primary-600">
               Please remember to disconnect your GitHub account from our
               platform after the migration process is complete or if you no
@@ -85,7 +95,43 @@ const ConnectModal = ({
           </div>
         </div>
 
-        <div className="flex flex-col self-stretch items-center justify-center px-5 py-4 bg-white border-t border-primary-250"></div>
+        <div className="flex flex-col self-stretch items-center justify-center px-5 py-4 gap-3 bg-white border-t border-primary-250">
+          <SMButton
+            onClick={connectToGithub}
+            network={network}
+            text="Connect Github"
+            fullWidth
+          />
+
+          <div className="flex items-center justify-center gap-2">
+            <AnimatePresence mode="popLayout">
+              {hasReadInstructions ? (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  key={0}
+                  onClick={toggleReadInstructions}
+                  className="cursor-pointer"
+                >
+                  <BlueCheckMarkIcon />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key={1}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={toggleReadInstructions}
+                  className="w-5 h-[21px] bg-white border border-primary-1000 rounded cursor-pointer"
+                />
+              )}
+            </AnimatePresence>
+            <span className="text-sm tracking-[-0.084px] text-primary-50 font-medium">
+              I have read all insructions
+            </span>
+          </div>
+        </div>
       </div>
     </SMModal>
   );
