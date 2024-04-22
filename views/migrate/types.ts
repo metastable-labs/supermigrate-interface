@@ -1,4 +1,4 @@
-type Network = "base" | "optimism" | "mode" | "scroll";
+import { Network } from "@/components/button/types";
 
 interface INetwork {
   network: Network;
