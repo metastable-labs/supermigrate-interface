@@ -11,7 +11,7 @@ const Status = ({ status }: { status: PullStatus }) => (
   <div className="h-full flex items-start justify-start gap-1">
     <div className="flex items-center justify-center gap-1 border-b border-b-primary-1650">
       <MergedIcon />
-      <span className="text-[14px] leading-[20px] text-primary-1650 capitalize">
+      <span className="text-[14px] leading-[20px] text-primary-1650 capitalize hidden md:block">
         {status}
       </span>
     </div>
@@ -38,7 +38,7 @@ const Table = ({ data, network, isConnected }: TableProps) => {
       )}
 
       {Boolean(data.length) && !loading && (
-        <table className="min-w-full divide-y divide-primary-1350">
+        <table className="md:min-w-full divide-y divide-primary-1350">
           <thead className="bg-primary-1450 text-primary-1500">
             <tr>
               <th
@@ -51,17 +51,18 @@ const Table = ({ data, network, isConnected }: TableProps) => {
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium"
               >
-                Pull Request Status
+                <span className="hidden md:block">Pull Request Status</span>
+                <span className="md:hidden">Status</span>
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium"
+                className="px-6 py-3 text-left text-xs font-medium whitespace-nowrap"
               >
                 Contract on Base
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium"
+                className="px-6 py-3 text-left text-xs font-medium md:table-cell hidden"
               >
                 Action
               </th>
@@ -75,8 +76,8 @@ const Table = ({ data, network, isConnected }: TableProps) => {
                   <Image
                     src={item.tokenIcon || ""}
                     alt={`${item.tokenName} icon`}
-                    width={24}
-                    height={24}
+                    width={20}
+                    height={20}
                   />
                   <span className="">{item.tokenName}</span>
                 </td>
@@ -89,12 +90,12 @@ const Table = ({ data, network, isConnected }: TableProps) => {
                     target="_blank"
                     className="text-[14px] leading-[20px]  text-primary-1650 border-b border-b-primary-1650"
                   >
-                    View on basescan
+                    View <span className="hidden md:block">on basescan</span>
                   </a>
 
                   <LinkRightArrow />
                 </td>
-                <td className="min-h-[71px] px-6 py-4 whitespace-nowrap text-sm font-medium">
+                <td className="min-h-[71px] px-6 py-4 whitespace-nowrap text-sm font-medium md:table-cell hidden">
                   <CTA title="Add Liquidity" onClick={() => {}} />
                 </td>
               </tr>
