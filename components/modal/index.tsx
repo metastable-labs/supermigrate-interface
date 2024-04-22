@@ -3,11 +3,8 @@ import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Modal } from "./types";
 import { RoundedCloseIcon } from "@/public/icons";
-import useTruncateText from "@/hooks/useTruncateText";
 
-const SMModal = ({ children, close, show, title }: Modal) => {
-  const truncateTitle = useTruncateText(title!, 6, 6);
-
+const SMModal = ({ children, close, show }: Modal) => {
   useEffect(() => {
     if (show) {
       document.body.classList.add("overflow-hidden");
@@ -41,12 +38,7 @@ const SMModal = ({ children, close, show, title }: Modal) => {
               )}
             </div>
 
-            <div className="flex flex-col gap-6 min-w-[300px] md:min-w-80">
-              <h1 className="text-[20px] leading-[30px] text-primary-1750 text-left font-medium">
-                {truncateTitle}
-              </h1>
-              {children}
-            </div>
+            <div>{children}</div>
           </div>
         </motion.div>
       )}
