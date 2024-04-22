@@ -34,6 +34,8 @@ import DisconnectIcon from "./disconnect-icon.svg";
 import CopyIcon from "./copy-icon.svg";
 import SelectSecondaryIcon from "./select-secondary-icon.svg";
 import WalletIcon from "./wallet-icon.svg";
+import RightArrowIcon from "./right-arrow-icon.svg";
+import LeftArrowIcon from "./left-arrow-icon.svg";
 
 export {
   Logo,
@@ -72,4 +74,6 @@ export {
   CopyIcon,
   SelectSecondaryIcon,
   WalletIcon,
+  RightArrowIcon,
+  LeftArrowIcon,
 };
