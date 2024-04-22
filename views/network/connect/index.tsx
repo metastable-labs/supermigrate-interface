@@ -2,23 +2,9 @@ import { useState } from "react";
 import classNames from "classnames";
 import { AnimatePresence, motion } from "framer-motion";
 
-import Button from "../../migrate/button";
-import { Network } from "../../migrate/types";
+import { SMButton } from "@/components";
 import ConnectModal from "./connect-modal";
-
-const modalAnimation = {
-  initial: { scale: 0, x: "100%" },
-  animate: {
-    scale: 1,
-    x: 0,
-    transition: { type: "spring", stiffness: 260, damping: 20 },
-  },
-  exit: {
-    scale: 0,
-    x: "100%",
-    transition: { type: "spring", stiffness: 260, damping: 20 },
-  },
-};
+import { Network } from "@/components/button/types";
 
 const Connect = ({ network }: { network: Network }) => {
   const [isConnected, setIsConnected] = useState(false);
@@ -77,7 +63,7 @@ const Connect = ({ network }: { network: Network }) => {
               </p>
             </div>
 
-            <Button
+            <SMButton
               network={network}
               onClick={handleConnectModal}
               text={buttonText}
@@ -90,6 +76,7 @@ const Connect = ({ network }: { network: Network }) => {
       <ConnectModal
         connectModalOpen={connectModalOpen}
         handleConnectModal={handleConnectModal}
+        network={network}
       />
     </>
   );
