@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
-import { Network } from "@/views/migrate/types";
+
 import NetworkComponent from "@/views/network";
+import { Network } from "@/components/button/types";
 
 interface PageProps {
   params: { network: Network };
