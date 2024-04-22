@@ -75,22 +75,6 @@ const SMNavigation = () => {
     };
   });
 
-  let modalTitle;
-
-  switch (modalType) {
-    case "account":
-      modalTitle = `@${"Meistergit"}`;
-      break;
-    case "wallet":
-      modalTitle = "0x1234567890abcdef1234567890abcdef12345678";
-      break;
-    case "network":
-      modalTitle = "Select chain";
-      break;
-    default:
-      modalTitle = "Select chain";
-  }
-
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   const closeModal = () => setModalType(undefined);
@@ -123,7 +107,7 @@ const SMNavigation = () => {
         />
       </nav>
 
-      <SMModal show={Boolean(modalType)} title={modalTitle} close={closeModal}>
+      <SMModal show={Boolean(modalType)} close={closeModal}>
         {modalType === "account" && <AccountModal close={closeModal} />}
         {modalType === "wallet" && <WalletModal close={closeModal} />}
         {modalType === "network" && <NetworkModal close={closeModal} />}
