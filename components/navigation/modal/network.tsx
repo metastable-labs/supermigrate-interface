@@ -28,28 +28,34 @@ const NetworkModal = ({ close }: { close: () => void }) => {
   };
 
   return (
-    <div className="mt-1 flex-1 flex flex-col items-stretch gap-8">
-      {networks.map(({ icon, name }, index) => (
-        <SMClickAnimation key={index} onClick={() => handleOnClick(name)}>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center justify-center gap-2">
-              {icon}{" "}
-              <span className="capitalize text-[14px] leading-[21.7px] font-medium text-primary-50">
-                {name}
-              </span>
-            </div>
+    <div className="flex flex-col gap-[28px] min-w-[300px] md:min-w-80">
+      <h1 className="text-[20px] leading-[30px] text-primary-1750 text-left font-medium">
+        Select chain
+      </h1>
 
-            <div
-              className={classNames(
-                "w-3 h-3 rounded-full transition-all duration-200",
-                {
-                  "bg-primary-1800": pathname.includes(name),
-                }
-              )}
-            />
-          </div>
-        </SMClickAnimation>
-      ))}
+      <div className="flex flex-col md:min-w-80 flex-1 items-stretch gap-8">
+        {networks.map(({ icon, name }, index) => (
+          <SMClickAnimation key={index} onClick={() => handleOnClick(name)}>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center justify-center gap-2">
+                {icon}{" "}
+                <span className="capitalize text-[14px] leading-[21.7px] font-medium text-primary-50">
+                  {name}
+                </span>
+              </div>
+
+              <div
+                className={classNames(
+                  "w-3 h-3 rounded-full transition-all duration-200",
+                  {
+                    "bg-primary-1800": pathname.includes(name),
+                  }
+                )}
+              />
+            </div>
+          </SMClickAnimation>
+        ))}
+      </div>
     </div>
   );
 };
