@@ -48,7 +48,7 @@ const SMModal = ({ children, close, show, variant = "default" }: Modal) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className={classNames(
-            "fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-70 flex items-center z-[9999]",
+            "fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-70 flex items-center z-[9999] p-[15px]",
             {
               "justify-center": variant === "default",
               "justify-end": variant === "git-connect",
@@ -60,7 +60,10 @@ const SMModal = ({ children, close, show, variant = "default" }: Modal) => {
             initial={animation.initial}
             animate={animation.animate}
             exit={animation.exit}
-            className="relative flex justify-center items-center bg-white p-5 rounded-2xl"
+            className={classNames(
+              "relative flex justify-center items-center bg-white p-5 rounded-2xl",
+              { "max-w-[496px]": variant === "git-connect" }
+            )}
           >
             <div className="absolute z-10 top-0 right-0 flex justify-end items-center w-full p-3">
               {close && (
