@@ -36,6 +36,8 @@ import SelectSecondaryIcon from "./select-secondary-icon.svg";
 import WalletIcon from "./wallet-icon.svg";
 import RightArrowIcon from "./right-arrow-icon.svg";
 import LeftArrowIcon from "./left-arrow-icon.svg";
+import AccountIcon from "./account-icon";
+import AuthorizeIcon from "./authorize-icon";
 
 export {
   Logo,
@@ -76,4 +78,6 @@ export {
   WalletIcon,
   RightArrowIcon,
   LeftArrowIcon,
+  AccountIcon,
+  AuthorizeIcon,
 };
