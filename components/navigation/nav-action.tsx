@@ -10,7 +10,6 @@ import {
   ModePrimaryMobileIcon,
   ScrollPrimaryMobileIcon,
   GitHubMobileIcon,
-  GitHubDesktopIcon,
   VerifiedIcon,
   SelectSecondaryIcon,
   WalletIcon,
@@ -23,14 +22,10 @@ interface NavActionProps {
   variant?: "network" | "account" | "wallet";
 }
 
-const NavAction = ({
-  text,
-  onClick,
-  isMobile,
-  variant = "network",
-}: NavActionProps) => {
+const NavAction = ({ text, onClick, variant = "network" }: NavActionProps) => {
   const pathname = usePathname();
   const truncateText = useTruncateText(text || "", 4, 4);
+  const shouldHide = /\/[a-zA-Z]{2}\/migrate$/.test(pathname);
 
   let renderIcon;
 
@@ -58,7 +53,12 @@ const NavAction = ({
   }
 
   return (
-    <SMClickAnimation onClick={onClick}>
+    <SMClickAnimation
+      onClick={onClick}
+      className={classNames("", {
+        hidden: shouldHide && variant === "network",
+      })}
+    >
       <div className="max-w-[200px] md:max-w-[240px] bg-white rounded-[10px] border border-primary-250 shadow-nav-select-shadow py-1 pl-1 pr-2 flex items-center justify-center gap-[6px] relative">
         <div className={classNames("flex items-center justify-center", {})}>
           {renderIcon}
