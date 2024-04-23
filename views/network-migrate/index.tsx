@@ -57,7 +57,8 @@ const NetworkMigrationsView = ({ network }: INetwork) => {
               <SMButton
                 onClick={action}
                 text="new migration"
-                variant="bland-new"
+                variant="new"
+                network={network}
               />
             </div>
 
