@@ -32,7 +32,7 @@ const NetworkMigrationsView = ({ network }: INetwork) => {
   ];
 
   return (
-    <div className="pt-[123px] md:pt-[82px] pb-10">
+    <div className="pb-10">
       <SMContainer>
         <motion.div
           className="mt-5 md:mt-12"

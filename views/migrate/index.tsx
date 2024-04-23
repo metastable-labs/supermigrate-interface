@@ -6,7 +6,7 @@ import SelectionComponent from "./selection";
 
 export default function MigrateView({ lang }: LangParamProp) {
   return (
-    <div className="pt-[123px] md:pt-[82px]">
+    <div>
       <SMContainer>
         <SelectionComponent />
       </SMContainer>

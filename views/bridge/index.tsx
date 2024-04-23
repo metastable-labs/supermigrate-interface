@@ -1,10 +1,13 @@
+"use client";
 import { LangParamProp } from "@/config/internationalization/i18n";
 
 const BridgeView = ({ lang }: LangParamProp) => {
   return (
-    <div>
-      <h1>Bridge View</h1>
-    </div>
+    <iframe
+      src="https://superbridge.app/base"
+      className="w-full min-h-screen"
+      onError={(e) => console.error("Iframe failed to load:", e)}
+    />
   );
 };
 
