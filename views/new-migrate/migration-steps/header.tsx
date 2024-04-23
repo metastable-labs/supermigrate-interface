@@ -10,15 +10,22 @@ const Step = ({
   current,
   passed,
   network,
+  onClick,
 }: {
   step: number;
   title: string;
   current: boolean;
   passed: boolean;
   network: Network;
+  onClick?: (step: number) => void;
 }) => {
   return (
-    <div className="flex items-center justify-center gap-2">
+    <div
+      className={classNames("flex items-center justify-center gap-2", {
+        "cursor-pointer": onClick,
+      })}
+      onClick={() => onClick && onClick(0)}
+    >
       <div
         className={classNames(
           "rounded-full w-5 h-5 flex items-center justify-center transition-all duration-300",
@@ -71,7 +78,15 @@ const Step = ({
   );
 };
 
-const Header = ({ step, network }: { step: number; network: Network }) => {
+const Header = ({
+  step,
+  network,
+  setStep,
+}: {
+  step: number;
+  network: Network;
+  setStep: (step: number) => void;
+}) => {
   return (
     <div className="flex items-center justify-center gap-4">
       <Step
@@ -80,6 +95,7 @@ const Header = ({ step, network }: { step: number; network: Network }) => {
         passed={step != 0}
         step={1}
         title="Token info"
+        onClick={setStep}
       />
       <RightCarretDarkIcon />
       <Step

@@ -48,8 +48,8 @@ const MigrationSteps = ({ network }: { network: Network }) => {
   ];
 
   return (
-    <div className="w-full flex flex-col self-stretch items-center justify-center gap-6 md:min-w-[448px]">
-      <Header step={step} network={network} />
+    <div className="w-full flex flex-col self-stretch items-center justify-center gap-6">
+      <Header step={step} network={network} setStep={setStep} />
 
       <AnimatePresence>
         <motion.div

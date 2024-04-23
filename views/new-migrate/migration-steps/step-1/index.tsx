@@ -20,7 +20,7 @@ const Step1 = ({ register, errors, network, setStep }: StepProps) => {
   const handleNext = () => setStep((prev) => prev + 1);
 
   return (
-    <div className="flex flex-col items-center justify-center gap-6 rounded-xl border border-primary-2100 bg-white p-6">
+    <div className="flex flex-col items-center justify-center gap-6 rounded-xl border border-primary-2100 bg-white p-6 min-w-[343px] md:min-w-[448px]">
       <SMInput
         name="tokenAddress"
         register={register("tokenAddress")}

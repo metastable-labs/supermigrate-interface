@@ -4,6 +4,7 @@ import SMClickAnimation from "./click-animation";
 import SMModal from "./modal";
 import SMTable from "./table";
 import SMButton from "./button";
+import SMFileInput from "./file-input";
 
 export {
   SMContainer,
@@ -12,4 +13,5 @@ export {
   SMModal,
   SMTable,
   SMButton,
+  SMFileInput,
 };
