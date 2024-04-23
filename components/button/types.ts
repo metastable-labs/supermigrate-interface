@@ -1,6 +1,6 @@
 type Network = "base" | "optimism" | "mode" | "scroll";
 
-type ButtonVariants = "git" | "new" | "bland-new";
+type ButtonVariants = "git" | "new" | "bland-new" | "plain";
 
 interface IButton {
   variant?: ButtonVariants;

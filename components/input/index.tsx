@@ -11,14 +11,14 @@ const SMInput = ({
   label,
   placeholder,
   register,
-  rows,
+  rows = 3,
   type,
   variant = "primary",
 }: ISMInput) => {
   return (
     <div
       className={classNames(
-        "w-full text-sm tracking-[-0.084px] text-primary-50",
+        "w-full text-sm tracking-[-0.084px] text-primary-50 flex flex-col items-start gap-1",
         { "text-primary-1950": error }
       )}
     >
@@ -41,7 +41,7 @@ const SMInput = ({
           disabled={disabled}
           {...register}
           className={classNames(
-            `px-[10px] pl-3 pr-[10px] self-stretch w-full rounded-[10px] border border-primary-250 bg-white shadow-nav-select-shadow placeholder-primary-2050 font-normal ${className}`
+            `px-[10px] pl-3 py-[10px] self-stretch w-full rounded-[10px] border border-primary-250 bg-white shadow-nav-select-shadow placeholder-primary-2050 font-normal focus:outline-none ${className}`
           )}
           placeholder={placeholder}
           type={type}
@@ -53,7 +53,7 @@ const SMInput = ({
           name={name}
           disabled={disabled}
           {...register}
-          className={`px-[10px] pl-3 pr-[10px] self-stretch w-full rounded-[10px] border border-primary-250 bg-white shadow-nav-select-shadow placeholder-primary-2050 font-normal ${className}`}
+          className={`pr-[10px] pl-3 py-[10px] self-stretch w-full rounded-[10px] border border-primary-250 bg-white shadow-nav-select-shadow placeholder-primary-2050 font-normal focus:outline-none ${className}`}
           placeholder={placeholder}
           rows={rows}
         />

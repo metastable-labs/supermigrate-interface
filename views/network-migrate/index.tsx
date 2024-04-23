@@ -44,7 +44,7 @@ const NetworkMigrationsView = ({ network }: INetwork) => {
           <div className="flex flex-col items-center gap-8 w-full">
             <Connect network={network} />
 
-            <div className="self-stretch pb-5 border-b border-l-primary-1350 flex flex-col md:flex-row md:justify-between items-start md:items-end gap-[14px] md:gap-8">
+            <div className="self-stretch pb-5 border-b border-primary-1350 flex flex-col md:flex-row md:justify-between items-start md:items-end gap-[14px] md:gap-8">
               <div className="flex-1 flex flex-col gap-1 items-start">
                 <h1 className="text-[20px] md:text-[30px] text-primary-300 leading-[38px] font-medium">
                   Migrations

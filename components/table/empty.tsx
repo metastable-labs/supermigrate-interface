@@ -33,7 +33,7 @@ const EmptyState = ({
   return (
     <div className="flex flex-col items-center justify-center gap-[14px] flex-1 px-3">
       <div className="flex flex-col items-center justify-center gap-1">
-        <div className="flex items-center justify-center bg-very-light-gray rounded-full border-[0.795px] border-l-primary-1700 p-[12.73px] md:p-4">
+        <div className="flex items-center justify-center bg-very-light-gray rounded-full border-[0.795px] border-primary-1700 p-[12.73px] md:p-4">
           <div className="flex items-center justify-center rounded-full border border-primary-250 bg-white p-[11.136px] md:p-[14px] shadow-fade-light">
             <GithubButtonIcon
               color="#525866"

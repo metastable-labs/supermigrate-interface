@@ -1,4 +1,6 @@
-const Step2 = () => {
+import { StepProps } from "./types";
+
+const Step2 = ({}: StepProps) => {
   return <div>Step Two</div>;
 };
 

@@ -43,6 +43,7 @@ import HomeIcon from "./home-icon.svg";
 import RightCarretLightIcon from "./right-carret-light-icon.svg";
 import RightCarretDarkIcon from "./right-carret-dark-icon.svg";
 import CheckIcon from "./check-icon.svg";
+import InfoIcon from "./info-icon.svg";
 
 export {
   Logo,
@@ -90,4 +91,5 @@ export {
   RightCarretLightIcon,
   RightCarretDarkIcon,
   CheckIcon,
+  InfoIcon,
 };
