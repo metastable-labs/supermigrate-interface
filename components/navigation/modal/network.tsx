@@ -1,4 +1,3 @@
-import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import classNames from "classnames";
 
@@ -10,6 +9,7 @@ import {
   ScrollPrimaryMobileIcon,
 } from "@/public/icons";
 import { SMClickAnimation } from "@/components";
+import useSystemFunctions from "@/hooks/useSystemFunctions";
 
 const networks = [
   { icon: <OptimismPrimaryMobileIcon />, name: "optimism" as Network },
@@ -19,11 +19,11 @@ const networks = [
 ];
 
 const NetworkModal = ({ close }: { close: () => void }) => {
-  const router = useRouter();
+  const { navigate } = useSystemFunctions();
   const pathname = usePathname();
 
   const handleOnClick = (network: Network) => {
-    router.push(`/migrate/${network}`);
+    navigate.push(`/migrate/${network}`);
     close();
   };
 

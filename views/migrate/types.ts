@@ -14,20 +14,4 @@ interface ISelectionComponent {
   setMigrateNetwork: (network: Network) => void;
 }
 
-type ButtonVariants = "git" | "new" | "bland-new";
-
-interface IButton {
-  variant?: ButtonVariants;
-  onClick: () => void;
-  text: string;
-  network?: Network;
-}
-
-export type {
-  Network,
-  INetwork,
-  CardProps,
-  ISelectionComponent,
-  IButton,
-  ButtonVariants,
-};
+export type { INetwork, CardProps, ISelectionComponent };

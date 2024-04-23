@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import { useRouter } from "next/navigation";
 
 import { SMClickAnimation } from "@/components";
 import {
@@ -13,12 +12,13 @@ import {
   ScrollMobileIcon,
 } from "@/public/icons";
 import { CardProps } from "./types";
+import useSystemFunctions from "@/hooks/useSystemFunctions";
 
 const Card = ({ title, variant = "base" }: CardProps) => {
-  const router = useRouter();
+  const { navigate } = useSystemFunctions();
 
   const handleOnClick = () => {
-    router.push(`migrate/${variant}`);
+    navigate.push(`migrate/${variant}`);
   };
 
   return (

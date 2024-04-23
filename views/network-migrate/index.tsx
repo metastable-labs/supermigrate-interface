@@ -5,13 +5,13 @@ import { INetwork } from "../migrate/types";
 import { DesktopTilesIcon, MobileTilesIcon } from "@/public/icons";
 import { SMContainer, SMTable, SMButton } from "@/components";
 import { PullStatus } from "@/components/table/types";
-import { useState } from "react";
 import Connect from "./connect";
+import useSystemFunctions from "@/hooks/useSystemFunctions";
 
-const NetworkComponent = ({ network }: INetwork) => {
-  const [isConnected, setIsConnected] = useState(false);
+const NetworkMigrationsView = ({ network }: INetwork) => {
+  const { navigate } = useSystemFunctions();
 
-  const action = () => setIsConnected((prev) => !prev);
+  const action = () => navigate.push(`/migrate/${network}/new`);
 
   const tableData = [
     {
@@ -61,11 +61,7 @@ const NetworkComponent = ({ network }: INetwork) => {
               />
             </div>
 
-            <SMTable
-              isConnected={isConnected}
-              data={tableData}
-              network={network}
-            />
+            <SMTable isConnected data={tableData} network={network} />
           </div>
         </motion.div>
       </SMContainer>
@@ -80,4 +76,4 @@ const NetworkComponent = ({ network }: INetwork) => {
   );
 };
 
-export default NetworkComponent;
+export default NetworkMigrationsView;
