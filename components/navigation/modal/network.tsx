@@ -12,8 +12,8 @@ import { SMClickAnimation } from "@/components";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
 
 const networks = [
-  { icon: <OptimismPrimaryMobileIcon />, name: "optimism" as Network },
   { icon: <BasePrimaryMobileIcon />, name: "base" as Network },
+  { icon: <OptimismPrimaryMobileIcon />, name: "optimism" as Network },
   { icon: <ModePrimaryMobileIcon />, name: "mode" as Network },
   { icon: <ScrollPrimaryMobileIcon />, name: "scroll" as Network },
 ];
