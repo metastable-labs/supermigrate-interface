@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.4",
+    "@hookform/resolvers": "^3.3.4",
     "@rainbow-me/rainbowkit": "^2.0.5",
     "@reduxjs/toolkit": "^2.2.3",
     "@svgr/webpack": "^8.1.0",
@@ -22,9 +23,11 @@
     "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.51.3",
     "react-redux": "^9.1.0",
     "viem": "2.x",
-    "wagmi": "^2.5.19"
+    "wagmi": "^2.5.19",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/negotiator": "^0.6.3",
