@@ -1,28 +1,33 @@
 import { motion } from "framer-motion";
+import { base, optimism, scroll, mode } from "wagmi/chains";
 
 import Card from "./card";
 import { CardProps } from "./types";
 
-const SelectionComponent = () => {
-  const cards: CardProps[] = [
-    {
-      title: "Base",
-      variant: "base",
-    },
-    {
-      title: "Optimism",
-      variant: "optimism",
-    },
-    {
-      title: "Mode",
-      variant: "mode",
-    },
-    {
-      title: "Scroll",
-      variant: "scroll",
-    },
-  ];
+const cards: CardProps[] = [
+  {
+    title: "Base",
+    variant: "base",
+    chainId: base.id,
+  },
+  {
+    title: "Optimism",
+    variant: "optimism",
+    chainId: optimism.id,
+  },
+  {
+    title: "Mode",
+    variant: "mode",
+    chainId: mode.id,
+  },
+  {
+    title: "Scroll",
+    variant: "scroll",
+    chainId: scroll.id,
+  },
+];
 
+const SelectionComponent = () => {
   return (
     <motion.div
       initial={{ opacity: 0 }}

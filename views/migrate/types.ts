@@ -8,6 +8,7 @@ interface CardProps {
   title: string;
   variant?: Network;
   onClick?: (network: Network) => void;
+  chainId: number;
 }
 
 interface ISelectionComponent {
