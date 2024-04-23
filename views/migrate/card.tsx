@@ -14,9 +14,9 @@ import {
   ScrollMobileIcon,
 } from "@/public/icons";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
-import { CardProps } from "./types";
+import { NetworkProps } from "@/config/rainbow/rainbowkit";
 
-const Card = ({ title, variant = "base", chainId: id }: CardProps) => {
+const Card = ({ title, variant = "base", chainId: id }: NetworkProps) => {
   const { navigate } = useSystemFunctions();
   const chainId = useChainId();
   const { switchChain } = useSwitchChain();

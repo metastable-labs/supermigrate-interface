@@ -1,31 +1,7 @@
 import { motion } from "framer-motion";
-import { base, optimism, scroll, mode } from "wagmi/chains";
 
 import Card from "./card";
-import { CardProps } from "./types";
-
-const cards: CardProps[] = [
-  {
-    title: "Base",
-    variant: "base",
-    chainId: base.id,
-  },
-  {
-    title: "Optimism",
-    variant: "optimism",
-    chainId: optimism.id,
-  },
-  {
-    title: "Mode",
-    variant: "mode",
-    chainId: mode.id,
-  },
-  {
-    title: "Scroll",
-    variant: "scroll",
-    chainId: scroll.id,
-  },
-];
+import { networks } from "@/config/rainbow/rainbowkit";
 
 const SelectionComponent = () => {
   return (
@@ -47,7 +23,7 @@ const SelectionComponent = () => {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full">
-          {cards.map((card, index) => (
+          {networks.map((card, index) => (
             <Card key={index} {...card} />
           ))}
         </div>
