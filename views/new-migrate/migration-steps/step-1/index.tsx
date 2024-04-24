@@ -2,10 +2,9 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { StepProps } from "../types";
-import SMInput from "@/components/input";
 import TokenInfo from "./token-info";
 import OverrideSection from "./override-section";
-import { SMButton } from "@/components";
+import { SMButton, SMInput } from "@/components";
 
 const Step1 = ({ register, errors, network, setStep }: StepProps) => {
   const [overridden, setOverridden] = useState(false);
@@ -20,10 +19,10 @@ const Step1 = ({ register, errors, network, setStep }: StepProps) => {
   const handleNext = () => setStep((prev) => prev + 1);
 
   return (
-    <div className="flex flex-col items-center justify-center gap-6 rounded-xl border border-primary-2100 bg-white p-6">
+    <div className="flex flex-col items-center justify-center gap-6 rounded-xl border border-primary-2100 bg-white p-6 min-w-[343px] md:min-w-[448px]">
       <SMInput
         name="tokenAddress"
-        register={register("tokenAddress")}
+        register={register?.("tokenAddress")}
         placeholder="Token address"
         error={errors?.tokenAddress}
         type="text"
@@ -49,7 +48,7 @@ const Step1 = ({ register, errors, network, setStep }: StepProps) => {
           >
             <SMInput
               name="tokenName"
-              register={register("tokenName")}
+              register={register?.("tokenName")}
               placeholder="Token name"
               error={errors?.tokenName}
               type="text"
@@ -57,7 +56,7 @@ const Step1 = ({ register, errors, network, setStep }: StepProps) => {
             />
             <SMInput
               name="tokenSymbol"
-              register={register("tokenSymbol")}
+              register={register?.("tokenSymbol")}
               placeholder="$token"
               error={errors?.tokenSymbol}
               type="text"
@@ -65,7 +64,7 @@ const Step1 = ({ register, errors, network, setStep }: StepProps) => {
             />
             <SMInput
               name="tokenDecimal"
-              register={register("tokenDecimal")}
+              register={register?.("tokenDecimal")}
               placeholder="Token decimal"
               error={errors?.tokenDecimal}
               type="text"
@@ -78,7 +77,7 @@ const Step1 = ({ register, errors, network, setStep }: StepProps) => {
 
       <SMInput
         name="tokenDescription"
-        register={register("tokenDescription")}
+        register={register?.("tokenDescription")}
         placeholder="Token Description"
         error={errors?.tokenDescription}
         type="text"

@@ -9,6 +9,8 @@ import Step1 from "./step-1";
 import Step2 from "./step-2";
 import { Network } from "@/components/button/types";
 import { FormProp } from "./types";
+import Step3 from "./step-3";
+import Step4 from "./step-4";
 
 const schema = yup.object().shape({
   tokenAddress: yup.string().required("Token Address is Required"),
@@ -16,10 +18,13 @@ const schema = yup.object().shape({
   tokenSymbol: yup.string().required("Token Symbol is Required"),
   tokenDecimal: yup.string().required("Token Decimal is Required"),
   tokenDescription: yup.string().required("Token Description is Required"),
+  websiteLink: yup.string(),
+  twitterLink: yup.string().required("Invalid URL"),
 });
 
 const MigrationSteps = ({ network }: { network: Network }) => {
   const [step, setStep] = useState(0);
+  const [file, setFile] = useState<File | null>(null);
 
   const {
     register,
@@ -44,12 +49,17 @@ const MigrationSteps = ({ network }: { network: Network }) => {
       errors={errors}
       network={network}
       setStep={setStep}
+      setFile={setFile}
+      file={file}
     />,
+
+    <Step3 key={2} network={network} setStep={setStep} />,
+    <Step4 key={2} network={network} setStep={setStep} />,
   ];
 
   return (
-    <div className="w-full flex flex-col self-stretch items-center justify-center gap-6 md:min-w-[448px]">
-      <Header step={step} network={network} />
+    <div className="w-full flex flex-col self-stretch items-center justify-center gap-6">
+      <Header step={step} network={network} setStep={setStep} />
 
       <AnimatePresence>
         <motion.div

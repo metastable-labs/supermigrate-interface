@@ -44,6 +44,16 @@ import RightCarretLightIcon from "./right-carret-light-icon.svg";
 import RightCarretDarkIcon from "./right-carret-dark-icon.svg";
 import CheckIcon from "./check-icon.svg";
 import InfoIcon from "./info-icon.svg";
+import UploadIcon from "./upload-icon.svg";
+import DeleteIcon from "./delete-icon.svg";
+import CheckSmallIcon from "./check-small-icon.svg";
+import PDFIcon from "./pdf-icon.svg";
+import LoadingIcon from "./loading-icon.svg";
+import TrickleIcon from "./trickle-icon";
+import MergedSecondaryIcon from "./merged-secondary-icon.svg";
+import MergedTertiaryIcon from "./merged-tertiary-icon.svg";
+import XIcon from "./x-icon.svg";
+import CopySecondaryIcon from "./copy-secondary-icon.svg";
 
 export {
   Logo,
@@ -92,4 +102,14 @@ export {
   RightCarretDarkIcon,
   CheckIcon,
   InfoIcon,
+  UploadIcon,
+  DeleteIcon,
+  CheckSmallIcon,
+  PDFIcon,
+  LoadingIcon,
+  TrickleIcon,
+  MergedSecondaryIcon,
+  MergedTertiaryIcon,
+  XIcon,
+  CopySecondaryIcon,
 };
