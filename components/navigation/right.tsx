@@ -57,8 +57,8 @@ const Right = ({
         {actionItems?.map((item, index) => (
           <NavAction
             key={index}
-            {...item}
             onClick={() => handleModal(item.variant)}
+            {...item}
           />
         ))}
       </div>

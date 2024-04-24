@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import classNames from "classnames";
+import { useAccount, useChainId, useSwitchChain } from "wagmi";
 
 import Left from "./left";
 import Right from "./right";
@@ -12,6 +13,7 @@ import {
   LiquidityLinkIcon,
   MigrateLinkIcon,
 } from "@/public/icons";
+import { networks } from "@/config/rainbow/rainbowkit";
 import { INavActions, INavLinks } from "./types";
 import SMModal from "../modal";
 import { ModalType } from "./modal/types";
@@ -45,24 +47,11 @@ const links: INavLinks = [
   },
 ];
 
-const actionItems: INavActions = [
-  {
-    text: "Meister",
-    onClick: () => {},
-    variant: "account",
-  },
-  {
-    onClick: () => {},
-    variant: "network",
-  },
-  {
-    text: "0x1234567890abcdef1234567890abcdef12345678",
-    onClick: () => {},
-    variant: "wallet",
-  },
-];
-
 const SMNavigation = () => {
+  const { isConnected, isDisconnected, address } = useAccount();
+  const chainId = useChainId();
+  const { switchChain } = useSwitchChain();
+
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [modalType, setModalType] = useState<ModalType>();
@@ -83,38 +72,72 @@ const SMNavigation = () => {
 
   const handleModal = (type: ModalType) => setModalType(type);
 
+  const listenerToNetworkChange = () => {
+    if (!chainId) return;
+
+    const isAcceptedChain = networks.find(
+      (network) => network.chainId === chainId
+    );
+
+    if (isConnected && !isAcceptedChain) {
+      return switchChain && switchChain({ chainId: networks[0].chainId });
+    }
+  };
+
+  const actionItems: INavActions = [
+    {
+      text: "Meister",
+      variant: "account",
+    },
+    {
+      variant: "network",
+    },
+    {
+      text: address || "Connect",
+      variant: "wallet",
+    },
+  ];
+
+  useEffect(() => {
+    listenerToNetworkChange();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chainId, isConnected, isDisconnected, address]);
+
   return (
-    <div
-      className={classNames(
-        "fixed w-screen z-10 flex justify-center items-center pt-[55.013px] md:pt-0 bg-white",
-        {
-          hidden: isHome,
-        }
-      )}
-    >
-      <nav className="flex-1 flex bg-white px-4 py-[14px] md:px-11 md:py-5 items-center justify-between relative">
-        <Left links={updatedLinks} />
-        <Right
-          menuOpen={menuOpen}
-          toggleMenu={toggleMenu}
-          actionItems={actionItems}
-          handleModal={handleModal}
-        />
+    <>
+      <div
+        className={classNames(
+          "fixed w-screen z-10 flex justify-center items-center pt-[55.013px] md:pt-0 bg-white",
+          {
+            hidden: isHome,
+          }
+        )}
+      >
+        <nav className="flex-1 flex bg-white px-4 py-[14px] md:px-11 md:py-5 items-center justify-between relative">
+          <Left links={updatedLinks} />
+          <Right
+            menuOpen={menuOpen}
+            toggleMenu={toggleMenu}
+            actionItems={actionItems}
+            handleModal={handleModal}
+          />
 
-        <Menu
-          menuOpen={menuOpen}
-          links={updatedLinks}
-          actionItems={actionItems}
-          handleModal={handleModal}
-        />
-      </nav>
+          <Menu
+            menuOpen={menuOpen}
+            links={updatedLinks}
+            actionItems={actionItems}
+            handleModal={handleModal}
+          />
+        </nav>
 
-      <SMModal show={Boolean(modalType)} close={closeModal}>
-        {modalType === "account" && <AccountModal close={closeModal} />}
-        {modalType === "wallet" && <WalletModal close={closeModal} />}
-        {modalType === "network" && <NetworkModal close={closeModal} />}
-      </SMModal>
-    </div>
+        <SMModal show={Boolean(modalType)} close={closeModal}>
+          {modalType === "account" && <AccountModal close={closeModal} />}
+          {modalType === "wallet" && <WalletModal close={closeModal} />}
+          {modalType === "network" && <NetworkModal close={closeModal} />}
+        </SMModal>
+      </div>
+      <div className="h-[123px] md:h-[82px]" />
+    </>
   );
 };
 

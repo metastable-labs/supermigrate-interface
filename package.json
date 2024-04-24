@@ -26,6 +26,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.51.3",
     "react-redux": "^9.1.0",
+    "react-toastify": "^10.0.5",
     "viem": "2.x",
     "wagmi": "^2.5.19",
     "yup": "^1.4.0"

@@ -12,8 +12,8 @@ type INavLinks = INavLink[];
 
 interface INavAction {
   text?: string;
-  onClick: () => void;
   variant: ModalType;
+  onClick?: () => void;
 }
 
 type INavActions = INavAction[];

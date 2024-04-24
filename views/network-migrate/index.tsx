@@ -1,14 +1,14 @@
 "use client";
 import { motion } from "framer-motion";
 
-import { INetwork } from "../migrate/types";
 import { DesktopTilesIcon, MobileTilesIcon } from "@/public/icons";
 import { SMContainer, SMTable, SMButton } from "@/components";
 import { PullStatus } from "@/components/table/types";
 import Connect from "./connect";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
+import { Network } from "@/config/rainbow/rainbowkit";
 
-const NetworkMigrationsView = ({ network }: INetwork) => {
+const NetworkMigrationsView = ({ network }: { network: Network }) => {
   const { navigate } = useSystemFunctions();
 
   const action = () => navigate.push(`/migrate/${network}/new`);
@@ -32,7 +32,7 @@ const NetworkMigrationsView = ({ network }: INetwork) => {
   ];
 
   return (
-    <div className="pt-[123px] md:pt-[82px] pb-10">
+    <div className="pb-10">
       <SMContainer>
         <motion.div
           className="mt-5 md:mt-12"

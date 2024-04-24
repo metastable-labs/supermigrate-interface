@@ -1,28 +1,9 @@
 import { motion } from "framer-motion";
 
 import Card from "./card";
-import { CardProps } from "./types";
+import { networks } from "@/config/rainbow/rainbowkit";
 
 const SelectionComponent = () => {
-  const cards: CardProps[] = [
-    {
-      title: "Base",
-      variant: "base",
-    },
-    {
-      title: "Optimism",
-      variant: "optimism",
-    },
-    {
-      title: "Mode",
-      variant: "mode",
-    },
-    {
-      title: "Scroll",
-      variant: "scroll",
-    },
-  ];
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -42,7 +23,7 @@ const SelectionComponent = () => {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full">
-          {cards.map((card, index) => (
+          {networks.map((card, index) => (
             <Card key={index} {...card} />
           ))}
         </div>

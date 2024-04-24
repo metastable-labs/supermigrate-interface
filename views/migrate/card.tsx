@@ -1,4 +1,6 @@
 import classNames from "classnames";
+import { useSwitchChain, useChainId, useAccount } from "wagmi";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
 
 import { SMClickAnimation } from "@/components";
 import {
@@ -11,14 +13,26 @@ import {
   ScrollDesktopIcon,
   ScrollMobileIcon,
 } from "@/public/icons";
-import { CardProps } from "./types";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
+import { NetworkProps } from "@/config/rainbow/rainbowkit";
 
-const Card = ({ title, variant = "base" }: CardProps) => {
+const Card = ({ title, variant = "base", chainId: id }: NetworkProps) => {
   const { navigate } = useSystemFunctions();
+  const chainId = useChainId();
+  const { switchChain } = useSwitchChain();
+  const { isConnected, isDisconnected } = useAccount();
+  const { openConnectModal } = useConnectModal();
 
-  const handleOnClick = () => {
-    navigate.push(`migrate/${variant}`);
+  const handleOnClick = async () => {
+    if (isDisconnected || !isConnected) {
+      return openConnectModal && openConnectModal();
+    }
+
+    if (chainId === id) return navigate.push(`migrate/${variant}`);
+
+    await switchChain({ chainId: id });
+
+    return navigate.push(`migrate/${variant}`);
   };
 
   return (

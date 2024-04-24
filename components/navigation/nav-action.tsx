@@ -1,19 +1,18 @@
+import { useEffect, useState } from "react";
 import classNames from "classnames";
 import { usePathname } from "next/navigation";
+import { useChainId } from "wagmi";
 
 import useTruncateText from "@/hooks/useTruncateText";
 import SMClickAnimation from "../click-animation";
 import {
   SelectIcon,
-  BasePrimaryMobileIcon,
-  OptimismPrimaryMobileIcon,
-  ModePrimaryMobileIcon,
-  ScrollPrimaryMobileIcon,
   GitHubMobileIcon,
   VerifiedIcon,
   SelectSecondaryIcon,
   WalletIcon,
 } from "@/public/icons";
+import { networks } from "@/config/rainbow/rainbowkit";
 
 interface NavActionProps {
   text?: string;
@@ -23,34 +22,36 @@ interface NavActionProps {
 }
 
 const NavAction = ({ text, onClick, variant = "network" }: NavActionProps) => {
+  const chainId = useChainId();
   const pathname = usePathname();
   const truncateText = useTruncateText(text || "", 4, 4);
   const shouldHide = /\/[a-zA-Z]{2}\/migrate$/.test(pathname);
 
-  let renderIcon;
+  const [icon, setIcon] = useState<any>();
 
-  if (variant === "network") {
-    if (pathname.includes("optimism")) {
-      renderIcon = <OptimismPrimaryMobileIcon />;
+  const handleIcon = () => {
+    if (variant === "network" && chainId) {
+      const currentNetwork = networks.find(
+        (network) => network.chainId === chainId
+      );
+      if (currentNetwork) {
+        return setIcon(currentNetwork.icon);
+      }
     }
-    if (pathname.includes("base")) {
-      renderIcon = <BasePrimaryMobileIcon />;
-    }
-    if (pathname.includes("mode")) {
-      renderIcon = <ModePrimaryMobileIcon />;
-    }
-    if (pathname.includes("scroll")) {
-      renderIcon = <ScrollPrimaryMobileIcon />;
-    }
-  }
 
-  if (variant === "account") {
-    renderIcon = <GitHubMobileIcon />;
-  }
+    if (variant === "account") {
+      return setIcon(<GitHubMobileIcon />);
+    }
 
-  if (variant === "wallet") {
-    renderIcon = <WalletIcon />;
-  }
+    if (variant === "wallet") {
+      return setIcon(<WalletIcon />);
+    }
+  };
+
+  useEffect(() => {
+    handleIcon();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [variant, chainId]);
 
   return (
     <SMClickAnimation
@@ -61,7 +62,7 @@ const NavAction = ({ text, onClick, variant = "network" }: NavActionProps) => {
     >
       <div className="max-w-[200px] md:max-w-[240px] bg-white rounded-[10px] border border-primary-250 shadow-nav-select-shadow py-1 pl-1 pr-2 flex items-center justify-center gap-[6px] relative">
         <div className={classNames("flex items-center justify-center", {})}>
-          {renderIcon}
+          {icon}
 
           <div className="flex items-center justify-center gap-[2px]">
             {truncateText && (
