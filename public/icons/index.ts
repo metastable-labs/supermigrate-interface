@@ -48,6 +48,8 @@ import UploadIcon from "./upload-icon.svg";
 import DeleteIcon from "./delete-icon.svg";
 import CheckSmallIcon from "./check-small-icon.svg";
 import PDFIcon from "./pdf-icon.svg";
+import LoadingIcon from "./loading-icon.svg";
+import TrickleIcon from "./trickle-icon";
 
 export {
   Logo,
@@ -100,4 +102,6 @@ export {
   DeleteIcon,
   CheckSmallIcon,
   PDFIcon,
+  LoadingIcon,
+  TrickleIcon,
 };
