@@ -13,8 +13,8 @@ interface FormProp {
 }
 
 interface StepProps {
-  register: UseFormRegister<FormProp>;
-  errors: FieldErrors<FormProp>;
+  register?: UseFormRegister<FormProp>;
+  errors?: FieldErrors<FormProp>;
   network: Network;
   setStep: Dispatch<SetStateAction<number>>;
   setFile?: Dispatch<SetStateAction<File | null>>;

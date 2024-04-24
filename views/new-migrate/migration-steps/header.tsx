@@ -88,24 +88,34 @@ const Header = ({
   setStep: (step: number) => void;
 }) => {
   return (
-    <div className="flex items-center justify-center gap-4">
-      <Step
-        current={step === 0}
-        network={network}
-        passed={step != 0}
-        step={1}
-        title="Token info"
-        onClick={setStep}
-      />
-      <RightCarretDarkIcon />
-      <Step
-        current={step === 1}
-        network={network}
-        passed={step > 1}
-        step={2}
-        title="Social"
-      />
-    </div>
+    <AnimatePresence>
+      {step < 2 && (
+        <motion.div
+          key={0}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="flex items-center justify-center gap-4"
+        >
+          <Step
+            current={step === 0}
+            network={network}
+            passed={step != 0}
+            step={1}
+            title="Token info"
+            onClick={setStep}
+          />
+          <RightCarretDarkIcon />
+          <Step
+            current={step === 1}
+            network={network}
+            passed={step > 1}
+            step={2}
+            title="Social"
+          />
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 

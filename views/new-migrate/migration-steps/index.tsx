@@ -9,6 +9,7 @@ import Step1 from "./step-1";
 import Step2 from "./step-2";
 import { Network } from "@/components/button/types";
 import { FormProp } from "./types";
+import Step3 from "./step-3";
 
 const schema = yup.object().shape({
   tokenAddress: yup.string().required("Token Address is Required"),
@@ -50,6 +51,8 @@ const MigrationSteps = ({ network }: { network: Network }) => {
       setFile={setFile}
       file={file}
     />,
+
+    <Step3 key={2} network={network} setStep={setStep} />,
   ];
 
   return (

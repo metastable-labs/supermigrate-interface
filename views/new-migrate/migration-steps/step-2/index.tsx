@@ -36,7 +36,7 @@ const Step2 = ({
 
       <SMInput
         name="websiteLink"
-        register={register("websiteLink")}
+        register={register?.("websiteLink")}
         placeholder="Logo URL"
         error={errors?.websiteLink}
         type="text"
@@ -45,7 +45,7 @@ const Step2 = ({
 
       <SMInput
         name="twitterLink"
-        register={register("twitterLink")}
+        register={register?.("twitterLink")}
         placeholder="Twitter URL"
         error={errors?.twitterLink}
         type="text"
