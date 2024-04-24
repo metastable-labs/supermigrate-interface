@@ -44,6 +44,9 @@ import RightCarretLightIcon from "./right-carret-light-icon.svg";
 import RightCarretDarkIcon from "./right-carret-dark-icon.svg";
 import CheckIcon from "./check-icon.svg";
 import InfoIcon from "./info-icon.svg";
+import UploadIcon from "./upload-icon.svg";
+import DeleteIcon from "./delete-icon.svg";
+import CheckSmallIcon from "./check-small-icon.svg";
 
 export {
   Logo,
@@ -92,4 +95,7 @@ export {
   RightCarretDarkIcon,
   CheckIcon,
   InfoIcon,
+  UploadIcon,
+  DeleteIcon,
+  CheckSmallIcon,
 };
