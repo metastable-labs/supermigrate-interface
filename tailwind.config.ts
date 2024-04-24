@@ -73,6 +73,7 @@ const config: Config = {
           2150: "#AF1D38",
           2200: "#FAFAFA",
           2250: "#20232D",
+          2300: "#EFFAF6",
         },
         grey: {
           50: "#717184",
