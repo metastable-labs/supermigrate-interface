@@ -8,6 +8,8 @@ interface FormProp {
   tokenSymbol: string;
   tokenDecimal: string;
   tokenDescription: string;
+  websiteLink?: string;
+  twitterLink: string;
 }
 
 interface StepProps {
@@ -15,6 +17,8 @@ interface StepProps {
   errors: FieldErrors<FormProp>;
   network: Network;
   setStep: Dispatch<SetStateAction<number>>;
+  setFile?: Dispatch<SetStateAction<File | null>>;
+  file?: File | null;
 }
 
 export type { FormProp, StepProps };

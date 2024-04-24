@@ -16,10 +16,13 @@ const schema = yup.object().shape({
   tokenSymbol: yup.string().required("Token Symbol is Required"),
   tokenDecimal: yup.string().required("Token Decimal is Required"),
   tokenDescription: yup.string().required("Token Description is Required"),
+  websiteLink: yup.string(),
+  twitterLink: yup.string().required("Invalid URL"),
 });
 
 const MigrationSteps = ({ network }: { network: Network }) => {
   const [step, setStep] = useState(0);
+  const [file, setFile] = useState<File | null>(null);
 
   const {
     register,
@@ -44,6 +47,8 @@ const MigrationSteps = ({ network }: { network: Network }) => {
       errors={errors}
       network={network}
       setStep={setStep}
+      setFile={setFile}
+      file={file}
     />,
   ];
 

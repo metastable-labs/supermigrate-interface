@@ -2,10 +2,9 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { StepProps } from "../types";
-import SMInput from "@/components/input";
 import TokenInfo from "./token-info";
 import OverrideSection from "./override-section";
-import { SMButton } from "@/components";
+import { SMButton, SMInput } from "@/components";
 
 const Step1 = ({ register, errors, network, setStep }: StepProps) => {
   const [overridden, setOverridden] = useState(false);
