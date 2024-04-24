@@ -47,6 +47,7 @@ import InfoIcon from "./info-icon.svg";
 import UploadIcon from "./upload-icon.svg";
 import DeleteIcon from "./delete-icon.svg";
 import CheckSmallIcon from "./check-small-icon.svg";
+import PDFIcon from "./pdf-icon.svg";
 
 export {
   Logo,
@@ -98,4 +99,5 @@ export {
   UploadIcon,
   DeleteIcon,
   CheckSmallIcon,
+  PDFIcon,
 };

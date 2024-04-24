@@ -1,6 +1,6 @@
 "use client";
 
-import { DeleteIcon, CheckSmallIcon } from "@/public/icons";
+import { DeleteIcon, CheckSmallIcon, PDFIcon } from "@/public/icons";
 import { AnimatePresence, motion } from "framer-motion";
 
 const FileSample = ({
@@ -32,13 +32,13 @@ const FileSample = ({
           className="flex justify-start items-start md:justify-between md:items-center gap-3 py-4 pl-[14px] pr-4 rounded-xl bg-white border border-primary-250"
         >
           <div className="flex items-center justify-center gap-3">
-            <div></div>
+            <PDFIcon />
             <div className="flex flex-col items-start justify-center gap-1">
               <span className="text-primary-50 tracking-[-0.084px] font-medium text-sm">
                 {file.name}
               </span>
               <div className="flex items-center gap-1 text-xs font-normal">
-                <span className="text-primary-200 uppercase">
+                <span className="text-primary-200 uppercase whitespace-nowrap">
                   {fileSize} <span className="lowercase">of</span> {fileSize}
                 </span>
 
