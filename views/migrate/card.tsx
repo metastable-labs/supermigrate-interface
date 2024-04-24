@@ -20,7 +20,7 @@ const Card = ({ title, variant = "base", chainId: id }: NetworkProps) => {
   const { navigate } = useSystemFunctions();
   const chainId = useChainId();
   const { switchChain } = useSwitchChain();
-  const { isConnected, isDisconnected, address } = useAccount();
+  const { isConnected, isDisconnected } = useAccount();
   const { openConnectModal } = useConnectModal();
 
   const handleOnClick = async () => {

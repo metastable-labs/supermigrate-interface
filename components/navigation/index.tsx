@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import classNames from "classnames";
+import { useAccount, useChainId } from "wagmi";
 
 import Left from "./left";
 import Right from "./right";
@@ -45,24 +46,8 @@ const links: INavLinks = [
   },
 ];
 
-const actionItems: INavActions = [
-  {
-    text: "Meister",
-    onClick: () => {},
-    variant: "account",
-  },
-  {
-    onClick: () => {},
-    variant: "network",
-  },
-  {
-    text: "0x1234567890abcdef1234567890abcdef12345678",
-    onClick: () => {},
-    variant: "wallet",
-  },
-];
-
 const SMNavigation = () => {
+  const { isConnected, isDisconnected, address } = useAccount();
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [modalType, setModalType] = useState<ModalType>();
@@ -82,6 +67,20 @@ const SMNavigation = () => {
   const closeModal = () => setModalType(undefined);
 
   const handleModal = (type: ModalType) => setModalType(type);
+
+  const actionItems: INavActions = [
+    {
+      text: "Meister",
+      variant: "account",
+    },
+    {
+      variant: "network",
+    },
+    {
+      text: address || "Connect",
+      variant: "wallet",
+    },
+  ];
 
   return (
     <>
