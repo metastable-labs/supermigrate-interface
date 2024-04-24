@@ -50,6 +50,10 @@ import CheckSmallIcon from "./check-small-icon.svg";
 import PDFIcon from "./pdf-icon.svg";
 import LoadingIcon from "./loading-icon.svg";
 import TrickleIcon from "./trickle-icon";
+import MergedSecondaryIcon from "./merged-secondary-icon.svg";
+import MergedTertiaryIcon from "./merged-tertiary-icon.svg";
+import XIcon from "./x-icon.svg";
+import CopySecondaryIcon from "./copy-secondary-icon.svg";
 
 export {
   Logo,
@@ -104,4 +108,8 @@ export {
   PDFIcon,
   LoadingIcon,
   TrickleIcon,
+  MergedSecondaryIcon,
+  MergedTertiaryIcon,
+  XIcon,
+  CopySecondaryIcon,
 };
