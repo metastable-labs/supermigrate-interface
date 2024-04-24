@@ -1,12 +1,8 @@
-import { usePathname } from "next/navigation";
-
 import { SMLogo } from "@/public/icons";
 import NavLink from "./nav-link";
 import { INavLinks } from "./types";
 
 const Left = ({ links }: { links: INavLinks }) => {
-  const pathname = usePathname();
-
   return (
     <div className="flex items-center justify-center gap-6">
       <SMLogo />
