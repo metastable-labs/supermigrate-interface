@@ -2,6 +2,7 @@
 import { ReactNode, useEffect } from "react";
 
 import { Network } from "@/components/button/types";
+import { DesktopTilesIcon, MobileTilesIcon } from "@/public/icons";
 
 interface PageProps {
   params: { network: Network };
@@ -38,7 +39,17 @@ const App = ({ params, children }: PageProps) => {
     };
   }, [params.network]);
 
-  return <main>{children}</main>;
+  return (
+    <main>
+      {children}
+      <div className="hidden md:flex justify-center fixed w-screen bottom-0 -z-10">
+        <DesktopTilesIcon />
+      </div>
+      <div className="flex md:hidden justify-center fixed w-screen bottom-0 -z-10">
+        <MobileTilesIcon />
+      </div>
+    </main>
+  );
 };
 
 export default App;
