@@ -4,6 +4,7 @@ import SMClickAnimation from "./click-animation";
 import SMModal from "./modal";
 import SMTable from "./table";
 import SMButton from "./button";
+import SMInput from "./input";
 import SMFileInput from "./file-input";
 
 export {
@@ -13,5 +14,6 @@ export {
   SMModal,
   SMTable,
   SMButton,
+  SMInput,
   SMFileInput,
 };

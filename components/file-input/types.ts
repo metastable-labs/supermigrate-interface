@@ -1,3 +1,5 @@
+import { Network } from "../button/types";
+
 interface ISMFileInput {
   name: string;
   disabled?: boolean;
@@ -5,6 +7,7 @@ interface ISMFileInput {
   label?: string;
   isRequired?: boolean;
   handleFileChange: any;
+  network?: Network;
 }
 
 export type { ISMFileInput };
