@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import classNames from "classnames";
-import { useAccount, useChainId } from "wagmi";
+import { useAccount, useChainId, useSwitchChain } from "wagmi";
 
 import Left from "./left";
 import Right from "./right";
@@ -13,6 +13,7 @@ import {
   LiquidityLinkIcon,
   MigrateLinkIcon,
 } from "@/public/icons";
+import { networks } from "@/config/rainbow/rainbowkit";
 import { INavActions, INavLinks } from "./types";
 import SMModal from "../modal";
 import { ModalType } from "./modal/types";
@@ -48,6 +49,9 @@ const links: INavLinks = [
 
 const SMNavigation = () => {
   const { isConnected, isDisconnected, address } = useAccount();
+  const chainId = useChainId();
+  const { switchChain } = useSwitchChain();
+
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [modalType, setModalType] = useState<ModalType>();
@@ -68,6 +72,18 @@ const SMNavigation = () => {
 
   const handleModal = (type: ModalType) => setModalType(type);
 
+  const listenerToNetworkChange = () => {
+    if (!chainId) return;
+
+    const isAcceptedChain = networks.find(
+      (network) => network.chainId === chainId
+    );
+
+    if (isConnected && !isAcceptedChain) {
+      return switchChain && switchChain({ chainId: networks[0].chainId });
+    }
+  };
+
   const actionItems: INavActions = [
     {
       text: "Meister",
@@ -81,6 +97,11 @@ const SMNavigation = () => {
       variant: "wallet",
     },
   ];
+
+  useEffect(() => {
+    listenerToNetworkChange();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chainId, isConnected, isDisconnected, address]);
 
   return (
     <>

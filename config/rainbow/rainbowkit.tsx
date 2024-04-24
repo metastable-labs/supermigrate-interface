@@ -7,15 +7,10 @@ import { WagmiProvider } from "wagmi";
 import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import {
-  SelectIcon,
   BasePrimaryMobileIcon,
   OptimismPrimaryMobileIcon,
   ModePrimaryMobileIcon,
   ScrollPrimaryMobileIcon,
-  GitHubMobileIcon,
-  VerifiedIcon,
-  SelectSecondaryIcon,
-  WalletIcon,
 } from "@/public/icons";
 
 export type Network = "base" | "optimism" | "mode" | "scroll";
