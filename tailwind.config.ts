@@ -95,6 +95,7 @@ const config: Config = {
           "0px 1px 2px 0px rgba(188, 189, 196, 0.48), 0px 0px 0px 1px #EDEFF7",
         "table-cta": "0px 1px 2px 0px rgba(16, 24, 40, 0.05)",
         "fade-light": "0px 1.591px 3.182px 0px rgba(27, 28, 29, 0.04)",
+        "fade-dark": "0px 1px 2px 0px rgba(82, 88, 102, 0.06)",
       },
     },
   },
