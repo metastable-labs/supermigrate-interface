@@ -44,7 +44,7 @@ const SelectionComponent = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="flex mt-7 md:mt-24 justify-center"
+      className="flex mt-7 md:mt-24 justify-center pb-10"
     >
       <div className="flex flex-col items-start gap-6">
         <div>

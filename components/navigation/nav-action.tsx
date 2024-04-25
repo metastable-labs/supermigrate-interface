@@ -35,7 +35,7 @@ const NavAction = ({ text, onClick, variant = "network" }: NavActionProps) => {
         (network) => network.chainId === chainId
       );
       if (currentNetwork) {
-        return setIcon(currentNetwork.icon);
+        return setIcon(currentNetwork?.icon);
       }
     }
 
