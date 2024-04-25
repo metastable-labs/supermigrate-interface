@@ -54,6 +54,11 @@ import MergedSecondaryIcon from "./merged-secondary-icon.svg";
 import MergedTertiaryIcon from "./merged-tertiary-icon.svg";
 import XIcon from "./x-icon.svg";
 import CopySecondaryIcon from "./copy-secondary-icon.svg";
+import LineaIcon from "./linea-icon.svg";
+import ZoraIcon from "./zora-icon.svg";
+import WorldChainIcon from "./world-chain-icon.svg";
+import DegenIcon from "./degen-icon.svg";
+import PGNIcon from "./pgn-icon.svg";
 
 export {
   Logo,
@@ -112,4 +117,9 @@ export {
   MergedTertiaryIcon,
   XIcon,
   CopySecondaryIcon,
+  LineaIcon,
+  ZoraIcon,
+  WorldChainIcon,
+  DegenIcon,
+  PGNIcon,
 };
