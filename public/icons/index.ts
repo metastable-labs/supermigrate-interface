@@ -59,6 +59,7 @@ import ZoraIcon from "./zora-icon.svg";
 import WorldChainIcon from "./world-chain-icon.svg";
 import DegenIcon from "./degen-icon.svg";
 import PGNIcon from "./pgn-icon.svg";
+import RaysIcon from "./rays-icon.svg";
 
 export {
   Logo,
@@ -122,4 +123,5 @@ export {
   WorldChainIcon,
   DegenIcon,
   PGNIcon,
+  RaysIcon,
 };
