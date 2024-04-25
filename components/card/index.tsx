@@ -33,7 +33,7 @@ const IconSection = ({
     <div className="flex flex-col items-center justify-center gap-7">
       {comingSoon && (
         <div className="flex items-center px-2 py-[2px] bg-primary-2550 rounded-full">
-          <span className="text-[8px] leading-[12px] font-medium tracking-[0.16px] capitalize text-white">
+          <span className="text-[8px] leading-[12px] font-medium tracking-[0.16px] capitalize text-white whitespace-nowrap">
             coming soon
           </span>
         </div>
@@ -93,11 +93,13 @@ const SMCard = ({
   return (
     <SMClickAnimation
       onClick={handleOnClick}
-      className={classNames("w-full", { "pointer-events-none": comingSoon })}
+      className={classNames("w-full lg:w-[170px] h-[208px]", {
+        "pointer-events-none": comingSoon,
+      })}
     >
       <div
         className={classNames(
-          "flex flex-col items-center gap-2 rounded-xl border-[0.701px] border-primary-250 h-[208px] px-12 py-[54px]",
+          "flex flex-col items-center gap-2 rounded-xl border-[0.701px] border-primary-250 h-full px-12 py-[54px]",
           {
             "bg-primary-400": variant === "base",
             "bg-primary-450": variant === "optimism",
@@ -117,7 +119,7 @@ const SMCard = ({
 
         <span
           className={classNames(
-            "font-bold text-[14px] leading-[21.7px] text-center",
+            "font-bold text-[14px] leading-[21.7px] text-center whitespace-nowrap",
             {
               "text-white":
                 variant === "base" ||
@@ -136,7 +138,7 @@ const SMCard = ({
         </span>
 
         {variant === "zora" && (
-          <div className="absolute top-0 left-0">
+          <div className="absolute top-0 left-0 hidden lg:flex">
             <RaysIcon />
           </div>
         )}
