@@ -2,7 +2,7 @@ import { cn } from "@/utils/helpers";
 import Image from "next/image";
 import React from "react";
 
-const SectionThree = () => {
+const SectionFour = () => {
   const listings = [
     {
       title: "Easy",
@@ -28,15 +28,17 @@ const SectionThree = () => {
     }
   ];
   return (
-    <section className="bg-[#EFFAF6] py-6 lg:py-[50px] px-4 lg:px-[50px] rounded-xl mb-8 lg:mb-16">
-      <h2 className="lg:w-[80px] text-center text-sm lg:text-base w-[70px] bg-[#176448] text-[#EFFAF6] py-[10px] rounded-lg shadow-[0px_1.544px_3.089px_0px_rgba(164,172,185,0.24),0px_0px_0px_1.544px_rgba(18,55,105,0.08)]">
-        Bridge
+    <section className="bg-[#EBF1FF] py-6 lg:py-[50px] px-4 lg:px-[50px] rounded-xl mb-8 lg:mb-16">
+      <h2 className="w-[80px] lg:w-[90px] py-2.5 text-sm lg:text-base bg-[#162664] rounded-lg text-center text-[#EBF1FF] shadow-[0px_1.544px_3.089px_0px_rgba(164,172,185,0.24),0px_0px_0px_1.544px_rgba(18,55,105,0.08)]">
+        Liquidity
       </h2>
-      <h3 className="my-4 text-[#176448] font-medium text-[20px] lg:text-[46px]">{` Move tokens across L1 <> L2`}</h3>
-      <h4 className="leading-relaxed w-full lg:w-[550px] text-[#717184] text-sm lg:text-[18px]">
-        We are making it seamless for users to transfer assets between L1 and L2
-        networks.
-      </h4>
+      <h3 className="my-4 text-[20px] lg:text-[46px] text-[#162664] font-medium lg:w-[550px] w-full">
+        Add Liquidity for newly deployed tokens
+      </h3>
+      <p className="leading-relaxed w-full lg:w-[550px] text-[#717184] text-sm lg:text-[18px]">
+        An interface that makes it easy for people to provide liquidity for any
+        recently migrated tokens on L2 and get incentivised for doing that.
+      </p>
       <div className="mt-8 lg:mt-[90px] grid lg:grid-cols-3 grid-cols-1 gap-10 items-stretch w-full">
         {listings?.map(item => (
           <div
@@ -69,4 +71,4 @@ const SectionThree = () => {
   );
 };
 
-export default SectionThree;
+export default SectionFour;
