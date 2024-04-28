@@ -12,6 +12,9 @@ import Hero from "./hero";
 import LandingNav from "./nav";
 import { Logo } from "@/public/icons";
 import HeroSection from "./hero";
+import SectionOne from "./sections/SectionOne";
+import SectionTwo from "./sections/SectionTwo";
+import SectionThree from "./sections/SectionThree";
 
 export default function HomeView({ lang }: LangParamProp) {
   const { userState, locale } = useSystemFunctions();
@@ -31,9 +34,12 @@ export default function HomeView({ lang }: LangParamProp) {
 
   return (
     <SMContainer>
-      <LandingNav lang={lang} />
+      {/* <LandingNav lang={lang} /> */}
       <main>
         <HeroSection />
+        <SectionOne />
+        <SectionTwo />
+        <SectionThree />
       </main>
     </SMContainer>
   );
