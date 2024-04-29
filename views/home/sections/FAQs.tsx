@@ -42,6 +42,7 @@ const FAQListing = ({
             animate={{ y: 0 }}
             initial={{ y: -10 }}
             exit={{ y: -5 }}
+            transition={{ ease: "easeInOut", duration: 0.2 }}
             className="mr-8 mt-2 text-sm lg:text-base text-[#475467]"
           >
             {answer}

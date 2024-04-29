@@ -3,14 +3,10 @@ import { useEffect } from "react";
 import { useAccount } from "wagmi";
 import useConnect from "@/hooks/useConnect";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
-
 import useUserActions from "@/application/user/actions";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
 import { LangParamProp } from "@/config/internationalization/i18n";
 import { SMContainer } from "@/components";
-import Hero from "./hero";
-import LandingNav from "./nav";
-import { Logo } from "@/public/icons";
 import HeroSection from "./hero";
 import SectionOne from "./sections/SectionOne";
 import SectionTwo from "./sections/SectionTwo";
@@ -36,17 +32,19 @@ export default function HomeView({ lang }: LangParamProp) {
   }, []);
 
   return (
-    <SMContainer>
-      {/* <LandingNav lang={lang} /> */}
-      <main>
-        <HeroSection />
-        <SectionOne />
-        <SectionTwo />
-        <SectionThree />
-        <SectionFour />
-        <TweetSection />
-        <FAQs />
-      </main>
-    </SMContainer>
+    <div className="bg-white h-full w-full">
+      <SMContainer>
+        {/* <LandingNav lang={lang} /> */}
+        <main className="">
+          <HeroSection />
+          <SectionOne />
+          <SectionTwo />
+          <SectionThree />
+          <SectionFour />
+          <TweetSection />
+          <FAQs />
+        </main>
+      </SMContainer>
+    </div>
   );
 }
