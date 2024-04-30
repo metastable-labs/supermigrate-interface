@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { SMButton } from "@/components";
 import ConnectModal from "./connect-modal";
-import { Network } from "@/components/button/types";
+import { Network } from "@/config/rainbow/rainbowkit";
 
 const Connect = ({ network }: { network: Network }) => {
   const [isConnected, setIsConnected] = useState(false);
