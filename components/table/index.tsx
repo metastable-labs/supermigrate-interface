@@ -1,27 +1,43 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import classNames from "classnames";
 
-import { PullStatus, TableProps } from "./types";
+import { TableProps } from "./types";
 import CTA from "./cta";
-import { MergedIcon, DoubleCheckIcon, LinkRightArrow } from "@/public/icons";
-import { useState } from "react";
+import { LinkRightArrow } from "@/public/icons";
 import EmptyState from "./empty";
+import Status from "./status";
+import Address from "./address";
 
-const Status = ({ status }: { status: PullStatus }) => (
-  <div className="h-full flex items-start justify-start gap-1">
-    <div className="flex items-center justify-center gap-1 border-b border-b-primary-1650">
-      <MergedIcon />
-      <span className="text-[14px] leading-[20px] text-primary-1650 capitalize hidden md:block">
-        {status}
-      </span>
-    </div>
-    <DoubleCheckIcon />
-  </div>
-);
-const SMTable = ({ data, network, isConnected }: TableProps) => {
-  const [loading, setLoading] = useState(false);
+const headers = [
+  { key: "tokenName", label: "Token Name" },
+  {
+    key: "status",
+    label: "Pull Request Status",
+    mobileLabel: "Status",
+    secondaryLabel: "Token Address",
+  },
+  { key: "action", label: "Contract on Base", secondaryLabel: "Pool" },
+  { key: "cta", label: "Action" },
+];
+
+const SMTable = ({
+  data,
+  network,
+  isConnected,
+  variant = "primary",
+  loading,
+}: TableProps) => {
+  const [isMobileView, setIsMobileView] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobileView(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div
@@ -43,31 +59,26 @@ const SMTable = ({ data, network, isConnected }: TableProps) => {
         <table className="md:min-w-full divide-y divide-primary-1350">
           <thead className="bg-primary-1450 text-primary-1500">
             <tr>
-              <th
-                scope="col"
-                className="px-4 md:px-6 py-3 text-left text-xs font-medium whitespace-nowrap"
-              >
-                Token Name
-              </th>
-              <th
-                scope="col"
-                className="px-4 md:px-6 py-3 text-left text-xs font-medium"
-              >
-                <span className="hidden md:block">Pull Request Status</span>
-                <span className="md:hidden">Status</span>
-              </th>
-              <th
-                scope="col"
-                className="px-4 md:px-6 py-3 text-left text-xs font-medium whitespace-nowrap"
-              >
-                Contract on Base
-              </th>
-              <th
-                scope="col"
-                className="px-4 md:px-6 py-3 text-left text-xs font-medium md:table-cell hidden"
-              >
-                Action
-              </th>
+              {headers.map((header, index) => (
+                <th
+                  key={header.key}
+                  scope="col"
+                  className={classNames(
+                    "px-4 md:px-6 py-3 text-left text-xs font-medium",
+                    {
+                      "whitespace-nowrap": index === 0 || index === 2,
+                      "hidden md:table-cell":
+                        index === 3 || (index === 2 && variant === "secondary"),
+                    }
+                  )}
+                >
+                  {isMobileView && header.mobileLabel
+                    ? header.mobileLabel
+                    : variant === "primary"
+                    ? header.label
+                    : header.secondaryLabel || header.label}
+                </th>
+              ))}
             </tr>
           </thead>
 
@@ -83,18 +94,31 @@ const SMTable = ({ data, network, isConnected }: TableProps) => {
                     width={20}
                     height={20}
                   />
-                  {"NJOKU"}
+                  {item.tokenName}
                 </td>
                 <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  <Status status={item.pullStatus} />
+                  {variant === "primary" && (
+                    <Status status={item?.pullStatus} />
+                  )}
+                  {variant === "secondary" && (
+                    <Address address={item?.tokenAddress} />
+                  )}
                 </td>
                 <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 flex justify-center md:justify-start items-center gap-2">
                   <a
-                    href={`https://basescan.io/address/${item.tokenName}`}
+                    href={
+                      variant === "secondary"
+                        ? item.poolUrl
+                        : `https://basescan.io/address/${item.tokenName}`
+                    }
                     target="_blank"
                     className="text-[14px] leading-[20px]  text-primary-1650 border-b border-b-primary-1650 flex items-center justify-center gap-1"
                   >
-                    View <span className="hidden md:block">on basescan</span>
+                    View{" "}
+                    <span className="hidden md:block">
+                      {variant === "primary" && "on basescan"}
+                      {variant === "secondary" && "pool on Uniswap"}
+                    </span>
                   </a>
 
                   <LinkRightArrow />
