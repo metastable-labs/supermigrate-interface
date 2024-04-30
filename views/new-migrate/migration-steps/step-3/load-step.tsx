@@ -2,8 +2,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import classNames from "classnames";
 import moment from "moment";
 
-import { Network } from "@/components/button/types";
 import { CheckIcon, LoadingIcon, TrickleIcon } from "@/public/icons";
+import { Network } from "@/config/rainbow/rainbowkit";
 
 const LoadStep = ({
   step,
