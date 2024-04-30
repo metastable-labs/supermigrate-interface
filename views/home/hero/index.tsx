@@ -2,6 +2,43 @@ import { SMContainer } from "@/components";
 import MigratorSvg from "./migratorSvg";
 
 const HeroSection = () => {
+  const HeroListing = [
+    {
+      title: "Layer 2",
+      textColor: "#C2540A",
+      bgColor: "#C2540A",
+      image:
+        "https://res.cloudinary.com/palmlight/image/upload/v1714475521/migrator_xfoqvs.svg"
+    },
+    {
+      title: "Base",
+      textColor: "#375DFB",
+      bgColor: "#375DFB",
+      image:
+        "https://res.cloudinary.com/palmlight/image/upload/v1714475521/migrator_1_fuejpd.svg"
+    },
+    {
+      title: "Optimism",
+      textColor: "#DF1C41",
+      bgColor: "#710E21",
+      image:
+        "https://res.cloudinary.com/palmlight/image/upload/v1714475521/migrator_2_ndibrj.svg"
+    },
+    {
+      title: "Layer 2",
+      textColor: "#DFFE00",
+      bgColor: "#C2540A",
+      image:
+        "https://res.cloudinary.com/palmlight/image/upload/v1714475521/migrator_xfoqvs.svg"
+    },
+    {
+      title: "Layer 2",
+      textColor: "#C2540A",
+      bgColor: "#C2540A",
+      image:
+        "https://res.cloudinary.com/palmlight/image/upload/v1714475521/migrator_xfoqvs.svg"
+    }
+  ];
   return (
     <section>
       <SMContainer>
