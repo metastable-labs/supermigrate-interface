@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { SMModal, SMButton } from "@/components";
 import { AccountIcon, AuthorizeIcon, BlueCheckMarkIcon } from "@/public/icons";
-import { Network } from "@/components/button/types";
+import { Network } from "@/config/rainbow/rainbowkit";
 
 const ConnectModal = ({
   connectModalOpen,
