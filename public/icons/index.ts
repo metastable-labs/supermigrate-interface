@@ -60,6 +60,8 @@ import WorldChainIcon from "./world-chain-icon.svg";
 import DegenIcon from "./degen-icon.svg";
 import PGNIcon from "./pgn-icon.svg";
 import RaysIcon from "./rays-icon.svg";
+import SecondaryCloseIcon from "./secondary-close-icon";
+import SecondaryCopyIcon from "./secondary-copy-icon.svg";
 
 export {
   Logo,
@@ -124,4 +126,6 @@ export {
   DegenIcon,
   PGNIcon,
   RaysIcon,
+  SecondaryCloseIcon,
+  SecondaryCopyIcon,
 };
