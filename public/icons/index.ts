@@ -62,6 +62,7 @@ import PGNIcon from "./pgn-icon.svg";
 import RaysIcon from "./rays-icon.svg";
 import SecondaryCloseIcon from "./secondary-close-icon";
 import SecondaryCopyIcon from "./secondary-copy-icon.svg";
+import SecondarySelectIcon from "./secondary-select-icon.svg";
 
 export {
   Logo,
@@ -128,4 +129,5 @@ export {
   RaysIcon,
   SecondaryCloseIcon,
   SecondaryCopyIcon,
+  SecondarySelectIcon,
 };
