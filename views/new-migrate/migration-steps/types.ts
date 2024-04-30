@@ -1,4 +1,4 @@
-import { Network } from "@/components/button/types";
+import { Network } from "@/config/rainbow/rainbowkit";
 import { Dispatch, SetStateAction } from "react";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 
