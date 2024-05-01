@@ -6,6 +6,7 @@ import { PlusIcon } from "@/public/icons";
 import { walletOptions, rates, tokenOptions, Rate } from "./dummy";
 import Info from "./info";
 import Extra from "./extra";
+import LiquidityInput from "./input";
 
 const Add = () => {
   const [step, setStep] = useState(0);
@@ -88,29 +89,16 @@ const Add = () => {
 
       {showInputSection && (
         <>
-          <div className="w-full p-4 flex justify-between items-center gap-5 bg-primary-2700 rounded border border-primary-2100">
-            <input
-              type="text"
-              value={values.amount}
-              onChange={handleInputChange("amount")}
-              placeholder="0"
-              className="flex-1 min-w-0 placeholder-primary-2750 text-primary-50 text-[24px] leading-[34.8px] font-medium focus:outline-none bg-transparent"
-            />
-
-            <div className="flex flex-col items-end gap-[6px] shrink-0">
-              <SMSelect
-                options={walletOptions}
-                text="Select wallet"
-                onClick={handleWallet}
-              />
-
-              {Boolean(wallet) && (
-                <span className="text-primary-200 text-[12px] leading-[17.4px] font-medium">
-                  Balance: {walletBalance} {wallet?.text}
-                </span>
-              )}
-            </div>
-          </div>
+          <LiquidityInput
+            value={values.amount}
+            onChange={handleInputChange("amount")}
+            placeholder="0"
+            options={walletOptions}
+            onSelect={handleWallet}
+            selectText="Select wallet"
+            balanceText={wallet?.text}
+            balanceValue={walletBalance}
+          />
 
           <div className="w-full flex items-center justify-center">
             <SMClickAnimation className="flex justify-center items-center rounded-full border-[0.4px] border-primary-250 p-[2px]">
@@ -118,24 +106,15 @@ const Add = () => {
             </SMClickAnimation>
           </div>
 
-          <div className="w-full p-4 flex justify-between items-center gap-5 bg-primary-2700 rounded border border-primary-2100">
-            <input
-              type="text"
-              value={values.liquidity}
-              onChange={handleInputChange("liquidity")}
-              placeholder="0"
-              className="flex-1 min-w-0 placeholder-primary-2750 text-primary-50 text-[24px] leading-[34.8px] font-medium focus:outline-none bg-transparent"
-              disabled={!token}
-            />
-
-            <div className="flex flex-col items-end gap-[6px] shrink-0">
-              <SMSelect
-                options={tokenOptions}
-                text="Select token"
-                onClick={handleToken}
-              />
-            </div>
-          </div>
+          <LiquidityInput
+            value={values.liquidity}
+            onChange={handleInputChange("liquidity")}
+            placeholder="0"
+            options={tokenOptions}
+            onSelect={handleToken}
+            selectText="Select token"
+            disabled={!token}
+          />
         </>
       )}
 
@@ -148,7 +127,7 @@ const Add = () => {
 
       <Info
         poolPercentage={9.3}
-        show={Boolean(token)}
+        show={Boolean(token && wallet)}
         token={token?.value}
         wallet={wallet?.text}
         amount={parseInt(values.amount.replace(/,/g, ""), 10)}
