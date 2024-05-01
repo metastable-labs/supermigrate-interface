@@ -1,6 +1,6 @@
 import { Network } from "@/config/rainbow/rainbowkit";
 import { Dispatch, SetStateAction } from "react";
-import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { FieldErrors, UseFormRegister, UseFormWatch } from "react-hook-form";
 
 interface FormProp {
   tokenAddress: string;
@@ -14,6 +14,7 @@ interface FormProp {
 
 interface StepProps {
   register?: UseFormRegister<FormProp>;
+  watch?: UseFormWatch<FormProp>;
   errors?: FieldErrors<FormProp>;
   network: Network;
   setStep: Dispatch<SetStateAction<number>>;

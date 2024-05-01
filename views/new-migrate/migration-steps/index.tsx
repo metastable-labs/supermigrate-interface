@@ -30,6 +30,7 @@ const MigrationSteps = ({ network }: { network: Network }) => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm<FormProp>({
     mode: "onSubmit",
     resolver: yupResolver(schema),
@@ -42,6 +43,7 @@ const MigrationSteps = ({ network }: { network: Network }) => {
       errors={errors}
       network={network}
       setStep={setStep}
+      watch={watch}
     />,
     <Step2
       key={1}
