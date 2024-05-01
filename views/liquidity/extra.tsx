@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import classNames from "classnames";
 
 import { IOption } from "@/components/select/types";
 import { rates } from "./dummy";
@@ -20,6 +21,10 @@ const Extra = ({
     wallet?.text!
   ];
 
+  const total = amount * tokenRate;
+  const formattedTotal = total.toLocaleString();
+  const isLargeNumber = formattedTotal.replace(/,/g, "").length > 7;
+
   return (
     <AnimatePresence>
       {show && (
@@ -30,8 +35,13 @@ const Extra = ({
           className="w-full flex flex-col items-start gap-1 md:flex-row md:items-center md:justify-between"
         >
           <p className="flex items-center justify-center gap-[6px] font-medium">
-            <span className="text-[34px] leading-[52.7px] text-primary-50">
-              {(amount * tokenRate).toLocaleString()}
+            <span
+              className={classNames("text-primary-50 transition-all", {
+                "text-[34px] leading-[52.7px]": !isLargeNumber,
+                "text-[28px] leading-[46.7px]": isLargeNumber,
+              })}
+            >
+              {formattedTotal}
             </span>
             <span className="text-[20px] leading-[31px] text-primary-200">
               {token?.text}

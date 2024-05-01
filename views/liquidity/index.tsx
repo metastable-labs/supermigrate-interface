@@ -62,10 +62,13 @@ const tableData = [
 
 const LiquidityView = ({ lang }: LangParamProp) => {
   const [showInfo, setShowInfo] = useState(true);
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   const toggleShowInfo = () => setShowInfo((prev) => !prev);
-  const toggleShowModal = () => setShowModal((prev) => !prev);
+
+  const handleShowModal = (id?: string) => {
+    setShowModal((prev) => !prev);
+  };
 
   return (
     <>
@@ -110,11 +113,16 @@ const LiquidityView = ({ lang }: LangParamProp) => {
             data={tableData}
             network="base"
             variant="secondary"
+            ctaAction={handleShowModal}
           />
         </div>
       </SMContainer>
 
-      <SMModal show={showModal} close={toggleShowModal} variant="liquidity">
+      <SMModal
+        show={showModal}
+        close={() => setShowModal(false)}
+        variant="liquidity"
+      >
         <Add />
       </SMModal>
     </>

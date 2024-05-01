@@ -17,6 +17,7 @@ interface TableProps {
   isConnected: boolean;
   variant?: TableVariant;
   loading?: boolean;
+  ctaAction?: (id?: string) => void;
 }
 
 export type { TableItem, TableProps, PullStatus };

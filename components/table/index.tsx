@@ -29,6 +29,7 @@ const SMTable = ({
   isConnected,
   variant = "primary",
   loading,
+  ctaAction,
 }: TableProps) => {
   const [isMobileView, setIsMobileView] = useState(false);
 
@@ -124,7 +125,10 @@ const SMTable = ({
                   <LinkRightArrow />
                 </td>
                 <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm font-medium md:table-cell hidden">
-                  <CTA title="Add Liquidity" onClick={() => {}} />
+                  <CTA
+                    title="Add Liquidity"
+                    onClick={() => ctaAction?.(item?.tokenName)}
+                  />
                 </td>
               </tr>
             ))}
