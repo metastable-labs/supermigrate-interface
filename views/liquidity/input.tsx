@@ -35,7 +35,7 @@ const LiquidityInput = ({
       />
       <div className="flex flex-col items-end gap-[6px] shrink-0">
         <SMSelect options={options} text={selectText} onClick={onSelect} />
-        {balanceValue && (
+        {balanceValue && balanceText && (
           <span className="text-primary-200 text-[12px] leading-[17.4px] font-medium">
             Balance: {balanceValue} {balanceText}
           </span>
