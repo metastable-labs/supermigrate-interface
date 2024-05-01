@@ -8,15 +8,15 @@ import { SecondarySelectIcon } from "@/public/icons";
 
 const SMSelect = ({ text, disabled, onClick, options }: ISMSelect) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [option, setOption] = useState<IOption>();
+  const [selectedOption, setSelectedOption] = useState<IOption>();
 
   const showOptions = isOpen && Boolean(options?.length);
 
   const handleValue = (option: IOption) => {
     setIsOpen((prev) => !prev);
-    setOption(option);
+    setSelectedOption(option);
 
-    if (onClick) onClick(option.value);
+    if (onClick) onClick(option);
   };
 
   return (
@@ -24,15 +24,15 @@ const SMSelect = ({ text, disabled, onClick, options }: ISMSelect) => {
       <SMClickAnimation
         onClick={() => setIsOpen((prev) => !prev)}
         className={classNames(
-          "flex justify-between items-center gap-2 cursor-pointer py-[6px] px-3 bg-white rounded-[5px] text-[14px] leading-[21.7px] font-bold text-center text-primary-200",
+          "flex justify-between items-center gap-2 cursor-pointer py-[6px] px-3 bg-white rounded-[5px] text-[14px] leading-[21.7px] font-bold text-center text-primary-200 min-w-[113px]",
           { "pointer-events-none": disabled }
         )}
       >
-        {!option && <span>{text}</span>}
-        {option && (
+        {!selectedOption && <span className="whitespace-nowrap">{text}</span>}
+        {selectedOption && (
           <div className="flex items-center gap-2">
-            {option.icon}
-            <span>{option.text}</span>
+            {selectedOption.icon}
+            <span className="whitespace-nowrap">{selectedOption.text}</span>
           </div>
         )}
         <SecondarySelectIcon />
@@ -45,16 +45,18 @@ const SMSelect = ({ text, disabled, onClick, options }: ISMSelect) => {
             initial={{ opacity: 0, maxHeight: 0 }}
             animate={{ opacity: 1, maxHeight: "200px" }}
             exit={{ opacity: 0, maxHeight: 0 }}
-            className="w-full bg-primary-150 flex flex-col gap-3 rounded-[5px] absolute top-[120%] px-2 py-4 overflow-auto"
+            className="w-full bg-primary-150 flex flex-col gap-3 rounded-[5px] absolute z-10 top-[120%] px-2 py-4 overflow-auto"
           >
             {options?.map((option, index) => (
               <SMClickAnimation
                 key={index}
                 onClick={() => handleValue(option)}
                 className={classNames(
-                  "flex items-center gap-2 cursor-pointer py-2 px-3 rounded-[5px] text-[14px] leading-[21.7px] font-bold text-center",
+                  "flex items-center gap-2 cursor-pointer py-2 px-3 rounded-[5px] text-[14px] leading-[21.7px] font-bold text-center transition-colors duration-200 ease-in-out",
                   {
-                    "bg-primary-200": option.value === option.value,
+                    "bg-primary-200": option.value === selectedOption?.value,
+                    "hover:bg-primary-1300":
+                      option.value !== selectedOption?.value,
                   }
                 )}
               >

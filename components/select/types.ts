@@ -8,7 +8,7 @@ export interface IOption {
 
 export interface ISMSelect {
   text: string;
-  onClick?: (value: string) => void;
+  onClick?: (option: IOption) => void;
   options?: IOption[];
   disabled?: boolean;
 }
