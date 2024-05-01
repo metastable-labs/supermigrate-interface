@@ -63,6 +63,11 @@ import RaysIcon from "./rays-icon.svg";
 import SecondaryCloseIcon from "./secondary-close-icon";
 import SecondaryCopyIcon from "./secondary-copy-icon.svg";
 import SecondarySelectIcon from "./secondary-select-icon.svg";
+import BitcoinIcon from "./bitcoin-icon.svg";
+import EthereumIcon from "./ethereum-icon.svg";
+import SolanaIcon from "./solana-icon.svg";
+import PolygonIcon from "./polygon-icon.svg";
+import GrinIcon from "./grin-icon.svg";
 
 export {
   Logo,
@@ -130,4 +135,9 @@ export {
   SecondaryCloseIcon,
   SecondaryCopyIcon,
   SecondarySelectIcon,
+  BitcoinIcon,
+  EthereumIcon,
+  SolanaIcon,
+  PolygonIcon,
+  GrinIcon,
 };
