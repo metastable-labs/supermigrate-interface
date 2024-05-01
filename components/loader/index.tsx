@@ -5,6 +5,23 @@ import { LoadingIcon } from "@/public/icons";
 import { ISMLoader } from "./types";
 
 const SMLoader = ({ variant = "small" }: ISMLoader) => {
+  let width, height;
+
+  switch (variant) {
+    case "small":
+      width = 20;
+      height = 20;
+      break;
+    case "medium":
+      width = 30;
+      height = 30;
+      break;
+    case "large":
+      width = 40;
+      height = 40;
+      break;
+  }
+
   return (
     <motion.span
       animate={{
@@ -16,13 +33,8 @@ const SMLoader = ({ variant = "small" }: ISMLoader) => {
           repeatType: "loop",
         },
       }}
-      className={classNames("", {
-        "scale-100": variant === "small",
-        "scale-150": variant === "medium",
-        "scale-[2]": variant === "large",
-      })}
     >
-      <LoadingIcon />
+      <LoadingIcon width={width} height={height} />
     </motion.span>
   );
 };

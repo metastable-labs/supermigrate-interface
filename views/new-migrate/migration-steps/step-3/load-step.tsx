@@ -99,7 +99,7 @@ const LoadStep = ({
         </span>
 
         <AnimatePresence>
-          {loading && <SMLoader />}
+          {loading && <SMLoader variant="small" />}
 
           {passed && (
             <span className="text-[10px] leading-[20px] tracking-[-0.06px] text-primary-200">

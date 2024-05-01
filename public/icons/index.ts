@@ -48,7 +48,7 @@ import UploadIcon from "./upload-icon.svg";
 import DeleteIcon from "./delete-icon.svg";
 import CheckSmallIcon from "./check-small-icon.svg";
 import PDFIcon from "./pdf-icon.svg";
-import LoadingIcon from "./loading-icon.svg";
+import LoadingIcon from "./loading-icon";
 import TrickleIcon from "./trickle-icon";
 import MergedSecondaryIcon from "./merged-secondary-icon.svg";
 import MergedTertiaryIcon from "./merged-tertiary-icon.svg";
