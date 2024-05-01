@@ -8,6 +8,7 @@ interface IButton {
   text: string;
   network?: Network;
   fullWidth?: boolean;
+  disabled?: boolean;
 }
 
 export type { IButton, ButtonVariants };
