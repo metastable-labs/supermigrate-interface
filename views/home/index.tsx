@@ -34,9 +34,9 @@ export default function HomeView({ lang }: LangParamProp) {
 
   return (
     <div className="bg-white h-full w-full">
+      <HeroSection />
       <SMContainer>
         {/* <LandingNav lang={lang} /> */}
-        <HeroSection />
         <SectionOne />
         <SectionTwo />
         <SectionThree />

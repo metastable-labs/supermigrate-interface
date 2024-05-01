@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const AppHome = ({
   locale,
-  children,
+  children
 }: {
   locale: LangParamProp;
   children: ReactNode;
