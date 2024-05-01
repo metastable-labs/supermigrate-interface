@@ -12,7 +12,7 @@ interface IHeroListing {
 }
 
 const HeroSection = () => {
-  const [selectedView, setSelectedView] = useState(1);
+  const [selectedView, setSelectedView] = useState(3);
   const HeroListings: IHeroListing[] = [
     {
       title: "Layer 2",
@@ -24,7 +24,7 @@ const HeroSection = () => {
     },
     {
       title: "Base",
-      textClassname: "text-[#375DFB] ",
+      textClassname: "text-[#375DFB] stroke-[#253EA7]",
       btnClassname:
         "bg-[#375DFB] text-white border border-[#E2E4E9] shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)]",
       image:
@@ -32,15 +32,17 @@ const HeroSection = () => {
     },
     {
       title: "Optimism",
-      textClassname: "#DF1C41",
-      btnClassname: "#710E21",
+      textClassname: "text-[#DF1C41] stroke-[#AF1D38]",
+      btnClassname:
+        "bg-[#DF1C41] shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)] text-white border-[0.3px] border-[#710E21]",
       image:
         "https://res.cloudinary.com/palmlight/image/upload/v1714475521/migrator_2_ndibrj.svg"
     },
     {
       title: "Mode",
-      textClassname: "#DFFE00",
-      btnClassname: "#C2540A",
+      textClassname: "text-[#DFFE00] stroke-[#1A1D01] stroke-1",
+      btnClassname:
+        "bg-[#DFFE00] border-[#1A1D01] shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)]",
       image:
         "https://res.cloudinary.com/palmlight/image/upload/v1714475521/migrator_3_rmhz1v.svg"
     },
@@ -56,9 +58,9 @@ const HeroSection = () => {
   // useEffect(() => {
   //   const interval = setInterval(() => {
   //     const newValue =
-  //       selectedView + 1 > HeroListings?.length ? 0 : selectedView + 1;
+  //       selectedView === HeroListings?.length - 1 ? 0 : selectedView + 1;
   //     setSelectedView(newValue);
-  //   }, 1000);
+  //   }, 4000);
 
   //   return () => clearInterval(interval);
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
