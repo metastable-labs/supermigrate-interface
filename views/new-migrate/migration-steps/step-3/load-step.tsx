@@ -4,6 +4,7 @@ import moment from "moment";
 
 import { CheckIcon, LoadingIcon, TrickleIcon } from "@/public/icons";
 import { Network } from "@/config/rainbow/rainbowkit";
+import SMLoader from "@/components/loader";
 
 const LoadStep = ({
   step,
@@ -98,21 +99,8 @@ const LoadStep = ({
         </span>
 
         <AnimatePresence>
-          {loading && (
-            <motion.span
-              animate={{
-                rotate: 360,
-                transition: {
-                  duration: 2,
-                  ease: "linear",
-                  repeat: Infinity,
-                  repeatType: "loop",
-                },
-              }}
-            >
-              <LoadingIcon />
-            </motion.span>
-          )}
+          {loading && <SMLoader />}
+
           {passed && (
             <span className="text-[10px] leading-[20px] tracking-[-0.06px] text-primary-200">
               {formatedDate}
