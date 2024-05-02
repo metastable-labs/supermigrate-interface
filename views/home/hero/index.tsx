@@ -1,129 +1,99 @@
-import { SMContainer } from "@/components";
-import MigratorSvg from "./migratorSvg";
+"use client";
+
 import { useEffect, useState } from "react";
-import Image from "next/image";
-import { cn } from "@/utils/helpers";
 import { AnimatePresence, motion } from "framer-motion";
 
-interface IHeroListing {
-  title: string;
-  textClassname: string;
-  btnClassname: string;
-  image: string;
-}
+import { SMContainer } from "@/components";
+import {
+  HeroIcon,
+  HeroBaseBlandIcon,
+  HeroBaseIcon,
+  HeroModeIcon,
+  HeroOptimismIcon,
+  HeroScrollIcon,
+  HeroTiles,
+} from "@/public/icons";
+
+const icons = [
+  <HeroBaseBlandIcon key={0} />,
+  <HeroBaseIcon key={1} />,
+  <HeroOptimismIcon key={3} />,
+  <HeroModeIcon key={2} />,
+  <HeroScrollIcon key={4} />,
+];
+
+const stepTexts = ["Layer 2", "Base", "Optimism", "Mode", "Scroll"];
+const stepTextColors = [
+  { color: "#C2540A", stroke: "#6E330C" },
+  { color: "#375DFB", stroke: "#253EA7" },
+  { color: "#DF1C41", stroke: "#AF1D38" },
+  { color: "#DFFE00", stroke: "#1A1D01" },
+  { color: "#FFEDD8", stroke: "#1A1D01" },
+];
 
 const HeroSection = () => {
-  const [selectedView, setSelectedView] = useState(4);
-  const HeroListings: IHeroListing[] = [
-    {
-      title: "Layer 2",
-      textClassname: "text-[#C2540A] stroke-[#6E330C]",
-      btnClassname:
-        "bg-[#C2540A] shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)] border-[0.3px] border-[#620F6C] text-white",
-      image:
-        "https://res.cloudinary.com/palmlight/image/upload/v1714475521/migrator_xfoqvs.svg"
-    },
-    {
-      title: "Base",
-      textClassname: "text-[#375DFB] stroke-[#253EA7]",
-      btnClassname:
-        "bg-[#375DFB] text-white border border-[#E2E4E9] shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)]",
-      image:
-        "https://res.cloudinary.com/palmlight/image/upload/v1714475521/migrator_1_fuejpd.svg"
-    },
-    {
-      title: "Optimism",
-      textClassname: "text-[#DF1C41] stroke-[#AF1D38]",
-      btnClassname:
-        "bg-[#DF1C41] shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)] text-white border-[0.3px] border-[#710E21]",
-      image:
-        "https://res.cloudinary.com/palmlight/image/upload/v1714475521/migrator_2_ndibrj.svg"
-    },
-    {
-      title: "Mode",
-      textClassname: "text-[#DFFE00] stroke-[#1A1D01] stroke-1",
-      btnClassname:
-        "bg-[#DFFE00] border-[#1A1D01] shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)]",
-      image:
-        "https://res.cloudinary.com/palmlight/image/upload/v1714475521/migrator_3_rmhz1v.svg"
-    },
-    {
-      title: "Scroll",
-      textClassname: "text-[#FFEDD8] scroll-hero-text",
-      btnClassname:
-        "bg-[#FFEDD8] shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)] ",
-      image:
-        "https://res.cloudinary.com/palmlight/image/upload/v1714475521/migrator_4_fpb8d6.svg"
-    }
-  ];
+  const [step, setStep] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const newValue =
-        selectedView === HeroListings?.length - 1 ? 0 : selectedView + 1;
-      setSelectedView(newValue);
+      setStep((prev) => (prev + 1) % 5);
     }, 4000);
 
     return () => clearInterval(interval);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedView]);
+  }, []);
 
-  const view = HeroListings?.at(selectedView) as IHeroListing;
   return (
-    <section className="w-full">
+    <section className="relative w-full mb-[141px] md:mb-[326px]">
       <SMContainer>
-        <div className="w-full grid pt-[120px] grid-cols-[520px_1fr] items-center gap-[250px]">
-          <div className="w-full">
-            <div className="">
-              <div className="font-medium text-[78px] leading-tight">
-                <h1>Your gateway</h1>
-                <div className="flex items-start gap-1 box-content">
-                  <p>to</p>{" "}
-                  <AnimatePresence>
-                    <motion.p
-                      className={cn("inline-block", view.textClassname)}
-                      key={view?.title}
-                      initial={{ opacity: 0, y: 5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -5 }}
-                      transition={{ ease: "easeInOut", duration: 0.5 }}
-                    >
-                      {view?.title}
-                    </motion.p>
-                  </AnimatePresence>
-                </div>
-              </div>
-              <p className="mt-8 text-xl leading-normal text-[#717184]">
-                Automatically deploy canonical bridged ERC20 to base and Create
-                a PR on the superchain token list repo.
+        <div className="w-full flex flex-col md:flex-row items-center md:items-end md:justify-between gap-6">
+          <div className="flex flex-col justify-center items-start gap-[29px]">
+            <div className="w-full flex flex-col justify-center items-start gap-8">
+              <p className="text-black text-[38px] leading-[49.4px] md:text-[82px] md:leading-[106.6px] font-medium tracking-[-0.82px]">
+                Your gateway to{" "}
+                <AnimatePresence mode="popLayout">
+                  <motion.span
+                    key={step}
+                    initial={{ opacity: 0 }}
+                    animate={{
+                      opacity: 1,
+                      color: stepTextColors[step].color,
+                      stroke: stepTextColors[step].stroke,
+                    }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 1 }}
+                    className="stroke-1 whitespace-nowrap"
+                  >
+                    {stepTexts[step]}
+                  </motion.span>
+                </AnimatePresence>
               </p>
-              <button
-                className={cn(
-                  "mt-7 py-3 w-[190px] rounded-lg font-medium",
-                  view.btnClassname
-                )}
-              >
-                Start migrating
-              </button>
+              <p></p>
             </div>
           </div>
-          <div className="w-full h-[570px] relative">
-            <Image layout="fill" src={view?.image} alt={view?.title} />
+
+          <div className="relative">
+            <HeroIcon />
+
+            <div className="absolute z-10 w-full flex items-center justify-center">
+              <AnimatePresence mode="popLayout">
+                <motion.div
+                  key={step}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1 }}
+                >
+                  {icons[step]}
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
         </div>
-        {/* <div className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-between min-h-screen">
-          <div className="lg:max-w-[48%] pt-52">
-            <h1 className="text-[38px] md:text-[60px] lg:text-[82px] font-medium leading-[130%] text-black">
-              Your gateway to <span>Layer 2</span>
-            </h1>
-            <p className="lg:text-xl leading-[155%] mt-5 lg:mt-8 text-grey-50">
-              Automatically deploy canonical bridged ERC20 to base and Create a
-              PR on the superchain token list repo.
-            </p>
-          </div>
-          <MigratorSvg />
-        </div> */}
       </SMContainer>
+
+      <div className="absolute top-[100%] md:top-[130%] right-0 w-full flex items-center justify-center md:pb-5">
+        <HeroTiles />
+      </div>
     </section>
   );
 };
