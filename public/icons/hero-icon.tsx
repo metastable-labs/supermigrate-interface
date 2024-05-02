@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import useMobileDetect from "@/hooks/useMobileDetect";
 
 const iconColors: { [key: number]: string } = {
-  0: "#1142EF",
-  1: "#FF0000",
-  2: "#DFFE00",
-  3: "#C2540A",
+  0: "#C2540A",
+  1: "#1142EF",
+  2: "#FF0000",
+  3: "#DFFE00",
   4: "#FFEDD8",
 };
 const HeroIcon = () => {
