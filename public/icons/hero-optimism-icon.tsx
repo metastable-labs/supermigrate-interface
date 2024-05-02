@@ -1,8 +1,8 @@
 "use client";
-import useMobileDetect from "@/hooks/useMobileDetect";
+import useScreenDetect from "@/hooks/useScreenDetect";
 
 const HeroOptimismIcon = () => {
-  const isMobile = useMobileDetect();
+  const { isMobile } = useScreenDetect();
 
   const width = isMobile ? 56 : 90;
   const height = isMobile ? 56 : 91;
