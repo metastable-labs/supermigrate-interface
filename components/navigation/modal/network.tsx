@@ -58,7 +58,7 @@ const NetworkModal = ({ close }: { close: () => void }) => {
                   "w-3 h-3 rounded-full transition-all duration-200",
                   {
                     "bg-primary-1800": pathname.includes(title.toLowerCase()),
-                  }
+                   }
                 )}
               />
             </div>
