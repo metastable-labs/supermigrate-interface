@@ -1,7 +1,7 @@
 import { GithubButtonIcon } from "@/public/icons";
 import { SMButton } from "..";
 import { Network } from "../button/types";
-import useMobileDetect from "@/hooks/useMobileDetect";
+import useScreenDetect from "@/hooks/useScreenDetect";
 
 const EmptyState = ({
   isConnected,
@@ -10,7 +10,7 @@ const EmptyState = ({
   isConnected: boolean;
   network: Network;
 }) => {
-  const isMobile = useMobileDetect();
+  const { isMobile } = useScreenDetect();
 
   const buttonText = isConnected ? "new migration" : "connect github";
 
