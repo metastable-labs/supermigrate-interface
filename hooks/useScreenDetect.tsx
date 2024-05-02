@@ -7,7 +7,7 @@ interface ScreenType {
 }
 
 const useScreenDetect = () => {
-  const mobileBreakpoint = 480;
+  const mobileBreakpoint = 640;
   const tabletBreakpoint = 768;
 
   const [screenType, setScreenType] = useState<ScreenType>({
