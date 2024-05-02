@@ -4,7 +4,7 @@ type ButtonVariants = "git" | "new" | "bland-new" | "plain";
 
 interface IButton {
   variant?: ButtonVariants;
-  onClick: () => void;
+  onClick?: () => void;
   text: string;
   network?: Network;
   fullWidth?: boolean;

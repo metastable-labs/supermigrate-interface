@@ -1,5 +1,7 @@
 "use client";
 
+import { useCookies } from "react-cookie";
+import { toast } from "react-toastify";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
 import { CallbackProps } from "../store";
 import { setLoading, setUser } from ".";
@@ -8,6 +10,7 @@ import { setTokenHeader } from "@/utils/axios";
 
 const useUserActions = () => {
   const { dispatch } = useSystemFunctions();
+  const [cookies, setCookie] = useCookies(["SMauthtoken"]);
 
   const getUser = async (callback?: CallbackProps) => {
     try {
@@ -29,9 +32,21 @@ const useUserActions = () => {
 
       setTokenHeader(user.token);
 
+      setCookie("SMauthtoken", user.token, {
+        expires: new Date(new Date().getTime() + user.expire * 1000),
+      });
+
+      toast("Github connected sucessfully", {
+        type: "success",
+      });
+
       return dispatch(setUser(user.user));
     } catch (error: any) {
       callback?.onError?.(error);
+      return toast("Github authentication failed! Please try again.", {
+        type: "error",
+        autoClose: 7000,
+      });
     } finally {
       dispatch(setLoading(false));
     }
@@ -39,6 +54,7 @@ const useUserActions = () => {
 
   return {
     getUser,
+    authenticateGithub,
   };
 };
 

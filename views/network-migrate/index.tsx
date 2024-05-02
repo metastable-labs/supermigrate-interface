@@ -1,5 +1,7 @@
 "use client";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
+import { useSearchParams } from "next/navigation";
 
 import { DesktopTilesIcon, MobileTilesIcon } from "@/public/icons";
 import { SMContainer, SMTable, SMButton } from "@/components";
@@ -7,9 +9,17 @@ import { PullStatus } from "@/components/table/types";
 import Connect from "./connect";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
 import { Network } from "@/config/rainbow/rainbowkit";
+import SMLoader from "@/components/loader";
+import useUserActions from "@/application/user/actions";
 
 const NetworkMigrationsView = ({ network }: { network: Network }) => {
-  const { navigate } = useSystemFunctions();
+  const { navigate, userState } = useSystemFunctions();
+  const { authenticateGithub } = useUserActions();
+  const searchParams = useSearchParams();
+
+  const { loading } = userState;
+
+  const code = searchParams.get("code");
 
   const action = () => navigate.push(`/migrate/${network}/new`);
 
@@ -30,6 +40,29 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
       pullStatus: "merged" as PullStatus,
     },
   ];
+
+  const handleGithubConnection = async () => {
+    try {
+      if (!code) return;
+
+      await authenticateGithub(code);
+    } catch (error: any) {
+    } finally {
+    }
+  };
+
+  useEffect(() => {
+    handleGithubConnection();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading]);
+
+  if (loading) {
+    return (
+      <div className="w-full h-[90vh] flex items-center justify-center">
+        <SMLoader variant="medium" />
+      </div>
+    );
+  }
 
   return (
     <div className="pb-10">
