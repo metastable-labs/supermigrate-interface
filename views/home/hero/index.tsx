@@ -13,6 +13,7 @@ import {
   HeroScrollIcon,
   HeroTiles,
 } from "@/public/icons";
+import HeroButton from "./button";
 
 const icons = [
   <HeroBaseBlandIcon key={0} />,
@@ -43,12 +44,12 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative w-full mb-[141px] md:mb-[326px]">
+    <section className="relative w-full mb-[141px] md:mb-[250px] lg:mb-[326px]">
       <SMContainer>
-        <div className="w-full flex flex-col md:flex-row items-center md:items-end md:justify-between gap-6">
+        <div className="w-full flex flex-col lg:flex-row items-center lg:items-end lg:justify-between gap-6">
           <div className="flex flex-col justify-center items-start gap-[29px]">
             <div className="w-full flex flex-col justify-center items-start gap-8">
-              <p className="text-black text-[38px] leading-[49.4px] md:text-[82px] md:leading-[106.6px] font-medium tracking-[-0.82px] lg:max-w-[548px]">
+              <p className="text-black text-[38px] leading-[49.4px] md:text-[82px] md:leading-[106.6px] font-medium tracking-[-0.82px] max-w-[300px] lg:max-w-[548px]">
                 Your gateway to
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -65,7 +66,7 @@ const HeroSection = () => {
                       WebkitTextStrokeColor: stepTextColors[step].stroke,
                     }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.25 }}
                     className="whitespace-nowrap"
                   >
                     {" "}
@@ -78,6 +79,8 @@ const HeroSection = () => {
                 a PR on the superchain token list repo.
               </p>
             </div>
+
+            <HeroButton onClick={() => {}} />
           </div>
 
           <div className="relative">
@@ -100,7 +103,7 @@ const HeroSection = () => {
         </div>
       </SMContainer>
 
-      <div className="absolute top-[100%] md:top-[130%] right-0 w-full flex items-center justify-center md:pb-5">
+      <div className="absolute top-[100%] md:top-[110%] lg:top-[130%] right-0 w-full flex items-center justify-center md:pb-5">
         <HeroTiles />
       </div>
     </section>
