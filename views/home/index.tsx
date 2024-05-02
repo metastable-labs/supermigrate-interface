@@ -33,7 +33,7 @@ export default function HomeView({ lang }: LangParamProp) {
   }, []);
 
   return (
-    <div className="bg-white h-full w-full pt-[150px] md:pt-[188px]">
+    <div className="bg-white h-full w-full">
       <HeroSection />
       <SMContainer>
         {/* <LandingNav lang={lang} /> */}
