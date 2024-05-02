@@ -1,7 +1,7 @@
 import { GithubButtonIcon } from "@/public/icons";
 import { SMButton } from "..";
-import { useEffect, useState } from "react";
 import { Network } from "../button/types";
+import useMobileDetect from "@/hooks/useMobileDetect";
 
 const EmptyState = ({
   isConnected,
@@ -10,25 +10,11 @@ const EmptyState = ({
   isConnected: boolean;
   network: Network;
 }) => {
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useMobileDetect();
 
   const buttonText = isConnected ? "new migration" : "connect github";
 
   const action = () => {};
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 768px)");
-
-    setIsMobile(mediaQuery.matches);
-
-    const handleResize = (event: MediaQueryListEvent) => {
-      setIsMobile(event.matches);
-    };
-
-    mediaQuery.addEventListener("change", handleResize);
-
-    return () => mediaQuery.removeEventListener("change", handleResize);
-  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center gap-[14px] flex-1 px-3">

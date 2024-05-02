@@ -54,6 +54,12 @@ import MergedSecondaryIcon from "./merged-secondary-icon.svg";
 import MergedTertiaryIcon from "./merged-tertiary-icon.svg";
 import XIcon from "./x-icon.svg";
 import CopySecondaryIcon from "./copy-secondary-icon.svg";
+import HeroIcon from "./hero-icon";
+import HeroBaseBlandIcon from "./hero-base-bland-icon";
+import HeroBaseIcon from "./hero-base-icon";
+import HeroOptimismIcon from "./hero-optimism-icon";
+import HeroModeIcon from "./hero-mode-icon";
+import HeroScrollIcon from "./hero-scroll-icon";
 
 export {
   Logo,
@@ -112,4 +118,10 @@ export {
   MergedTertiaryIcon,
   XIcon,
   CopySecondaryIcon,
+  HeroIcon,
+  HeroBaseBlandIcon,
+  HeroBaseIcon,
+  HeroOptimismIcon,
+  HeroModeIcon,
+  HeroScrollIcon,
 };
