@@ -7,9 +7,11 @@ import { CallbackProps } from "../store";
 import { setLoading, setUser } from ".";
 import api from "./api";
 import { setTokenHeader } from "@/utils/axios";
+import useMigrationActions from "../migration/actions";
 
 const useUserActions = () => {
   const { dispatch } = useSystemFunctions();
+  const { getMigrations } = useMigrationActions();
   const [cookies, setCookie] = useCookies(["SMauthtoken"]);
 
   const getUser = async (callback?: CallbackProps) => {
@@ -17,7 +19,8 @@ const useUserActions = () => {
       dispatch(setLoading(true));
       const user = await api.fetchUser();
 
-      return dispatch(setUser(user));
+      dispatch(setUser(user));
+      await getMigrations();
     } catch (error: any) {
       callback?.onError?.(error);
     } finally {

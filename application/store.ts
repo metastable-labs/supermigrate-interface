@@ -3,6 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import userReducer from "./user";
 import localeReducer from "./locale";
+import migrationReducer from "./migration";
 
 export interface CallbackProps {
   onSuccess?: Function;
@@ -13,6 +14,7 @@ export const store = configureStore({
   reducer: {
     user: userReducer,
     locale: localeReducer,
+    migration: migrationReducer,
   },
 });
 
