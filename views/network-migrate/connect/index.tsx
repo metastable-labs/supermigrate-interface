@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { SMButton } from "@/components";
 import { Network } from "@/config/rainbow/rainbowkit";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
-import SMLoader from "@/components/loader";
 
 const Connect = ({ network }: { network: Network }) => {
   const { userState, pathname } = useSystemFunctions();
@@ -13,12 +12,17 @@ const Connect = ({ network }: { network: Network }) => {
 
   const [path, setPath] = useState("");
 
-  const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=Iv1.c178abebc418bb02&redirect_uri=${path}`;
+  const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=Iv1.c178abebc418bb02&redirect_uri=http://${path}`;
+  console.log(githubAuthUrl);
 
   useEffect(() => {
     if (!window) return;
 
-    setPath(window.location.host + pathname);
+    const url = window.location.host + pathname;
+    const regex = /(?<=\/)[a-z]{2}\//;
+    const removeLanguagePath = url.replace(regex, "");
+
+    setPath(removeLanguagePath);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

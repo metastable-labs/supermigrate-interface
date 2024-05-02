@@ -26,13 +26,17 @@ export function middleware(request: NextRequest) {
   // Redirect if there is no locale
   if (pathnameIsMissingLocale) {
     const locale = getLocale(request);
-    return NextResponse.redirect(
-      new URL(
-        `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,
-        request.url
-      )
-    );
+
+    const url = new URL(request.url);
+
+    // Set the pathname with locale
+    url.pathname = `/${locale}${
+      pathname.startsWith("/") ? "" : "/"
+    }${pathname}`;
+
+    return NextResponse.redirect(url);
   }
+  return NextResponse.next();
 }
 
 export const config = {
