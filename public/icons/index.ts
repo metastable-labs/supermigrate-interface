@@ -61,6 +61,8 @@ import HeroOptimismIcon from "./hero-optimism-icon";
 import HeroModeIcon from "./hero-mode-icon";
 import HeroScrollIcon from "./hero-scroll-icon";
 import HeroTiles from "./hero-tiles";
+import HeroFadeShape from "./hero-fade-shape";
+import HeroBGLines from "./hero-bg-lines";
 
 export {
   Logo,
@@ -126,4 +128,6 @@ export {
   HeroModeIcon,
   HeroScrollIcon,
   HeroTiles,
+  HeroFadeShape,
+  HeroBGLines,
 };
