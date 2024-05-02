@@ -48,12 +48,26 @@ import UploadIcon from "./upload-icon.svg";
 import DeleteIcon from "./delete-icon.svg";
 import CheckSmallIcon from "./check-small-icon.svg";
 import PDFIcon from "./pdf-icon.svg";
-import LoadingIcon from "./loading-icon.svg";
+import LoadingIcon from "./loading-icon";
 import TrickleIcon from "./trickle-icon";
 import MergedSecondaryIcon from "./merged-secondary-icon.svg";
 import MergedTertiaryIcon from "./merged-tertiary-icon.svg";
 import XIcon from "./x-icon.svg";
 import CopySecondaryIcon from "./copy-secondary-icon.svg";
+import LineaIcon from "./linea-icon.svg";
+import ZoraIcon from "./zora-icon.svg";
+import WorldChainIcon from "./world-chain-icon.svg";
+import DegenIcon from "./degen-icon.svg";
+import PGNIcon from "./pgn-icon.svg";
+import RaysIcon from "./rays-icon.svg";
+import SecondaryCloseIcon from "./secondary-close-icon";
+import SecondaryCopyIcon from "./secondary-copy-icon.svg";
+import SecondarySelectIcon from "./secondary-select-icon.svg";
+import BitcoinIcon from "./bitcoin-icon.svg";
+import EthereumIcon from "./ethereum-icon.svg";
+import SolanaIcon from "./solana-icon.svg";
+import PolygonIcon from "./polygon-icon.svg";
+import GrinIcon from "./grin-icon.svg";
 
 export {
   Logo,
@@ -112,4 +126,18 @@ export {
   MergedTertiaryIcon,
   XIcon,
   CopySecondaryIcon,
+  LineaIcon,
+  ZoraIcon,
+  WorldChainIcon,
+  DegenIcon,
+  PGNIcon,
+  RaysIcon,
+  SecondaryCloseIcon,
+  SecondaryCopyIcon,
+  SecondarySelectIcon,
+  BitcoinIcon,
+  EthereumIcon,
+  SolanaIcon,
+  PolygonIcon,
+  GrinIcon,
 };

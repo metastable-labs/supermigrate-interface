@@ -1,3 +1,5 @@
+"use client";
+
 import { DragEvent, useRef, useState } from "react";
 import classNames from "classnames";
 import { motion } from "framer-motion";

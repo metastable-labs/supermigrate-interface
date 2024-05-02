@@ -10,6 +10,7 @@ const SMButton = ({
   text,
   variant = "git",
   fullWidth,
+  disabled,
 }: IButton) => {
   let iconColor;
   if (network === "base" || network === "optimism" || variant === "bland-new") {
@@ -24,17 +25,19 @@ const SMButton = ({
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.9 }}
       className={classNames(
-        "py-[10px] px-[14px] flex items-center justify-center gap-1 rounded-[10px] border-[0.5px] border-primary-1400",
+        "py-[10px] px-[14px] flex items-center justify-center gap-1 rounded-[10px]",
         {
-          "bg-base-github-button": network === "base",
-          "bg-optimism-github-button": network === "optimism",
-          "bg-mode-github-button": network === "mode",
-          "bg-scroll-github-button": network === "scroll",
+          "border-[0.5px] border-primary-1400": !disabled,
+          "bg-primary-150 pointer-events-none": disabled,
+          "bg-base-github-button": network === "base" && !disabled,
+          "bg-optimism-github-button": network === "optimism" && !disabled,
+          "bg-mode-github-button": network === "mode" && !disabled,
+          "bg-scroll-github-button": network === "scroll" && !disabled,
           "bg-primary-1300": variant === "bland-new",
-          "shadow-base-github-button": network === "base",
-          "shadow-optimism-github-button": network === "optimism",
-          "shadow-mode-github-button": network === "mode",
-          "shadow-scroll-github-button": network === "scroll",
+          "shadow-base-github-button": network === "base" && !disabled,
+          "shadow-optimism-github-button": network === "optimism" && !disabled,
+          "shadow-mode-github-button": network === "mode" && !disabled,
+          "shadow-scroll-github-button": network === "scroll" && !disabled,
           "shadow-bland-new-button": variant === "bland-new",
           "w-full": fullWidth,
         }
@@ -55,6 +58,7 @@ const SMButton = ({
               network === "optimism" ||
               variant === "bland-new",
             "text-primary-950": network === "mode" || network === "scroll",
+            "text-primary-1300": disabled,
           }
         )}
       >

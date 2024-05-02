@@ -6,6 +6,8 @@ import SMTable from "./table";
 import SMButton from "./button";
 import SMInput from "./input";
 import SMFileInput from "./file-input";
+import SMSelect from "./select";
+import SMLoader from "./loader";
 
 export {
   SMContainer,
@@ -16,4 +18,5 @@ export {
   SMButton,
   SMInput,
   SMFileInput,
+  SMSelect,
 };

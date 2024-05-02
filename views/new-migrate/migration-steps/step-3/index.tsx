@@ -21,14 +21,14 @@ const Step3 = ({ network, setStep }: StepProps) => {
     },
     {
       title: "Forking Superchain Token List to Github repo",
-      loading: false,
-      passed: true,
+      loading: true,
+      passed: false,
       date: new Date(),
       step: 3,
     },
     {
       title: "Adding Data to forked superchain repo",
-      loading: true,
+      loading: false,
       passed: false,
       date: new Date(),
       step: 4,

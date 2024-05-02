@@ -8,19 +8,29 @@ import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import {
   BasePrimaryMobileIcon,
-  OptimismPrimaryMobileIcon,
   ModePrimaryMobileIcon,
+  OptimismPrimaryMobileIcon,
   ScrollPrimaryMobileIcon,
 } from "@/public/icons";
 
-export type Network = "base" | "optimism" | "mode" | "scroll";
+export type Network =
+  | "base"
+  | "optimism"
+  | "mode"
+  | "scroll"
+  | "linea"
+  | "zora"
+  | "world-chain"
+  | "degen"
+  | "pgn";
 
 export interface NetworkProps {
   title: string;
   variant?: Network;
   onClick?: (network: Network) => void;
   chainId: number;
-  icon: ReactNode;
+  icon?: ReactNode;
+  comingSoon?: boolean;
 }
 
 export const networks: NetworkProps[] = [

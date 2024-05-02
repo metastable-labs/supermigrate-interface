@@ -6,8 +6,10 @@ import TokenInfo from "./token-info";
 import OverrideSection from "./override-section";
 import { SMButton, SMInput } from "@/components";
 
-const Step1 = ({ register, errors, network, setStep }: StepProps) => {
+const Step1 = ({ register, errors, network, setStep, watch }: StepProps) => {
   const [overridden, setOverridden] = useState(false);
+
+  const tokenAddress = watch?.("tokenAddress");
 
   const tokenInfo = {
     name: "Degen",
@@ -18,6 +20,7 @@ const Step1 = ({ register, errors, network, setStep }: StepProps) => {
   const handleOverride = () => setOverridden((prev) => !prev);
   const handleNext = () => setStep((prev) => prev + 1);
 
+  console.log(tokenAddress);
   return (
     <div className="flex flex-col items-center justify-center gap-6 rounded-xl border border-primary-2100 bg-white p-6 min-w-[343px] md:min-w-[448px]">
       <SMInput
@@ -30,7 +33,7 @@ const Step1 = ({ register, errors, network, setStep }: StepProps) => {
         isRequired
       />
 
-      <TokenInfo {...tokenInfo} />
+      {tokenAddress && <TokenInfo {...tokenInfo} />}
 
       <OverrideSection
         handleOverride={handleOverride}

@@ -1,8 +1,8 @@
 import { AnimatePresence, motion } from "framer-motion";
 import classNames from "classnames";
 
-import { Network } from "@/components/button/types";
 import { CheckIcon, RightCarretDarkIcon } from "@/public/icons";
+import { Network } from "@/config/rainbow/rainbowkit";
 
 const Step = ({
   step,

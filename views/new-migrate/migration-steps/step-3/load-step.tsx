@@ -2,8 +2,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import classNames from "classnames";
 import moment from "moment";
 
-import { Network } from "@/components/button/types";
 import { CheckIcon, LoadingIcon, TrickleIcon } from "@/public/icons";
+import { Network } from "@/config/rainbow/rainbowkit";
+import SMLoader from "@/components/loader";
 
 const LoadStep = ({
   step,
@@ -48,8 +49,8 @@ const LoadStep = ({
         className={classNames(
           "w-full flex items-center justify-center gap-2 p-2 rounded-[10px]",
           {
-            "bg-primary-150": passed,
-            "bg-white shadow-small-shadow": !passed || loading,
+            "bg-primary-150": !loading,
+            "bg-white shadow-small-shadow": loading,
           }
         )}
       >
@@ -57,31 +58,32 @@ const LoadStep = ({
           className={classNames(
             "rounded-full w-5 h-5 flex items-center justify-center transition-all duration-300",
             {
-              "bg-primary-2250": loading || !passed,
+              "bg-primary-2250 text-white": loading,
               "bg-primary-1800": passed,
+              "bg-white border border-dashed border-primary-2050 text-primary-200 shadow-small-shadow":
+                !passed && !loading,
             }
           )}
         >
           <AnimatePresence mode="popLayout">
-            {passed ? (
-              <motion.span
-                key={1}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="absolute"
-              >
-                <CheckIcon />
-              </motion.span>
-            ) : (
+            {!passed ? (
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 key={0}
-                className="text-[12px] font-medium text-center leading-none text-white"
+                className="font-medium text-center text-xs"
               >
                 {step}
+              </motion.span>
+            ) : (
+              <motion.span
+                key={1}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <CheckIcon />
               </motion.span>
             )}
           </AnimatePresence>
@@ -97,15 +99,9 @@ const LoadStep = ({
         </span>
 
         <AnimatePresence>
-          {loading ? (
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              <LoadingIcon />
-            </motion.span>
-          ) : (
+          {loading && <SMLoader variant="small" />}
+
+          {passed && (
             <span className="text-[10px] leading-[20px] tracking-[-0.06px] text-primary-200">
               {formatedDate}
             </span>
