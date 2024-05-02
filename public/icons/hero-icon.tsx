@@ -2,8 +2,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-import useMobileDetect from "@/hooks/useMobileDetect";
-
 const iconColors: { [key: number]: string } = {
   0: "#C2540A",
   1: "#1142EF",
@@ -13,10 +11,6 @@ const iconColors: { [key: number]: string } = {
 };
 const HeroIcon = () => {
   const [step, setStep] = useState(0);
-  const isMobile = useMobileDetect();
-
-  const width = isMobile ? 313 : 553;
-  const height = isMobile ? 213 : 380;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -28,8 +22,8 @@ const HeroIcon = () => {
 
   return (
     <svg
-      width={width}
-      height={height}
+      width="553"
+      height="380"
       viewBox="0 0 553 380"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
