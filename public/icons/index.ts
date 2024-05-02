@@ -60,6 +60,7 @@ import HeroBaseIcon from "./hero-base-icon";
 import HeroOptimismIcon from "./hero-optimism-icon";
 import HeroModeIcon from "./hero-mode-icon";
 import HeroScrollIcon from "./hero-scroll-icon";
+import HeroTiles from "./hero-tiles";
 
 export {
   Logo,
@@ -124,4 +125,5 @@ export {
   HeroOptimismIcon,
   HeroModeIcon,
   HeroScrollIcon,
+  HeroTiles,
 };
