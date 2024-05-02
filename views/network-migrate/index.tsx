@@ -42,19 +42,15 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
   ];
 
   const handleGithubConnection = async () => {
-    try {
-      if (!code) return;
+    if (!code || loading) return;
 
-      await authenticateGithub(code);
-    } catch (error: any) {
-    } finally {
-    }
+    await authenticateGithub(code);
   };
 
   useEffect(() => {
     handleGithubConnection();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading]);
+  }, [code]);
 
   if (loading) {
     return (
