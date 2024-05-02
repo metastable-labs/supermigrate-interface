@@ -49,7 +49,7 @@ const HeroSection = () => {
           <div className="flex flex-col justify-center items-start gap-[29px]">
             <div className="w-full flex flex-col justify-center items-start gap-8">
               <p className="text-black text-[38px] leading-[49.4px] md:text-[82px] md:leading-[106.6px] font-medium tracking-[-0.82px]">
-                Your gateway to{" "}
+                Your gateway to
                 <AnimatePresence mode="popLayout">
                   <motion.span
                     key={step}
@@ -63,6 +63,7 @@ const HeroSection = () => {
                     transition={{ duration: 1 }}
                     className="stroke-1 whitespace-nowrap"
                   >
+                    {" "}
                     {stepTexts[step]}
                   </motion.span>
                 </AnimatePresence>
