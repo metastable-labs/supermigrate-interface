@@ -48,27 +48,35 @@ const HeroSection = () => {
         <div className="w-full flex flex-col md:flex-row items-center md:items-end md:justify-between gap-6">
           <div className="flex flex-col justify-center items-start gap-[29px]">
             <div className="w-full flex flex-col justify-center items-start gap-8">
-              <p className="text-black text-[38px] leading-[49.4px] md:text-[82px] md:leading-[106.6px] font-medium tracking-[-0.82px]">
+              <p className="text-black text-[38px] leading-[49.4px] md:text-[82px] md:leading-[106.6px] font-medium tracking-[-0.82px] lg:max-w-[548px]">
                 Your gateway to
-                <AnimatePresence mode="popLayout">
+                <AnimatePresence mode="wait">
                   <motion.span
                     key={step}
-                    initial={{ opacity: 0 }}
+                    initial={{
+                      opacity: 0,
+                      color: "transparent",
+                      WebkitTextStrokeWidth: 0,
+                    }}
                     animate={{
                       opacity: 1,
                       color: stepTextColors[step].color,
-                      stroke: stepTextColors[step].stroke,
+                      WebkitTextStrokeWidth: "1px",
+                      WebkitTextStrokeColor: stepTextColors[step].stroke,
                     }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 1 }}
-                    className="stroke-1 whitespace-nowrap"
+                    transition={{ duration: 0.5 }}
+                    className="whitespace-nowrap"
                   >
                     {" "}
                     {stepTexts[step]}
                   </motion.span>
                 </AnimatePresence>
               </p>
-              <p></p>
+              <p className="text-primary-2350 text-[20px] leading-[31px] max-w-[520px]">
+                Automatically deploy canonical bridged ERC20 to base and Create
+                a PR on the superchain token list repo.
+              </p>
             </div>
           </div>
 
