@@ -13,6 +13,7 @@ import {
   WalletIcon,
 } from "@/public/icons";
 import { networks } from "@/config/rainbow/rainbowkit";
+import useSystemFunctions from "@/hooks/useSystemFunctions";
 
 interface NavActionProps {
   text?: string;
@@ -24,8 +25,11 @@ interface NavActionProps {
 const NavAction = ({ text, onClick, variant = "network" }: NavActionProps) => {
   const chainId = useChainId();
   const pathname = usePathname();
+  const { userState } = useSystemFunctions();
   const truncateText = useTruncateText(text || "", 4, 4);
-  const shouldHide = /\/[a-zA-Z]{2}\/migrate$/.test(pathname);
+  const shouldHide = /\/[a-zA-Z]{2}\/migrate$/.test(pathname); // Hide network select on migrate page
+
+  const { user } = userState;
 
   const [icon, setIcon] = useState<any>();
 
@@ -57,7 +61,9 @@ const NavAction = ({ text, onClick, variant = "network" }: NavActionProps) => {
     <SMClickAnimation
       onClick={onClick}
       className={classNames("", {
-        hidden: shouldHide && variant === "network",
+        hidden:
+          (shouldHide && variant === "network") ||
+          (!user && variant === "account"),
       })}
     >
       <div className="max-w-[200px] md:max-w-[240px] bg-white rounded-[10px] border border-primary-250 shadow-nav-select-shadow py-1 pl-1 pr-2 flex items-center justify-center gap-[6px] relative">
@@ -72,7 +78,7 @@ const NavAction = ({ text, onClick, variant = "network" }: NavActionProps) => {
                   { "hidden lg:block": variant !== "wallet" }
                 )}
               >
-                {truncateText}
+                {variant === "account" ? text : truncateText}
               </span>
             )}
 

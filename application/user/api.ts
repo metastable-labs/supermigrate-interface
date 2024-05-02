@@ -14,7 +14,7 @@ const user: IUser = {
   },
 
   githubAuth: async (code: string): Promise<GithubAuthResponse> => {
-    const response = await axiosInstance.get(`auth/github?code=${code}`);
+    const response = await axiosInstance.post(`auth/github`, { code });
 
     return response.data?.data;
   },

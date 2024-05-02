@@ -13,7 +13,6 @@ const Connect = ({ network }: { network: Network }) => {
   const [path, setPath] = useState("");
 
   const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=Iv1.c178abebc418bb02&redirect_uri=http://${path}`;
-  console.log(githubAuthUrl);
 
   useEffect(() => {
     if (!window) return;
@@ -74,7 +73,7 @@ const Connect = ({ network }: { network: Network }) => {
               </p>
             </div>
 
-            <a href={githubAuthUrl} target="_blank" rel="noreferrer">
+            <a href={githubAuthUrl}>
               <SMButton
                 disabled={loading}
                 network={network}

@@ -20,6 +20,7 @@ import { ModalType } from "./modal/types";
 import AccountModal from "./modal/account";
 import WalletModal from "./modal/wallet";
 import NetworkModal from "./modal/network";
+import useSystemFunctions from "@/hooks/useSystemFunctions";
 
 const isHomePage = (path: string): boolean => {
   const homePageRegex = /^\/[a-z]{2}\/?$/;
@@ -51,12 +52,14 @@ const SMNavigation = () => {
   const { isConnected, isDisconnected, address } = useAccount();
   const chainId = useChainId();
   const { switchChain } = useSwitchChain();
+  const { userState } = useSystemFunctions();
 
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [modalType, setModalType] = useState<ModalType>();
 
   const isHome = isHomePage(pathname);
+  const { user } = userState;
 
   const updatedLinks = links?.map((link) => {
     const regex = new RegExp(`^/[a-z]{2}${link.href}`);
@@ -86,7 +89,7 @@ const SMNavigation = () => {
 
   const actionItems: INavActions = [
     {
-      text: "Meister",
+      text: user?.username,
       variant: "account",
     },
     {

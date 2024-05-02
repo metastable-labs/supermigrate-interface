@@ -43,6 +43,10 @@ const useUserActions = () => {
       return dispatch(setUser(user.user));
     } catch (error: any) {
       callback?.onError?.(error);
+      const message = error?.response?.data?.message;
+
+      if (message === "Invalid authentication code") return;
+
       return toast("Github authentication failed! Please try again.", {
         type: "error",
         autoClose: 7000,
