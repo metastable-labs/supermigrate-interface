@@ -3,6 +3,7 @@ import MigratorSvg from "./migratorSvg";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { cn } from "@/utils/helpers";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface IHeroListing {
   title: string;
@@ -12,7 +13,7 @@ interface IHeroListing {
 }
 
 const HeroSection = () => {
-  const [selectedView, setSelectedView] = useState(3);
+  const [selectedView, setSelectedView] = useState(4);
   const HeroListings: IHeroListing[] = [
     {
       title: "Layer 2",
@@ -48,23 +49,24 @@ const HeroSection = () => {
     },
     {
       title: "Scroll",
-      textClassname: "#FFEDD8",
-      btnClassname: "#FFEDD8",
+      textClassname: "text-[#FFEDD8] scroll-hero-text",
+      btnClassname:
+        "bg-[#FFEDD8] shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)] ",
       image:
         "https://res.cloudinary.com/palmlight/image/upload/v1714475521/migrator_4_fpb8d6.svg"
     }
   ];
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     const newValue =
-  //       selectedView === HeroListings?.length - 1 ? 0 : selectedView + 1;
-  //     setSelectedView(newValue);
-  //   }, 4000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const newValue =
+        selectedView === HeroListings?.length - 1 ? 0 : selectedView + 1;
+      setSelectedView(newValue);
+    }, 4000);
 
-  //   return () => clearInterval(interval);
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [selectedView]);
+    return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedView]);
 
   const view = HeroListings?.at(selectedView) as IHeroListing;
   return (
@@ -73,12 +75,24 @@ const HeroSection = () => {
         <div className="w-full grid pt-[120px] grid-cols-[520px_1fr] items-center gap-[250px]">
           <div className="w-full">
             <div className="">
-              <h1 className="font-medium text-[78px] leading-tight">
-                Your gateway to{" "}
-                <span className={cn("", view.textClassname)}>
-                  {view?.title}
-                </span>
-              </h1>
+              <div className="font-medium text-[78px] leading-tight">
+                <h1>Your gateway</h1>
+                <div className="flex items-start gap-1 box-content">
+                  <p>to</p>{" "}
+                  <AnimatePresence>
+                    <motion.p
+                      className={cn("inline-block", view.textClassname)}
+                      key={view?.title}
+                      initial={{ opacity: 0, y: 5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -5 }}
+                      transition={{ ease: "easeInOut", duration: 0.5 }}
+                    >
+                      {view?.title}
+                    </motion.p>
+                  </AnimatePresence>
+                </div>
+              </div>
               <p className="mt-8 text-xl leading-normal text-[#717184]">
                 Automatically deploy canonical bridged ERC20 to base and Create
                 a PR on the superchain token list repo.
