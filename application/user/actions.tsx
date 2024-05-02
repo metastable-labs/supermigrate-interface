@@ -3,6 +3,8 @@
 import useSystemFunctions from "@/hooks/useSystemFunctions";
 import { CallbackProps } from "../store";
 import { setLoading, setUser } from ".";
+import api from "./api";
+import { setTokenHeader } from "@/utils/axios";
 
 const useUserActions = () => {
   const { dispatch } = useSystemFunctions();
@@ -10,12 +12,24 @@ const useUserActions = () => {
   const getUser = async (callback?: CallbackProps) => {
     try {
       dispatch(setLoading(true));
-      const mockUser = {
-        name: "John Doe",
-      };
+      const user = await api.fetchUser();
 
-      callback?.onSuccess?.(mockUser);
-      return dispatch(setUser(mockUser));
+      return dispatch(setUser(user));
+    } catch (error: any) {
+      callback?.onError?.(error);
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
+
+  const authenticateGithub = async (code: string, callback?: CallbackProps) => {
+    try {
+      dispatch(setLoading(true));
+      const user = await api.githubAuth(code);
+
+      setTokenHeader(user.token);
+
+      return dispatch(setUser(user.user));
     } catch (error: any) {
       callback?.onError?.(error);
     } finally {
