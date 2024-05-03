@@ -7,6 +7,7 @@ import SMButton from "./button";
 import SMInput from "./input";
 import SMFileInput from "./file-input";
 import SMTestimonial from "./testimonial";
+import SMFAQ from "./faq";
 
 export {
   SMContainer,
@@ -18,4 +19,5 @@ export {
   SMInput,
   SMFileInput,
   SMTestimonial,
+  SMFAQ,
 };
