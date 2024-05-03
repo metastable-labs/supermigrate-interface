@@ -4,12 +4,14 @@ import { FieldErrors, UseFormRegister, UseFormWatch } from "react-hook-form";
 
 interface FormProp {
   tokenAddress: string;
-  tokenName: string;
-  tokenSymbol: string;
-  tokenDecimal: string;
+  tokenName?: string;
+  tokenSymbol?: string;
+  tokenDecimal?: string;
   tokenDescription: string;
   websiteLink?: string;
   twitterLink: string;
+  file?: File | null;
+  overridden?: boolean;
 }
 
 interface StepProps {
@@ -20,6 +22,8 @@ interface StepProps {
   setStep: Dispatch<SetStateAction<number>>;
   setFile?: Dispatch<SetStateAction<File | null>>;
   file?: File | null;
+  overridden?: boolean;
+  setOverridden?: Dispatch<SetStateAction<boolean>>;
 }
 
 export type { FormProp, StepProps };

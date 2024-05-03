@@ -1,7 +1,11 @@
+"use client";
+import { useEffect, useState } from "react";
+
 import { GithubButtonIcon } from "@/public/icons";
 import { SMButton } from "..";
 import useScreenDetect from "@/hooks/useScreenDetect";
 import { Network } from "@/config/rainbow/rainbowkit";
+import useSystemFunctions from "@/hooks/useSystemFunctions";
 
 const EmptyState = ({
   isConnected,
@@ -11,10 +15,30 @@ const EmptyState = ({
   network: Network;
 }) => {
   const { isMobile } = useScreenDetect();
+  const { navigate, pathname } = useSystemFunctions();
+  const [path, setPath] = useState("");
 
   const buttonText = isConnected ? "new migration" : "connect github";
+  const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=Iv1.c178abebc418bb02&redirect_uri=http://${path}`;
 
-  const action = () => {};
+  const action = () => {
+    if (isConnected) {
+      return navigate.push(`/migrate/${network}/new`);
+    } else {
+      return (window.location.href = githubAuthUrl);
+    }
+  };
+
+  useEffect(() => {
+    if (!window) return;
+
+    const url = window.location.host + pathname;
+    const regex = /(?<=\/)[a-z]{2}\//;
+    const removeLanguagePath = url.replace(regex, "");
+
+    setPath(removeLanguagePath);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center gap-[14px] flex-1 px-3">
