@@ -11,11 +11,9 @@ const useScreenDetect = () => {
   const tabletBreakpoint = 768;
 
   const [screenType, setScreenType] = useState<ScreenType>({
-    isMobile: window.innerWidth <= mobileBreakpoint,
-    isTablet:
-      window.innerWidth > mobileBreakpoint &&
-      window.innerWidth <= tabletBreakpoint,
-    isDesktop: window.innerWidth > tabletBreakpoint,
+    isMobile: false,
+    isTablet: false,
+    isDesktop: true,
   });
 
   useEffect(() => {
@@ -29,10 +27,15 @@ const useScreenDetect = () => {
       });
     };
 
-    window.addEventListener("resize", handleResize);
+    if (typeof window !== "undefined") {
+      handleResize();
+      window.addEventListener("resize", handleResize);
+    }
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      if (typeof window !== "undefined") {
+        window.removeEventListener("resize", handleResize);
+      }
     };
   }, []);
 
