@@ -1,7 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-
 import { LangParamProp } from "@/config/internationalization/i18n";
 import App from "./app";
 
@@ -14,7 +13,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Superbridge",
-  description: "",
+  description: ""
 };
 
 export default function RootLayout({ params, children }: Readonly<RootProps>) {

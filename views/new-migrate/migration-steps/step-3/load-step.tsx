@@ -4,7 +4,7 @@ import moment from "moment";
 
 import { CheckIcon, LoadingIcon, TrickleIcon } from "@/public/icons";
 import { Network } from "@/config/rainbow/rainbowkit";
-import SMLoader from "@/components/loader";
+import { SMLoader } from "@/components";
 
 const LoadStep = ({
   step,

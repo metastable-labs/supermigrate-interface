@@ -1,4 +1,4 @@
-import SMLoader from "@/components/loader";
+import { SMLoader } from "@/components";
 
 const TokenInfo = ({
   decimal,

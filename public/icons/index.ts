@@ -23,7 +23,7 @@ import ScrollDesktopIcon from "./scroll-desktop-icon.svg";
 import ScrollMobileIcon from "./scroll-mobile-icon.svg";
 import GithubButtonIcon from "./github-button-icon";
 import PlusIcon from "./plus-icon";
-import LinkRightArrow from "./link-right-arrow.svg";
+import LinkRightArrow from "./link-right-arrow";
 import DoubleCheckIcon from "./double-check-icon.svg";
 import MergedIcon from "./merged-icon.svg";
 import RoundedCloseIcon from "./rounded-close-icon.svg";
@@ -54,6 +54,17 @@ import MergedSecondaryIcon from "./merged-secondary-icon.svg";
 import MergedTertiaryIcon from "./merged-tertiary-icon.svg";
 import XIcon from "./x-icon.svg";
 import CopySecondaryIcon from "./copy-secondary-icon.svg";
+import HeroIcon from "./hero-icon";
+import HeroBaseBlandIcon from "./hero-base-bland-icon";
+import HeroBaseIcon from "./hero-base-icon";
+import HeroOptimismIcon from "./hero-optimism-icon";
+import HeroModeIcon from "./hero-mode-icon";
+import HeroScrollIcon from "./hero-scroll-icon";
+import HeroTiles from "./hero-tiles";
+import HeroFadeShape from "./hero-fade-shape";
+import HeroBGLines from "./hero-bg-lines";
+import SuperMigrateLogo from "./super-migrate-logo";
+import MinusIcon from "./minus-icon";
 import LineaIcon from "./linea-icon.svg";
 import ZoraIcon from "./zora-icon.svg";
 import WorldChainIcon from "./world-chain-icon.svg";
@@ -126,6 +137,17 @@ export {
   MergedTertiaryIcon,
   XIcon,
   CopySecondaryIcon,
+  HeroIcon,
+  HeroBaseBlandIcon,
+  HeroBaseIcon,
+  HeroOptimismIcon,
+  HeroModeIcon,
+  HeroScrollIcon,
+  HeroTiles,
+  HeroFadeShape,
+  HeroBGLines,
+  SuperMigrateLogo,
+  MinusIcon,
   LineaIcon,
   ZoraIcon,
   WorldChainIcon,
