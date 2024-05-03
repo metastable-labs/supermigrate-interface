@@ -46,7 +46,10 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative z-10 w-full mb-[141px] md:mb-[250px] lg:mb-[326px] pt-[150px] md:pt-[88px]">
+    <section
+      id="home"
+      className="relative z-10 w-full mb-[141px] md:mb-[250px] lg:mb-[326px] pt-[150px] md:pt-[88px]"
+    >
       <SMContainer>
         <div className="w-full flex flex-col lg:flex-row items-center lg:justify-between gap-6">
           <div className="flex flex-col justify-center items-start gap-[29px]">
