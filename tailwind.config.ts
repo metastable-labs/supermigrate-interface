@@ -104,6 +104,8 @@ const config: Config = {
         "small-shadow": "0px 2px 4px 0px rgba(27, 28, 29, 0.04)",
         "hero-header":
           "0px 20px 25px -5px rgba(0, 0, 0, 0.10), 0px 8px 10px -6px rgba(0, 0, 0, 0.10)",
+        "very-light-gray":
+          "0px 1.544px 3.089px 0px rgba(164, 172, 185, 0.24), 0px 0px 0px 1.544px rgba(18, 55, 105, 0.08)",
       },
     },
   },

@@ -4,6 +4,7 @@ import Marquee from "react-fast-marquee";
 import { testimonials } from "./dummy";
 import { SMTestimonial } from "@/components";
 import { ISMTestimonial } from "@/components/testimonial/types";
+import { LinkRightArrow } from "@/public/icons";
 
 const marqueeContent = (items: ISMTestimonial[]) => {
   return (
@@ -26,42 +27,49 @@ const Testimonials = () => {
         </h1>
 
         <div className="hidden lg:flex items-center gap-4">
-          <div className="rounded-lg shadow-[0px_1.544px_3.089px_0px_rgba(164,172,185,0.24),0px_0px_0px_1.544px_rgba(18,55,105,0.08)] px-3 py-2 flex gap-3">
+          <a
+            href="#"
+            target="_blank"
+            className="rounded-lg shadow-very-light-gray px-3 py-2 flex items-center justify-center gap-0 min-w-fit"
+          >
             <Image
               src="https://res.cloudinary.com/palmlight/image/upload/v1714329710/twitter-x-line_iekg46.svg"
               alt="twitter"
               width={24}
               height={24}
+              className="flex items-center justify-center lg:mx-3 lg:my-2"
             />
 
-            <div className="flex items-center gap-2">
-              <h2 className="lg:text-base text-xs">Follow Supermigrate</h2>
-              <Image
-                height={24}
-                width={24}
-                alt="caret"
-                src="https://res.cloudinary.com/palmlight/image/upload/v1714329710/arrow-right-up-line_kxleei.svg"
-              />
+            <div className="flex items-center justify-center gap-2">
+              <h2 className="lg:text-base text-xs whitespace-nowrap">
+                Follow Supermigrate
+              </h2>
+
+              <LinkRightArrow color="#0A0D14" width={24} height={24} />
             </div>
-          </div>
-          <div className="rounded-lg shadow-[0px_1.544px_3.089px_0px_rgba(164,172,185,0.24),0px_0px_0px_1.544px_rgba(18,55,105,0.08)] px-3 py-2 flex gap-3">
+          </a>
+
+          <a
+            href="#"
+            target="_blank"
+            className="rounded-lg shadow-very-light-gray px-3 py-2 flex items-center justify-center gap-0"
+          >
             <Image
               src="https://res.cloudinary.com/palmlight/image/upload/v1714329710/telegram_qmowq3.svg"
               alt="twitter"
               width={24}
               height={24}
+              className="flex items-center justify-center lg:mx-3 lg:my-2"
             />
 
-            <div className="flex items-center gap-2">
-              <h2 className="lg:text-base text-xs">Join community</h2>
-              <Image
-                height={24}
-                width={24}
-                alt="caret"
-                src="https://res.cloudinary.com/palmlight/image/upload/v1714329710/arrow-right-up-line_kxleei.svg"
-              />
+            <div className="flex items-center justify-center gap-2">
+              <h2 className="lg:text-base text-xs whitespace-nowrap">
+                Join community
+              </h2>
+
+              <LinkRightArrow color="#0A0D14" width={24} height={24} />
             </div>
-          </div>
+          </a>
         </div>
       </div>
 
@@ -80,6 +88,44 @@ const Testimonials = () => {
             {marqueeContent(testimonials)}
           </Marquee>
         )}
+      </div>
+
+      <div className="flex lg:hidden mt-8 items-center gap-4 w-full">
+        <a
+          href="#"
+          target="_blank"
+          className="rounded-lg shadow-very-light-gray px-3 py-2 flex items-center justify-center gap-1"
+        >
+          <Image
+            src="https://res.cloudinary.com/palmlight/image/upload/v1714329710/twitter-x-line_iekg46.svg"
+            alt="twitter"
+            width={24}
+            height={24}
+            className="flex items-center justify-center lg:mx-3 lg:my-2"
+          />
+
+          <h2 className="lg:text-base text-xs whitespace-nowrap">
+            Follow Supermigrate
+          </h2>
+        </a>
+
+        <a
+          href="#"
+          target="_blank"
+          className="rounded-lg shadow-very-light-gray px-3 py-2 flex items-center justify-between gap-1"
+        >
+          <Image
+            src="https://res.cloudinary.com/palmlight/image/upload/v1714329710/telegram_qmowq3.svg"
+            alt="twitter"
+            width={24}
+            height={24}
+            className="flex items-center justify-center lg:mx-3 lg:my-2"
+          />
+
+          <h2 className="lg:text-base text-xs whitespace-nowrap">
+            Join community
+          </h2>
+        </a>
       </div>
     </section>
   );
