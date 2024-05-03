@@ -5,7 +5,7 @@ import React, { useState } from "react";
 
 const FAQListing = ({
   question,
-  answer
+  answer,
 }: {
   question: string;
   answer: string;
@@ -14,8 +14,9 @@ const FAQListing = ({
   return (
     <div
       className={cn("px-8 py-6", {
-        "!bg-[#F9FAFB] rounded-2xl": displayAnswer
+        "!bg-[#F9FAFB] rounded-2xl": displayAnswer,
       })}
+      id="faq"
     >
       <div
         className="flex items-center justify-between gap-4 cursor-pointer"
@@ -58,23 +59,23 @@ const FAQs = () => {
     {
       question: "How do I start a migration process",
       answer:
-        "whether you’re new to L2s, or you don’t have a technical team. Supermigrate makes it easy"
+        "whether you’re new to L2s, or you don’t have a technical team. Supermigrate makes it easy",
     },
     {
       question: "Can I create new tokens on Supermigrate?",
       answer:
-        "whether you’re new to L2s, or you don’t have a technical team. Supermigrate makes it easy"
+        "whether you’re new to L2s, or you don’t have a technical team. Supermigrate makes it easy",
     },
     {
       question: "Can I bridge my migrated tokens?",
       answer:
-        "whether you’re new to L2s, or you don’t have a technical team. Supermigrate makes it easy"
+        "whether you’re new to L2s, or you don’t have a technical team. Supermigrate makes it easy",
     },
     {
       question: "How can I properly connect GitHub",
       answer:
-        "whether you’re new to L2s, or you don’t have a technical team. Supermigrate makes it easy"
-    }
+        "whether you’re new to L2s, or you don’t have a technical team. Supermigrate makes it easy",
+    },
   ];
   return (
     <section className="mt-[58px] lg:mt-[96px] lg:mb-[96px]">
@@ -92,7 +93,7 @@ const FAQs = () => {
 
         <div className="">
           <div className="space-y-4">
-            {FaqList?.map(faq => (
+            {FaqList?.map((faq) => (
               <FAQListing {...faq} key={faq.question} />
             ))}
           </div>
