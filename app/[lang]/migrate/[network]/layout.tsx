@@ -1,5 +1,5 @@
+import { Network } from "@/config/rainbow/rainbowkit";
 import App from "./app";
-import { Network } from "@/components/button/types";
 
 interface RootProps {
   params: { network: Network };

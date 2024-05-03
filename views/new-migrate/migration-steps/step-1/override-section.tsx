@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { motion } from "framer-motion";
 
 import { InfoIcon } from "@/public/icons";
-import { Network } from "@/components/button/types";
+import { Network } from "@/config/rainbow/rainbowkit";
 
 const OverrideIcon = ({
   overridden,

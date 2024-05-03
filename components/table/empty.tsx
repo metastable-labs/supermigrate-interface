@@ -1,7 +1,7 @@
 import { GithubButtonIcon } from "@/public/icons";
 import { SMButton } from "..";
-import { Network } from "../button/types";
 import useScreenDetect from "@/hooks/useScreenDetect";
+import { Network } from "@/config/rainbow/rainbowkit";
 
 const EmptyState = ({
   isConnected,

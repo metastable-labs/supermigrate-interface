@@ -8,6 +8,8 @@ import SMInput from "./input";
 import SMFileInput from "./file-input";
 import SMTestimonial from "./testimonial";
 import SMFAQ from "./faq";
+import SMSelect from "./select";
+import SMLoader from "./loader";
 
 export {
   SMContainer,
@@ -20,4 +22,6 @@ export {
   SMFileInput,
   SMTestimonial,
   SMFAQ,
+  SMSelect,
+  SMLoader,
 };

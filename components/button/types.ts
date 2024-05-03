@@ -1,4 +1,4 @@
-type Network = "base" | "optimism" | "mode" | "scroll";
+import { Network } from "@/config/rainbow/rainbowkit";
 
 type ButtonVariants = "git" | "new" | "bland-new" | "plain";
 
@@ -8,6 +8,7 @@ interface IButton {
   text: string;
   network?: Network;
   fullWidth?: boolean;
+  disabled?: boolean;
 }
 
-export type { IButton, ButtonVariants, Network };
+export type { IButton, ButtonVariants };

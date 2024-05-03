@@ -1,7 +1,41 @@
 import { motion } from "framer-motion";
 
-import Card from "./card";
 import { networks } from "@/config/rainbow/rainbowkit";
+import SMCard from "@/components/card";
+import { NetworkProps } from "@/config/rainbow/rainbowkit";
+
+const comingSoonNetworks: NetworkProps[] = [
+  {
+    title: "Linea",
+    chainId: 0,
+    comingSoon: true,
+    variant: "linea",
+  },
+  {
+    title: "Zora",
+    chainId: 0,
+    comingSoon: true,
+    variant: "zora",
+  },
+  {
+    title: "World Chain",
+    chainId: 0,
+    comingSoon: true,
+    variant: "world-chain",
+  },
+  {
+    title: "Degen",
+    chainId: 0,
+    comingSoon: true,
+    variant: "degen",
+  },
+  {
+    title: "PGN",
+    chainId: 0,
+    comingSoon: true,
+    variant: "pgn",
+  },
+];
 
 const SelectionComponent = () => {
   return (
@@ -10,7 +44,7 @@ const SelectionComponent = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="flex mt-7 md:mt-24 justify-center"
+      className="flex mt-7 md:mt-24 justify-center pb-10"
     >
       <div className="flex flex-col items-start gap-6">
         <div>
@@ -24,7 +58,11 @@ const SelectionComponent = () => {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full">
           {networks.map((card, index) => (
-            <Card key={index} {...card} />
+            <SMCard key={index} {...card} />
+          ))}
+
+          {comingSoonNetworks.map((card, index) => (
+            <SMCard key={index} {...card} />
           ))}
         </div>
 

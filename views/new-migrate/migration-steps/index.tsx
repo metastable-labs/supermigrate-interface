@@ -7,10 +7,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Header from "./header";
 import Step1 from "./step-1";
 import Step2 from "./step-2";
-import { Network } from "@/components/button/types";
 import { FormProp } from "./types";
 import Step3 from "./step-3";
 import Step4 from "./step-4";
+import { Network } from "@/config/rainbow/rainbowkit";
 
 const schema = yup.object().shape({
   tokenAddress: yup.string().required("Token Address is Required"),
@@ -30,6 +30,7 @@ const MigrationSteps = ({ network }: { network: Network }) => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm<FormProp>({
     mode: "onSubmit",
     resolver: yupResolver(schema),
@@ -42,6 +43,7 @@ const MigrationSteps = ({ network }: { network: Network }) => {
       errors={errors}
       network={network}
       setStep={setStep}
+      watch={watch}
     />,
     <Step2
       key={1}
