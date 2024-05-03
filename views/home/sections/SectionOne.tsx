@@ -10,32 +10,32 @@ const SectionOne = () => {
         "whether you’re new to L2s, or you don’t have a technical team. Supermigrate makes it easy",
       image:
         "https://res.cloudinary.com/palmlight/image/upload/v1714165543/easy_u1uz3f.svg",
-      bgColor: "bg-[#FDF9FD]"
+      bgColor: "bg-[#FDF9FD]",
     },
     {
       title: "Fast",
       description: "Never loose a sleep, fully automated process.",
       image:
         "https://res.cloudinary.com/palmlight/image/upload/v1714165547/fast_l0pin3.svg",
-      bgColor: "bg-[#F4F6FB]"
+      bgColor: "bg-[#F4F6FB]",
     },
     {
       title: "Earn",
       description: "Earn rewards and Incentives for getting on L2s",
       image:
         "https://res.cloudinary.com/palmlight/image/upload/v1714165542/earn_bojc0h.svg",
-      bgColor: "bg-[#FCFFFE]"
-    }
+      bgColor: "bg-[#FCFFFE]",
+    },
   ];
   return (
-    <section className="py-[58px] lg:py-[72px]">
+    <section id="about" className="py-[58px] lg:py-[72px]">
       <h1 className="text-center text-[24px] lg:text-[46px] font-medium mb-8 lg:mb-[90px]">
         Streamlined and easy migration <br className="hidden lg:block" />
         to Layer 2 Networks
       </h1>
 
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-10 items-stretch">
-        {listings?.map(item => (
+        {listings?.map((item) => (
           <div
             key={item?.title}
             className={cn(
