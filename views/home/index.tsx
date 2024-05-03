@@ -13,9 +13,9 @@ import SectionTwo from "./sections/SectionTwo";
 import SectionThree from "./sections/SectionThree";
 import SectionFour from "./sections/SectionFour";
 import FAQs from "./sections/faqs";
-import Footer from "./sections/Footer";
 import LandingHeader from "./header";
 import Testimonials from "./sections/testimonials";
+import Footer from "./sections/footer";
 
 export default function HomeView({ lang }: LangParamProp) {
   const { userState, locale } = useSystemFunctions();
