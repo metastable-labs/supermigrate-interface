@@ -2,6 +2,7 @@ import { GithubButtonIcon } from "@/public/icons";
 import { SMButton } from "..";
 import { useEffect, useState } from "react";
 import { Network } from "@/config/rainbow/rainbowkit";
+import useSystemFunctions from "@/hooks/useSystemFunctions";
 
 const EmptyState = ({
   isConnected,
@@ -10,11 +11,31 @@ const EmptyState = ({
   isConnected: boolean;
   network: Network;
 }) => {
+  const { navigate, pathname } = useSystemFunctions();
   const [isMobile, setIsMobile] = useState(false);
+  const [path, setPath] = useState("");
 
   const buttonText = isConnected ? "new migration" : "connect github";
+  const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=Iv1.c178abebc418bb02&redirect_uri=http://${path}`;
 
-  const action = () => {};
+  const action = () => {
+    if (isConnected) {
+      return navigate.push(`/migrate/${network}/new`);
+    } else {
+      return (window.location.href = githubAuthUrl);
+    }
+  };
+
+  useEffect(() => {
+    if (!window) return;
+
+    const url = window.location.host + pathname;
+    const regex = /(?<=\/)[a-z]{2}\//;
+    const removeLanguagePath = url.replace(regex, "");
+
+    setPath(removeLanguagePath);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 768px)");

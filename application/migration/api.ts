@@ -4,6 +4,7 @@ import { Migration } from "./types";
 type IUser = {
   fetchMigrations: () => Promise<Migration[]>;
   fetchMigration: (id: string) => Promise<Migration>;
+  migrateToken: (data: FormData) => Promise<Migration>;
 };
 
 const migration: IUser = {
@@ -15,6 +16,12 @@ const migration: IUser = {
 
   fetchMigration: async (id: string): Promise<Migration> => {
     const response = await axiosInstance.get(`migrations/${id}`);
+
+    return response.data?.data;
+  },
+
+  migrateToken: async (data: FormData): Promise<Migration> => {
+    const response = await axiosInstance.post(`migrations`, data);
 
     return response.data?.data;
   },

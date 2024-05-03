@@ -17,30 +17,12 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
   const { authenticateGithub } = useUserActions();
   const searchParams = useSearchParams();
 
-  const { loading } = userState;
+  const { loading, user } = userState;
   const { migrations, loading: migration_loading } = migrationState;
 
   const code = searchParams.get("code");
 
   const action = () => navigate.push(`/migrate/${network}/new`);
-
-  // const tableData = [
-  //   {
-  //     tokenIcon: "/images/grin.png",
-  //     tokenName: "$NJOKU",
-  //     pullStatus: "merged" as PullStatus,
-  //   },
-  //   {
-  //     tokenIcon: "/images/gulden.png",
-  //     tokenName: "$GULDEN",
-  //     pullStatus: "merged" as PullStatus,
-  //   },
-  //   {
-  //     tokenIcon: "/images/handshake.png",
-  //     tokenName: "$Handshake",
-  //     pullStatus: "merged" as PullStatus,
-  //   },
-  // ];
 
   const tableData = migrations?.map?.((migration) => ({
     tokenIcon: migration.logo_url,
@@ -101,7 +83,11 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
               />
             </div>
 
-            <SMTable isConnected data={tableData} network={network} />
+            <SMTable
+              isConnected={user ? true : false}
+              data={tableData}
+              network={network}
+            />
           </div>
         </motion.div>
       </SMContainer>

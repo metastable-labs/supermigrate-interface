@@ -9,6 +9,7 @@ interface IButton {
   network?: Network;
   fullWidth?: boolean;
   disabled?: boolean;
+  type?: "button" | "submit" | "reset";
 }
 
 export type { IButton, ButtonVariants };
