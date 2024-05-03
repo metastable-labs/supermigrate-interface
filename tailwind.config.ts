@@ -75,6 +75,7 @@ const config: Config = {
           2250: "#20232D",
           2300: "#EFFAF6",
           2350: "#717184",
+          2400: "rgba(10, 13, 20, 0.99)",
         },
         grey: {
           50: "#717184",
@@ -100,6 +101,8 @@ const config: Config = {
         "fade-light": "0px 1.591px 3.182px 0px rgba(27, 28, 29, 0.04)",
         "fade-dark": "0px 1px 2px 0px rgba(82, 88, 102, 0.06)",
         "small-shadow": "0px 2px 4px 0px rgba(27, 28, 29, 0.04)",
+        "hero-header":
+          "0px 20px 25px -5px rgba(0, 0, 0, 0.10), 0px 8px 10px -6px rgba(0, 0, 0, 0.10)",
       },
     },
   },
