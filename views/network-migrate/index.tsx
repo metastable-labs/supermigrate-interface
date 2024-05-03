@@ -1,35 +1,56 @@
 "use client";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
+import { useSearchParams } from "next/navigation";
 
 import { DesktopTilesIcon, MobileTilesIcon } from "@/public/icons";
 import { SMContainer, SMTable, SMButton } from "@/components";
 import { PullStatus } from "@/components/table/types";
 import Connect from "./connect";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
-import { Network } from "@/config/rainbow/rainbowkit";
+import { Network } from "@/config/rainbow/config";
+import SMLoader from "@/components/loader";
+import useUserActions from "@/application/user/actions";
 
 const NetworkMigrationsView = ({ network }: { network: Network }) => {
-  const { navigate } = useSystemFunctions();
+  const { navigate, userState, migrationState } = useSystemFunctions();
+  const { authenticateGithub } = useUserActions();
+  const searchParams = useSearchParams();
+
+  const { loading, user } = userState;
+  const { migrations, loading: migration_loading } = migrationState;
+
+  const code = searchParams.get("code");
 
   const action = () => navigate.push(`/migrate/${network}/new`);
 
-  const tableData = [
-    {
-      tokenIcon: "/images/grin.png",
-      tokenName: "$NJOKU",
-      pullStatus: "merged" as PullStatus,
-    },
-    {
-      tokenIcon: "/images/gulden.png",
-      tokenName: "$GULDEN",
-      pullStatus: "merged" as PullStatus,
-    },
-    {
-      tokenIcon: "/images/handshake.png",
-      tokenName: "$Handshake",
-      pullStatus: "merged" as PullStatus,
-    },
-  ];
+  const tableData = migrations?.map?.((migration) => ({
+    tokenIcon: migration.logo_url,
+    tokenName: migration.name,
+    pullStatus:
+      migration.pull_requests[0].status === "pending"
+        ? "pending"
+        : ("merged" as PullStatus),
+  }));
+
+  const handleGithubConnection = async () => {
+    if (!code || loading) return;
+
+    await authenticateGithub(code);
+  };
+
+  useEffect(() => {
+    handleGithubConnection();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [code]);
+
+  if (loading || migration_loading) {
+    return (
+      <div className="w-full h-[90vh] flex items-center justify-center">
+        <SMLoader variant="medium" />
+      </div>
+    );
+  }
 
   return (
     <div className="pb-10">
@@ -62,7 +83,11 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
               />
             </div>
 
-            <SMTable isConnected data={tableData} network={network} />
+            <SMTable
+              isConnected={user ? true : false}
+              data={tableData}
+              network={network}
+            />
           </div>
         </motion.div>
       </SMContainer>

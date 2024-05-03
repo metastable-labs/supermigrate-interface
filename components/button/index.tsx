@@ -11,6 +11,7 @@ const SMButton = ({
   variant = "git",
   fullWidth,
   disabled,
+  type = "button",
 }: IButton) => {
   let iconColor;
   if (network === "base" || network === "optimism" || variant === "bland-new") {
@@ -22,6 +23,7 @@ const SMButton = ({
 
   return (
     <motion.button
+      type={type}
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.9 }}
       className={classNames(
