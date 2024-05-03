@@ -19,9 +19,12 @@ const FAQs = () => {
           <h4 className="text-sm leading-normal md:text-lg text-[#475467]">
             Everything you need to know about Supermigrate and . Can’t find the
             answer you’re looking for?{" "}
-            <span className="text-primary-2450 underline underline-offset-2">
+            <a
+              href=""
+              className="text-primary-2450 underline underline-offset-2"
+            >
               See our Support page
-            </span>
+            </a>
           </h4>
         </div>
 
