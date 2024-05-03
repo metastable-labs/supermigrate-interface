@@ -1,4 +1,4 @@
-import { Network } from "@/config/rainbow/rainbowkit";
+import { Network } from "@/config/rainbow/config";
 import { Dispatch, SetStateAction } from "react";
 import { FieldErrors, UseFormRegister, UseFormWatch } from "react-hook-form";
 
@@ -24,6 +24,7 @@ interface StepProps {
   file?: File | null;
   overridden?: boolean;
   setOverridden?: Dispatch<SetStateAction<boolean>>;
+  fetchingTokenAddress?: boolean;
 }
 
 export type { FormProp, StepProps };

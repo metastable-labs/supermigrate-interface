@@ -14,6 +14,7 @@ const Step1 = ({
   watch,
   overridden,
   setOverridden,
+  fetchingTokenAddress,
 }: StepProps) => {
   const tokenAddress = watch?.("tokenAddress");
   const tokenDecimal = watch?.("tokenDecimal");
@@ -45,7 +46,9 @@ const Step1 = ({
         isRequired
       />
 
-      {tokenAddress && <TokenInfo {...tokenInfo} />}
+      {tokenAddress && tokenInfo.name && (
+        <TokenInfo loading={fetchingTokenAddress} {...tokenInfo} />
+      )}
 
       <OverrideSection
         handleOverride={handleOverride}

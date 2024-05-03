@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 
-import { networks } from "@/config/rainbow/rainbowkit";
 import SMCard from "@/components/card";
-import { NetworkProps } from "@/config/rainbow/rainbowkit";
+import { NetworkProps, networks } from "@/config/rainbow/config";
 
 const comingSoonNetworks: NetworkProps[] = [
   {
