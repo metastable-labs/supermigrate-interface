@@ -15,6 +15,7 @@ import SectionFour from "./sections/SectionFour";
 import TweetSection from "./sections/TweetSection";
 import FAQs from "./sections/FAQs";
 import Footer from "./sections/Footer";
+import LandingHeader from "./header";
 
 export default function HomeView({ lang }: LangParamProp) {
   const { userState, locale } = useSystemFunctions();
@@ -34,6 +35,7 @@ export default function HomeView({ lang }: LangParamProp) {
 
   return (
     <div className="bg-white h-full w-full">
+      <LandingHeader />
       <HeroSection />
       <SMContainer>
         {/* <LandingNav lang={lang} /> */}
