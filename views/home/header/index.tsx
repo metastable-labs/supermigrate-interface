@@ -30,7 +30,7 @@ const LandingHeader = () => {
   useEffect(() => {
     const handleScroll = () => {
       const position = window.scrollY;
-      setIsTop(position < 10);
+      setIsTop(position < 20);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -56,14 +56,19 @@ const LandingHeader = () => {
           transition={{
             duration: 0.8,
             ease: [0.6, 0.01, -0.05, 0.9],
+            type: "spring",
+            bounce: 0.3,
           }}
           className="flex items-center justify-between w-full"
         >
           <div className="flex items-center justify-center md:gap-3">
             <SuperMigrateLogo />
-            <span className="text-sm tracking-[-0.14px] text-primary-650 font-medium hidden md:block">
+            <a
+              href="#home"
+              className="text-sm tracking-[-0.14px] text-primary-650 font-medium hidden md:block"
+            >
               Supermigrate
-            </span>
+            </a>
           </div>
 
           <div className="hidden md:flex items-center justify-between min-w-[250px]">
