@@ -63,6 +63,7 @@ import HeroScrollIcon from "./hero-scroll-icon";
 import HeroTiles from "./hero-tiles";
 import HeroFadeShape from "./hero-fade-shape";
 import HeroBGLines from "./hero-bg-lines";
+import SuperMigrateLogo from "./super-migrate-logo";
 
 export {
   Logo,
@@ -130,4 +131,5 @@ export {
   HeroTiles,
   HeroFadeShape,
   HeroBGLines,
+  SuperMigrateLogo,
 };
