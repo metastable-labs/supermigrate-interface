@@ -43,8 +43,14 @@ const LandingHeader = () => {
   return (
     <div className="fixed w-screen z-20 flex justify-center items-center pt-[33px] px-4">
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        initial={{ opacity: 0, y: 0 }}
+        animate={{ opacity: 1, y: !isTop ? 5 : 0 }}
+        transition={{
+          duration: 0.8,
+          ease: [0.6, 0.01, -0.05, 0.9],
+          type: "spring",
+          bounce: 0.3,
+        }}
         className={classNames(
           "px-[18px] py-4 md:px-[14px] md:py-[10px] bg-primary-50 rounded-xl border border-primary-100 shadow-hero-header relative",
           { "w-full": isMobile || isTablet }
