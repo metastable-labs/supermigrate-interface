@@ -8,9 +8,15 @@ import useSystemFunctions from "@/hooks/useSystemFunctions";
 import { FormProp } from "@/views/new-migrate/migration-steps/types";
 import useContract from "@/hooks/useContract";
 import { networks } from "@/config/rainbow/config";
-import { setLoading, setMigration, setMigrations } from ".";
+import {
+  setLoading,
+  setLoadingMigration,
+  setMigration,
+  setMigrations,
+} from ".";
 import api from "./api";
 import { Migration } from "./types";
+import { CallbackProps } from "../store";
 
 const useMigrationActions = () => {
   const { dispatch } = useSystemFunctions();
@@ -56,12 +62,12 @@ const useMigrationActions = () => {
     } catch (error: any) {}
   };
 
-  const migrateToken = async (data: FormProp) => {
+  const migrateToken = async (data: FormProp, callback?: CallbackProps) => {
     try {
       dispatch(setLoading(true));
 
       if (data.tokenDecimal === "18") {
-        return await deployToken(
+        return deployToken(
           data.tokenAddress,
           data.tokenName!,
           data.tokenSymbol!
@@ -75,6 +81,8 @@ const useMigrationActions = () => {
         data.tokenDecimal!
       );
       setData(data);
+
+      callback?.onSuccess?.();
     } catch (error: any) {
       dispatch(setLoading(false));
     }
@@ -84,6 +92,8 @@ const useMigrationActions = () => {
     try {
       if (isPending || !isConfirmed) return;
 
+      dispatch(setLoading(false));
+      setLoadingMigration(true);
       const txData = await getTransactionData();
 
       const formData = new FormData();
@@ -92,7 +102,9 @@ const useMigrationActions = () => {
       formData.append("symbol", data?.tokenSymbol!);
       formData.append("decimals", data?.tokenDecimal!);
       formData.append("description", data?.tokenDescription!);
-      formData.append("website", data?.websiteLink!);
+      if (data?.websiteLink) {
+        formData.append("website", data?.websiteLink!);
+      }
       formData.append("twitter", data?.twitterLink!);
 
       const deployedToken = await networks.find(
@@ -127,9 +139,12 @@ const useMigrationActions = () => {
       formData.append("chains", chains.toString());
 
       const response = await api.migrateToken(formData);
+      console.log(response);
       getMigrationObject(response);
     } catch (error: any) {
-      dispatch(setLoading(false));
+      setLoadingMigration(false);
+    } finally {
+      setLoadingMigration(false);
     }
   };
 

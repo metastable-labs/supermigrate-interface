@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
+import { useChainId } from "wagmi";
 
 import { Network } from "@/config/rainbow/config";
 import readTokenData from "@/utils/read-contract";
@@ -14,7 +15,6 @@ import { FormProp } from "./types";
 import Step3 from "./step-3";
 import Step4 from "./step-4";
 import useMigrationActions from "@/application/migration/actions";
-import { useChainId } from "wagmi";
 
 const schema = yup.object().shape({
   tokenAddress: yup.string().required("Token Address is Required"),
@@ -38,6 +38,7 @@ const MigrationSteps = ({ network }: { network: Network }) => {
   const [step, setStep] = useState(0);
   const [file, setFile] = useState<File | null>(null);
   const [overridden, setOverridden] = useState(false);
+  const [fetchingTokenAddress, setFetchingTokenAddress] = useState(false);
 
   const {
     register,
@@ -62,6 +63,7 @@ const MigrationSteps = ({ network }: { network: Network }) => {
       watch={watch}
       overridden={overridden}
       setOverridden={setOverridden}
+      fetchingTokenAddress={fetchingTokenAddress}
     />,
     <Step2
       key={1}
@@ -78,13 +80,17 @@ const MigrationSteps = ({ network }: { network: Network }) => {
   ];
 
   const onSubmit = (data: FormProp) => {
-    migrateToken({ ...data, file, overridden });
+    migrateToken(
+      { ...data, file, overridden },
+      { onSuccess: () => setStep(2) }
+    );
   };
 
   const fetchTokenData = async () => {
     // Check if the input is a valid Ethereum wallet address
     const isAddressMatch = tokenAddress?.match(/^0x[a-fA-F0-9]{40}$/);
     if (!isAddressMatch) {
+      setFetchingTokenAddress(false);
       setValue("tokenName", "");
       setValue("tokenSymbol", "");
       setValue("tokenDecimal", "");
@@ -92,6 +98,7 @@ const MigrationSteps = ({ network }: { network: Network }) => {
     }
 
     try {
+      setFetchingTokenAddress(true);
       const res = await readTokenData(tokenAddress! as `0x${string}`, chainId);
 
       setValue("tokenName", res.name);
@@ -104,6 +111,8 @@ const MigrationSteps = ({ network }: { network: Network }) => {
           type: "error",
         }
       );
+    } finally {
+      setFetchingTokenAddress(false);
     }
   };
 

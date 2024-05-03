@@ -8,12 +8,14 @@ export interface MigrationState {
   migrations: Migration[];
   migration: Migration | undefined;
   loading: boolean;
+  loadingMigration: boolean;
 }
 
 const initialState: MigrationState = {
   migrations: [],
   migration: undefined,
   loading: false,
+  loadingMigration: false,
 };
 
 export const migrationReducer = createSlice({
@@ -22,6 +24,10 @@ export const migrationReducer = createSlice({
   reducers: {
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
+    },
+
+    setLoadingMigration: (state, action: PayloadAction<boolean>) => {
+      state.loadingMigration = action.payload;
     },
 
     setMigrations: (state, action: PayloadAction<Migration[]>) => {
@@ -34,7 +40,7 @@ export const migrationReducer = createSlice({
   },
 });
 
-export const { setLoading, setMigrations, setMigration } =
+export const { setLoading, setMigrations, setMigration, setLoadingMigration } =
   migrationReducer.actions;
 
 export default migrationReducer.reducer;

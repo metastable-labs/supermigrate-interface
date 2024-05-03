@@ -11,19 +11,20 @@ type Migration = {
     id: number;
     name: string;
     token_address: string;
-    token_detail_override: {
+    token_detail_override?: {
       name: string;
       symbol: string;
       decimals: number;
     };
     transaction_hash: string;
-  };
+  }[];
   pull_requests: {
     id: number;
-    installation_id: number;
     url: string;
     status: string;
-  };
+    chain: string;
+    installation_id: number;
+  }[];
   status: string;
   user_id: string;
   created_at: string;

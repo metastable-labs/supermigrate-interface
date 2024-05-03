@@ -1,3 +1,4 @@
+import useSystemFunctions from "@/hooks/useSystemFunctions";
 import useTruncateText from "@/hooks/useTruncateText";
 import {
   CopySecondaryIcon,
@@ -20,19 +21,27 @@ const Link = ({ link, text }: { link: string; text: string }) => {
 };
 
 const Left = () => {
-  const truncateAddress = useTruncateText(
-    "0x1234567890123456789012345678901234567890",
-    7,
-    4
-  );
+  const { migrationState } = useSystemFunctions();
+  const { migration } = migrationState;
+
+  const pullRequestsLength = migration?.pull_requests?.length! - 1;
+  const chainsLength = migration?.chains?.length! - 1;
+  const title =
+    migration?.pull_requests[pullRequestsLength].chain === "base"
+      ? "based"
+      : "super";
+  const address = migration?.chains[chainsLength].token_address;
+  const txHash = migration?.chains[chainsLength].transaction_hash;
+
+  const truncateAddress = useTruncateText(address || "", 7, 4);
 
   const links = [
     {
-      link: "https://twitter.com/BaseMigrate",
+      link: migration?.pull_requests[pullRequestsLength].url,
       text: "View Pull request on token list repo",
     },
     {
-      link: "https://twitter.com/BaseMigrate",
+      link: migration?.pull_requests[pullRequestsLength].url,
       text: "View Pull request on Superbridge",
     },
   ];
@@ -45,12 +54,12 @@ const Left = () => {
 
         <div className="flex flex-col gap-5 self-stretch items-start">
           <h1 className="text-[24px] leading-[44px] font-medium tracking-[-0.48px] text-primary-300">
-            {"You're almost"} <span className="text-primary-1650">based</span>!
-            🔵
+            {"You're almost"} <span className="text-primary-1650">{title}</span>
+            ! 🔵
           </h1>
 
           {links.map((link, index) => (
-            <Link key={index} link={link.link} text={link.text} />
+            <Link key={index} link={link.link!} text={link.text} />
           ))}
         </div>
       </div>
@@ -66,7 +75,7 @@ const Left = () => {
         </div>
 
         <a
-          href="https://twitter.com/BaseMigrate"
+          href={`https://basescan.org/tx/${txHash}`}
           target="_blank"
           className="text-primary-1650 text-[16px] leading-[30px] underline flex items-center justify-center gap-2 pb-[3px]"
         >
