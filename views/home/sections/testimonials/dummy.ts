@@ -1,4 +1,4 @@
-import { ISMTestimonial } from "@/components/testimonial/type";
+import { ISMTestimonial } from "@/components/testimonial/types";
 
 const testimonials: ISMTestimonial[] = [
   {

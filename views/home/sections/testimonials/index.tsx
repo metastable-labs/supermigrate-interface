@@ -3,7 +3,7 @@ import Marquee from "react-fast-marquee";
 
 import { testimonials } from "./dummy";
 import { SMTestimonial } from "@/components";
-import { ISMTestimonial } from "@/components/testimonial/type";
+import { ISMTestimonial } from "@/components/testimonial/types";
 
 const marqueeContent = (items: ISMTestimonial[]) => {
   return (
