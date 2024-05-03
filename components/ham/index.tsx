@@ -2,7 +2,6 @@
 import { CloseIcon, HamIcon } from "@/public/icons";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ISMHam } from "./type";
 
 const SMHam = ({ isOpen, onClick }: ISMHam) => {
   return (
