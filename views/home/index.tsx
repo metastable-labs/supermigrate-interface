@@ -12,10 +12,10 @@ import SectionOne from "./sections/SectionOne";
 import SectionTwo from "./sections/SectionTwo";
 import SectionThree from "./sections/SectionThree";
 import SectionFour from "./sections/SectionFour";
-import TweetSection from "./sections/TweetSection";
 import FAQs from "./sections/FAQs";
 import Footer from "./sections/Footer";
 import LandingHeader from "./header";
+import Testimonials from "./sections/testimonials";
 
 export default function HomeView({ lang }: LangParamProp) {
   const { userState, locale } = useSystemFunctions();
@@ -43,7 +43,7 @@ export default function HomeView({ lang }: LangParamProp) {
         <SectionTwo />
         <SectionThree />
         <SectionFour />
-        <TweetSection />
+        <Testimonials />
         <FAQs />
         {/* < */}
       </SMContainer>
