@@ -4,3 +4,5 @@ interface ISMTestimonial {
   imageUrl: string;
   content: string;
 }
+
+export type { ISMTestimonial };

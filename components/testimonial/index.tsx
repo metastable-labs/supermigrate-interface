@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ISMTestimonial } from "./types";
 
 const getTwitterUsername = (url: string) => {
   try {
