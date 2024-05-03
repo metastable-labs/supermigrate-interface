@@ -13,7 +13,7 @@ import {
   LiquidityLinkIcon,
   MigrateLinkIcon,
 } from "@/public/icons";
-import { networks } from "@/config/rainbow/rainbowkit";
+import { networks } from "@/config/rainbow/config";
 import { INavActions, INavLinks } from "./types";
 import SMModal from "../modal";
 import { ModalType } from "./modal/types";

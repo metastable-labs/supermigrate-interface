@@ -7,7 +7,7 @@ import { trim } from "viem";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
 import { FormProp } from "@/views/new-migrate/migration-steps/types";
 import useContract from "@/hooks/useContract";
-import { networks } from "@/config/rainbow/rainbowkit";
+import { networks } from "@/config/rainbow/config";
 import { setLoading, setMigration, setMigrations } from ".";
 import api from "./api";
 import { Migration } from "./types";
@@ -126,7 +126,8 @@ const useMigrationActions = () => {
       }
       formData.append("chains", chains.toString());
 
-      await api.migrateToken(formData);
+      const response = await api.migrateToken(formData);
+      getMigrationObject(response);
     } catch (error: any) {
       dispatch(setLoading(false));
     }

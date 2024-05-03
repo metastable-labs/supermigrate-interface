@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
 
-import { Network } from "@/config/rainbow/rainbowkit";
+import { Network } from "@/config/rainbow/config";
 import readTokenData from "@/utils/read-contract";
 import Header from "./header";
 import Step1 from "./step-1";
@@ -14,6 +14,7 @@ import { FormProp } from "./types";
 import Step3 from "./step-3";
 import Step4 from "./step-4";
 import useMigrationActions from "@/application/migration/actions";
+import { useChainId } from "wagmi";
 
 const schema = yup.object().shape({
   tokenAddress: yup.string().required("Token Address is Required"),
@@ -32,6 +33,7 @@ const schema = yup.object().shape({
 });
 
 const MigrationSteps = ({ network }: { network: Network }) => {
+  const chainId = useChainId();
   const { migrateToken } = useMigrationActions();
   const [step, setStep] = useState(0);
   const [file, setFile] = useState<File | null>(null);
@@ -90,7 +92,7 @@ const MigrationSteps = ({ network }: { network: Network }) => {
     }
 
     try {
-      const res = await readTokenData(tokenAddress! as `0x${string}`);
+      const res = await readTokenData(tokenAddress! as `0x${string}`, chainId);
 
       setValue("tokenName", res.name);
       setValue("tokenSymbol", res.symbol);

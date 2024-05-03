@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { SMButton } from "@/components";
-import { Network } from "@/config/rainbow/rainbowkit";
+import { Network } from "@/config/rainbow/config";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
 
 const Connect = ({ network }: { network: Network }) => {

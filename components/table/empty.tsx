@@ -1,7 +1,7 @@
 import { GithubButtonIcon } from "@/public/icons";
 import { SMButton } from "..";
 import { useEffect, useState } from "react";
-import { Network } from "@/config/rainbow/rainbowkit";
+import { Network } from "@/config/rainbow/config";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
 
 const EmptyState = ({

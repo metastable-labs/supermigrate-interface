@@ -8,7 +8,7 @@ import { SMContainer, SMTable, SMButton } from "@/components";
 import { PullStatus } from "@/components/table/types";
 import Connect from "./connect";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
-import { Network } from "@/config/rainbow/rainbowkit";
+import { Network } from "@/config/rainbow/config";
 import SMLoader from "@/components/loader";
 import useUserActions from "@/application/user/actions";
 
