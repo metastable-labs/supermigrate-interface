@@ -16,3 +16,7 @@ body {
 .mode-hero-text {
   -webkit-text-stroke: 1px #1a1d01;
 }
+
+.wide-full {
+  width: calc(100% + 2px);
+}
