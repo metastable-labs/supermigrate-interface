@@ -10,25 +10,25 @@ const SectionTwo = () => {
         "whether you're new to L2s, or you don't have a technical team. Supermigrate makes it easy",
       image:
         "https://res.cloudinary.com/palmlight/image/upload/v1714165543/easy_u1uz3f.svg",
-      bgColor: "bg-[#FDF9FD]"
+      bgColor: "bg-[#FDF9FD]",
     },
     {
       title: "Fast",
       description: "Never loose a sleep, fully automated process.",
       image:
         "https://res.cloudinary.com/palmlight/image/upload/v1714165547/fast_l0pin3.svg",
-      bgColor: "bg-[#F4F6FB]"
+      bgColor: "bg-[#F4F6FB]",
     },
     {
       title: "Earn",
       description: "Earn rewards and Incentives for getting on L2s",
       image:
         "https://res.cloudinary.com/palmlight/image/upload/v1714165542/earn_bojc0h.svg",
-      bgColor: "bg-[#FCFFFE]"
-    }
+      bgColor: "bg-[#FCFFFE]",
+    },
   ];
   return (
-    <section>
+    <section id="whitepaper">
       <h1 className="text-center text-[24px] lg:text-[46px] font-medium mt-[24px] lg:mt-[50px]">
         Everything, all in one place
       </h1>
@@ -48,7 +48,7 @@ const SectionTwo = () => {
           </h2>
         </div>
         <div className="mt-8 lg:mt-[90px] grid lg:grid-cols-3 grid-cols-1 gap-10 items-stretch w-full">
-          {listings?.map(item => (
+          {listings?.map((item) => (
             <div
               key={item?.title}
               className={cn(
