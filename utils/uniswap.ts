@@ -17,7 +17,7 @@ export function calculateSlippageAmount(value: number) {
 export function getUniswapRouterAddress(chainId: number | undefined): Address {
     if(chainId === 8453) return "0x4752ba5DBc23f44D87826276BF6Fd6b1C372aD24"; // base
     if (chainId === 84532) return "0xf6441bbbb55aaf15aaF4007b82202450858Da7c9"; // base sepolia
-    if (chainId === 10) return "0x4A7b5Da61326A6379179b40d00F57E5bbDC962c2"
+    if (chainId === 10) return "0x4A7b5Da61326A6379179b40d00F57E5bbDC962c2" // optimimsm
     return "0x";
 }
 
