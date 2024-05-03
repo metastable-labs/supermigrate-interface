@@ -23,7 +23,7 @@ import ScrollDesktopIcon from "./scroll-desktop-icon.svg";
 import ScrollMobileIcon from "./scroll-mobile-icon.svg";
 import GithubButtonIcon from "./github-button-icon";
 import PlusIcon from "./plus-icon";
-import LinkRightArrow from "./link-right-arrow.svg";
+import LinkRightArrow from "./link-right-arrow";
 import DoubleCheckIcon from "./double-check-icon.svg";
 import MergedIcon from "./merged-icon.svg";
 import RoundedCloseIcon from "./rounded-close-icon.svg";
@@ -64,6 +64,7 @@ import HeroTiles from "./hero-tiles";
 import HeroFadeShape from "./hero-fade-shape";
 import HeroBGLines from "./hero-bg-lines";
 import SuperMigrateLogo from "./super-migrate-logo";
+import MinusIcon from "./minus-icon";
 
 export {
   Logo,
@@ -132,4 +133,5 @@ export {
   HeroFadeShape,
   HeroBGLines,
   SuperMigrateLogo,
+  MinusIcon,
 };

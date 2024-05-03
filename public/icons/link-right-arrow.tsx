@@ -1,11 +1,11 @@
-const PlusIcon = ({
-  color = "white",
-  width = 20,
+const LinkRightArrow = ({
+  color = "#375DFB",
   height = 20,
+  width = 20,
 }: {
   color?: string;
-  width?: number;
   height?: number;
+  width?: number;
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -15,10 +15,10 @@ const PlusIcon = ({
     fill="none"
   >
     <path
-      d="M9.25 9.25V4.75H10.75V9.25H15.25V10.75H10.75V15.25H9.25V10.75H4.75V9.25H9.25Z"
+      d="M13.0576 8.02011L6.49427 14.5834L5.41602 13.5052L11.9786 6.94186H6.19458V5.41675H14.5827V13.8048H13.0576V8.02011Z"
       fill={color}
     />
   </svg>
 );
 
-export default PlusIcon;
+export default LinkRightArrow;
