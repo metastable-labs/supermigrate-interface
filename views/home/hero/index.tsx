@@ -48,10 +48,10 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative z-10 w-full mb-[141px] md:mb-[250px] lg:mb-[326px] pt-[150px] md:pt-[88px]"
+      className="relative z-10 w-full mb-[141px] md:mb-[250px] lg:mb-[326px] pt-[150px] md:pt-[120px] xl:pt-[88px]"
     >
       <SMContainer>
-        <div className="w-full flex flex-col lg:flex-row items-center lg:justify-between gap-6">
+        <div className="w-full flex flex-col xl:flex-row items-center xl:justify-between gap-6">
           <div className="flex flex-col justify-center items-start gap-[29px]">
             <div className="w-full flex flex-col justify-center items-start gap-8">
               <p className="text-black text-[38px] leading-[49.4px] md:text-[82px] md:leading-[106.6px] font-medium tracking-[-0.82px] max-w-[300px] lg:max-w-[548px]">
