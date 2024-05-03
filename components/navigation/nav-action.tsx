@@ -12,7 +12,7 @@ import {
   SelectSecondaryIcon,
   WalletIcon,
 } from "@/public/icons";
-import { networks } from "@/config/rainbow/rainbowkit";
+import { networks } from "@/config/rainbow/config";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
 
 interface NavActionProps {

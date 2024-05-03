@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { GithubButtonIcon } from "@/public/icons";
 import { SMButton } from "..";
 import useScreenDetect from "@/hooks/useScreenDetect";
-import { Network } from "@/config/rainbow/rainbowkit";
+import { Network } from "@/config/rainbow/config";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
 
 const EmptyState = ({
