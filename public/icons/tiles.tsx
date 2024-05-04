@@ -39,12 +39,23 @@ const Tiles = ({ network = "base" }: { network?: Network }) => (
         y2="-126.437"
         gradientUnits="userSpaceOnUse"
       >
-        <motion.stop animate={{ stopColor: colors[network].primary }} />
         <motion.stop
+          initial={{
+            stopColor: colors.base.primary,
+          }}
+          animate={{ stopColor: colors[network].primary }}
+        />
+        <motion.stop
+          initial={{
+            stopColor: colors.base.secondary,
+          }}
           animate={{ stopColor: colors[network].secondary }}
           offset="0.31674"
         />
         <motion.stop
+          initial={{
+            stopColor: colors.base.tertiary,
+          }}
           animate={{ stopColor: colors[network].tertiary }}
           offset="0.50309"
         />
