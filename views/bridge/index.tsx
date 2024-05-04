@@ -3,9 +3,9 @@ import { useState } from "react";
 import { useChainId } from "wagmi";
 
 import { LangParamProp } from "@/config/internationalization/i18n";
-import { networks } from "@/config/rainbow/rainbowkit";
 import { SMButton } from "@/components";
 import { ExclaimIcon } from "@/public/icons";
+import { networks } from "@/config/rainbow/config";
 
 const BridgeView = ({ lang }: LangParamProp) => {
   const [supported, setSupported] = useState(true);

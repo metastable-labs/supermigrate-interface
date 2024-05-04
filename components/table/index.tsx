@@ -53,32 +53,31 @@ const SMTable = ({
         </div>
       )}
 
-      {Boolean(data.length) && !loading && (
-        <table className="md:min-w-full divide-y divide-primary-1350">
-          <thead className="bg-primary-1450 text-primary-1500">
-            <tr>
-              {headers.map((header, index) => (
-                <th
-                  key={header.key}
-                  scope="col"
-                  className={classNames(
-                    "px-4 md:px-6 py-3 text-left text-xs font-medium",
-                    {
-                      "whitespace-nowrap": index === 0 || index === 2,
-                      "hidden md:table-cell": index === 1 || index === 2,
-                    }
-                  )}
-                >
-                  {isMobileView && header.mobileLabel
-                    ? header.mobileLabel
-                    : variant === "primary"
-                    ? header.label
-                    : header.secondaryLabel || header.label}
-                </th>
-              ))}
-            </tr>
-          </thead>
-
+      <table className="md:min-w-full divide-y divide-primary-1350">
+        <thead className="bg-primary-1450 text-primary-1500 border-b border-primary-1350">
+          <tr>
+            {headers.map((header, index) => (
+              <th
+                key={header.key}
+                scope="col"
+                className={classNames(
+                  "px-4 md:px-6 py-3 text-left text-xs font-medium",
+                  {
+                    "whitespace-nowrap": index === 0 || index === 2,
+                    "hidden md:table-cell": index === 1 || index === 2,
+                  }
+                )}
+              >
+                {isMobileView && header.mobileLabel
+                  ? header.mobileLabel
+                  : variant === "primary"
+                  ? header.label
+                  : header.secondaryLabel || header.label}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        {Boolean(data.length) && !loading && (
           <tbody className="bg-white divide-y divide-gray-200">
             {data.map((item, index) => (
               <tr key={index}>
@@ -132,8 +131,8 @@ const SMTable = ({
               </tr>
             ))}
           </tbody>
-        </table>
-      )}
+        )}
+      </table>
 
       {!Boolean(data.length) && !loading && (
         <EmptyState isConnected={isConnected} network={network} />
