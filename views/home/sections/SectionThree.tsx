@@ -33,7 +33,7 @@ const SectionThree = () => {
     <section className="bg-[#EFFAF6] py-6 lg:py-[50px] px-4 lg:px-[50px] rounded-xl mb-8 lg:mb-16">
       <Link
         href="/bridge"
-        className="lg:w-[80px] text-center text-sm lg:text-base w-[70px] bg-[#176448] text-[#EFFAF6] py-[10px] rounded-lg shadow-[0px_1.544px_3.089px_0px_rgba(164,172,185,0.24),0px_0px_0px_1.544px_rgba(18,55,105,0.08)]"
+        className="lg:w-[80px] text-center text-sm lg:text-base w-[70px] bg-[#176448] text-[#EFFAF6] px-[14px] py-[10px] rounded-lg shadow-[0px_1.544px_3.089px_0px_rgba(164,172,185,0.24),0px_0px_0px_1.544px_rgba(18,55,105,0.08)]"
       >
         Bridge
       </Link>

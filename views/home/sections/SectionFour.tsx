@@ -32,8 +32,8 @@ const SectionFour = () => {
   return (
     <section className="bg-[#EBF1FF] py-6 lg:py-[50px] px-4 lg:px-[50px] rounded-xl mb-8 lg:mb-16">
       <Link
-        href="/bridge"
-        className="w-[80px] lg:w-[90px] py-2.5 text-sm lg:text-base bg-[#162664] rounded-lg text-center text-[#EBF1FF] shadow-[0px_1.544px_3.089px_0px_rgba(164,172,185,0.24),0px_0px_0px_1.544px_rgba(18,55,105,0.08)]"
+        href="/liquidity"
+        className="w-[80px] lg:w-[90px] px-[14px] py-2.5 text-sm lg:text-base bg-[#162664] rounded-lg text-center text-[#EBF1FF] shadow-[0px_1.544px_3.089px_0px_rgba(164,172,185,0.24),0px_0px_0px_1.544px_rgba(18,55,105,0.08)]"
       >
         Liquidity
       </Link>
