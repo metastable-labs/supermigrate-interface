@@ -37,20 +37,6 @@ const EmptyState = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 768px)");
-
-    setIsMobile(mediaQuery.matches);
-
-    const handleResize = (event: MediaQueryListEvent) => {
-      setIsMobile(event.matches);
-    };
-
-    mediaQuery.addEventListener("change", handleResize);
-
-    return () => mediaQuery.removeEventListener("change", handleResize);
-  }, []);
-
   return (
     <div className="flex flex-col items-center justify-center gap-[14px] flex-1 px-3">
       <div className="flex flex-col items-center justify-center gap-1">

@@ -11,7 +11,7 @@ import Menu from "./menu";
 import {
   BridgeLinkIcon,
   LiquidityLinkIcon,
-  MigrateLinkIcon,
+  MigrateLinkIcon
 } from "@/public/icons";
 import { networks } from "@/config/rainbow/config";
 import { INavActions, INavLinks } from "./types";
@@ -32,20 +32,20 @@ const links: INavLinks = [
     title: "Migrate",
     icon: <MigrateLinkIcon />,
     href: "/migrate",
-    isActive: false,
+    isActive: false
   },
   {
     title: "Bridge",
     icon: <BridgeLinkIcon />,
     href: "/bridge",
-    isActive: false,
+    isActive: false
   },
   {
     title: "Liquidity",
     icon: <LiquidityLinkIcon />,
     href: "/liquidity",
-    isActive: false,
-  },
+    isActive: false
+  }
 ];
 
 const SMNavigation = () => {
@@ -61,15 +61,15 @@ const SMNavigation = () => {
   const isHome = isHomePage(pathname);
   const { user } = userState;
 
-  const updatedLinks = links?.map((link) => {
+  const updatedLinks = links?.map(link => {
     const regex = new RegExp(`^/[a-z]{2}${link.href}`);
     return {
       ...link,
-      isActive: regex.test(pathname),
+      isActive: regex.test(pathname)
     };
   });
 
-  const toggleMenu = () => setMenuOpen((prev) => !prev);
+  const toggleMenu = () => setMenuOpen(prev => !prev);
 
   const closeModal = () => setModalType(undefined);
 
@@ -79,7 +79,7 @@ const SMNavigation = () => {
     if (!chainId) return;
 
     const isAcceptedChain = networks.find(
-      (network) => network.chainId === chainId
+      network => network.chainId === chainId
     );
 
     if (isConnected && !isAcceptedChain) {
@@ -93,12 +93,12 @@ const SMNavigation = () => {
       variant: "account",
     },
     {
-      variant: "network",
+      variant: "network"
     },
     {
       text: address || "Connect",
-      variant: "wallet",
-    },
+      variant: "wallet"
+    }
   ];
 
   useEffect(() => {
@@ -112,7 +112,7 @@ const SMNavigation = () => {
         className={classNames(
           "fixed w-screen z-10 flex justify-center items-center pt-[55.013px] md:pt-0 bg-white",
           {
-            hidden: isHome,
+            hidden: isHome
           }
         )}
       >
@@ -139,7 +139,7 @@ const SMNavigation = () => {
           {modalType === "network" && <NetworkModal close={closeModal} />}
         </SMModal>
       </div>
-      <div className="h-[123px] md:h-[82px]" />
+      {!isHome && <div className="h-[123px] md:h-[82px]" />}
     </>
   );
 };

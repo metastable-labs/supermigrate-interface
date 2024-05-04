@@ -8,3 +8,19 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: #f9f9f9;
 }
+
+.scroll-hero-text {
+  -webkit-text-stroke: 1px#1a1d01;
+}
+
+.mode-hero-text {
+  -webkit-text-stroke: 1px #1a1d01;
+}
+
+.wide-full {
+  width: calc(100% + 2px);
+}
+
+html {
+  scroll-behavior: smooth;
+}

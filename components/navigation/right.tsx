@@ -3,42 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import NavAction from "./nav-action";
 import { INavActions } from "./types";
 import { CloseIcon, HamIcon } from "@/public/icons";
-
-const Ham = ({
-  menuOpen,
-  toggleMenu,
-}: {
-  menuOpen: boolean;
-  toggleMenu: () => void;
-}) => {
-  return (
-    <div className="md:hidden flex items-center justify-center">
-      <AnimatePresence mode="popLayout">
-        {menuOpen ? (
-          <motion.div
-            key="close"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={toggleMenu}
-          >
-            <CloseIcon />
-          </motion.div>
-        ) : (
-          <motion.div
-            key="ham"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={toggleMenu}
-          >
-            <HamIcon />
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-};
+import SMHam from "../ham";
 
 const Right = ({
   menuOpen,
@@ -63,7 +28,7 @@ const Right = ({
         ))}
       </div>
 
-      <Ham menuOpen={menuOpen} toggleMenu={toggleMenu} />
+      <SMHam isOpen={menuOpen} onClick={toggleMenu} />
     </div>
   );
 };
