@@ -10,6 +10,15 @@ type Chain = {
   transaction_hash: string;
 };
 
+type PullRequest = {
+  id: number;
+  url: string;
+  status: string;
+  chain: string;
+  installation_id: number;
+  owner: string;
+};
+
 type Migration = {
   id: string;
   name: string;
@@ -20,18 +29,11 @@ type Migration = {
   website: string;
   twitter: string;
   chains: Chain[];
-  pull_requests: {
-    id: number;
-    url: string;
-    status: string;
-    chain: string;
-    installation_id: number;
-    owner: string;
-  }[];
+  pull_requests: PullRequest[];
   status: string;
   user_id: string;
   created_at: string;
   updated_at: string;
 };
 
-export type { Migration, Chain };
+export type { Migration, Chain, PullRequest };

@@ -11,6 +11,18 @@ import useMigrationActions from "@/application/migration/actions";
 import FastLink from "./fast-link";
 import { FastLinkVariant } from "./types";
 import TokenContract from "./contract";
+import PullRequests from "./pull-request";
+import TransactionHash from "./hash";
+
+const hashes = [
+  { hash: "Base", urlText: "View on basescan", url: "https://basescan.io/" },
+  { hash: "Mode", urlText: "View on modescan", url: "https://modescan.io/" },
+  {
+    hash: "Optimism",
+    urlText: "View on optimism",
+    url: "https://optimismscan.io/",
+  },
+];
 
 const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
   const { migrationState } = useSystemFunctions();
@@ -80,6 +92,8 @@ const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
 
               <div className="p-6 border border-primary-250 rounded-base flex flex-col gap-9 bg-white">
                 <TokenContract chains={migration?.chains || []} />
+                <PullRequests pullRequests={migration?.pull_requests || []} />
+                <TransactionHash hashes={hashes} />
               </div>
             </div>
           </div>

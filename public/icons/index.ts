@@ -80,6 +80,7 @@ import GrinIcon from "./grin-icon.svg";
 import ExclaimIcon from "./exclaim-icon.svg";
 import Tiles from "./tiles";
 import WebIcon from "./web-icon";
+import GitMergeIcon from "./git-merge-icon";
 
 export {
   Logo,
@@ -164,4 +165,5 @@ export {
   GrinIcon,
   ExclaimIcon,
   WebIcon,
+  GitMergeIcon,
 };

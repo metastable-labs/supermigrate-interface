@@ -5,4 +5,12 @@ interface IFastLink {
   href: string;
 }
 
-export type { IFastLink, FastLinkVariant };
+interface ITransactionHash {
+  hashes: {
+    hash: string;
+    urlText: string;
+    url: string;
+  }[];
+}
+
+export type { IFastLink, FastLinkVariant, ITransactionHash };
