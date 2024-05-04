@@ -1,13 +1,13 @@
 import { axiosInstance } from "@/utils/axios";
 import { Migration } from "./types";
 
-type IUser = {
+type IMigration = {
   fetchMigrations: () => Promise<Migration[]>;
   fetchMigration: (id: string) => Promise<Migration>;
   migrateToken: (data: FormData) => Promise<Migration>;
 };
 
-const migration: IUser = {
+const migration: IMigration = {
   fetchMigrations: async (): Promise<Migration[]> => {
     const response = await axiosInstance.get(`migrations`);
 
