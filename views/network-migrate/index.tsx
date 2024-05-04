@@ -28,7 +28,11 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
     tokenIcon: migration.logo_url,
     tokenName: migration.name,
     pullStatus:
-      migration.status === "processing" ? "pending" : ("merged" as PullStatus),
+      migration?.status === "processing"
+        ? "pending"
+        : migration?.status === "failed"
+        ? "failed"
+        : ("merged" as PullStatus),
   }));
 
   const handleGithubConnection = async () => {

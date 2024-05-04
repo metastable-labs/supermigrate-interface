@@ -1,10 +1,12 @@
 import SMClickAnimation from "@/components/click-animation";
+import useSystemFunctions from "@/hooks/useSystemFunctions";
 import { DisconnectIcon } from "@/public/icons";
 
 const AccountModal = ({ close }: { close: () => void }) => {
+  const { userState } = useSystemFunctions();
   const action = () => {};
 
-  const modalTitle = `@${"Meistergit"}`;
+  const modalTitle = `@${userState?.user?.username}`;
 
   return (
     <div className="flex flex-col gap-6 min-w-[300px] md:min-w-80">
