@@ -10,10 +10,12 @@ import useSystemFunctions from "@/hooks/useSystemFunctions";
 import { Network } from "@/config/rainbow/config";
 import SMLoader from "@/components/loader";
 import useUserActions from "@/application/user/actions";
+import useMigrationActions from "@/application/migration/actions";
 
 const NetworkMigrationsView = ({ network }: { network: Network }) => {
   const { navigate, userState, migrationState } = useSystemFunctions();
   const { authenticateGithub } = useUserActions();
+  const { getMigrationObject } = useMigrationActions();
   const searchParams = useSearchParams();
 
   const { loading, user } = userState;
@@ -36,7 +38,10 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
   }));
 
   const handleTableAction = (id?: string) => {
-    navigate.push(`/migrate/${network}/${id}`);
+    if (!id) return navigate.push(`/migrate/${network}/${id}`);
+
+    getMigrationObject(id);
+    return navigate.push(`/migrate/${network}/${id}`);
   };
 
   const handleGithubConnection = async () => {
