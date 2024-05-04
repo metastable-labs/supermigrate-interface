@@ -12,14 +12,14 @@ const TransactionHash = ({ hashes }: ITransactionHash) => {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {hashes.map((hash, index) => (
+        {hashes?.map((hash, index) => (
           <div
             key={index}
             className="p-4 border border-primary-2100 rounded-base flex items-center justify-start w-full bg-primary-2700"
           >
             <div className="flex flex-col items-start gap-1.5 justify-center">
               <h3 className="text-primary-200 text-[12px] leading-[17.4px] capitalize">
-                {hash.hash}
+                {hash.name}
               </h3>
 
               <a
