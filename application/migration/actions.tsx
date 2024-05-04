@@ -120,7 +120,7 @@ const useMigrationActions = () => {
           token_address: data?.tokenAddress,
         },
         {
-          id: 1,
+          id: chainId,
           name: deployedToken?.variant,
           token_address: trim(tokenAddress!),
           deployer_address: address,
@@ -136,7 +136,7 @@ const useMigrationActions = () => {
           decimals: parseInt(data?.tokenDecimal!),
         };
       }
-      formData.append("chains", chains.toString());
+      formData.append("chains", JSON.stringify(chains));
 
       const response = await api.migrateToken(formData);
       console.log(response);
