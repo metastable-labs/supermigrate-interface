@@ -53,7 +53,7 @@ const SMModal = ({ children, close, show, variant = "default" }: Modal) => {
             "fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-70 flex items-center z-[9999] p-[15px]",
             {
               "justify-center":
-                variant === "default" || variant === "liquidity",
+                variant === "default" || variant === "secondary",
               "justify-end": variant === "git-connect",
             }
           )}
@@ -63,10 +63,10 @@ const SMModal = ({ children, close, show, variant = "default" }: Modal) => {
             animate={animation.animate}
             exit={animation.exit}
             className={classNames(
-              "relative flex justify-center items-center bg-white p-5 rounded-2xl",
+              "relative flex justify-center items-center bg-white p-5 rounded-base",
               {
                 "max-w-[496px]": variant === "git-connect",
-                "border border-primary-250": variant === "liquidity",
+                "border border-primary-250": variant === "secondary",
               }
             )}
           >
