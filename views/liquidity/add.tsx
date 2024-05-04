@@ -7,8 +7,9 @@ import { walletOptions, rates, tokenOptions, Rate } from "./dummy";
 import Info from "./info";
 import Extra from "./extra";
 import LiquidityInput from "./input";
+import { IAdd } from "./types";
 
-const Add = () => {
+const Add = ({ defaultId }: IAdd) => {
   const [step, setStep] = useState(0);
   const [values, setValues] = useState({ amount: "", liquidity: "" });
   const [wallet, setWallet] = useState<IOption>();
@@ -99,6 +100,7 @@ const Add = () => {
             onChange={handleInputChange("amount")}
             placeholder="0"
             options={walletOptions}
+            defaultId={defaultId}
             onSelect={handleWallet}
             selectText="Select wallet"
             balanceText={wallet?.text}
@@ -116,6 +118,7 @@ const Add = () => {
             onChange={handleInputChange("liquidity")}
             placeholder="0"
             options={tokenOptions}
+            defaultId={defaultId}
             onSelect={handleToken}
             selectText="Select token"
             disabled={!token}
