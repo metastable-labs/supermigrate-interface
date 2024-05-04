@@ -82,7 +82,7 @@ const SMFileInput = ({
             Choose a file or drag & drop it here.
           </span>
           <span className="text-primary-2050 text-xs font-normal">
-            JPEG, PNG, PDF, and MP4 formats, up to 50 MB.
+            SVG formats, up to 5 MB.
           </span>
         </p>
 
@@ -100,7 +100,7 @@ const SMFileInput = ({
         ref={documentInputRef}
         id="file-input"
         type="file"
-        accept=".png, .jpg, .jpeg, .pdf"
+        accept=".svg"
         className="hidden"
         onChange={handleFileChange}
       />

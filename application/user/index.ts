@@ -11,7 +11,7 @@ export interface UserState {
 
 const initialState: UserState = {
   user: undefined,
-  loading: true,
+  loading: false,
 };
 
 export const userReducer = createSlice({

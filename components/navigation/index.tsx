@@ -11,15 +11,17 @@ import Menu from "./menu";
 import {
   BridgeLinkIcon,
   LiquidityLinkIcon,
-  MigrateLinkIcon
+  MigrateLinkIcon,
 } from "@/public/icons";
-import { networks } from "@/config/rainbow/rainbowkit";
+import { networks } from "@/config/rainbow/config";
 import { INavActions, INavLinks } from "./types";
 import SMModal from "../modal";
 import { ModalType } from "./modal/types";
 import AccountModal from "./modal/account";
 import WalletModal from "./modal/wallet";
 import NetworkModal from "./modal/network";
+import useSystemFunctions from "@/hooks/useSystemFunctions";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
 
 const isHomePage = (path: string): boolean => {
   const homePageRegex = /^\/[a-z]{2}\/?$/;
@@ -31,52 +33,61 @@ const links: INavLinks = [
     title: "Migrate",
     icon: <MigrateLinkIcon />,
     href: "/migrate",
-    isActive: false
+    isActive: false,
   },
   {
     title: "Bridge",
     icon: <BridgeLinkIcon />,
     href: "/bridge",
-    isActive: false
+    isActive: false,
   },
   {
     title: "Liquidity",
     icon: <LiquidityLinkIcon />,
     href: "/liquidity",
-    isActive: false
-  }
+    isActive: false,
+  },
 ];
 
 const SMNavigation = () => {
   const { isConnected, isDisconnected, address } = useAccount();
   const chainId = useChainId();
   const { switchChain } = useSwitchChain();
+  const { openConnectModal } = useConnectModal();
+  const { userState } = useSystemFunctions();
 
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [modalType, setModalType] = useState<ModalType>();
 
   const isHome = isHomePage(pathname);
+  const { user } = userState;
 
-  const updatedLinks = links?.map(link => {
+  const updatedLinks = links?.map((link) => {
     const regex = new RegExp(`^/[a-z]{2}${link.href}`);
     return {
       ...link,
-      isActive: regex.test(pathname)
+      isActive: regex.test(pathname),
     };
   });
 
-  const toggleMenu = () => setMenuOpen(prev => !prev);
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   const closeModal = () => setModalType(undefined);
 
-  const handleModal = (type: ModalType) => setModalType(type);
+  const handleModal = (type: ModalType) => {
+    if (type === "wallet" && !isConnected) {
+      return openConnectModal && openConnectModal();
+    }
+
+    setModalType(type);
+  };
 
   const listenerToNetworkChange = () => {
     if (!chainId) return;
 
     const isAcceptedChain = networks.find(
-      network => network.chainId === chainId
+      (network) => network.chainId === chainId
     );
 
     if (isConnected && !isAcceptedChain) {
@@ -86,16 +97,16 @@ const SMNavigation = () => {
 
   const actionItems: INavActions = [
     {
-      text: "Meister",
-      variant: "account"
+      text: user?.username,
+      variant: "account",
     },
     {
-      variant: "network"
+      variant: "network",
     },
     {
       text: address || "Connect",
-      variant: "wallet"
-    }
+      variant: "wallet",
+    },
   ];
 
   useEffect(() => {
@@ -109,7 +120,7 @@ const SMNavigation = () => {
         className={classNames(
           "fixed w-screen z-10 flex justify-center items-center pt-[55.013px] md:pt-0 bg-white",
           {
-            hidden: isHome
+            hidden: isHome,
           }
         )}
       >

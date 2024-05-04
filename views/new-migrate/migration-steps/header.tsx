@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import classNames from "classnames";
 
 import { CheckIcon, RightCarretDarkIcon } from "@/public/icons";
-import { Network } from "@/config/rainbow/rainbowkit";
+import { Network } from "@/config/rainbow/config";
 
 const Step = ({
   step,

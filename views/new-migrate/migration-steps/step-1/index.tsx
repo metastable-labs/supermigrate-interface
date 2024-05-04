@@ -6,21 +6,34 @@ import TokenInfo from "./token-info";
 import OverrideSection from "./override-section";
 import { SMButton, SMInput } from "@/components";
 
-const Step1 = ({ register, errors, network, setStep, watch }: StepProps) => {
-  const [overridden, setOverridden] = useState(false);
-
+const Step1 = ({
+  register,
+  errors,
+  network,
+  setStep,
+  watch,
+  overridden,
+  setOverridden,
+  fetchingTokenAddress,
+}: StepProps) => {
   const tokenAddress = watch?.("tokenAddress");
+  const tokenDecimal = watch?.("tokenDecimal");
+  const tokenDescription = watch?.("tokenDescription");
+  const tokenName = watch?.("tokenName");
+  const tokenSymbol = watch?.("tokenSymbol");
 
   const tokenInfo = {
-    name: "Degen",
-    symbol: "$Degen",
-    decimal: "0.00",
+    name: tokenName || "",
+    symbol: `$${tokenSymbol}` || "",
+    decimal: tokenDecimal || "",
   };
 
-  const handleOverride = () => setOverridden((prev) => !prev);
+  const disbleButton =
+    !tokenAddress || (!tokenDecimal && overridden) || !tokenDescription;
+
+  const handleOverride = () => setOverridden!((prev) => !prev);
   const handleNext = () => setStep((prev) => prev + 1);
 
-  console.log(tokenAddress);
   return (
     <div className="flex flex-col items-center justify-center gap-6 rounded-xl border border-primary-2100 bg-white p-6 min-w-[343px] md:min-w-[448px]">
       <SMInput
@@ -33,11 +46,17 @@ const Step1 = ({ register, errors, network, setStep, watch }: StepProps) => {
         isRequired
       />
 
-      {tokenAddress && <TokenInfo {...tokenInfo} />}
+      {tokenAddress && tokenInfo.name && (
+        <TokenInfo
+          network={network}
+          loading={fetchingTokenAddress}
+          {...tokenInfo}
+        />
+      )}
 
       <OverrideSection
         handleOverride={handleOverride}
-        overridden={overridden}
+        overridden={overridden!}
         network={network}
       />
 
@@ -95,6 +114,7 @@ const Step1 = ({ register, errors, network, setStep, watch }: StepProps) => {
         fullWidth
         network={network}
         variant="plain"
+        disabled={disbleButton}
       />
     </div>
   );

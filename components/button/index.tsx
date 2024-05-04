@@ -11,6 +11,7 @@ const SMButton = ({
   variant = "git",
   fullWidth,
   disabled,
+  type = "button",
 }: IButton) => {
   let iconColor;
   if (network === "base" || network === "optimism" || variant === "bland-new") {
@@ -22,10 +23,11 @@ const SMButton = ({
 
   return (
     <motion.button
+      type={type}
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.9 }}
       className={classNames(
-        "py-[10px] px-[14px] flex items-center justify-center gap-1 rounded-[10px]",
+        "py-[10px] px-[14px] flex items-center justify-center gap-1 rounded-base",
         {
           "border-[0.5px] border-primary-1400": !disabled,
           "bg-primary-150 pointer-events-none": disabled,
@@ -51,7 +53,7 @@ const SMButton = ({
 
       <span
         className={classNames(
-          "font-medium tracking-[-0.084px] text-sm text-center transition-all duration-300 capitalize",
+          "font-medium tracking-[-0.084px] text-sm text-center transition-all duration-300 capitalize whitespace-nowrap",
           {
             "text-white":
               network === "base" ||

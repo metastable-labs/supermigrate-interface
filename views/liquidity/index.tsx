@@ -6,6 +6,9 @@ import { SMClickAnimation, SMContainer, SMTable, SMModal } from "@/components";
 import { LangParamProp } from "@/config/internationalization/i18n";
 import { SecondaryCloseIcon } from "@/public/icons";
 import Add from "./add";
+import useSystemFunctions from "@/hooks/useSystemFunctions";
+import SMLoader from "@/components/loader";
+import { useAccount } from "wagmi";
 
 const tableData = [
   {
@@ -61,14 +64,33 @@ const tableData = [
 ];
 
 const LiquidityView = ({ lang }: LangParamProp) => {
+  const { userState, liquidityState } = useSystemFunctions();
   const [showInfo, setShowInfo] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const { isConnected } = useAccount();
+
+  const { loading } = userState;
+  const { loading: liquidity_loading, liquidities } = liquidityState;
 
   const toggleShowInfo = () => setShowInfo((prev) => !prev);
 
   const handleShowModal = (id?: string) => {
     setShowModal((prev) => !prev);
   };
+
+  const tableData = liquidities.map((liquidity) => ({
+    tokenName: liquidity.provider,
+    tokenAddress: liquidity.pool_token_address,
+    poolUrl: `https://uniswap.org/pool/${liquidity.transaction_hash}`,
+  }));
+
+  if (loading || liquidity_loading) {
+    return (
+      <div className="w-full h-[90vh] flex items-center justify-center">
+        <SMLoader variant="medium" />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -109,7 +131,7 @@ const LiquidityView = ({ lang }: LangParamProp) => {
           </div>
 
           <SMTable
-            isConnected
+            isConnected={isConnected}
             data={tableData}
             network="base"
             variant="secondary"

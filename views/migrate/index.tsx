@@ -1,4 +1,5 @@
 "use client";
+
 import { SMContainer } from "@/components";
 import { LangParamProp } from "@/config/internationalization/i18n";
 import SelectionComponent from "./selection";

@@ -1,24 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classNames from "classnames";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { SMButton } from "@/components";
-import ConnectModal from "./connect-modal";
-import { Network } from "@/config/rainbow/rainbowkit";
+import { Network } from "@/config/rainbow/config";
+import useSystemFunctions from "@/hooks/useSystemFunctions";
 
 const Connect = ({ network }: { network: Network }) => {
-  const [isConnected, setIsConnected] = useState(false);
-  const [connectModalOpen, setConnectModalOpen] = useState(false);
-  const buttonText = "connect github";
-  const buttonVariant = "git";
+  const { userState, pathname } = useSystemFunctions();
+  const { loading, user } = userState;
 
-  const handleConnect = () => setIsConnected((prev) => !prev);
-  const handleConnectModal = () => setConnectModalOpen((prev) => !prev);
+  const [path, setPath] = useState("");
+
+  const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=Iv1.c178abebc418bb02&redirect_uri=http://${path}`;
+
+  useEffect(() => {
+    if (!window) return;
+
+    const url = window.location.host + pathname;
+    const regex = /(?<=\/)[a-z]{2}\//;
+    const removeLanguagePath = url.replace(regex, "");
+
+    setPath(removeLanguagePath);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
       <AnimatePresence>
-        {!isConnected && (
+        {!user && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -63,21 +73,17 @@ const Connect = ({ network }: { network: Network }) => {
               </p>
             </div>
 
-            <SMButton
-              network={network}
-              onClick={handleConnectModal}
-              text={buttonText}
-              variant={buttonVariant}
-            />
+            <a href={githubAuthUrl}>
+              <SMButton
+                disabled={loading}
+                network={network}
+                text="connect github"
+                variant="git"
+              />
+            </a>
           </motion.div>
         )}
       </AnimatePresence>
-
-      <ConnectModal
-        connectModalOpen={connectModalOpen}
-        handleConnectModal={handleConnectModal}
-        network={network}
-      />
     </>
   );
 };

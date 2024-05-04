@@ -19,6 +19,8 @@ const useSystemFunctions = () => {
   const userState = useAppSelector((state) => state.user);
   const localeState = useAppSelector((state) => state.locale);
   const locale = localeState.locale as Lang;
+  const migrationState = useAppSelector((state) => state.migration);
+  const liquidityState = useAppSelector((state) => state.liquidity);
 
   return {
     dispatch,
@@ -28,6 +30,8 @@ const useSystemFunctions = () => {
     // states
     userState,
     locale,
+    migrationState,
+    liquidityState,
   };
 };
 
