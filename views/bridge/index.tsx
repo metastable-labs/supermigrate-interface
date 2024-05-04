@@ -8,7 +8,7 @@ import { SMButton } from "@/components";
 import { ExclaimIcon } from "@/public/icons";
 
 const BridgeView = ({ lang }: LangParamProp) => {
-  const [supported, setSupported] = useState(false);
+  const [supported, setSupported] = useState(true);
   const chainId = useChainId();
 
   const network = networks.find((item) => item.chainId === chainId);
