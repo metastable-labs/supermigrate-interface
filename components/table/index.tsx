@@ -135,7 +135,12 @@ const SMTable = ({
       </table>
 
       {!Boolean(data.length) && !loading && (
-        <EmptyState isConnected={isConnected} network={network} />
+        <EmptyState
+          isConnected={isConnected}
+          network={network}
+          action={() => ctaAction?.()}
+          variant={variant}
+        />
       )}
 
       {Boolean(data.length) && (

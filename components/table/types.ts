@@ -21,4 +21,11 @@ interface TableProps {
   ctaAction?: (id?: string) => void;
 }
 
-export type { TableItem, TableProps, PullStatus };
+interface EmptyStateProps {
+  isConnected: boolean;
+  network: Network;
+  variant?: TableVariant;
+  action?: () => void;
+}
+
+export type { TableItem, TableProps, PullStatus, EmptyStateProps };
