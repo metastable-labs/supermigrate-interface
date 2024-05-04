@@ -2,7 +2,7 @@
 import { ReactNode, useEffect } from "react";
 
 import { DesktopTilesIcon, MobileTilesIcon } from "@/public/icons";
-import { Network } from "@/config/rainbow/rainbowkit";
+import { Network } from "@/config/rainbow/config";
 
 interface PageProps {
   params: { network: Network };
@@ -43,7 +43,9 @@ const App = ({ params, children }: PageProps) => {
     document.body.appendChild(bgDiv);
 
     return () => {
-      document.body.removeChild(bgDiv);
+      if (document.body.contains(bgDiv)) {
+        document.body.removeChild(bgDiv);
+      }
     };
   }, [params.network]);
 

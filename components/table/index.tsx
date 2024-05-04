@@ -44,10 +44,7 @@ const SMTable = ({
     <div
       className={classNames(
         "self-stretch overflow-x-auto rounded-xl border border-primary-1350 flex flex-col justify-between bg-white",
-        {
-          "min-h-[324px]": Boolean(data.length),
-          "min-h-[410px] md:min-h-[408px]": !Boolean(data.length),
-        }
+        {}
       )}
     >
       {loading && (

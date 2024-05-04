@@ -83,17 +83,17 @@ const NavAction = ({ text, onClick, variant = "network" }: NavActionProps) => {
               </span>
             )}
 
-            {variant === "wallet" && <VerifiedIcon />}
+            {variant === "wallet" && isConnected && <VerifiedIcon />}
           </div>
         </div>
 
-        {variant === "network" ? (
+        {variant === "network" && (
           <div className="absolute right-[3px] bottom-[5px] flex items-center justify-center bg-primary-650 rounded-full border-[0.171px] border-primary-1000">
             <SelectSecondaryIcon />
           </div>
-        ) : (
-          <SelectIcon />
         )}
+
+        {variant !== "network" && isConnected && <SelectIcon />}
       </div>
     </SMClickAnimation>
   );
