@@ -4,6 +4,7 @@ import LiquidityView from "./liquidity";
 import BridgeView from "./bridge";
 import NewMigrateView from "./new-migrate";
 import NetworkMigrationsView from "./network-migrate";
+import TokenDetailView from "./token-detail";
 
 export {
   HomeView,
@@ -12,4 +13,5 @@ export {
   BridgeView,
   NewMigrateView,
   NetworkMigrationsView,
+  TokenDetailView,
 };

@@ -34,6 +34,10 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
         : ("merged" as PullStatus),
   }));
 
+  const handleTableAction = (id?: string) => {
+    navigate.push(`/migrate/${network}/${id}`);
+  };
+
   const handleGithubConnection = async () => {
     if (!code || loading) return;
 
@@ -88,6 +92,7 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
               isConnected={user ? true : false}
               data={tableData}
               network={network}
+              ctaAction={handleTableAction}
             />
           </div>
         </motion.div>

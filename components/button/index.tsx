@@ -27,7 +27,7 @@ const SMButton = ({
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.9 }}
       className={classNames(
-        "py-[10px] px-[14px] flex items-center justify-center gap-1 rounded-[10px]",
+        "py-[10px] px-[14px] flex items-center justify-center gap-1 rounded-base",
         {
           "border-[0.5px] border-primary-1400": !disabled,
           "bg-primary-150 pointer-events-none": disabled,

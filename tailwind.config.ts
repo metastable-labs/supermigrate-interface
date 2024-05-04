@@ -88,6 +88,10 @@ const config: Config = {
           2900: "#C2540A",
           3000: "#F17B2C",
           3050: "#667085",
+          3100: "#2D9F75",
+          3150: "#B47818",
+          3200: "#AF1D38",
+          3250: "#002132",
         },
         grey: {
           50: "#717184",
@@ -117,6 +121,10 @@ const config: Config = {
           "0px 20px 25px -5px rgba(0, 0, 0, 0.10), 0px 8px 10px -6px rgba(0, 0, 0, 0.10)",
         "very-light-gray":
           "0px 1.544px 3.089px 0px rgba(164, 172, 185, 0.24), 0px 0px 0px 1.544px rgba(18, 55, 105, 0.08)",
+      },
+
+      borderRadius: {
+        base: "5px",
       },
     },
   },

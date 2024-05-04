@@ -65,8 +65,7 @@ const SMTable = ({
                     "px-4 md:px-6 py-3 text-left text-xs font-medium",
                     {
                       "whitespace-nowrap": index === 0 || index === 2,
-                      "hidden md:table-cell":
-                        index === 3 || (index === 2 && variant === "secondary"),
+                      "hidden md:table-cell": index === 1 || index === 2,
                     }
                   )}
                 >
@@ -95,7 +94,7 @@ const SMTable = ({
                   />
                   {item.tokenName}
                 </td>
-                <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden md:table-cell">
                   {variant === "primary" && (
                     <Status status={item?.pullStatus} />
                   )}
@@ -103,7 +102,7 @@ const SMTable = ({
                     <Address address={item?.tokenAddress} />
                   )}
                 </td>
-                <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 flex justify-center md:justify-start items-center gap-2">
+                <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 justify-center md:justify-start items-center gap-2 md:flex hidden">
                   <a
                     href={
                       variant === "secondary"
@@ -122,10 +121,12 @@ const SMTable = ({
 
                   <LinkRightArrow />
                 </td>
-                <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm font-medium md:table-cell hidden">
+
+                <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm font-medium">
                   <CTA
-                    title="Add Liquidity"
+                    title={variant === "primary" ? "View" : "Add Liquidity"}
                     onClick={() => ctaAction?.(item?.tokenName)}
+                    normal
                   />
                 </td>
               </tr>

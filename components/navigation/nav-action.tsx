@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import classNames from "classnames";
 import { usePathname } from "next/navigation";
-import { useAccount, useChainId } from "wagmi";
+import { useChainId } from "wagmi";
 
 import useTruncateText from "@/hooks/useTruncateText";
 import SMClickAnimation from "../click-animation";
@@ -24,7 +24,6 @@ interface NavActionProps {
 
 const NavAction = ({ text, onClick, variant = "network" }: NavActionProps) => {
   const chainId = useChainId();
-  const { isConnected } = useAccount();
   const pathname = usePathname();
   const { userState } = useSystemFunctions();
   const truncateText = useTruncateText(text || "", 4, 4);
@@ -67,7 +66,7 @@ const NavAction = ({ text, onClick, variant = "network" }: NavActionProps) => {
           (!user && variant === "account"),
       })}
     >
-      <div className="max-w-[200px] md:max-w-[240px] bg-white rounded-[10px] border border-primary-250 shadow-nav-select-shadow py-1 pl-1 pr-2 flex items-center justify-center gap-[6px] relative">
+      <div className="max-w-[200px] md:max-w-[240px] bg-white rounded-base border border-primary-250 shadow-nav-select-shadow py-1 pl-1 pr-2 flex items-center justify-center gap-[6px] relative">
         <div className={classNames("flex items-center justify-center", {})}>
           {icon}
 
@@ -83,17 +82,17 @@ const NavAction = ({ text, onClick, variant = "network" }: NavActionProps) => {
               </span>
             )}
 
-            {variant === "wallet" && isConnected && <VerifiedIcon />}
+            {variant === "wallet" && <VerifiedIcon />}
           </div>
         </div>
 
-        {variant === "network" && (
+        {variant === "network" ? (
           <div className="absolute right-[3px] bottom-[5px] flex items-center justify-center bg-primary-650 rounded-full border-[0.171px] border-primary-1000">
             <SelectSecondaryIcon />
           </div>
+        ) : (
+          <SelectIcon />
         )}
-
-        {variant !== "network" && isConnected && <SelectIcon />}
       </div>
     </SMClickAnimation>
   );
