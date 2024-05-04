@@ -35,18 +35,16 @@ const Left = () => {
 
   const truncateAddress = useTruncateText(address || "", 7, 4);
 
-  const links = [
-    {
-      link: migration?.pull_requests[pullRequestsLength].url,
-      text: "View Pull request on token list repo",
-    },
-    {
-      link: migration?.pull_requests[pullRequestsLength].url,
-      text: "View Pull request on Superbridge",
-    },
-  ];
+  const links = migration?.pull_requests?.map((pullRequest) => ({
+    text:
+      pullRequest.status === "pending"
+        ? "View Pull request on token list repo"
+        : "View Pull request on Superbridge",
+    link: pullRequest.url,
+  }));
+
   return (
-    <div className="w-full flex flex-col items-start justify-center gap-16 rounded-xl border border-primary-2100 bg-white p-6 min-w-[343px] md:w-[325px]">
+    <div className="w-full flex flex-col items-start justify-center gap-16 rounded-xl border border-primary-2100 bg-white p-6 min-w-[343px] md:w-[400px]">
       <div className="flex flex-col self-stretch gap-3 items-start">
         <div className="p-3 bg-primary-2300 w-12 h-12 rounded-[10px] flex justify-center items-center shadow-sm">
           <MergedSecondaryIcon />
@@ -58,7 +56,7 @@ const Left = () => {
             ! 🔵
           </h1>
 
-          {links.map((link, index) => (
+          {links?.map((link, index) => (
             <Link key={index} link={link.link!} text={link.text} />
           ))}
         </div>
