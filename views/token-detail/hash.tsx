@@ -24,6 +24,7 @@ const TransactionHash = ({ hashes }: ITransactionHash) => {
 
               <a
                 href={hash.url}
+                target="_blank"
                 className="flex gap-2 items-center justify-center"
               >
                 <span className="text-primary-1650 text-[14px] leading-[30px] underline underline-offset-4">
