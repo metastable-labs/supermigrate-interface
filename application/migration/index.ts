@@ -31,7 +31,7 @@ export const migrationReducer = createSlice({
     },
 
     setMigrations: (state, action: PayloadAction<Migration[]>) => {
-      state.migrations = [...state.migrations, ...action.payload];
+      state.migrations = [...action.payload];
     },
 
     setMigration: (state, action: PayloadAction<Migration>) => {
