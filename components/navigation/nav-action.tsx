@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import classNames from "classnames";
 import { usePathname } from "next/navigation";
-import { useChainId } from "wagmi";
+import { useAccount, useChainId } from "wagmi";
 
 import useTruncateText from "@/hooks/useTruncateText";
 import SMClickAnimation from "../click-animation";
@@ -24,6 +24,7 @@ interface NavActionProps {
 
 const NavAction = ({ text, onClick, variant = "network" }: NavActionProps) => {
   const chainId = useChainId();
+  const { isConnected } = useAccount();
   const pathname = usePathname();
   const { userState } = useSystemFunctions();
   const truncateText = useTruncateText(text || "", 4, 4);

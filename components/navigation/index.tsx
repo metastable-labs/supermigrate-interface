@@ -21,6 +21,7 @@ import AccountModal from "./modal/account";
 import WalletModal from "./modal/wallet";
 import NetworkModal from "./modal/network";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
 
 const isHomePage = (path: string): boolean => {
   const homePageRegex = /^\/[a-z]{2}\/?$/;
@@ -52,6 +53,7 @@ const SMNavigation = () => {
   const { isConnected, isDisconnected, address } = useAccount();
   const chainId = useChainId();
   const { switchChain } = useSwitchChain();
+  const { openConnectModal } = useConnectModal();
   const { userState } = useSystemFunctions();
 
   const pathname = usePathname();
@@ -73,7 +75,13 @@ const SMNavigation = () => {
 
   const closeModal = () => setModalType(undefined);
 
-  const handleModal = (type: ModalType) => setModalType(type);
+  const handleModal = (type: ModalType) => {
+    if (type === "wallet" && !isConnected) {
+      return openConnectModal && openConnectModal();
+    }
+
+    setModalType(type);
+  };
 
   const listenerToNetworkChange = () => {
     if (!chainId) return;
