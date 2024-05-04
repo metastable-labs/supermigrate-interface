@@ -30,7 +30,7 @@ export function getUniswapRouterAddress(chainId: number | undefined): Address {
  * @param amountBDesired amount of token B desired to be added
  * @param deadline by default it is 5 minutes as L2
  */
-export async function addLiquidity(tokenA: Address, tokenB: Address, amountADesired: number, amountBDesired: number, deadline: number = 60 * 5) {
+export async function AddLiquidity(tokenA: Address, tokenB: Address, amountADesired: number, amountBDesired: number, deadline: number = 60 * 5) {
     const amountAMin = calculateSlippageAmount(amountADesired)[0];
     const amountBMin = calculateSlippageAmount(amountBDesired)[0];
 
@@ -64,7 +64,7 @@ export async function addLiquidity(tokenA: Address, tokenB: Address, amountADesi
  * @param amountETHDesired amount of native ETH desired to be added
  * @param deadline by default it is 5 minutes as L2
  */
-export async function addLiquidityEth(token: Address, amountERC20Desired: number, amountETHDesired: number, deadline: number = 60 * 5) {
+export async function AddLiquidityEth(token: Address, amountERC20Desired: number, amountETHDesired: number, deadline: number = 60 * 5) {
     const amountERC20Min = calculateSlippageAmount(amountERC20Desired)[0];
     const amountNativeMin = calculateSlippageAmount(amountETHDesired)[0];
 
