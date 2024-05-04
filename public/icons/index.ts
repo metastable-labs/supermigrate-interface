@@ -79,6 +79,7 @@ import EthereumIcon from "./ethereum-icon.svg";
 import SolanaIcon from "./solana-icon.svg";
 import PolygonIcon from "./polygon-icon.svg";
 import GrinIcon from "./grin-icon.svg";
+import ExclaimIcon from "./exclaim-icon.svg";
 
 export {
   Logo,
@@ -162,4 +163,5 @@ export {
   SolanaIcon,
   PolygonIcon,
   GrinIcon,
+  ExclaimIcon,
 };
