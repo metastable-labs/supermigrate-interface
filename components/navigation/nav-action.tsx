@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import classNames from "classnames";
 import { usePathname } from "next/navigation";
-import { useChainId } from "wagmi";
+import { useAccount, useChainId } from "wagmi";
 
 import useTruncateText from "@/hooks/useTruncateText";
 import SMClickAnimation from "../click-animation";
@@ -26,6 +26,7 @@ const NavAction = ({ text, onClick, variant = "network" }: NavActionProps) => {
   const chainId = useChainId();
   const pathname = usePathname();
   const { userState } = useSystemFunctions();
+  const { isConnected } = useAccount();
   const truncateText = useTruncateText(text || "", 4, 4);
   const shouldHide = /\/[a-zA-Z]{2}\/migrate$/.test(pathname); // Hide network select on migrate page
 
@@ -38,6 +39,7 @@ const NavAction = ({ text, onClick, variant = "network" }: NavActionProps) => {
       const currentNetwork = networks.find(
         (network) => network.chainId === chainId
       );
+      console.log(currentNetwork);
       if (currentNetwork) {
         return setIcon(currentNetwork?.icon);
       }
@@ -82,17 +84,17 @@ const NavAction = ({ text, onClick, variant = "network" }: NavActionProps) => {
               </span>
             )}
 
-            {variant === "wallet" && <VerifiedIcon />}
+            {variant === "wallet" && isConnected && <VerifiedIcon />}
           </div>
         </div>
 
-        {variant === "network" ? (
+        {variant === "network" && (
           <div className="absolute right-[3px] bottom-[5px] flex items-center justify-center bg-primary-650 rounded-full border-[0.171px] border-primary-1000">
             <SelectSecondaryIcon />
           </div>
-        ) : (
-          <SelectIcon />
         )}
+
+        {variant !== "network" && isConnected && <SelectIcon />}
       </div>
     </SMClickAnimation>
   );
