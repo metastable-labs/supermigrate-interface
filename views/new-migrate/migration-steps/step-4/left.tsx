@@ -37,7 +37,7 @@ const Left = () => {
 
   const links = migration?.pull_requests?.map((pullRequest) => ({
     text:
-      pullRequest.status === "pending"
+      pullRequest.owner === "optimism" || pullRequest.owner === "iamnotstatic"
         ? "View Pull request on token list repo"
         : "View Pull request on Superbridge",
     link: pullRequest.url,
