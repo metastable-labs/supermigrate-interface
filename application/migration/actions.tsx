@@ -65,9 +65,9 @@ const useMigrationActions = () => {
   const migrateToken = async (data: FormProp, callback?: CallbackProps) => {
     try {
       dispatch(setLoading(true));
-
+      setData(data);
       if (data.tokenDecimal === "18") {
-        return deployToken(
+        deployToken(
           data.tokenAddress,
           data.tokenName!,
           data.tokenSymbol!
@@ -80,9 +80,7 @@ const useMigrationActions = () => {
         data.tokenSymbol!,
         data.tokenDecimal!
       );
-      setData(data);
-
-      callback?.onSuccess?.();
+     callback?.onSuccess?.();
     } catch (error: any) {
       dispatch(setLoading(false));
     }
@@ -110,8 +108,10 @@ const useMigrationActions = () => {
       const deployedToken = await networks.find(
         (network) => network.chainId === chainId
       );
-      const logIndex = data?.tokenDecimal !== "18" ? 1 : 0;
-      const tokenAddress = txData?.logs?.[logIndex]?.topics?.[2];
+      const topicIndex = data?.tokenDecimal === "18" ? 1 : 2;
+      
+      const tokenAddress = txData?.logs?.[1]?.topics?.[topicIndex];
+
 
       let chains = [
         {
@@ -125,7 +125,7 @@ const useMigrationActions = () => {
           token_address: trim(tokenAddress!),
           deployer_address: address,
           token_detail_override: {},
-          transaction_hash: txData?.blockHash,
+          transaction_hash: txData?.transactionHash,
         },
       ];
 
