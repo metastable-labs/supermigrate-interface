@@ -1,12 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import classNames from "classnames";
 
 import { ISMSelect, IOption } from "./types";
 import SMClickAnimation from "../click-animation";
+import SMModal from "../modal";
 import { SecondarySelectIcon } from "@/public/icons";
 
-const SMSelect = ({ text, disabled, onClick, options }: ISMSelect) => {
+const SMSelect = ({
+  text,
+  disabled,
+  onClick,
+  options,
+  defaultId,
+}: ISMSelect) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<IOption>();
 
@@ -18,6 +25,13 @@ const SMSelect = ({ text, disabled, onClick, options }: ISMSelect) => {
 
     if (onClick) onClick(option);
   };
+
+  useEffect(() => {
+    if (defaultId && options) {
+      const defaultOption = options.find((option) => option.id === defaultId);
+      if (defaultOption) setSelectedOption(defaultOption);
+    }
+  }, [defaultId, options]);
 
   return (
     <div className="relative">
