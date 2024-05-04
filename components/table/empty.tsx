@@ -1,30 +1,43 @@
 "use client";
 import { useEffect, useState } from "react";
 
-import { GithubButtonIcon, MigrateLinkIcon } from "@/public/icons";
+import {
+  GithubButtonIcon,
+  MigrateLinkIcon,
+  LiquidityLinkIcon,
+} from "@/public/icons";
 import { SMButton } from "..";
 import useScreenDetect from "@/hooks/useScreenDetect";
 import { Network } from "@/config/rainbow/config";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
+import { EmptyStateProps } from "./types";
 
 const EmptyState = ({
   isConnected,
   network,
-}: {
-  isConnected: boolean;
-  network: Network;
-}) => {
+  variant = "primary",
+  action,
+}: EmptyStateProps) => {
   const { isMobile } = useScreenDetect();
   const { navigate, pathname } = useSystemFunctions();
   const [path, setPath] = useState("");
 
-  const buttonText = isConnected ? "new migration" : "connect github";
+  const buttonText = isConnected
+    ? variant === "primary"
+      ? "new migration"
+      : "new liquidity"
+    : "connect gitHub";
   const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=Iv1.c178abebc418bb02&redirect_uri=http://${path}`;
 
-  const action = () => {
-    if (isConnected) {
+  const handleButton = () => {
+    if (isConnected && variant === "primary") {
       return navigate.push(`/migrate/${network}/new`);
-    } else {
+    }
+
+    if (isConnected && variant === "secondary") {
+      return action?.();
+    }
+    if (!isConnected) {
       return (window.location.href = githubAuthUrl);
     }
   };
@@ -53,23 +66,34 @@ const EmptyState = ({
               />
             )}
 
-            {isConnected && <MigrateLinkIcon width={28} height={28} />}
+            {isConnected && variant === "primary" && (
+              <MigrateLinkIcon width={28} height={28} />
+            )}
+            {isConnected && variant === "secondary" && (
+              <LiquidityLinkIcon width={28} height={28} />
+            )}
           </div>
         </div>
 
         <h1 className="text-primary-1750 text-[20px] leading-[30px] text-center font-medium">
-          {isConnected ? "No migrations yet" : " Please connect Github"}
+          {isConnected && variant === "primary" && "No migrations yet"}
+          {isConnected && variant === "secondary" && "No Liquidities yet"}
+          {!isConnected && "Connect GitHub"}
         </h1>
         <span className="text-primary-1500 text-[14px] leading-[24px] text-center">
-          {isConnected
-            ? "You haven’t done any migrations, new migrations will show here"
-            : "Connect your GitHub to see your migrations"}
+          {isConnected &&
+            variant === "primary" &&
+            "You haven’t done any migrations, new migrations will show here"}
+          {isConnected &&
+            variant === "secondary" &&
+            "You haven’t added any liquidity yet, new liquidities will show here"}
+          {!isConnected && "Connect your GitHub to see your migrations"}
         </span>
       </div>
 
       <SMButton
         network={network}
-        onClick={action}
+        onClick={handleButton}
         text={buttonText}
         variant={isConnected ? "new" : "git"}
       />
