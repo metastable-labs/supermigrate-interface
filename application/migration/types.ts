@@ -24,6 +24,7 @@ type Migration = {
     status: string;
     chain: string;
     installation_id: number;
+    owner: string;
   }[];
   status: string;
   user_id: string;
