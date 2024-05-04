@@ -11,8 +11,6 @@ import GitHubDesktopIcon from "./github-desktop-icon.svg";
 import GitHubMobileIcon from "./github-mobile-icon.svg";
 import BasePrimaryDesktopIcon from "./base-primary-desktop-icon.svg";
 import BasePrimaryMobileIcon from "./base-primary-mobile-icon.svg";
-import DesktopTilesIcon from "./desktop-tiles.svg";
-import MobileTilesIcon from "./mobile-tiles.svg";
 import BaseSecondaryDesktopIcon from "./base-secondary-desktop-icon.svg";
 import BaseSecondaryMobileIcon from "./base-secondary-mobile-icon.svg";
 import OptimismDesktopIcon from "./optimism-desktop-icon.svg";
@@ -80,6 +78,7 @@ import SolanaIcon from "./solana-icon.svg";
 import PolygonIcon from "./polygon-icon.svg";
 import GrinIcon from "./grin-icon.svg";
 import ExclaimIcon from "./exclaim-icon.svg";
+import Tiles from "./tiles";
 
 export {
   Logo,
@@ -95,8 +94,7 @@ export {
   VerifiedIcon,
   HamIcon,
   CloseIcon,
-  DesktopTilesIcon,
-  MobileTilesIcon,
+  Tiles,
   BaseSecondaryDesktopIcon,
   BaseSecondaryMobileIcon,
   OptimismDesktopIcon,
