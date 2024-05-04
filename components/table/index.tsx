@@ -15,7 +15,7 @@ const headers = [
   { key: "tokenName", label: "Token Name" },
   {
     key: "status",
-    label: "Pull Request Status",
+    label: "Migration Status",
     mobileLabel: "Status",
     secondaryLabel: "Token Address",
   },
@@ -89,6 +89,7 @@ const SMTable = ({
                 <td className="min-h-[71px] px-4 md:px-6 py-4 text-sm font-medium text-gray-900 flex items-center gap-3">
                   <Image
                     src={
+                      item?.tokenIcon ||
                       "https://w7.pngwing.com/pngs/730/454/png-transparent-smiley-emoticon-face-grinning-smiley-face-face-smiley-emoticon-thumbnail.png"
                     }
                     alt={`${item.tokenName} icon`}

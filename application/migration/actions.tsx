@@ -139,8 +139,9 @@ const useMigrationActions = () => {
       formData.append("chains", JSON.stringify(chains));
 
       const response = await api.migrateToken(formData);
-      console.log(response);
+
       getMigrationObject(response);
+      getMigrations();
     } catch (error: any) {
       setLoadingMigration(false);
     } finally {
