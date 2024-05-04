@@ -1,3 +1,15 @@
+type Chain = {
+  id: number;
+  name: string;
+  token_address: string;
+  token_detail_override?: {
+    name: string;
+    symbol: string;
+    decimals: number;
+  };
+  transaction_hash: string;
+};
+
 type Migration = {
   id: string;
   name: string;
@@ -7,17 +19,7 @@ type Migration = {
   description: string;
   website: string;
   twitter: string;
-  chains: {
-    id: number;
-    name: string;
-    token_address: string;
-    token_detail_override?: {
-      name: string;
-      symbol: string;
-      decimals: number;
-    };
-    transaction_hash: string;
-  }[];
+  chains: Chain[];
   pull_requests: {
     id: number;
     url: string;
@@ -32,4 +34,4 @@ type Migration = {
   updated_at: string;
 };
 
-export type { Migration };
+export type { Migration, Chain };

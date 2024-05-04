@@ -9,6 +9,7 @@ interface TableItem {
   pullStatus?: PullStatus;
   tokenAddress?: string;
   poolUrl?: string;
+  id?: string;
 }
 
 interface TableProps {

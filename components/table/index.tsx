@@ -124,7 +124,7 @@ const SMTable = ({
                 <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm font-medium">
                   <CTA
                     title={variant === "primary" ? "View" : "Add Liquidity"}
-                    onClick={() => ctaAction?.(item?.tokenName)}
+                    onClick={() => ctaAction?.(item?.id)}
                     normal
                   />
                 </td>

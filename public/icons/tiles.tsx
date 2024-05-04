@@ -48,7 +48,6 @@ const Tiles = ({ network = "base" }: { network?: Network }) => (
           animate={{ stopColor: colors[network].tertiary }}
           offset="0.50309"
         />
-        <stop offset="0.31674" stop-color="#FFDADA" />
       </linearGradient>
     </defs>
   </svg>

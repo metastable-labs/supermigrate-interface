@@ -50,7 +50,7 @@ import LoadingIcon from "./loading-icon";
 import TrickleIcon from "./trickle-icon";
 import MergedSecondaryIcon from "./merged-secondary-icon";
 import MergedTertiaryIcon from "./merged-tertiary-icon.svg";
-import XIcon from "./x-icon.svg";
+import XIcon from "./x-icon";
 import CopySecondaryIcon from "./copy-secondary-icon.svg";
 import HeroIcon from "./hero-icon";
 import HeroBaseBlandIcon from "./hero-base-bland-icon";
@@ -79,6 +79,7 @@ import PolygonIcon from "./polygon-icon.svg";
 import GrinIcon from "./grin-icon.svg";
 import ExclaimIcon from "./exclaim-icon.svg";
 import Tiles from "./tiles";
+import WebIcon from "./web-icon";
 
 export {
   Logo,
@@ -162,4 +163,5 @@ export {
   PolygonIcon,
   GrinIcon,
   ExclaimIcon,
+  WebIcon,
 };

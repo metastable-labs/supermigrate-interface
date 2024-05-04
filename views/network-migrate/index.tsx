@@ -32,6 +32,7 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
         : migration?.status === "failed"
         ? "failed"
         : ("merged" as PullStatus),
+    id: migration.id,
   }));
 
   const handleTableAction = (id?: string) => {

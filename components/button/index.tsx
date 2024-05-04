@@ -53,7 +53,7 @@ const SMButton = ({
 
       <span
         className={classNames(
-          "font-medium tracking-[-0.084px] text-sm text-center transition-all duration-300 capitalize",
+          "font-medium tracking-[-0.084px] text-sm text-center transition-all duration-300 capitalize whitespace-nowrap",
           {
             "text-white":
               network === "base" ||
