@@ -81,6 +81,7 @@ import ExclaimIcon from "./exclaim-icon.svg";
 import Tiles from "./tiles";
 import WebIcon from "./web-icon";
 import GitMergeIcon from "./git-merge-icon";
+import SearchIcon from "./search-icon.svg";
 
 export {
   Logo,
@@ -166,4 +167,5 @@ export {
   ExclaimIcon,
   WebIcon,
   GitMergeIcon,
+  SearchIcon,
 };
