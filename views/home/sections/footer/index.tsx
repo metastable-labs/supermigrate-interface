@@ -1,5 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import { SMContainer } from "@/components";
 import { SuperMigrateLogo } from "@/public/icons";
@@ -21,7 +24,7 @@ const Extra = ({
         {links.map((link) => (
           <a
             href={link.url}
-            className="text-primary-2450 font-medium"
+            className="text-primary-2900 font-medium"
             key={link.url}
           >
             {link.titile}
@@ -32,10 +35,17 @@ const Extra = ({
   );
 };
 
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+});
+
 const Footer = () => {
-  const handleSubscribe = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Subscribed");
+  const { register, handleSubmit } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = (data: { email: string }) => {
+    console.log(data);
   };
 
   return (
@@ -54,20 +64,21 @@ const Footer = () => {
               </div>
 
               <form
-                onSubmit={handleSubscribe}
+                onSubmit={handleSubmit(onSubmit)}
                 className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto"
               >
                 <input
                   type="text"
-                  className="shadow-table-cta border border-primary-1550 rounded-lg bg-white h-[44px] px-3.5 py-2.5 outline-none text-primary-2550 w-full md:w-auto"
+                  className="shadow-table-cta border border-primary-1550 rounded-lg bg-white h-[44px] px-3.5 py-2.5 outline-none text-primary-3050 w-full md:w-auto"
                   placeholder="Enter your email"
+                  {...register("email")}
                 />
 
                 <motion.button
                   whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.9 }}
                   type="submit"
-                  className="w-full md:w-[110px] h-[44px] shadow-table-cta rounded-lg border border-primary-2500 font-medium text-white bg-primary-2450 flex items-center justify-center"
+                  className="w-full md:w-[110px] h-[44px] shadow-table-cta rounded-lg border border-primary-3000 font-medium text-white bg-primary-2900 flex items-center justify-center"
                 >
                   Subscribe
                 </motion.button>
@@ -96,7 +107,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="md:px-8 px-2 pt-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between border-t border-primary-1350 text-primary-2550 text-[14px] md:text-[16px] leading-[24px]">
+          <div className="md:px-8 px-2 pt-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between border-t border-primary-1350 text-primary-3050 text-[14px] md:text-[16px] leading-[24px]">
             <span>© 2024 Metastable Labs</span>
 
             <div className="flex items-center gap-4 ">

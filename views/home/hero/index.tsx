@@ -16,6 +16,7 @@ import {
   HeroBGLines,
 } from "@/public/icons";
 import HeroButton from "./button";
+import useSystemFunctions from "@/hooks/useSystemFunctions";
 
 const icons = [
   <HeroBaseBlandIcon key={0} />,
@@ -36,6 +37,7 @@ const stepTextColors = [
 
 const HeroSection = () => {
   const [step, setStep] = useState(0);
+  const { navigate } = useSystemFunctions();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -85,7 +87,7 @@ const HeroSection = () => {
               </p>
             </div>
 
-            <HeroButton onClick={() => {}} />
+            <HeroButton onClick={() => navigate.push("/migrate")} />
           </div>
 
           <div className="relative">
