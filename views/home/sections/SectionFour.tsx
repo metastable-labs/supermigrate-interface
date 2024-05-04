@@ -1,6 +1,8 @@
-import { cn } from "@/utils/helpers";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+
+import { cn } from "@/utils/helpers";
 
 const SectionFour = () => {
   const listings = [
@@ -10,28 +12,31 @@ const SectionFour = () => {
         "whether you're new to L2s, or you don't have a technical team. Supermigrate makes it easy",
       image:
         "https://res.cloudinary.com/palmlight/image/upload/v1714165543/easy_u1uz3f.svg",
-      bgColor: "bg-[#FDF9FD]"
+      bgColor: "bg-[#FDF9FD]",
     },
     {
       title: "Fast",
       description: "Never loose a sleep, fully automated process.",
       image:
         "https://res.cloudinary.com/palmlight/image/upload/v1714165547/fast_l0pin3.svg",
-      bgColor: "bg-[#F4F6FB]"
+      bgColor: "bg-[#F4F6FB]",
     },
     {
       title: "Earn",
       description: "Earn rewards and Incentives for getting on L2s",
       image:
         "https://res.cloudinary.com/palmlight/image/upload/v1714165542/earn_bojc0h.svg",
-      bgColor: "bg-[#FCFFFE]"
-    }
+      bgColor: "bg-[#FCFFFE]",
+    },
   ];
   return (
     <section className="bg-[#EBF1FF] py-6 lg:py-[50px] px-4 lg:px-[50px] rounded-xl mb-8 lg:mb-16">
-      <h2 className="w-[80px] lg:w-[90px] py-2.5 text-sm lg:text-base bg-[#162664] rounded-lg text-center text-[#EBF1FF] shadow-[0px_1.544px_3.089px_0px_rgba(164,172,185,0.24),0px_0px_0px_1.544px_rgba(18,55,105,0.08)]">
+      <Link
+        href="/bridge"
+        className="w-[80px] lg:w-[90px] py-2.5 text-sm lg:text-base bg-[#162664] rounded-lg text-center text-[#EBF1FF] shadow-[0px_1.544px_3.089px_0px_rgba(164,172,185,0.24),0px_0px_0px_1.544px_rgba(18,55,105,0.08)]"
+      >
         Liquidity
-      </h2>
+      </Link>
       <h3 className="my-4 text-[20px] lg:text-[46px] text-[#162664] font-medium lg:w-[550px] w-full">
         Add Liquidity for newly deployed tokens
       </h3>
@@ -40,7 +45,7 @@ const SectionFour = () => {
         recently migrated tokens on L2 and get incentivised for doing that.
       </p>
       <div className="mt-8 lg:mt-[90px] grid lg:grid-cols-3 grid-cols-1 gap-10 items-stretch w-full">
-        {listings?.map(item => (
+        {listings?.map((item) => (
           <div
             key={item?.title}
             className={cn(
