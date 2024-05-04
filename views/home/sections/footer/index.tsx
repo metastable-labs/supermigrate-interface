@@ -1,5 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import { SMContainer } from "@/components";
 import { SuperMigrateLogo } from "@/public/icons";
@@ -32,10 +35,17 @@ const Extra = ({
   );
 };
 
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+});
+
 const Footer = () => {
-  const handleSubscribe = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Subscribed");
+  const { register, handleSubmit } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = (data: { email: string }) => {
+    console.log(data);
   };
 
   return (
@@ -54,13 +64,14 @@ const Footer = () => {
               </div>
 
               <form
-                onSubmit={handleSubscribe}
+                onSubmit={handleSubmit(onSubmit)}
                 className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto"
               >
                 <input
                   type="text"
                   className="shadow-table-cta border border-primary-1550 rounded-lg bg-white h-[44px] px-3.5 py-2.5 outline-none text-primary-3050 w-full md:w-auto"
                   placeholder="Enter your email"
+                  {...register("email")}
                 />
 
                 <motion.button
