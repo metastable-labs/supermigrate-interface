@@ -95,7 +95,7 @@ const LiquidityView = ({ lang }: LangParamProp) => {
       <SMModal
         show={showModal}
         close={() => setShowModal(false)}
-        variant="liquidity"
+        variant="secondary"
       >
         <Add defaultId={selectedToken} />
       </SMModal>

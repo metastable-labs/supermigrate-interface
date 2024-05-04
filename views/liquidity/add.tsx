@@ -87,7 +87,7 @@ const Add = ({ defaultId }: IAdd) => {
   return (
     <form
       onSubmit={(e) => e.preventDefault()}
-      className="w-[295px] md:w-[400px] p-1 flex flex-col gap-6 items-start rounded-2xl"
+      className="w-[303px] md:w-[408px] p-1 flex flex-col gap-6 items-start rounded-base"
     >
       <h1 className="text-primary-50 text-[24px] leading-[37.2px] font-medium">
         {headerText}
