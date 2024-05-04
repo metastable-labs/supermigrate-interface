@@ -47,7 +47,11 @@ const Step1 = ({
       />
 
       {tokenAddress && tokenInfo.name && (
-        <TokenInfo loading={fetchingTokenAddress} {...tokenInfo} />
+        <TokenInfo
+          network={network}
+          loading={fetchingTokenAddress}
+          {...tokenInfo}
+        />
       )}
 
       <OverrideSection
