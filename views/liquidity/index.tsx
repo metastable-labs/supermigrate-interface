@@ -9,7 +9,7 @@ import Add from "./add";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
 import SMLoader from "@/components/loader";
 import { useAccount } from "wagmi";
-import { tableData } from "./dummy";
+// import { tableData } from "./dummy";
 
 const LiquidityView = ({ lang }: LangParamProp) => {
   const { userState, liquidityState } = useSystemFunctions();
@@ -29,12 +29,12 @@ const LiquidityView = ({ lang }: LangParamProp) => {
     setShowModal((prev) => !prev);
   };
 
-  // const tableData = liquidities.map((liquidity) => ({
-  //   tokenName: liquidity.provider,
-  //   tokenAddress: liquidity.pool_token_address,
-  //   poolUrl: `https://uniswap.org/pool/${liquidity.transaction_hash}`,
-  //   id: liquidity.id,
-  // }));
+  const tableData = liquidities.map((liquidity) => ({
+    tokenName: liquidity.provider,
+    tokenAddress: liquidity.pool_token_address,
+    poolUrl: `https://uniswap.org/pool/${liquidity.transaction_hash}`,
+    id: liquidity.id,
+  }));
 
   if (loading || liquidity_loading) {
     return (
