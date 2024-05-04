@@ -5,7 +5,7 @@ import { useConnectModal } from "@rainbow-me/rainbowkit";
 
 import { SMClickAnimation } from "@/components";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
-import { networks } from "@/config/rainbow/rainbowkit";
+import { networks } from "@/config/rainbow/config";
 
 const NetworkModal = ({ close }: { close: () => void }) => {
   const { navigate } = useSystemFunctions();
@@ -40,7 +40,7 @@ const NetworkModal = ({ close }: { close: () => void }) => {
       </h1>
 
       <div className="flex flex-col md:min-w-80 flex-1 items-stretch gap-8">
-        {networks.map(({ icon, title, chainId }, index) => (
+        {networks?.map(({ icon, title, chainId }, index) => (
           <SMClickAnimation
             key={index}
             onClick={() => handleOnClick(title, chainId)}

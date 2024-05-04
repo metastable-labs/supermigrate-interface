@@ -44,10 +44,7 @@ const SMTable = ({
     <div
       className={classNames(
         "self-stretch overflow-x-auto rounded-xl border border-primary-1350 flex flex-col justify-between bg-white",
-        {
-          "min-h-[324px]": Boolean(data.length),
-          "min-h-[410px] md:min-h-[408px]": !Boolean(data.length),
-        }
+        {}
       )}
     >
       {loading && (
@@ -56,33 +53,31 @@ const SMTable = ({
         </div>
       )}
 
-      {Boolean(data.length) && !loading && (
-        <table className="md:min-w-full divide-y divide-primary-1350">
-          <thead className="bg-primary-1450 text-primary-1500">
-            <tr>
-              {headers.map((header, index) => (
-                <th
-                  key={header.key}
-                  scope="col"
-                  className={classNames(
-                    "px-4 md:px-6 py-3 text-left text-xs font-medium",
-                    {
-                      "whitespace-nowrap": index === 0 || index === 2,
-                      "hidden md:table-cell":
-                        index === 3 || (index === 2 && variant === "secondary"),
-                    }
-                  )}
-                >
-                  {isMobileView && header.mobileLabel
-                    ? header.mobileLabel
-                    : variant === "primary"
-                    ? header.label
-                    : header.secondaryLabel || header.label}
-                </th>
-              ))}
-            </tr>
-          </thead>
-
+      <table className="md:min-w-full divide-y divide-primary-1350">
+        <thead className="bg-primary-1450 text-primary-1500 border-b border-primary-1350">
+          <tr>
+            {headers.map((header, index) => (
+              <th
+                key={header.key}
+                scope="col"
+                className={classNames(
+                  "px-4 md:px-6 py-3 text-left text-xs font-medium",
+                  {
+                    "whitespace-nowrap": index === 0 || index === 2,
+                    "hidden md:table-cell": index === 1 || index === 2,
+                  }
+                )}
+              >
+                {isMobileView && header.mobileLabel
+                  ? header.mobileLabel
+                  : variant === "primary"
+                  ? header.label
+                  : header.secondaryLabel || header.label}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        {Boolean(data.length) && !loading && (
           <tbody className="bg-white divide-y divide-gray-200">
             {data.map((item, index) => (
               <tr key={index}>
@@ -98,7 +93,7 @@ const SMTable = ({
                   />
                   {item.tokenName}
                 </td>
-                <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden md:table-cell">
                   {variant === "primary" && (
                     <Status status={item?.pullStatus} />
                   )}
@@ -106,7 +101,7 @@ const SMTable = ({
                     <Address address={item?.tokenAddress} />
                   )}
                 </td>
-                <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 flex justify-center md:justify-start items-center gap-2">
+                <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 justify-center md:justify-start items-center gap-2 md:flex hidden">
                   <a
                     href={
                       variant === "secondary"
@@ -125,17 +120,19 @@ const SMTable = ({
 
                   <LinkRightArrow />
                 </td>
-                <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm font-medium md:table-cell hidden">
+
+                <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm font-medium">
                   <CTA
-                    title="Add Liquidity"
-                    onClick={() => ctaAction?.(item?.tokenName)}
+                    title={variant === "primary" ? "View" : "Add Liquidity"}
+                    onClick={() => ctaAction?.(item?.id)}
+                    normal
                   />
                 </td>
               </tr>
             ))}
           </tbody>
-        </table>
-      )}
+        )}
+      </table>
 
       {!Boolean(data.length) && !loading && (
         <EmptyState isConnected={isConnected} network={network} />

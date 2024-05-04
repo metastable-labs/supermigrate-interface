@@ -1,4 +1,4 @@
-import { Network } from "@/config/rainbow/rainbowkit";
+import { Network } from "@/config/rainbow/config";
 
 interface ISMFileInput {
   name: string;

@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useSearchParams } from "next/navigation";
 
-import { DesktopTilesIcon, MobileTilesIcon } from "@/public/icons";
 import { SMContainer, SMTable, SMButton } from "@/components";
 import { PullStatus } from "@/components/table/types";
 import Connect from "./connect";
@@ -28,8 +27,17 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
     tokenIcon: migration.logo_url,
     tokenName: migration.name,
     pullStatus:
-      migration.status === "processing" ? "pending" : ("merged" as PullStatus),
+      migration?.status === "processing"
+        ? "pending"
+        : migration?.status === "failed"
+        ? "failed"
+        : ("merged" as PullStatus),
+    id: migration.id,
   }));
+
+  const handleTableAction = (id?: string) => {
+    navigate.push(`/migrate/${network}/${id}`);
+  };
 
   const handleGithubConnection = async () => {
     if (!code || loading) return;
@@ -85,17 +93,11 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
               isConnected={user ? true : false}
               data={tableData}
               network={network}
+              ctaAction={handleTableAction}
             />
           </div>
         </motion.div>
       </SMContainer>
-
-      <div className="hidden md:flex justify-center fixed w-screen bottom-0 -z-10">
-        <DesktopTilesIcon />
-      </div>
-      <div className="flex md:hidden justify-center fixed w-screen bottom-0 -z-10">
-        <MobileTilesIcon />
-      </div>
     </div>
   );
 };

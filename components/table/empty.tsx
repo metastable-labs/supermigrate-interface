@@ -1,6 +1,9 @@
-import { GithubButtonIcon } from "@/public/icons";
-import { SMButton } from "..";
+"use client";
 import { useEffect, useState } from "react";
+
+import { GithubButtonIcon, MigrateLinkIcon } from "@/public/icons";
+import { SMButton } from "..";
+import useScreenDetect from "@/hooks/useScreenDetect";
 import { Network } from "@/config/rainbow/config";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
 
@@ -11,8 +14,8 @@ const EmptyState = ({
   isConnected: boolean;
   network: Network;
 }) => {
+  const { isMobile } = useScreenDetect();
   const { navigate, pathname } = useSystemFunctions();
-  const [isMobile, setIsMobile] = useState(false);
   const [path, setPath] = useState("");
 
   const buttonText = isConnected ? "new migration" : "connect github";
@@ -38,15 +41,19 @@ const EmptyState = ({
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center gap-[14px] flex-1 px-3">
+    <div className="flex flex-col items-center justify-center gap-[14px] flex-1 px-3 py-20">
       <div className="flex flex-col items-center justify-center gap-1">
-        <div className="flex items-center justify-center bg-very-light-gray rounded-full border-[0.795px] border-primary-1700 p-[12.73px] md:p-4">
+        <div className="flex items-center justify-center bg-very-light-gray rounded-full border-t border-primary-1700 p-[12.73px] md:p-4">
           <div className="flex items-center justify-center rounded-full border border-primary-250 bg-white p-[11.136px] md:p-[14px] shadow-fade-light">
-            <GithubButtonIcon
-              color="#525866"
-              width={isMobile ? "22.273" : "28"}
-              height={isMobile ? "22.273" : "28"}
-            />
+            {!isConnected && (
+              <GithubButtonIcon
+                color="#525866"
+                width={isMobile ? "22.273" : "28"}
+                height={isMobile ? "22.273" : "28"}
+              />
+            )}
+
+            {isConnected && <MigrateLinkIcon width={28} height={28} />}
           </div>
         </div>
 

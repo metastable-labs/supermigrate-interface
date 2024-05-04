@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
 
-import { faqs } from "./dummy";
 import { SMFAQ } from "@/components";
 import { LinkRightArrow } from "@/public/icons";
+import { faqs } from "./dummy";
 
 const FAQs = () => {
   const [current, setCurrent] = useState(0);
@@ -21,7 +21,7 @@ const FAQs = () => {
             answer you’re looking for?{" "}
             <a
               href=""
-              className="text-primary-2450 underline underline-offset-2"
+              className="text-primary-2900 underline underline-offset-2"
             >
               See our Support page
             </a>
@@ -41,7 +41,7 @@ const FAQs = () => {
 
           <a
             href=""
-            className="px-8 py-6 self-stretch flex items-center justify-start gap-1 text-left rounded-2xl min-w-full text-primary-2450 text-lg font-medium"
+            className="px-8 py-6 self-stretch flex items-center justify-start gap-1 text-left rounded-2xl min-w-full text-primary-2900 text-lg font-medium"
           >
             See more FAQ{" "}
             <LinkRightArrow color="#C2540A" width={24} height={24} />

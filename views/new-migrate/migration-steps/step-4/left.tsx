@@ -12,7 +12,7 @@ const Link = ({ link, text }: { link: string; text: string }) => {
     <a
       href={link}
       target="_blank"
-      className="flex items-center gap-1 border-b border-b-primary-1650 text-[16px] leading-[30px] text-primary-1650"
+      className="flex items-center gap-1 border-b border-b-primary-3350 text-[16px] leading-[30px] text-primary-3350"
     >
       <MergedTertiaryIcon />
       {text}
@@ -44,16 +44,15 @@ const Left = () => {
   }));
 
   return (
-    <div className="w-full flex flex-col items-start justify-center gap-16 rounded-xl border border-primary-2100 bg-white p-6 min-w-[343px] md:w-[400px]">
+    <div className="w-full flex flex-col items-start justify-center gap-16 rounded-xl p-6 min-w-[343px] md:w-[400px]">
       <div className="flex flex-col self-stretch gap-3 items-start">
-        <div className="p-3 bg-primary-2300 w-12 h-12 rounded-[10px] flex justify-center items-center shadow-sm">
+        <div className="p-3 bg-primary-3350 w-12 h-12 rounded-[10px] flex justify-center items-center shadow-sm">
           <MergedSecondaryIcon />
         </div>
 
         <div className="flex flex-col gap-5 self-stretch items-start">
-          <h1 className="text-[24px] leading-[44px] font-medium tracking-[-0.48px] text-primary-300">
-            {"You're almost"} <span className="text-primary-1650">{title}</span>
-            ! 🔵
+          <h1 className="text-[30px] md:text-[36px] leading-[44px] font-medium tracking-[0.6px] md:tracking-[-0.72px] text-primary-300 whitespace-nowrap">
+            Migration Successful!
           </h1>
 
           {links?.map((link, index) => (
@@ -75,10 +74,10 @@ const Left = () => {
         <a
           href={`https://basescan.org/tx/${txHash}`}
           target="_blank"
-          className="text-primary-1650 text-[16px] leading-[30px] underline flex items-center justify-center gap-2 pb-[3px]"
+          className="text-primary-3350 text-[16px] leading-[30px] flex items-center justify-center gap-2 pb-[3px] underline underline-offset-4"
         >
           View on basescan
-          <LinkRightArrow />
+          <LinkRightArrow color="#6B8000" />
         </a>
       </div>
     </div>

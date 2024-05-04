@@ -20,6 +20,7 @@ const Add = () => {
   const showText = Boolean(wallet && token) && step === 0;
   const showInputSection = step === 0;
   const showExtra = Boolean(wallet && token) && step === 1;
+  const disabled = !wallet || !token || !values.amount || !values.liquidity;
 
   const handleWallet = (wallet: IOption) => setWallet(wallet);
   const handleToken = (token: IOption) => setToken(token);
@@ -67,6 +68,7 @@ const Add = () => {
     }
 
     if (step === 1) {
+      console.log("values", values);
       setButtonText("Confirming Transaction...");
     }
   };
@@ -82,7 +84,10 @@ const Add = () => {
   }, [wallet, token]);
 
   return (
-    <div className="w-[295px] md:w-[400px] p-1 flex flex-col gap-6 items-start rounded-2xl">
+    <form
+      onSubmit={(e) => e.preventDefault()}
+      className="w-[295px] md:w-[400px] p-1 flex flex-col gap-6 items-start rounded-2xl"
+    >
       <h1 className="text-primary-50 text-[24px] leading-[37.2px] font-medium">
         {headerText}
       </h1>
@@ -140,7 +145,7 @@ const Add = () => {
         fullWidth
         network="base"
         variant="plain"
-        disabled={!wallet || !token}
+        disabled={disabled}
       />
 
       {showText && (
@@ -150,7 +155,7 @@ const Add = () => {
           }
         </p>
       )}
-    </div>
+    </form>
   );
 };
 

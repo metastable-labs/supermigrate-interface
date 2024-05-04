@@ -3,7 +3,7 @@
 import useSystemFunctions from "@/hooks/useSystemFunctions";
 import { HomeIcon, RightCarretLightIcon } from "@/public/icons";
 
-const NewMigrateHeader = () => {
+const NewMigrateHeader = ({ title = "New Migration" }: { title?: string }) => {
   const { navigate } = useSystemFunctions();
 
   return (
@@ -24,7 +24,7 @@ const NewMigrateHeader = () => {
 
         <RightCarretLightIcon />
 
-        <span className="pointer-events-none">New Migration</span>
+        <span className="pointer-events-none">{title}</span>
       </div>
     </div>
   );

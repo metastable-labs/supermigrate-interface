@@ -1,8 +1,8 @@
 "use client";
 import { ReactNode, useEffect } from "react";
 
-import { DesktopTilesIcon, MobileTilesIcon } from "@/public/icons";
-import { Network } from "@/config/rainbow/rainbowkit";
+import { Tiles } from "@/public/icons";
+import { Network } from "@/config/rainbow/config";
 
 interface PageProps {
   params: { network: Network };
@@ -43,18 +43,17 @@ const App = ({ params, children }: PageProps) => {
     document.body.appendChild(bgDiv);
 
     return () => {
-      document.body.removeChild(bgDiv);
+      if (document.body.contains(bgDiv)) {
+        document.body.removeChild(bgDiv);
+      }
     };
   }, [params.network]);
 
   return (
     <main>
       {children}
-      <div className="hidden md:flex justify-center fixed w-screen bottom-0 -z-10">
-        <DesktopTilesIcon />
-      </div>
-      <div className="flex md:hidden justify-center fixed w-screen bottom-0 -z-10">
-        <MobileTilesIcon />
+      <div className="flex justify-center fixed w-screen bottom-0 -z-10">
+        <Tiles network={params.network} />
       </div>
     </main>
   );

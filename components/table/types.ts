@@ -1,6 +1,6 @@
-import { Network } from "@/config/rainbow/rainbowkit";
+import { Network } from "@/config/rainbow/config";
 
-type PullStatus = "merged" | "pending" | "rejected";
+type PullStatus = "merged" | "pending" | "failed";
 type TableVariant = "primary" | "secondary";
 
 interface TableItem {
@@ -9,6 +9,7 @@ interface TableItem {
   pullStatus?: PullStatus;
   tokenAddress?: string;
   poolUrl?: string;
+  id?: string;
 }
 
 interface TableProps {

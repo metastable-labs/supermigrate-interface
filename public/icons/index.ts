@@ -1,6 +1,6 @@
 import Logo from "./logo.svg";
 import SMLogo from "./sm-logo.svg";
-import MigrateLinkIcon from "./migrate-link-icon.svg";
+import MigrateLinkIcon from "./migrate-link-icon";
 import BridgeLinkIcon from "./bridge-link-icon.svg";
 import LiquidityLinkIcon from "./liquidity-link-icon.svg";
 import SelectIcon from "./select-icon.svg";
@@ -11,8 +11,6 @@ import GitHubDesktopIcon from "./github-desktop-icon.svg";
 import GitHubMobileIcon from "./github-mobile-icon.svg";
 import BasePrimaryDesktopIcon from "./base-primary-desktop-icon.svg";
 import BasePrimaryMobileIcon from "./base-primary-mobile-icon.svg";
-import DesktopTilesIcon from "./desktop-tiles.svg";
-import MobileTilesIcon from "./mobile-tiles.svg";
 import BaseSecondaryDesktopIcon from "./base-secondary-desktop-icon.svg";
 import BaseSecondaryMobileIcon from "./base-secondary-mobile-icon.svg";
 import OptimismDesktopIcon from "./optimism-desktop-icon.svg";
@@ -50,9 +48,9 @@ import CheckSmallIcon from "./check-small-icon.svg";
 import PDFIcon from "./pdf-icon.svg";
 import LoadingIcon from "./loading-icon";
 import TrickleIcon from "./trickle-icon";
-import MergedSecondaryIcon from "./merged-secondary-icon.svg";
+import MergedSecondaryIcon from "./merged-secondary-icon";
 import MergedTertiaryIcon from "./merged-tertiary-icon.svg";
-import XIcon from "./x-icon.svg";
+import XIcon from "./x-icon";
 import CopySecondaryIcon from "./copy-secondary-icon.svg";
 import HeroIcon from "./hero-icon";
 import HeroBaseBlandIcon from "./hero-base-bland-icon";
@@ -79,6 +77,10 @@ import EthereumIcon from "./ethereum-icon.svg";
 import SolanaIcon from "./solana-icon.svg";
 import PolygonIcon from "./polygon-icon.svg";
 import GrinIcon from "./grin-icon.svg";
+import ExclaimIcon from "./exclaim-icon.svg";
+import Tiles from "./tiles";
+import WebIcon from "./web-icon";
+import GitMergeIcon from "./git-merge-icon";
 
 export {
   Logo,
@@ -94,8 +96,7 @@ export {
   VerifiedIcon,
   HamIcon,
   CloseIcon,
-  DesktopTilesIcon,
-  MobileTilesIcon,
+  Tiles,
   BaseSecondaryDesktopIcon,
   BaseSecondaryMobileIcon,
   OptimismDesktopIcon,
@@ -162,4 +163,7 @@ export {
   SolanaIcon,
   PolygonIcon,
   GrinIcon,
+  ExclaimIcon,
+  WebIcon,
+  GitMergeIcon,
 };

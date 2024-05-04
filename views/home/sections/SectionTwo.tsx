@@ -1,6 +1,8 @@
-import { cn } from "@/utils/helpers";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+
+import { cn } from "@/utils/helpers";
 
 const SectionTwo = () => {
   const listings = [
@@ -34,9 +36,12 @@ const SectionTwo = () => {
       </h1>
 
       <section className="my-8 lg:my-16 bg-[#FEF3EB] py-6 lg:py-[50px] rounded-xl px-4 lg:px-[50px]">
-        <h2 className="text-[#FEF3EB] text-xs lg:text-base bg-[#6E330C] w-[80px] lg:w-[100px] px-[14px] py-[10px] rounded-lg text-center shadow-[0px_1.544px_3.089px_0px_rgba(164,172,185,0.24),0px_0px_0px_1.544px_rgba(18,55,105,0.08)]">
+        <Link
+          href="/migrate"
+          className="text-[#FEF3EB] text-xs lg:text-base bg-[#6E330C] w-[80px] lg:w-[100px] px-[14px] py-[10px] rounded-lg text-center shadow-[0px_1.544px_3.089px_0px_rgba(164,172,185,0.24),0px_0px_0px_1.544px_rgba(18,55,105,0.08)]"
+        >
           Migration
-        </h2>
+        </Link>
         <div className="lg:w-[600px] w-full">
           <h1 className="py-4 font-medium text-[20px] lg:text-[46px] text-[#6E330C] tracking-tight leading-tight">
             Deploy canonical bridged tokens

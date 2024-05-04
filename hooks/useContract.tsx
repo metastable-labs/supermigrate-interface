@@ -53,12 +53,10 @@ const useContract = () => {
     });
   };
 
-  const getTransactionData = async () => {
+  const getTransactionData = () => {
     let transactionData;
-    console.log(hash, "hash inside contracts")
     if (hash) {
-      transactionData = await getTransactionReceipt(wagmiConfig, { hash, chainId });
-      console.log(transactionData, "tx data inside contracts")
+      transactionData = getTransactionReceipt(wagmiConfig, { hash, chainId });
     }
     return transactionData;
   };
