@@ -27,14 +27,14 @@ const icons = [
 ];
 
 const stepTexts = ["Layer 2", "Base", "Optimism", "Mode", "Scroll"];
-const stepTextColors = ["#D7FF00", "#C2D6FF", "#F25976", "#DFFE00", "#1A1D01"];
+const stepTextColors = ["#D7FF00", "#C2D6FF", "#F25976", "#DFFE00", "#FFEDD8"];
 
 const stepBackgroundColors = [
   "#002132",
   "#162664",
   "#710E21",
   "#000",
-  "#FFEDD8",
+  "#B37A57",
 ];
 
 const HeroSection = () => {
