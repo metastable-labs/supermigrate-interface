@@ -77,7 +77,6 @@ import SolanaIcon from './solana-icon.svg';
 import PolygonIcon from './polygon-icon.svg';
 import GrinIcon from './grin-icon.svg';
 import ExclaimIcon from './exclaim-icon.svg';
-import Tiles from './tiles';
 import WebIcon from './web-icon';
 import GitMergeIcon from './git-merge-icon';
 import SearchIcon from './search-icon.svg';
@@ -109,7 +108,6 @@ export {
   VerifiedIcon,
   HamIcon,
   CloseIcon,
-  Tiles,
   BaseSecondaryDesktopIcon,
   BaseSecondaryMobileIcon,
   OptimismDesktopIcon,
