@@ -19,7 +19,7 @@ import NetworkModal from './modal/network';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { useConnectModal } from '@rainbow-me/rainbowkit';
 
-const isHomePage = (path: string): boolean => {
+export const isHomePage = (path: string): boolean => {
   const homePageRegex = /^\/[a-z]{2}\/?$/;
   return homePageRegex.test(path);
 };
