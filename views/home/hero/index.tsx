@@ -58,9 +58,8 @@ const HeroSection = () => {
       <SMContainer>
         <div className="flex flex-col justify-center items-center gap-[29px]">
           <div className="w-full flex flex-col justify-center items-start gap-8">
-            <p className="text-[62px] leading-[79px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-white max-w-[674px] text-center">
+            <div className="text-[62px] leading-[79px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-white max-w-[674px] text-center">
               Your gateway to
-              <br />
               <AnimatePresence mode="popLayout" initial={false}>
                 <motion.p
                   key={step}
@@ -74,12 +73,12 @@ const HeroSection = () => {
                   }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="whitespace-nowrap md:min-h-[88px]"
+                  className="whitespace-nowrap text-[62px] leading-[79px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-center w-full"
                 >
                   {stepTexts[step]}
                 </motion.p>
               </AnimatePresence>
-            </p>
+            </div>
             <p className="text-white text-[20px] leading-[31px] max-w-[520px] text-center">
               Automatically deploy canonical bridged ERC20 to base and Create a
               PR on the superchain token list repo.
