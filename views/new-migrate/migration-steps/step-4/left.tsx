@@ -38,9 +38,7 @@ const Left = () => {
         <div className="flex flex-col gap-5 self-stretch items-start">
           <h1 className="text-[30px] md:text-[36px] leading-[44px] font-medium tracking-[0.6px] md:tracking-[-0.72px] text-primary-300 whitespace-nowrap">Migration Successful!</h1>
 
-          {links?.map((link, index) => (
-            <Link key={index} link={link.link!} text={link.text} />
-          ))}
+          {links?.map((link, index) => <Link key={index} link={link.link!} text={link.text} />)}
         </div>
       </div>
 
