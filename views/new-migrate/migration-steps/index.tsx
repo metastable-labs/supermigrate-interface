@@ -85,7 +85,7 @@ const MigrationSteps = ({ network }: { network: Network }) => {
 
     try {
       setFetchingTokenAddress(true);
-      const res = await readTokenData(tokenAddress! as `0x${string}`, chainId);
+      const res = await readTokenData(tokenAddress! as `0x${string}`);
 
       setValue('tokenName', res.name);
       setValue('tokenSymbol', res.symbol);

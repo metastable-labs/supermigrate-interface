@@ -4,15 +4,10 @@ import { mainnet } from 'viem/chains';
 import { createPublicClient, http } from 'viem';
 import { networks } from '@/config/rainbow/config';
 
-const readTokenData = async (tokenAddress: `0x${string}`, chainId: number) => {
-  const connectedNetwork = networks.find((network) => network.chainId === chainId);
-  const rpcUrl = connectedNetwork?.rpcUrl;
-
-  if (!rpcUrl) throw new Error('RPC URL not found for the given chainId.');
-
+const readTokenData = async (tokenAddress: `0x${string}`) => {
   const client = createPublicClient({
     chain: mainnet,
-    transport: http(rpcUrl),
+    transport: http('https://eth.llamarpc.com'),
   });
 
   const decimal = await client.readContract({
