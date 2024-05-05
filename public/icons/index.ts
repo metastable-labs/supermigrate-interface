@@ -82,6 +82,7 @@ import Tiles from "./tiles";
 import WebIcon from "./web-icon";
 import GitMergeIcon from "./git-merge-icon";
 import SearchIcon from "./search-icon.svg";
+import SuccessIcon from "./success-icon";
 
 export {
   Logo,
@@ -168,4 +169,5 @@ export {
   WebIcon,
   GitMergeIcon,
   SearchIcon,
+  SuccessIcon,
 };
