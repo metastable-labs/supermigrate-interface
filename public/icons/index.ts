@@ -84,6 +84,7 @@ import GitMergeIcon from "./git-merge-icon";
 import SearchIcon from "./search-icon.svg";
 import SuccessIcon from "./success-icon";
 import LogoAlt from "./logo-alt.svg";
+import TelegramIcon from "./telegram-icon";
 
 export {
   Logo,
@@ -172,4 +173,5 @@ export {
   SearchIcon,
   SuccessIcon,
   LogoAlt,
+  TelegramIcon,
 };
