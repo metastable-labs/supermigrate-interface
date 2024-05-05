@@ -41,15 +41,8 @@ const Footer = () => {
     {
       title: resources.title,
       links: [
-        { titile: resources.blog, url: '#' },
-        { titile: resources.github, url: '#' },
-      ],
-    },
-    {
-      title: company.title,
-      links: [
-        { titile: company.privacy, url: '#' },
-        { titile: company.terms, url: '#' },
+        { titile: resources.blog, url: 'https://mirror.xzy/supermigrate.eth/' },
+        { titile: resources.github, url: 'https://github.com/supermigrate' },
       ],
     },
   ];

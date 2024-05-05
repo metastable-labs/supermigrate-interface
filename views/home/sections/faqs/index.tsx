@@ -49,7 +49,6 @@ const FAQs = () => {
           <div className="self-stretch flex flex-col gap-5">
             <h3 className="text-[24px] leading-[44px] lg:text-[36px] text-primary-300 tracking-[-0.48px] md:tracking-[-0.72px]">{title}</h3>
 
-            <h4 className="text-sm leading-normal lg:text-lg text-primary-350">Everything you need to know about Supermigrate and our integrations</h4>
             <h4 className="text-sm leading-normal lg:text-lg text-primary-350">
               {subtitle}{' '}
               <a href="" className="text-primary-3350 underline underline-offset-2">
