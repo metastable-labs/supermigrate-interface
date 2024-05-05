@@ -37,7 +37,7 @@ const HeroSection = () => {
       <div className="z-30">
         <SMContainer>
           <div className="flex flex-col justify-center items-center gap-[29px]">
-            <div className="w-full flex flex-col justify-center items-start gap-8">
+            <div className="w-full flex flex-col justify-center items-center gap-8">
               <div className="text-[40px] leading-[79px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-white max-w-[674px] text-center w-full">
                 {title}
                 <AnimatePresence mode="popLayout" initial={false}>
