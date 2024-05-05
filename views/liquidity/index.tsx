@@ -15,7 +15,7 @@ const LiquidityView = ({ lang }: LangParamProp) => {
   const { userState, liquidityState } = useSystemFunctions();
   const [showInfo, setShowInfo] = useState(true);
   const [selectedToken, setSelectedToken] = useState("");
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
   const { isConnected } = useAccount();
 
   const { loading } = userState;
