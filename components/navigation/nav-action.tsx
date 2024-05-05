@@ -27,7 +27,6 @@ const NavAction = ({ text, onClick, variant = "network" }: NavActionProps) => {
   const { isConnected } = useAccount();
   const pathname = usePathname();
   const { userState } = useSystemFunctions();
-  const { isConnected } = useAccount();
   const truncateText = useTruncateText(text || "", 4, 4);
   const shouldHide = /\/[a-zA-Z]{2}\/migrate$/.test(pathname); // Hide network select on migrate page
 
@@ -40,7 +39,7 @@ const NavAction = ({ text, onClick, variant = "network" }: NavActionProps) => {
       const currentNetwork = networks.find(
         (network) => network.chainId === chainId
       );
-      
+
       if (currentNetwork) {
         return setIcon(currentNetwork?.icon);
       }

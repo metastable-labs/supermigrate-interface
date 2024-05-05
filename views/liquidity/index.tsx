@@ -19,9 +19,6 @@ const LiquidityView = ({ lang }: LangParamProp) => {
   const { loading } = userState;
   const { loading: liquidity_loading, liquidities } = liquidityState;
 
-  const { loading } = userState;
-  const { loading: liquidity_loading, liquidities } = liquidityState;
-
   const toggleShowInfo = () => setShowInfo((prev) => !prev);
 
   const handleShowModal = (id?: string) => {
