@@ -15,7 +15,10 @@ const stepBackgroundColors = ['#002132', '#162664', '#710E21', '#000'];
 
 const HeroSection = () => {
   const [step, setStep] = useState(0);
-  const { navigate } = useSystemFunctions();
+  const { navigate, locale } = useSystemFunctions();
+
+  const { landingPage } = locale;
+  const { subtitle, title } = landingPage.hero;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -35,8 +38,8 @@ const HeroSection = () => {
         <SMContainer>
           <div className="flex flex-col justify-center items-center gap-[29px]">
             <div className="w-full flex flex-col justify-center items-center gap-8">
-              <div className="text-[40px] leading-[79px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-white max-w-[674px] text-center">
-                Your gateway to
+              <div className="text-[40px] leading-[79px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-white max-w-[674px] text-center w-full">
+                {title}
                 <AnimatePresence mode="popLayout" initial={false}>
                   <motion.p
                     key={step}
@@ -55,7 +58,7 @@ const HeroSection = () => {
                   </motion.p>
                 </AnimatePresence>
               </div>
-              <p className="text-white text-[20px] leading-[31px] max-w-[520px] text-center">Automatically deploy canonical bridged ERC20 to base and Create a PR on the superchain token list repo.</p>
+              <p className="text-white text-[20px] leading-[31px] max-w-[520px] text-center">{subtitle}</p>
             </div>
 
             <HeroButton onClick={() => navigate.push('/migrate')} />

@@ -1,17 +1,100 @@
 {
-  "navigation": {
-    "home": "Startseite",
-    "about": "Über"
-  },
-  "page": {
-    "home": {
-      "title": "Willkommen bei Superbridge",
-      "description": "Ihre Wallet-Adresse",
-      "btn": "Wallet verbinden"
+  "landingPage": {
+    "navigation": {
+      "about": "Um",
+      "whitepaper": "Weißes Papier",
+      "faq": "FAQ",
+      "actionText": "App starten"
     },
-    "about": {
-      "title": "Über uns",
-      "description": "Dies ist die About-Seite"
+    "hero": {
+      "title": "Ihr Tor zu",
+      "subtitle": "Stellen Sie automatisch kanonisch überbrücktes ERC20 bereit, um eine PR auf dem Superchain-Token-List-Repo zu erstellen.",
+      "actionText": "Beginnen Sie mit der Migration"
+    },
+    "section1": {
+      "title": "Optimierte und einfache Migration",
+      "titleCont": "zu Layer-2-Netzwerken",
+      "first": {
+        "title": "Einfach",
+        "content": "Egal, ob Sie neu bei L2s sind oder kein technisches Team haben. Supermigrate macht es einfach"
+      },
+      "second": {
+        "title": "Schnell",
+        "content": "Niemals den Schlaf verlieren, vollautomatischer Prozess."
+      },
+      "third": {
+        "title": "Verdienen",
+        "content": "Verdienen Sie Belohnungen und Anreize für den Einstieg in L2s"
+      }
+    },
+    "section2": {
+      "title": "Alles, alles an einem Ort",
+      "first": {
+        "actionText": "Migration",
+        "title": "Stellen Sie kanonisch überbrückte Token bereit",
+        "content": "Wir bieten Benutzern einen unkomplizierten Prozess zur Bereitstellung ihrer ERC20-Tokens in L2-Netzwerken, der diese automatisch überbrückbar macht."
+      },
+      "second": {
+        "actionText": "Brücke",
+        "title": "Bewegen Sie Token über L1 <> L2",
+        "content": "Wir ermöglichen Benutzern die nahtlose Übertragung von Assets zwischen L1- und L2-Netzwerken."
+      },
+      "third": {
+        "actionText": "Liquidität",
+        "title": "Fügen Sie Liquidität für neu bereitgestellte Token hinzu",
+        "content": "Eine Schnittstelle, die es den Menschen erleichtert, Liquidität für alle kürzlich migrierten Token auf L2 bereitzustellen und dafür Anreize zu erhalten."
+      }
+    },
+    "testimonial": {
+      "title": "Wir machen L1<>L2 einfach",
+      "twitterText": "Folgen Sie uns",
+      "telegramText": "Treten Sie der Community bei"
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "subtitle": "Alles, was Sie über Supermigrate und wissen müssen. Sie können die Antwort, die Sie suchen, nicht finden?",
+      "supportText": "Besuchen Sie unsere Support-Seite",
+      "seeMore": "Weitere FAQ anzeigen",
+      "seeLess": "Weniger sehen",
+      "question1": {
+        "question": "Was sind die Hauptvorteile der Verwendung von Supermigrate für die Blockchain-Migration?",
+        "answer": "Supermigrate bietet optimierte Prozesse, Expertenunterstützung und Tools, die den Übergang zu Layer-2-Lösungen vereinfachen und so die Skalierbarkeit und Effizienz Ihrer Blockchain-Projekte verbessern."
+      },
+      "question2": {
+        "question": "Unterstützt Supermigrate die Migration von einer beliebigen Blockchain?",
+        "answer": "Supermigrate ist so konzipiert, dass es eine breite Palette von Blockchains unterstützt und Benutzern die nahtlose Migration von beliebten Basisschichten zu erweiterten Schicht-2-Lösungen ermöglicht."
+      },
+      "question3": {
+        "question": "Wie sicher ist der Migrationsprozess mit Supermigrate?",
+        "answer": "Supermigrate legt großen Wert auf Sicherheit mit End-to-End-Verschlüsselung und kontinuierlicher Überwachung, um eine sichere und zuverlässige Migration Ihrer Blockchain-Assets und -Daten zu gewährleisten."
+      },
+      "question4": {
+        "question": "Kann Supermigrate bei der Bereitstellung intelligenter Verträge auf Layer 2 helfen?",
+        "answer": "Ja, Supermigrate erleichtert nicht nur die Migration, sondern auch die Bereitstellung und Verwaltung intelligenter Verträge auf Layer-2-Plattformen, um Abläufe zu rationalisieren und Kosten zu senken."
+      },
+      "question5": {
+        "question": "Wie stellt Supermigrate die Interoperabilität migrierter Assets sicher?",
+        "answer": "Supermigrate nutzt fortschrittliche Bridging-Technologie, um eine nahtlose Interoperabilität zwischen Layer-1- und Layer-2-Assets sicherzustellen und Benutzern die Übertragung und Verwaltung von Assets über mehrere Netzwerke hinweg zu ermöglichen."
+      },
+      "question6": {
+        "question": "Welche Gebühren sind mit der Nutzung von Supermigrate für die Blockchain-Migration verbunden?",
+        "answer": "Supermigrate bietet wettbewerbsfähige Gebühren für Blockchain-Migrationsdienste mit transparenten Preisen und ohne versteckte Kosten und gewährleistet so kostengünstige Lösungen für Benutzer jeder Größe."
+      }
+    },
+    "footer": {
+      "resources": {
+        "title": "Ressourcen",
+        "blog": "Blog",
+        "github": "Github"
+      },
+      "company": {
+        "title": "Unternehmen",
+        "privacy": "Privatsphäre",
+        "terms": "Bedingungen"
+      },
+      "alert": "Auf dem Laufenden bleiben",
+      "emailPlaceholder": "Geben sie ihre E-Mail Adresse ein",
+      "subscribe": "Abonnieren"
     }
   }
 }

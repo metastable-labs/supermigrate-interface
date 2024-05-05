@@ -1,11 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { MenuProps } from './type';
 import Action from './action';
-import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const Menu = ({ menuOpen, links }: MenuProps) => {
-  const { navigate } = useSystemFunctions();
-  const action = () => navigate.push('/migrate');
   return (
     <AnimatePresence>
       {menuOpen && (
@@ -22,7 +19,7 @@ const Menu = ({ menuOpen, links }: MenuProps) => {
             ))}
           </div>
 
-          <Action onClick={action} />
+          <Action />
         </motion.div>
       )}
     </AnimatePresence>

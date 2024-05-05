@@ -1,17 +1,100 @@
 type Lang = {
-  navigation: {
-    home: string;
-    about: string;
-  };
-  page: {
-    home: {
-      title: string;
-      description: string;
-      btn: string;
+  landingPage: {
+    navigation: {
+      about: string;
+      whitepaper: string;
+      faq: string;
+      actionText: string;
     };
-    about: {
+    hero: {
       title: string;
-      description: string;
+      subtitle: string;
+      actionText: string;
+    };
+    section1: {
+      title: string;
+      titleCont: string;
+      first: {
+        title: string;
+        content: string;
+      };
+      second: {
+        title: string;
+        content: string;
+      };
+      third: {
+        title: string;
+        content: string;
+      };
+    };
+    section2: {
+      title: string;
+      first: {
+        actionText: string;
+        title: string;
+        content: string;
+      };
+      second: {
+        actionText: string;
+        title: string;
+        content: string;
+      };
+      third: {
+        actionText: string;
+        title: string;
+        content: string;
+      };
+    };
+    testimonial: {
+      title: string;
+      twitterText: string;
+      telegramText: string;
+    };
+    faq: {
+      title: string;
+      subtitle: string;
+      supportText: string;
+      seeMore: string;
+      seeLess: string;
+      question1: {
+        question: string;
+        answer: string;
+      };
+      question2: {
+        question: string;
+        answer: string;
+      };
+      question3: {
+        question: string;
+        answer: string;
+      };
+      question4: {
+        question: string;
+        answer: string;
+      };
+      question5: {
+        question: string;
+        answer: string;
+      };
+      question6: {
+        question: string;
+        answer: string;
+      };
+    };
+    footer: {
+      resources: {
+        title: string;
+        blog: string;
+        github: string;
+      };
+      company: {
+        title: string;
+        privacy: string;
+        terms: string;
+      };
+      alert: string;
+      emailPlaceholder: string;
+      subscribe: string;
     };
   };
 };

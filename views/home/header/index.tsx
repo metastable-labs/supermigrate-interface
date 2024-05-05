@@ -6,17 +6,20 @@ import classNames from 'classnames';
 import { Logo, LogoAlt, SuperMigrateLogo } from '@/public/icons';
 import Action from './action';
 import useScreenDetect from '@/hooks/useScreenDetect';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
 import SMHam from '@/components/ham';
 import { NavLink } from './type';
 import Menu from './menu';
 
 const navLinks: NavLink[] = [
   { name: 'About', href: '#about' },
-  { name: 'Whitepaper', href: '#whitepaper' },
+  { name: 'Blog', href: 'https://mirror.xyz/supermigrate.eth' },
   { name: 'FAQ', href: '#faq' },
 ];
 
 const LandingHeader = () => {
+  const { locale } = useSystemFunctions();
+
   const [isTop, setIsTop] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isDesktop, isTablet, isMobile } = useScreenDetect();
@@ -24,6 +27,15 @@ const LandingHeader = () => {
   let width = '100%';
   if (isDesktop && !isTop) width = '648px';
   if (isDesktop && isTop) width = '87vw';
+
+  const { landingPage } = locale;
+  const { navigation } = landingPage;
+
+  const navLinks: NavLink[] = [
+    { name: navigation.about, href: '#about' },
+    { name: navigation.whitepaper, href: '#whitepaper' },
+    { name: navigation.faq, href: '#faq' },
+  ];
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
@@ -83,6 +95,7 @@ const LandingHeader = () => {
               <a
                 key={index}
                 href={href}
+                target="_blank"
                 className={classNames('px-3 py-2 text-sm tracking-[-0.14px]', {
                   'text-primary-3400': !isTop,
                   'text-primary-650': isTop,
@@ -93,7 +106,7 @@ const LandingHeader = () => {
           </div>
 
           <div className="hidden md:block">
-            <Action onClick={() => {}} />
+            <Action />
           </div>
 
           <SMHam isOpen={isMenuOpen} onClick={toggleMenu} />

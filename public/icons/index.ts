@@ -67,7 +67,6 @@ import LineaIcon from './linea-icon.svg';
 import ZoraIcon from './zora-icon.svg';
 import WorldChainIcon from './world-chain-icon.svg';
 import DegenIcon from './degen-icon.svg';
-import PGNIcon from './pgn-icon.svg';
 import RaysIcon from './rays-icon.svg';
 import SecondaryCloseIcon from './secondary-close-icon';
 import SecondaryCopyIcon from './secondary-copy-icon.svg';
@@ -158,7 +157,6 @@ export {
   ZoraIcon,
   WorldChainIcon,
   DegenIcon,
-  PGNIcon,
   RaysIcon,
   SecondaryCloseIcon,
   SecondaryCopyIcon,
