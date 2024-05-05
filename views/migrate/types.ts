@@ -1,4 +1,4 @@
-import { Network } from '@/config/rainbow/rainbowkit';
+import { Network } from '@/config/rainbow/config';
 
 interface ISelectionComponent {
   setMigrateNetwork: (network: Network) => void;
