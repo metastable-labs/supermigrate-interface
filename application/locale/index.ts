@@ -1,15 +1,16 @@
 'use client';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import englishJson from '../../dictionaries/en.json';
 
 import { Lang } from './types';
 
 export interface LocaleState {
-  locale: Lang | undefined;
+  locale: Lang;
 }
 
 const initialState: LocaleState = {
-  locale: undefined,
+  locale: englishJson,
 };
 
 export const userReducer = createSlice({
