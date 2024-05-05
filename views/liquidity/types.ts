@@ -1,4 +1,4 @@
-import { IOption } from "@/components/select/types";
+import { IOption } from '@/components/select/types';
 
 interface ILiquidityInput {
   value: string;
