@@ -116,6 +116,9 @@ const config: Config = {
       borderRadius: {
         base: '5px',
       },
+      fontFamily: {
+        Bitform: ['Bitform'],
+      },
     },
   },
   plugins: [],
