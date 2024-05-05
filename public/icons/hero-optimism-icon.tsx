@@ -1,5 +1,5 @@
-"use client";
-import useScreenDetect from "@/hooks/useScreenDetect";
+'use client';
+import useScreenDetect from '@/hooks/useScreenDetect';
 
 const HeroOptimismIcon = () => {
   const { isMobile } = useScreenDetect();
@@ -8,28 +8,10 @@ const HeroOptimismIcon = () => {
   const height = isMobile ? 56 : 91;
 
   return (
-    <svg
-      width={width}
-      height={height}
-      viewBox="0 0 91 90"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-    >
-      <rect
-        x="0.6875"
-        width="90"
-        height="90"
-        rx="45"
-        fill="url(#pattern0_1187_67949)"
-      />
+    <svg width={width} height={height} viewBox="0 0 91 90" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+      <rect x="0.6875" width="90" height="90" rx="45" fill="url(#pattern0_1187_67949)" />
       <defs>
-        <pattern
-          id="pattern0_1187_67949"
-          patternContentUnits="objectBoundingBox"
-          width="1"
-          height="1"
-        >
+        <pattern id="pattern0_1187_67949" patternContentUnits="objectBoundingBox" width="1" height="1">
           <use xlinkHref="#image0_1187_67949" transform="scale(0.00444444)" />
         </pattern>
         <image

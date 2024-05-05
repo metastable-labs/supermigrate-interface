@@ -1,5 +1,5 @@
-import { twMerge } from "tailwind-merge";
-import clsx, { ClassValue } from "clsx";
+import { twMerge } from 'tailwind-merge';
+import clsx, { ClassValue } from 'clsx';
 
 export const cn = (...input: ClassValue[]) => twMerge(clsx(input));
 
@@ -20,5 +20,5 @@ export const getScanLink = (id: number, hash: string) => {
     return `https://optimistic.etherscan.io//tx/${hash}`;
   }
 
-  return "";
+  return '';
 };

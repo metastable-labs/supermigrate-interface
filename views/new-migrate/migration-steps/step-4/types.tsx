@@ -1,6 +1,6 @@
 interface VerifyStepProps {
   text: string;
-  variant: "git" | "x";
+  variant: 'git' | 'x';
 }
 
 export type { VerifyStepProps };

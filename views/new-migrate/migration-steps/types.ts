@@ -1,6 +1,6 @@
-import { Network } from "@/config/rainbow/config";
-import { Dispatch, SetStateAction } from "react";
-import { FieldErrors, UseFormRegister, UseFormWatch } from "react-hook-form";
+import { Network } from '@/config/rainbow/config';
+import { Dispatch, SetStateAction } from 'react';
+import { FieldErrors, UseFormRegister, UseFormWatch } from 'react-hook-form';
 
 interface FormProp {
   tokenAddress: string;

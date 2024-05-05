@@ -1,4 +1,4 @@
-import { Network } from "@/config/rainbow/config";
+import { Network } from '@/config/rainbow/config';
 
 interface ITokenInfo {
   name: string;

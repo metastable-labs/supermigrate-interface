@@ -1,38 +1,22 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
-import { SMContainer } from "@/components";
-import {
-  HeroIcon,
-  HeroBaseBlandIcon,
-  HeroBaseIcon,
-  HeroModeIcon,
-  HeroOptimismIcon,
-  HeroScrollIcon,
-  HeroTiles,
-  HeroFadeShape,
-  HeroBGLines,
-} from "@/public/icons";
-import HeroButton from "./button";
-import useSystemFunctions from "@/hooks/useSystemFunctions";
+import { SMContainer } from '@/components';
+import { HeroIcon, HeroBaseBlandIcon, HeroBaseIcon, HeroModeIcon, HeroOptimismIcon, HeroScrollIcon, HeroTiles, HeroFadeShape, HeroBGLines } from '@/public/icons';
+import HeroButton from './button';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
 
-const icons = [
-  <HeroBaseBlandIcon key={0} />,
-  <HeroBaseIcon key={1} />,
-  <HeroOptimismIcon key={3} />,
-  <HeroModeIcon key={2} />,
-  <HeroScrollIcon key={4} />,
-];
+const icons = [<HeroBaseBlandIcon key={0} />, <HeroBaseIcon key={1} />, <HeroOptimismIcon key={3} />, <HeroModeIcon key={2} />, <HeroScrollIcon key={4} />];
 
-const stepTexts = ["Layer 2", "Base", "Optimism", "Mode", "Scroll"];
+const stepTexts = ['Layer 2', 'Base', 'Optimism', 'Mode', 'Scroll'];
 const stepTextColors = [
-  { color: "#C2540A", stroke: "#6E330C" },
-  { color: "#375DFB", stroke: "#253EA7" },
-  { color: "#DF1C41", stroke: "#AF1D38" },
-  { color: "#DFFE00", stroke: "#1A1D01" },
-  { color: "#FFEDD8", stroke: "#1A1D01" },
+  { color: '#C2540A', stroke: '#6E330C' },
+  { color: '#375DFB', stroke: '#253EA7' },
+  { color: '#DF1C41', stroke: '#AF1D38' },
+  { color: '#DFFE00', stroke: '#1A1D01' },
+  { color: '#FFEDD8', stroke: '#1A1D01' },
 ];
 
 const HeroSection = () => {
@@ -48,10 +32,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section
-      id="home"
-      className="relative z-10 w-full mb-[141px] md:mb-[250px] lg:mb-[326px] pt-[150px] md:pt-[120px] xl:pt-[88px]"
-    >
+    <section id="home" className="relative z-10 w-full mb-[141px] md:mb-[250px] lg:mb-[326px] pt-[150px] md:pt-[120px] xl:pt-[88px]">
       <SMContainer>
         <div className="w-full flex flex-col xl:flex-row items-center xl:justify-between gap-6">
           <div className="flex flex-col justify-center items-start gap-[29px]">
@@ -63,31 +44,27 @@ const HeroSection = () => {
                     key={step}
                     initial={{
                       opacity: 0,
-                      color: "white",
+                      color: 'white',
                       WebkitTextStrokeWidth: 0,
                     }}
                     animate={{
                       opacity: 1,
                       color: stepTextColors[step].color,
-                      WebkitTextStrokeWidth: "1px",
+                      WebkitTextStrokeWidth: '1px',
                       WebkitTextStrokeColor: stepTextColors[step].stroke,
                     }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.25 }}
-                    className="whitespace-nowrap"
-                  >
-                    {" "}
+                    className="whitespace-nowrap">
+                    {' '}
                     {stepTexts[step]}
                   </motion.span>
                 </AnimatePresence>
               </p>
-              <p className="text-primary-2350 text-[20px] leading-[31px] max-w-[520px]">
-                Automatically deploy canonical bridged ERC20 to base and Create
-                a PR on the superchain token list repo.
-              </p>
+              <p className="text-primary-2350 text-[20px] leading-[31px] max-w-[520px]">Automatically deploy canonical bridged ERC20 to base and Create a PR on the superchain token list repo.</p>
             </div>
 
-            <HeroButton onClick={() => navigate.push("/migrate")} />
+            <HeroButton onClick={() => navigate.push('/migrate')} />
           </div>
 
           <div className="relative">
@@ -95,13 +72,7 @@ const HeroSection = () => {
 
             <div className="absolute bottom-[9.5%] z-10 w-full flex items-center justify-center">
               <AnimatePresence mode="popLayout">
-                <motion.div
-                  key={step}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 1 }}
-                >
+                <motion.div key={step} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1 }}>
                   {icons[step]}
                 </motion.div>
               </AnimatePresence>

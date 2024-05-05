@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { useCookies } from "react-cookie";
-import { toast } from "react-toastify";
-import useSystemFunctions from "@/hooks/useSystemFunctions";
-import { CallbackProps } from "../store";
-import { setLoading, setUser } from ".";
-import api from "./api";
-import { setTokenHeader } from "@/utils/axios";
-import useMigrationActions from "../migration/actions";
+import { useCookies } from 'react-cookie';
+import { toast } from 'react-toastify';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
+import { CallbackProps } from '../store';
+import { setLoading, setUser } from '.';
+import api from './api';
+import { setTokenHeader } from '@/utils/axios';
+import useMigrationActions from '../migration/actions';
 
 const useUserActions = () => {
   const { dispatch } = useSystemFunctions();
   const { getMigrations } = useMigrationActions();
-  const [cookies, setCookie] = useCookies(["SMauthtoken"]);
+  const [cookies, setCookie] = useCookies(['SMauthtoken']);
 
   const getUser = async (callback?: CallbackProps) => {
     try {
@@ -35,12 +35,12 @@ const useUserActions = () => {
 
       setTokenHeader(user.token);
 
-      setCookie("SMauthtoken", user.token, {
+      setCookie('SMauthtoken', user.token, {
         expires: new Date(new Date().getTime() + user.expire * 1000),
       });
 
-      toast("Github connected sucessfully", {
-        type: "success",
+      toast('Github connected sucessfully', {
+        type: 'success',
       });
 
       return dispatch(setUser(user.user));
@@ -48,10 +48,10 @@ const useUserActions = () => {
       callback?.onError?.(error);
       const message = error?.response?.data?.message;
 
-      if (message === "Invalid authentication code") return;
+      if (message === 'Invalid authentication code') return;
 
-      return toast("Github authentication failed! Please try again.", {
-        type: "error",
+      return toast('Github authentication failed! Please try again.', {
+        type: 'error',
         autoClose: 7000,
       });
     } finally {

@@ -1,11 +1,7 @@
-import {
-  useWaitForTransactionReceipt,
-  useWriteContract,
-  useChainId,
-} from "wagmi";
-import { getTransactionReceipt } from "@wagmi/core";
-import { wagmiConfig } from "@/config/rainbow/rainbowkit";
-import { networks } from "@/config/rainbow/config";
+import { useWaitForTransactionReceipt, useWriteContract, useChainId } from 'wagmi';
+import { getTransactionReceipt } from '@wagmi/core';
+import { wagmiConfig } from '@/config/rainbow/rainbowkit';
+import { networks } from '@/config/rainbow/config';
 
 const useContract = () => {
   const chainId: any = useChainId();
@@ -15,22 +11,16 @@ const useContract = () => {
     hash,
   });
 
-  const currentNetwork = networks.find(
-    (network) => network.chainId === chainId
-  );
+  const currentNetwork = networks.find((network) => network.chainId === chainId);
 
   const factory = currentNetwork?.factoryAddress;
   const superFactory = currentNetwork?.superFactoryAddress;
   const abi = currentNetwork?.abi;
   const superAbi = currentNetwork?.superAbi;
 
-  const funcName = "createStandardL2Token";
+  const funcName = 'createStandardL2Token';
 
-  const deployToken = (
-    remoteToken: string,
-    tokenName: string,
-    tokenSymbol: string
-  ) => {
+  const deployToken = (remoteToken: string, tokenName: string, tokenSymbol: string) => {
     writeContract({
       address: factory!,
       abi,
@@ -39,16 +29,11 @@ const useContract = () => {
     });
   };
 
-  const deployTokenWithDecimal = (
-    remoteToken: string,
-    tokenName: string,
-    tokenSymbol: string,
-    tokenDecimal: string
-  ) => {
+  const deployTokenWithDecimal = (remoteToken: string, tokenName: string, tokenSymbol: string, tokenDecimal: string) => {
     writeContract({
       address: superFactory!,
       abi: superAbi,
-      functionName: chainId === 8453 ? "beBased" : "beSuper",
+      functionName: chainId === 8453 ? 'beBased' : 'beSuper',
       args: [remoteToken, tokenName, tokenSymbol, Number(tokenDecimal)],
     });
   };

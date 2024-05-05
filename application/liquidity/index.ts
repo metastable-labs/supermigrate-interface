@@ -1,8 +1,8 @@
-"use client";
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+'use client';
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
-import { Liquidity } from "./types";
+import { Liquidity } from './types';
 
 export interface LiquidityState {
   liquidities: Liquidity[];
@@ -19,7 +19,7 @@ const initialState: LiquidityState = {
 };
 
 export const liquidityReducer = createSlice({
-  name: "liquidity",
+  name: 'liquidity',
   initialState,
   reducers: {
     setLoading: (state, action: PayloadAction<boolean>) => {
@@ -40,7 +40,6 @@ export const liquidityReducer = createSlice({
   },
 });
 
-export const { setLoading, setLiquidities, setLiquidity, setLoadingLiquidity } =
-  liquidityReducer.actions;
+export const { setLoading, setLiquidities, setLiquidity, setLoadingLiquidity } = liquidityReducer.actions;
 
 export default liquidityReducer.reducer;

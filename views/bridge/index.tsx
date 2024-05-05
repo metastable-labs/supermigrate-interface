@@ -1,11 +1,11 @@
-"use client";
-import { useState } from "react";
-import { useChainId } from "wagmi";
+'use client';
+import { useState } from 'react';
+import { useChainId } from 'wagmi';
 
-import { LangParamProp } from "@/config/internationalization/i18n";
-import { SMButton } from "@/components";
-import { ExclaimIcon } from "@/public/icons";
-import { networks } from "@/config/rainbow/config";
+import { LangParamProp } from '@/config/internationalization/i18n';
+import { SMButton } from '@/components';
+import { ExclaimIcon } from '@/public/icons';
+import { networks } from '@/config/rainbow/config';
 
 const BridgeView = ({ lang }: LangParamProp) => {
   const [supported, setSupported] = useState(true);
@@ -25,33 +25,18 @@ const BridgeView = ({ lang }: LangParamProp) => {
                 </div>
               </div>
 
-              <h1 className="text-primary-1750 text-[20px] leading-[30px] text-center">
-                Network not supported
-              </h1>
-              <span className="text-primary-1500 text-[14px] leading-[24px] text-center">
-                Superbridge doesn’t support this network
-              </span>
+              <h1 className="text-primary-1750 text-[20px] leading-[30px] text-center">Network not supported</h1>
+              <span className="text-primary-1500 text-[14px] leading-[24px] text-center">Superbridge doesn’t support this network</span>
             </div>
 
-            <SMButton
-              text="Switch network"
-              network="base"
-              onClick={() => {}}
-              variant="plain"
-            />
+            <SMButton text="Switch network" network="base" onClick={() => {}} variant="plain" />
           </div>
         </div>
       </div>
     );
   }
 
-  return (
-    <iframe
-      src={`https://superbridge.app/${network?.title?.toLowerCase?.()}`}
-      className="w-full min-h-screen"
-      onError={(e) => console.error("Iframe failed to load:", e)}
-    />
-  );
+  return <iframe src={`https://superbridge.app/${network?.title?.toLowerCase?.()}`} className="w-full min-h-screen" onError={(e) => console.error('Iframe failed to load:', e)} />;
 };
 
 export default BridgeView;

@@ -1,8 +1,8 @@
-"use client";
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+'use client';
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
-import { Migration } from "./types";
+import { Migration } from './types';
 
 export interface MigrationState {
   migrations: Migration[];
@@ -19,7 +19,7 @@ const initialState: MigrationState = {
 };
 
 export const migrationReducer = createSlice({
-  name: "migration",
+  name: 'migration',
   initialState,
   reducers: {
     setLoading: (state, action: PayloadAction<boolean>) => {
@@ -40,7 +40,6 @@ export const migrationReducer = createSlice({
   },
 });
 
-export const { setLoading, setMigrations, setMigration, setLoadingMigration } =
-  migrationReducer.actions;
+export const { setLoading, setMigrations, setMigration, setLoadingMigration } = migrationReducer.actions;
 
 export default migrationReducer.reducer;

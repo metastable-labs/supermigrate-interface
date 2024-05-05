@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import useSystemFunctions from "@/hooks/useSystemFunctions";
-import useDictionary from "@/hooks/useDictionary";
-import { LangParamProp } from "@/config/internationalization/i18n";
-import { setLocale } from ".";
+import useSystemFunctions from '@/hooks/useSystemFunctions';
+import useDictionary from '@/hooks/useDictionary';
+import { LangParamProp } from '@/config/internationalization/i18n';
+import { setLocale } from '.';
 
 const useLocaleActions = () => {
   const { dispatch } = useSystemFunctions();

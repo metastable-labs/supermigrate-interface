@@ -1,22 +1,22 @@
-import classNames from "classnames";
-import { motion } from "framer-motion";
+import classNames from 'classnames';
+import { motion } from 'framer-motion';
 
-import { LoadingIcon } from "@/public/icons";
-import { ISMLoader } from "./types";
+import { LoadingIcon } from '@/public/icons';
+import { ISMLoader } from './types';
 
-const SMLoader = ({ variant = "small" }: ISMLoader) => {
+const SMLoader = ({ variant = 'small' }: ISMLoader) => {
   let width, height;
 
   switch (variant) {
-    case "small":
+    case 'small':
       width = 20;
       height = 20;
       break;
-    case "medium":
+    case 'medium':
       width = 30;
       height = 30;
       break;
-    case "large":
+    case 'large':
       width = 40;
       height = 40;
       break;
@@ -28,12 +28,11 @@ const SMLoader = ({ variant = "small" }: ISMLoader) => {
         rotate: 360,
         transition: {
           duration: 2,
-          ease: "linear",
+          ease: 'linear',
           repeat: Infinity,
-          repeatType: "loop",
+          repeatType: 'loop',
         },
-      }}
-    >
+      }}>
       <LoadingIcon width={width} height={height} />
     </motion.span>
   );

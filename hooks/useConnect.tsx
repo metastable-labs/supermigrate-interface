@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import { useAccount, useSwitchChain, useChainId } from "wagmi";
+import { useEffect } from 'react';
+import { useAccount, useSwitchChain, useChainId } from 'wagmi';
 
-import { wagmiConfig } from "@/config/rainbow/rainbowkit";
+import { wagmiConfig } from '@/config/rainbow/rainbowkit';
 
 const useConnect = () => {
   const { isConnected, connector, address } = useAccount();
@@ -10,14 +10,10 @@ const useConnect = () => {
 
   const listener = () => {
     if (chainId) {
-      const isAcceptedChain = wagmiConfig.chains.find(
-        (chain) => chain.id === chainId
-      );
+      const isAcceptedChain = wagmiConfig.chains.find((chain) => chain.id === chainId);
 
       if (isConnected && !isAcceptedChain) {
-        return (
-          switchChain && switchChain({ chainId: wagmiConfig.chains[0].id })
-        );
+        return switchChain && switchChain({ chainId: wagmiConfig.chains[0].id });
       }
     }
   };

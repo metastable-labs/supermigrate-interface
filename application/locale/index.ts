@@ -1,8 +1,8 @@
-"use client";
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+'use client';
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
-import { Lang } from "./types";
+import { Lang } from './types';
 
 export interface LocaleState {
   locale: Lang | undefined;
@@ -13,7 +13,7 @@ const initialState: LocaleState = {
 };
 
 export const userReducer = createSlice({
-  name: "locale",
+  name: 'locale',
   initialState,
   reducers: {
     setLocale: (state, action: PayloadAction<Lang>) => {

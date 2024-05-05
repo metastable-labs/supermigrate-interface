@@ -1,7 +1,7 @@
-import { Network } from "@/config/rainbow/config";
+import { Network } from '@/config/rainbow/config';
 
-type PullStatus = "merged" | "pending" | "failed";
-type TableVariant = "primary" | "secondary";
+type PullStatus = 'merged' | 'pending' | 'failed';
+type TableVariant = 'primary' | 'secondary';
 
 interface TableItem {
   tokenIcon?: string;

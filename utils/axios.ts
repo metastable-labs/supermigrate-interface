@@ -1,9 +1,9 @@
-import axios from "axios";
+import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: "https://api.supermigrate.xyz/v1/",
+  baseURL: 'https://api.supermigrate.xyz/v1/',
   headers: {
-    "ngrok-skip-browser-warning": true,
+    'ngrok-skip-browser-warning': true,
   },
 });
 
@@ -15,7 +15,7 @@ axiosInstance.interceptors.response.use(
     // if (error?.response?.status === 401 || error?.response?.status === 403) {
     // }
     return Promise.reject(error);
-  }
+  },
 );
 
 const setTokenHeader = async (token?: string) => {

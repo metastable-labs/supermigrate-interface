@@ -1,32 +1,21 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { useAccount, useChainId } from "wagmi";
-import { trim } from "viem";
+import { useEffect, useState } from 'react';
+import { useAccount, useChainId } from 'wagmi';
+import { trim } from 'viem';
 
-import useSystemFunctions from "@/hooks/useSystemFunctions";
-import { FormProp } from "@/views/new-migrate/migration-steps/types";
-import useContract from "@/hooks/useContract";
-import { networks } from "@/config/rainbow/config";
-import {
-  setLoading,
-  setLoadingMigration,
-  setMigration,
-  setMigrations,
-} from ".";
-import api from "./api";
-import { CallbackProps } from "../store";
-import { Migration } from "./types";
+import useSystemFunctions from '@/hooks/useSystemFunctions';
+import { FormProp } from '@/views/new-migrate/migration-steps/types';
+import useContract from '@/hooks/useContract';
+import { networks } from '@/config/rainbow/config';
+import { setLoading, setLoadingMigration, setMigration, setMigrations } from '.';
+import api from './api';
+import { Migration } from './types';
+import { CallbackProps } from '../store';
 
 const useMigrationActions = () => {
-  const { dispatch, migrationState } = useSystemFunctions();
-  const {
-    deployToken,
-    isPending,
-    isConfirmed,
-    getTransactionData,
-    deployTokenWithDecimal,
-  } = useContract();
+  const { dispatch } = useSystemFunctions();
+  const { deployToken, isPending, isConfirmed, getTransactionData, deployTokenWithDecimal } = useContract();
   const { address } = useAccount();
   const chainId = useChainId();
 
@@ -56,18 +45,9 @@ const useMigrationActions = () => {
     }
   };
 
-  const getMigrationObject = async (id: string, body?: Migration) => {
+  const getMigrationObject = async (body: Migration) => {
     try {
-      if (body) {
-        return dispatch(setMigration(body));
-      }
-
-      const migration = await migrationState.migrations?.find(
-        (item) => item.id === id
-      );
-      if (!migration) return;
-
-      return dispatch(setMigration(migration));
+      return dispatch(setMigration(body));
     } catch (error: any) {}
   };
 
@@ -75,22 +55,12 @@ const useMigrationActions = () => {
     try {
       dispatch(setLoading(true));
 
-      if (data.tokenDecimal === "18") {
-        return deployToken(
-          data.tokenAddress,
-          data.tokenName!,
-          data.tokenSymbol!
-        );
+      if (data.tokenDecimal === '18') {
+        deployToken(data.tokenAddress, data.tokenName!, data.tokenSymbol!);
       }
 
-      deployTokenWithDecimal(
-        data.tokenAddress,
-        data.tokenName!,
-        data.tokenSymbol!,
-        data.tokenDecimal!
-      );
+      deployTokenWithDecimal(data.tokenAddress, data.tokenName!, data.tokenSymbol!, data.tokenDecimal!);
       setData(data);
-
       callback?.onSuccess?.();
     } catch (error: any) {
       dispatch(setLoading(false));
@@ -106,26 +76,25 @@ const useMigrationActions = () => {
       const txData = await getTransactionData();
 
       const formData = new FormData();
-      formData.append("logo", data?.file as File);
-      formData.append("name", data?.tokenName!);
-      formData.append("symbol", data?.tokenSymbol!);
-      formData.append("decimals", data?.tokenDecimal!);
-      formData.append("description", data?.tokenDescription!);
+      formData.append('logo', data?.file as File);
+      formData.append('name', data?.tokenName!);
+      formData.append('symbol', data?.tokenSymbol!);
+      formData.append('decimals', data?.tokenDecimal!);
+      formData.append('description', data?.tokenDescription!);
       if (data?.websiteLink) {
-        formData.append("website", data?.websiteLink!);
+        formData.append('website', data?.websiteLink!);
       }
-      formData.append("twitter", data?.twitterLink!);
+      formData.append('twitter', data?.twitterLink!);
 
-      const deployedToken = await networks.find(
-        (network) => network.chainId === chainId
-      );
-      const logIndex = data?.tokenDecimal !== "18" ? 1 : 0;
-      const tokenAddress = txData?.logs?.[logIndex]?.topics?.[2];
+      const deployedToken = await networks.find((network) => network.chainId === chainId);
+      const topicIndex = data?.tokenDecimal === '18' ? 1 : 2;
+
+      const tokenAddress = txData?.logs?.[1]?.topics?.[topicIndex];
 
       let chains = [
         {
           id: 1,
-          name: "ethereum",
+          name: 'ethereum',
           token_address: data?.tokenAddress,
         },
         {
@@ -134,7 +103,7 @@ const useMigrationActions = () => {
           token_address: trim(tokenAddress!),
           deployer_address: address,
           token_detail_override: {},
-          transaction_hash: txData?.blockHash,
+          transaction_hash: txData?.transactionHash,
         },
       ];
 
@@ -145,11 +114,11 @@ const useMigrationActions = () => {
           decimals: parseInt(data?.tokenDecimal!),
         };
       }
-      formData.append("chains", JSON.stringify(chains));
+      formData.append('chains', JSON.stringify(chains));
 
       const response = await api.migrateToken(formData);
 
-      getMigrationObject("", response);
+      getMigrationObject(response);
       getMigrations();
     } catch (error: any) {
       setLoadingMigration(false);
