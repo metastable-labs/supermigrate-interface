@@ -12,6 +12,8 @@ const verifySteps: VerifyStepProps[] = [
   },
 ];
 
+const twitterUrl = 'https://twitter.com/intent/tweet?text=I%20just%20performed%20a%20migration%20using%20%40BaseMigrate';
+
 const VerifyStep = ({ text, variant = 'x' }: VerifyStepProps) => {
   return (
     <div className="self-stretch flex flex-col md:flex-row gap-3 md:gap-4 justify-center items-start min-w-[320px] max-w-[560px]">
@@ -20,7 +22,7 @@ const VerifyStep = ({ text, variant = 'x' }: VerifyStepProps) => {
         <span className="text-primary-1500 text-[14px] leading-[21px]">{text}</span>
         {variant === 'x' && (
           <a
-            href="https://twitter.com/BaseMigrate"
+            href={twitterUrl}
             target="_blank"
             className="text-primary-3350 text-[14px] leading-[18.2px] tracking-[-0.14px] underline underline-offset-4 flex items-center justify-center gap-2 pb-[3px]">
             Verifying migration on @supermigrate
