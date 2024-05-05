@@ -85,6 +85,7 @@ import SearchIcon from "./search-icon.svg";
 import SuccessIcon from "./success-icon";
 import LogoAlt from "./logo-alt.svg";
 import TelegramIcon from "./telegram-icon";
+import FooterLogo from "./footer-logo.svg";
 
 export {
   Logo,
@@ -174,4 +175,5 @@ export {
   SuccessIcon,
   LogoAlt,
   TelegramIcon,
+  FooterLogo,
 };
