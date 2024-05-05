@@ -48,14 +48,7 @@ const App = ({ params, children }: PageProps) => {
     };
   }, [params.network]);
 
-  return (
-    <main>
-      {children}
-      <div className="flex justify-center fixed w-screen bottom-0 -z-10">
-        <Tiles network={params.network} />
-      </div>
-    </main>
-  );
+  return <main>{children}</main>;
 };
 
 export default App;
