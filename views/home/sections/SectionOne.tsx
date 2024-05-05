@@ -1,5 +1,6 @@
 import { SMContainer } from '@/components';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
+import { EasyIcon, EarnIcon, FastIcon } from '@/public/icons';
 
 const SectionOne = () => {
   const { locale } = useSystemFunctions();
@@ -10,14 +11,17 @@ const SectionOne = () => {
     {
       title: first.title,
       description: first.content,
+      icon: <EasyIcon />,
     },
     {
       title: second.title,
       description: second.content,
+      icon: <FastIcon />,
     },
     {
       title: third.title,
       description: third.content,
+      icon: <EarnIcon />,
     },
   ];
 
@@ -33,9 +37,11 @@ const SectionOne = () => {
 
         <div className="grid lg:grid-cols-3 grid-cols-1 gap-10 items-stretch">
           {listings?.map((item) => (
-            <div key={item?.title} className="py-[42px] pr-[43px] pl-11 h-[438px] rounded-base border border-primary-250 bg-primary-3500">
+            <div key={item?.title} className="py-[42px] pr-[43px] pl-11 h-[438px] rounded-base border border-primary-250 bg-primary-3500 relative">
               <h1 className="text-[20px] leading-[39.24px] lg:text-[24px] lg:leading-[43.244px] text-xl font-medium text-white">{item?.title}</h1>
               <h2 className="text-primary-3550 text-sm lg:text-lg">{item?.description}</h2>
+
+              <div className="absolute bottom-0 left-0 flex items-center justify-center w-full">{item?.icon}</div>
             </div>
           ))}
         </div>
