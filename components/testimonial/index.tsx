@@ -1,19 +1,7 @@
 import Image from 'next/image';
 import { ISMTestimonial } from './types';
 
-const getTwitterUsername = (url: string) => {
-  try {
-    const twitterUrlObj = new URL(url);
-    return twitterUrlObj.pathname.split('/').pop();
-  } catch (error) {
-    console.error('Invalid URL', error);
-    return '';
-  }
-};
-
-const SMTestimonial = ({ content, imageUrl, name, twitterUrl }: ISMTestimonial) => {
-  const twitterUsername = getTwitterUsername(twitterUrl);
-
+const SMTestimonial = ({ content, imageUrl, name, twitterUrl, username }: ISMTestimonial) => {
   return (
     <div className="mx-[15px] py-6 px-8 border border-primary-250 flex flex-col gap-6 rounded-base w-[293px] md:w-[429px] min-h-full">
       <div className="flex items-center justify-between">
@@ -22,7 +10,7 @@ const SMTestimonial = ({ content, imageUrl, name, twitterUrl }: ISMTestimonial) 
           <div>
             <h3 className="text-sm font-medium text-primary-3700">{name}</h3>
             <a href={twitterUrl} target="_blank" className="text-primary-3650 text-sm">
-              @{twitterUsername}
+              @{username}
             </a>
           </div>
         </div>
@@ -31,7 +19,7 @@ const SMTestimonial = ({ content, imageUrl, name, twitterUrl }: ISMTestimonial) 
         </a>
       </div>
 
-      <p className="text-primary-3650 text-[10px] leading-[15px] md:text-base">{content}</p>
+      <p className="text-primary-3650 text-[10px] leading-[15px] md:text-base">{content.substring(0, 80)}...</p>
     </div>
   );
 };
