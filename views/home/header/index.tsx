@@ -12,7 +12,7 @@ import Menu from './menu';
 
 const navLinks: NavLink[] = [
   { name: 'About', href: '#about' },
-  { name: 'Whitepaper', href: '#whitepaper' },
+  { name: 'Blog', href: 'https://mirror.xyz/supermigrate.eth' },
   { name: 'FAQ', href: '#faq' },
 ];
 
@@ -83,6 +83,7 @@ const LandingHeader = () => {
               <a
                 key={index}
                 href={href}
+                target="_blank"
                 className={classNames('px-3 py-2 text-sm tracking-[-0.14px]', {
                   'text-primary-3400': !isTop,
                   'text-primary-650': isTop,

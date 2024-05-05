@@ -5,7 +5,7 @@ import * as yup from 'yup';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FooterLogo } from '@/public/icons';
-import { extras } from './dummy';
+import { extras } from './data';
 
 const Extra = ({ title, links }: { title: string; links: { titile: string; url: string }[] }) => {
   return (
@@ -14,7 +14,7 @@ const Extra = ({ title, links }: { title: string; links: { titile: string; url: 
 
       <div className="flex flex-col gap-3 items-start self-stretch">
         {links.map((link, index) => (
-          <a href={link.url} className="text-primary-3750 font-medium" key={index}>
+          <a href={link.url} target="_blank" className="text-primary-3750 font-medium" key={index}>
             {link.titile}
           </a>
         ))}

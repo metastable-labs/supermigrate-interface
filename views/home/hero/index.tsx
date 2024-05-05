@@ -55,7 +55,9 @@ const HeroSection = () => {
                   </motion.p>
                 </AnimatePresence>
               </div>
-              <p className="text-white text-[20px] leading-[31px] max-w-[520px] text-center">Automatically deploy canonical bridged ERC20 to base and Create a PR on the superchain token list repo.</p>
+              <p className="text-white text-[20px] leading-[31px] max-w-[520px] text-center">
+                Automatically deploy canonical bridged ERC20 to an L2. Start bridging and adding liquidity to earn rewards all in one place.
+              </p>
             </div>
 
             <HeroButton onClick={() => navigate.push('/migrate')} />
