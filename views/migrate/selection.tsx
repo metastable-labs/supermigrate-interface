@@ -34,12 +34,6 @@ const comingSoonNetworks: NetworkProps[] = [
     comingSoon: true,
     variant: 'degen',
   },
-  {
-    title: 'PGN',
-    chainId: 0,
-    comingSoon: true,
-    variant: 'pgn',
-  },
 ];
 
 const SelectionComponent = () => {
@@ -59,18 +53,6 @@ const SelectionComponent = () => {
           {comingSoonNetworks.map((card, index) => (
             <SMCard key={index} {...card} />
           ))}
-        </div>
-
-        <div className="self-stretch flex items-center rounded-xl bg-primary-650 px-6 py-3 ">
-          <div className="text-primary-700 text-[14px] leading-[24px]">
-            {"We are adding more L2 Integrations. If you'd like us to support your network, reach out to"}
-
-            <p className="underline">
-              <a href="https://www.integrations@metastablelabs.xyz" target="_blank">
-                integrations@metastablelabs.xyz
-              </a>
-            </p>
-          </div>
         </div>
       </div>
     </motion.div>

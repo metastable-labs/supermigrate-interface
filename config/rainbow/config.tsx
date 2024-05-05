@@ -9,7 +9,7 @@ import SuperERC20Factory from './abis/SuperERC20Factory.json';
 
 import { BasePrimaryMobileIcon, ModePrimaryMobileIcon, OptimismPrimaryMobileIcon } from '@/public/icons';
 
-export type Network = 'base' | 'optimism' | 'mode' | 'scroll' | 'linea' | 'zora' | 'world-chain' | 'degen' | 'pgn';
+export type Network = 'base' | 'optimism' | 'mode' | 'scroll' | 'linea' | 'zora' | 'world-chain' | 'degen';
 
 export interface NetworkProps {
   title: string;
