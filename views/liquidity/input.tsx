@@ -1,19 +1,8 @@
-import React from "react";
-import { SMSelect } from "@/components";
-import { ILiquidityInput } from "./types";
+import React from 'react';
+import { SMSelect } from '@/components';
+import { ILiquidityInput } from './types';
 
-const LiquidityInput = ({
-  value,
-  onChange,
-  placeholder,
-  options,
-  onSelect,
-  selectText,
-  balanceText,
-  balanceValue,
-  disabled,
-  defaultId,
-}: ILiquidityInput) => {
+const LiquidityInput = ({ value, onChange, placeholder, options, onSelect, selectText, balanceText, balanceValue, disabled, defaultId }: ILiquidityInput) => {
   return (
     <div className="w-full p-4 flex justify-between items-center gap-5 bg-primary-2700 rounded border border-primary-2100">
       <input
@@ -25,12 +14,7 @@ const LiquidityInput = ({
         disabled={disabled}
       />
       <div className="flex flex-col items-end gap-[6px] shrink-0">
-        <SMSelect
-          defaultId={defaultId}
-          options={options}
-          text={selectText}
-          onClick={onSelect}
-        />
+        <SMSelect defaultId={defaultId} options={options} text={selectText} onClick={onSelect} />
         {balanceValue && balanceText && (
           <span className="text-primary-200 text-[12px] leading-[17.4px] font-medium">
             Balance: {balanceValue} {balanceText}

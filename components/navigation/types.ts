@@ -1,5 +1,5 @@
-import { ReactElement } from "react";
-import { ModalType } from "./modal/types";
+import { ReactElement } from 'react';
+import { ModalType } from './modal/types';
 
 interface INavLink {
   title: string;

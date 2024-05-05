@@ -1,5 +1,5 @@
-import { axiosInstance } from "@/utils/axios";
-import { Migration } from "./types";
+import { axiosInstance } from '@/utils/axios';
+import { Migration } from './types';
 
 type IMigration = {
   fetchMigrations: () => Promise<Migration[]>;

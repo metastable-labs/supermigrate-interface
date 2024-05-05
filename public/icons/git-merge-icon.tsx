@@ -1,19 +1,5 @@
-const GitMergeIcon = ({
-  color = "#2D9F75",
-  height = 20,
-  width = 20,
-}: {
-  color?: string;
-  width?: number;
-  height?: number;
-}) => (
-  <svg
-    width={width}
-    height={height}
-    viewBox="0 0 20 20"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+const GitMergeIcon = ({ color = '#2D9F75', height = 20, width = 20 }: { color?: string; width?: number; height?: number }) => (
+  <svg width={width} height={height} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g id="git-merge-line">
       <path
         id="Vector"

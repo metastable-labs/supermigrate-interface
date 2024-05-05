@@ -1,10 +1,10 @@
-import Marquee from "react-fast-marquee";
+import Marquee from 'react-fast-marquee';
 
-import { testimonials } from "./dummy";
-import { SMClickAnimation, SMContainer, SMTestimonial } from "@/components";
-import { ISMTestimonial } from "@/components/testimonial/types";
-import { LinkRightArrow, TelegramIcon, XIcon } from "@/public/icons";
-import { ISocialLink } from "./types";
+import { testimonials } from './dummy';
+import { SMClickAnimation, SMContainer, SMTestimonial } from '@/components';
+import { ISMTestimonial } from '@/components/testimonial/types';
+import { LinkRightArrow, TelegramIcon, XIcon } from '@/public/icons';
+import { ISocialLink } from './types';
 
 const marqueeContent = (items: ISMTestimonial[]) => {
   return (
@@ -18,17 +18,11 @@ const marqueeContent = (items: ISMTestimonial[]) => {
 
 const SocialLink = ({ icon, link, text, isMobile }: ISocialLink) => (
   <SMClickAnimation>
-    <a
-      href={link}
-      target="_blank"
-      className="rounded-base px-[18px] py-3 flex items-center justify-center gap-1.5 border-[0.3px] border-primary-3450 bg-white"
-    >
+    <a href={link} target="_blank" className="rounded-base px-[18px] py-3 flex items-center justify-center gap-1.5 border-[0.3px] border-primary-3450 bg-white">
       {icon}
 
       <div className="flex items-center justify-center gap-2">
-        <h2 className="lg:text-base text-primary-3250 text-xs whitespace-nowrap">
-          {text}
-        </h2>
+        <h2 className="lg:text-base text-primary-3250 text-xs whitespace-nowrap">{text}</h2>
 
         {!isMobile && <LinkRightArrow color="#0A0D14" width={24} height={24} />}
       </div>
@@ -38,14 +32,14 @@ const SocialLink = ({ icon, link, text, isMobile }: ISocialLink) => (
 
 const socialLinks = [
   {
-    text: "Follow Us",
+    text: 'Follow Us',
     icon: <XIcon color="#0A0D14" width={20} height={20} />,
-    link: "#",
+    link: '#',
   },
   {
-    text: "Join community",
+    text: 'Join community',
     icon: <TelegramIcon />,
-    link: "#",
+    link: '#',
   },
 ];
 

@@ -1,11 +1,11 @@
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
 
 const useCopy = () => {
   const copyAction = (text: string) => {
     navigator.clipboard.writeText(text);
 
-    return toast("copied to clipboard", {
-      type: "info",
+    return toast('copied to clipboard', {
+      type: 'info',
     });
   };
 

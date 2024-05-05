@@ -1,23 +1,23 @@
-import { useState, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
-import { SMButton, SMClickAnimation } from "@/components";
-import { IOption } from "@/components/select/types";
-import { PlusIcon } from "@/public/icons";
-import { walletOptions, rates, tokenOptions, Rate } from "./dummy";
-import Info from "./info";
-import Extra from "./extra";
-import LiquidityInput from "./input";
-import { IAdd } from "./types";
+import { SMButton, SMClickAnimation } from '@/components';
+import { IOption } from '@/components/select/types';
+import { PlusIcon } from '@/public/icons';
+import { walletOptions, rates, tokenOptions, Rate } from './dummy';
+import Info from './info';
+import Extra from './extra';
+import LiquidityInput from './input';
+import { IAdd } from './types';
 
 const Add = ({ defaultId }: IAdd) => {
   const [step, setStep] = useState(0);
-  const [values, setValues] = useState({ amount: "", liquidity: "" });
+  const [values, setValues] = useState({ amount: '', liquidity: '' });
   const [wallet, setWallet] = useState<IOption>();
   const [token, setToken] = useState<IOption>();
-  const [walletBalance, setWalletBalance] = useState("24.64");
-  const [headerText, setHeaderText] = useState("Add Liquidity");
-  const [buttonText, setButtonText] = useState("Invalid Pair");
+  const [walletBalance, setWalletBalance] = useState('24.64');
+  const [headerText, setHeaderText] = useState('Add Liquidity');
+  const [buttonText, setButtonText] = useState('Invalid Pair');
 
   const showText = Boolean(wallet && token) && step === 0;
   const showInputSection = step === 0;
@@ -28,18 +28,15 @@ const Add = ({ defaultId }: IAdd) => {
   const handleWallet = (wallet: IOption) => setWallet(wallet);
   const handleToken = (token: IOption) => setToken(token);
 
-  const handleInputChange =
-    (field: "amount" | "liquidity") =>
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const rawNumber = event.target.value.replace(/\D+/g, "");
-      const num =
-        rawNumber === "" ? "" : parseInt(rawNumber, 10).toLocaleString("en-US");
-      setValues((prev) => ({ ...prev, [field]: num }));
-      updateLiquidity(num, field === "liquidity");
-    };
+  const handleInputChange = (field: 'amount' | 'liquidity') => (event: React.ChangeEvent<HTMLInputElement>) => {
+    const rawNumber = event.target.value.replace(/\D+/g, '');
+    const num = rawNumber === '' ? '' : parseInt(rawNumber, 10).toLocaleString('en-US');
+    setValues((prev) => ({ ...prev, [field]: num }));
+    updateLiquidity(num, field === 'liquidity');
+  };
 
   const updateLiquidity = (value: string, isLiquidityInput: boolean) => {
-    const numericValue = parseInt(value.replace(/,/g, ""), 10);
+    const numericValue = parseInt(value.replace(/,/g, ''), 10);
 
     if (isNaN(numericValue) || !wallet || !token) return;
 
@@ -48,13 +45,11 @@ const Add = ({ defaultId }: IAdd) => {
 
     const conversionRate = rateEntry[wallet.text as keyof Rate];
 
-    if (typeof conversionRate !== "number") return;
+    if (typeof conversionRate !== 'number') return;
 
-    const calculatedValue = isLiquidityInput
-      ? numericValue / conversionRate
-      : numericValue * conversionRate;
+    const calculatedValue = isLiquidityInput ? numericValue / conversionRate : numericValue * conversionRate;
 
-    const formattedValue = calculatedValue.toLocaleString("en-US");
+    const formattedValue = calculatedValue.toLocaleString('en-US');
 
     if (isLiquidityInput) {
       setValues((prev) => ({ ...prev, amount: formattedValue }));
@@ -66,40 +61,32 @@ const Add = ({ defaultId }: IAdd) => {
   const handleButtonAction = () => {
     if (step === 0) {
       setStep(1);
-      setHeaderText("You will receive");
-      setButtonText("Confirm");
+      setHeaderText('You will receive');
+      setButtonText('Confirm');
     }
 
     if (step === 1) {
-      console.log("values", values);
-      setButtonText("Confirming Transaction...");
+      console.log('values', values);
+      setButtonText('Confirming Transaction...');
       setStep(2);
     }
   };
 
   useEffect(() => {
     if (values.amount) {
-      updateLiquidity(values.amount.replace(/,/g, ""), false);
+      updateLiquidity(values.amount.replace(/,/g, ''), false);
     }
     if (wallet && token) {
-      setButtonText("Supply");
+      setButtonText('Supply');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [wallet, token]);
 
   return (
-    <form
-      onSubmit={(e) => e.preventDefault()}
-      className="w-[303px] md:w-[408px] p-1 flex flex-col gap-6 items-start rounded-base"
-    >
+    <form onSubmit={(e) => e.preventDefault()} className="w-[303px] md:w-[408px] p-1 flex flex-col gap-6 items-start rounded-base">
       <AnimatePresence>
         {step !== 2 && (
-          <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="text-primary-50 text-[24px] leading-[37.2px] font-medium"
-          >
+          <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="text-primary-50 text-[24px] leading-[37.2px] font-medium">
             {headerText}
           </motion.h1>
         )}
@@ -109,7 +96,7 @@ const Add = ({ defaultId }: IAdd) => {
         <>
           <LiquidityInput
             value={values.amount}
-            onChange={handleInputChange("amount")}
+            onChange={handleInputChange('amount')}
             placeholder="0"
             options={walletOptions}
             defaultId={defaultId}
@@ -127,7 +114,7 @@ const Add = ({ defaultId }: IAdd) => {
 
           <LiquidityInput
             value={values.liquidity}
-            onChange={handleInputChange("liquidity")}
+            onChange={handleInputChange('liquidity')}
             placeholder="0"
             options={tokenOptions}
             defaultId={defaultId}
@@ -138,36 +125,15 @@ const Add = ({ defaultId }: IAdd) => {
         </>
       )}
 
-      <Extra
-        amount={parseInt(values.amount.replace(/,/g, ""), 10)}
-        show={showExtra}
-        token={token}
-        wallet={wallet}
-      />
+      <Extra amount={parseInt(values.amount.replace(/,/g, ''), 10)} show={showExtra} token={token} wallet={wallet} />
 
-      <Info
-        poolPercentage={9.3}
-        show={showInfo}
-        token={token?.value}
-        wallet={wallet?.text}
-        amount={parseInt(values.amount.replace(/,/g, ""), 10)}
-        step={step}
-      />
+      <Info poolPercentage={9.3} show={showInfo} token={token?.value} wallet={wallet?.text} amount={parseInt(values.amount.replace(/,/g, ''), 10)} step={step} />
 
-      <SMButton
-        text={buttonText}
-        onClick={handleButtonAction}
-        fullWidth
-        network="base"
-        variant="plain"
-        disabled={disabled}
-      />
+      <SMButton text={buttonText} onClick={handleButtonAction} fullWidth network="base" variant="plain" disabled={disabled} />
 
       {showText && (
         <p className="p-4 rounded-[10px] bg-primary-650 self-stretch text-primary-700 text-[14px] leading-[24px]">
-          {
-            "By adding liquidity you'll earn 0.2% of all trades on this pair proportional to your share of the pool"
-          }
+          {"By adding liquidity you'll earn 0.2% of all trades on this pair proportional to your share of the pool"}
         </p>
       )}
     </form>

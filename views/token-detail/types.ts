@@ -1,4 +1,4 @@
-type FastLinkVariant = "web" | "x";
+type FastLinkVariant = 'web' | 'x';
 
 interface IFastLink {
   variant: FastLinkVariant;
@@ -6,8 +6,8 @@ interface IFastLink {
 }
 
 interface ITransactionHash {
-  hashes: {
-    hash: string;
+  hashes?: {
+    name: string;
     urlText: string;
     url: string;
   }[];
