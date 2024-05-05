@@ -28,14 +28,14 @@ const WalletModal = ({ close }: { close: () => void }) => {
         {truncateWallet}
       </h1>
       <div className="flex items-center justify-center gap-3">
-        <SMClickAnimation className="flex-1 bg-primary-150 flex items-center justify-center p-3 rounded-xl" onClick={() => copy(address as string)}>
+        <SMClickAnimation className="flex-1 bg-primary-150 flex items-center justify-center p-3 rounded-base" onClick={() => copy(address as string)}>
           <div className="flex flex-col items-center justify-center gap-2">
             <CopyIcon />
             <span className="text-primary-50 text-[14px] leading-[21.7px] font-medium text-center">Copy address</span>
           </div>
         </SMClickAnimation>
 
-        <SMClickAnimation className="flex-1 bg-primary-150 flex items-center justify-center p-3 rounded-xl" onClick={disconnectAction}>
+        <SMClickAnimation className="flex-1 bg-primary-150 flex items-center justify-center p-3 rounded-base" onClick={disconnectAction}>
           <div className="flex flex-col items-center justify-center gap-2">
             <DisconnectIcon />
             <span className="text-primary-50 text-[14px] leading-[21.7px] font-medium text-center">Disconnect</span>
