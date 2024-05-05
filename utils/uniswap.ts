@@ -26,6 +26,7 @@ export function getUniswapFactoryAddress(chainId: number | undefined): Address {
   if (chainId === 10) return V2_FACTORY_ADDRESSES[10] as Address; // optimimsm
   return '0x' as Address;
 }
+
 /**
  * @notice function to get a pair given a set of address.
  * @dev If a pair doesn't exist for given tokens, it returns zero.
@@ -50,9 +51,11 @@ export async function getPair(chainId: number, tokenA: Address, tokenB: Address)
  * @param amountBDesired amount of token B desired to be added
  * @param deadline by default it is 5 minutes as L2
  */
-export async function addLiquidity(tokenA: Address, tokenB: Address, amountADesired: number, amountBDesired: number, deadline: number = 60 * 5) {
+export async function addLiquidity(tokenA: Address, tokenB: Address, amountADesired: number, amountBDesired: number) {
   const amountAMin = calculateSlippageAmount(amountADesired)[0];
   const amountBMin = calculateSlippageAmount(amountBDesired)[0];
+
+  const deadline = 60 * 5;
 
   const { chainId, address } = getAccount(wagmiConfig);
 
@@ -77,9 +80,11 @@ export async function addLiquidity(tokenA: Address, tokenB: Address, amountADesi
  * @param amountETHDesired amount of native ETH desired to be added
  * @param deadline by default it is 5 minutes as L2
  */
-export async function addLiquidityEth(token: Address, amountERC20Desired: number, amountETHDesired: number, deadline: number = 60 * 5) {
+export async function addLiquidityEth(token: Address, amountERC20Desired: number, amountETHDesired: number) {
   const amountERC20Min = calculateSlippageAmount(amountERC20Desired)[0];
   const amountNativeMin = calculateSlippageAmount(amountETHDesired)[0];
+
+  const deadline = 60 * 5;
 
   const { chainId, address } = getAccount(wagmiConfig);
 
