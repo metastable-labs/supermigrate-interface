@@ -147,7 +147,7 @@ const SMNavigation = () => {
           {modalType === "network" && <NetworkModal close={closeModal} />}
         </SMModal>
       </div>
-      <div className="h-[123px] md:h-[82px]" />
+      {!isHome && <div className="h-[123px] md:h-[82px]" />}
     </>
   );
 };

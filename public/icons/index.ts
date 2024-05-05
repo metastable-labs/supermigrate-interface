@@ -1,6 +1,6 @@
 import Logo from "./logo.svg";
 import SMLogo from "./sm-logo.svg";
-import MigrateLinkIcon from "./migrate-link-icon.svg";
+import MigrateLinkIcon from "./migrate-link-icon";
 import BridgeLinkIcon from "./bridge-link-icon.svg";
 import LiquidityLinkIcon from "./liquidity-link-icon.svg";
 import SelectIcon from "./select-icon.svg";
@@ -11,8 +11,6 @@ import GitHubDesktopIcon from "./github-desktop-icon.svg";
 import GitHubMobileIcon from "./github-mobile-icon.svg";
 import BasePrimaryDesktopIcon from "./base-primary-desktop-icon.svg";
 import BasePrimaryMobileIcon from "./base-primary-mobile-icon.svg";
-import DesktopTilesIcon from "./desktop-tiles.svg";
-import MobileTilesIcon from "./mobile-tiles.svg";
 import BaseSecondaryDesktopIcon from "./base-secondary-desktop-icon.svg";
 import BaseSecondaryMobileIcon from "./base-secondary-mobile-icon.svg";
 import OptimismDesktopIcon from "./optimism-desktop-icon.svg";
@@ -23,7 +21,7 @@ import ScrollDesktopIcon from "./scroll-desktop-icon.svg";
 import ScrollMobileIcon from "./scroll-mobile-icon.svg";
 import GithubButtonIcon from "./github-button-icon";
 import PlusIcon from "./plus-icon";
-import LinkRightArrow from "./link-right-arrow.svg";
+import LinkRightArrow from "./link-right-arrow";
 import DoubleCheckIcon from "./double-check-icon.svg";
 import MergedIcon from "./merged-icon.svg";
 import RoundedCloseIcon from "./rounded-close-icon.svg";
@@ -50,10 +48,21 @@ import CheckSmallIcon from "./check-small-icon.svg";
 import PDFIcon from "./pdf-icon.svg";
 import LoadingIcon from "./loading-icon";
 import TrickleIcon from "./trickle-icon";
-import MergedSecondaryIcon from "./merged-secondary-icon.svg";
+import MergedSecondaryIcon from "./merged-secondary-icon";
 import MergedTertiaryIcon from "./merged-tertiary-icon.svg";
-import XIcon from "./x-icon.svg";
+import XIcon from "./x-icon";
 import CopySecondaryIcon from "./copy-secondary-icon.svg";
+import HeroIcon from "./hero-icon";
+import HeroBaseBlandIcon from "./hero-base-bland-icon";
+import HeroBaseIcon from "./hero-base-icon";
+import HeroOptimismIcon from "./hero-optimism-icon";
+import HeroModeIcon from "./hero-mode-icon";
+import HeroScrollIcon from "./hero-scroll-icon";
+import HeroTiles from "./hero-tiles";
+import HeroFadeShape from "./hero-fade-shape";
+import HeroBGLines from "./hero-bg-lines";
+import SuperMigrateLogo from "./super-migrate-logo";
+import MinusIcon from "./minus-icon";
 import LineaIcon from "./linea-icon.svg";
 import ZoraIcon from "./zora-icon.svg";
 import WorldChainIcon from "./world-chain-icon.svg";
@@ -68,6 +77,10 @@ import EthereumIcon from "./ethereum-icon.svg";
 import SolanaIcon from "./solana-icon.svg";
 import PolygonIcon from "./polygon-icon.svg";
 import GrinIcon from "./grin-icon.svg";
+import ExclaimIcon from "./exclaim-icon.svg";
+import Tiles from "./tiles";
+import WebIcon from "./web-icon";
+import GitMergeIcon from "./git-merge-icon";
 
 export {
   Logo,
@@ -83,8 +96,7 @@ export {
   VerifiedIcon,
   HamIcon,
   CloseIcon,
-  DesktopTilesIcon,
-  MobileTilesIcon,
+  Tiles,
   BaseSecondaryDesktopIcon,
   BaseSecondaryMobileIcon,
   OptimismDesktopIcon,
@@ -126,6 +138,17 @@ export {
   MergedTertiaryIcon,
   XIcon,
   CopySecondaryIcon,
+  HeroIcon,
+  HeroBaseBlandIcon,
+  HeroBaseIcon,
+  HeroOptimismIcon,
+  HeroModeIcon,
+  HeroScrollIcon,
+  HeroTiles,
+  HeroFadeShape,
+  HeroBGLines,
+  SuperMigrateLogo,
+  MinusIcon,
   LineaIcon,
   ZoraIcon,
   WorldChainIcon,
@@ -140,4 +163,7 @@ export {
   SolanaIcon,
   PolygonIcon,
   GrinIcon,
+  ExclaimIcon,
+  WebIcon,
+  GitMergeIcon,
 };

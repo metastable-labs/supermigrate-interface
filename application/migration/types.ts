@@ -1,3 +1,24 @@
+type Chain = {
+  id: number;
+  name: string;
+  token_address: string;
+  token_detail_override?: {
+    name: string;
+    symbol: string;
+    decimals: number;
+  };
+  transaction_hash: string;
+};
+
+type PullRequest = {
+  id: number;
+  url: string;
+  status: string;
+  chain: string;
+  installation_id: number;
+  owner: string;
+};
+
 type Migration = {
   id: string;
   name: string;
@@ -7,29 +28,12 @@ type Migration = {
   description: string;
   website: string;
   twitter: string;
-  chains: {
-    id: number;
-    name: string;
-    token_address: string;
-    token_detail_override?: {
-      name: string;
-      symbol: string;
-      decimals: number;
-    };
-    transaction_hash: string;
-  }[];
-  pull_requests: {
-    id: number;
-    url: string;
-    status: string;
-    chain: string;
-    installation_id: number;
-    owner: string;
-  }[];
+  chains: Chain[];
+  pull_requests: PullRequest[];
   status: string;
   user_id: string;
   created_at: string;
   updated_at: string;
 };
 
-export type { Migration };
+export type { Migration, Chain, PullRequest };

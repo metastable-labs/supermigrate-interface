@@ -83,6 +83,17 @@ const config: Config = {
           2650: "#693D11",
           2700: "#F9F9FA",
           2750: "#9C9CAB",
+          2800: "#717184",
+          2850: "rgba(10, 13, 20, 0.99)",
+          2900: "#C2540A",
+          3000: "#F17B2C",
+          3050: "#667085",
+          3100: "#2D9F75",
+          3150: "#B47818",
+          3200: "#AF1D38",
+          3250: "#002132",
+          3300: "#DFFE00",
+          3350: "#6B8000",
         },
         grey: {
           50: "#717184",
@@ -108,6 +119,14 @@ const config: Config = {
         "fade-light": "0px 1.591px 3.182px 0px rgba(27, 28, 29, 0.04)",
         "fade-dark": "0px 1px 2px 0px rgba(82, 88, 102, 0.06)",
         "small-shadow": "0px 2px 4px 0px rgba(27, 28, 29, 0.04)",
+        "hero-header":
+          "0px 20px 25px -5px rgba(0, 0, 0, 0.10), 0px 8px 10px -6px rgba(0, 0, 0, 0.10)",
+        "very-light-gray":
+          "0px 1.544px 3.089px 0px rgba(164, 172, 185, 0.24), 0px 0px 0px 1.544px rgba(18, 55, 105, 0.08)",
+      },
+
+      borderRadius: {
+        base: "5px",
       },
     },
   },

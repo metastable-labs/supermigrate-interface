@@ -1,16 +1,8 @@
-import SMLoader from "@/components/loader";
+import classNames from "classnames";
+import { SMLoader } from "@/components";
+import { ITokenInfo } from "./types";
 
-const TokenInfo = ({
-  decimal,
-  name,
-  symbol,
-  loading,
-}: {
-  name: string;
-  symbol: string;
-  decimal: string;
-  loading?: boolean;
-}) => {
+const TokenInfo = ({ decimal, name, symbol, loading, network }: ITokenInfo) => {
   const items = [
     { name: "Token Name", value: name },
     { name: "Token Symbol", value: symbol },
@@ -18,19 +10,27 @@ const TokenInfo = ({
   ];
 
   return (
-    <div className="w-full flex flex-col items-stretch justify-center gap-6 px-6 py-3 bg-white rounded-[10px] border border-primary-2100 min-h-[215px]">
+    <div className="w-full flex flex-col items-stretch justify-center gap-6 px-6 py-3 bg-white rounded-base border border-primary-2100 min-h-[141px]">
       {!loading &&
         items.map((item) => (
           <div
             key={item.name}
-            className="flex flex-col items-stretch justify-center gap-1"
+            className="flex self-stretch items-center justify-between gap-5"
           >
-            <div className="text-sm flex flex-col items-start justify-center gap-[7px]">
-              <span className="font-medium text-primary-1750">{item.name}</span>
-              <span className="font-normal text-primary-2150">
-                {item.value}
-              </span>
-            </div>
+            <span className="font-medium text-primary-1750">{item.name}</span>
+            <span
+              className={classNames(
+                "font-normal transition-colors duration-300",
+                {
+                  "text-primary-1650": network === "base",
+                  "text-primary-2150": network === "optimism",
+                  "text-primary-500": network === "mode",
+                  "text-primary-550": network === "scroll",
+                }
+              )}
+            >
+              {item.value}
+            </span>
           </div>
         ))}
 

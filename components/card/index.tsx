@@ -20,7 +20,7 @@ import {
   RaysIcon,
 } from "@/public/icons";
 import useSystemFunctions from "@/hooks/useSystemFunctions";
-import { Network, NetworkProps } from "@/config/rainbow/rainbowkit";
+import { Network, NetworkProps } from "@/config/rainbow/config";
 
 const IconSection = ({
   variant,
