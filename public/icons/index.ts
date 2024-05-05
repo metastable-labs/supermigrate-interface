@@ -93,6 +93,7 @@ import MigrateLanding from './migrate-landing.svg';
 import LiquidityLanding from './liquidity-landing.svg';
 import LiquidityLandingAlt from './liquidity-landing-alt.svg';
 import MobileMigrateLanding from './mobile-migrate-landing.svg';
+import ForwardIcon from './forward-icon.svg';
 
 export {
   Logo,
@@ -190,4 +191,5 @@ export {
   LiquidityLanding,
   LiquidityLandingAlt,
   MobileMigrateLanding,
+  ForwardIcon,
 };
