@@ -7,10 +7,10 @@ import { SMContainer } from '@/components';
 import HeroButton from './button';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 
-const stepTexts = ['Layer 2', 'Base', 'Optimism', 'Mode', 'Scroll'];
-const stepTextColors = ['#D7FF00', '#C2D6FF', '#F25976', '#DFFE00', '#FFEDD8'];
+const stepTexts = ['Layer 2', 'Base', 'Optimism', 'Mode'];
+const stepTextColors = ['#D7FF00', '#C2D6FF', '#F25976', '#DFFE00'];
 
-const stepBackgroundColors = ['#002132', '#162664', '#710E21', '#000', '#B37A57'];
+const stepBackgroundColors = ['#002132', '#162664', '#710E21', '#000'];
 
 const HeroSection = () => {
   const [step, setStep] = useState(0);
@@ -18,7 +18,7 @@ const HeroSection = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setStep((prev) => (prev + 1) % 5);
+      setStep((prev) => (prev + 1) % 4);
     }, 4000);
 
     return () => clearInterval(interval);
@@ -28,7 +28,8 @@ const HeroSection = () => {
     <motion.section
       initial={{ backgroundColor: stepBackgroundColors[step] }}
       animate={{ backgroundColor: stepBackgroundColors[step] }}
-      className="flex items-center justify-center min-h-[94.5vh] m-[25px] rounded-base relative">
+      className="flex items-center justify-center min-h-[94.5vh] m-[25px] rounded-base relative"
+      id="home">
       <SMContainer>
         <div className="flex flex-col justify-center items-center gap-[29px]">
           <div className="w-full flex flex-col justify-center items-start gap-8">
