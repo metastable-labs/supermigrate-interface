@@ -11,5 +11,6 @@ import SMFAQ from './faq';
 import SMSelect from './select';
 import SMLoader from './loader';
 import SMWelcome from './welcome';
+import SMTiles from './tiles';
 
-export { SMContainer, SMClickAnimation, SMNavigation, SMModal, SMTable, SMButton, SMInput, SMFileInput, SMTestimonial, SMFAQ, SMSelect, SMLoader, SMWelcome };
+export { SMContainer, SMClickAnimation, SMNavigation, SMModal, SMTable, SMButton, SMInput, SMFileInput, SMTestimonial, SMFAQ, SMSelect, SMLoader, SMWelcome, SMTiles };
