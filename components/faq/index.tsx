@@ -3,7 +3,6 @@ import { PlusIcon, MinusIcon } from "@/public/icons";
 import classNames from "classnames";
 
 const SMFAQ = ({ answer, question, current, onClick }: ISMFAQ) => {
-  console.log(current);
   return (
     <div
       className={classNames(
