@@ -5,6 +5,12 @@ import { NetworkProps, networks } from '@/config/rainbow/config';
 
 const comingSoonNetworks: NetworkProps[] = [
   {
+    title: 'Scroll',
+    variant: 'scroll',
+    chainId: 0,
+    comingSoon: true,
+  },
+  {
     title: 'Linea',
     chainId: 0,
     comingSoon: true,

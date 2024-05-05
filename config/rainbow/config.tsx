@@ -1,13 +1,13 @@
 import '@rainbow-me/rainbowkit/styles.css';
 
 import React, { ReactNode } from 'react';
-import { base, optimism, scroll, mode } from 'wagmi/chains';
+import { base, optimism, mode } from 'wagmi/chains';
 
 import OptimismMintableERC20Factory from './abis/OptimismMintableERC20Factory.json';
 import BasedERC20FactoryMain from './abis/BasedERC20FactoryMain.json';
 import SuperERC20Factory from './abis/SuperERC20Factory.json';
 
-import { BasePrimaryMobileIcon, ModePrimaryMobileIcon, OptimismPrimaryMobileIcon, ScrollPrimaryMobileIcon } from '@/public/icons';
+import { BasePrimaryMobileIcon, ModePrimaryMobileIcon, OptimismPrimaryMobileIcon } from '@/public/icons';
 
 export type Network = 'base' | 'optimism' | 'mode' | 'scroll' | 'linea' | 'zora' | 'world-chain' | 'degen' | 'pgn';
 
@@ -58,12 +58,5 @@ export const networks: NetworkProps[] = [
     superFactoryAddress: '0x885E7a50287d62Fc4b490EB38eA599bF2F48c19F',
     abi: OptimismMintableERC20Factory.abi,
     superAbi: SuperERC20Factory.abi,
-  },
-  {
-    title: 'Scroll',
-    variant: 'scroll',
-    chainId: scroll.id,
-    icon: <ScrollPrimaryMobileIcon />,
-    rpcUrl: 'https://mainnet.scroll.network',
   },
 ];

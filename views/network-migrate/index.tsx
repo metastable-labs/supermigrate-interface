@@ -15,6 +15,7 @@ import useMigrationActions from '@/application/migration/actions';
 const NetworkMigrationsView = ({ network }: { network: Network }) => {
   const { navigate, userState, migrationState } = useSystemFunctions();
   const { authenticateGithub } = useUserActions();
+  const { getMigrationObject } = useMigrationActions();
   const searchParams = useSearchParams();
 
   const { loading, user } = userState;
@@ -32,6 +33,8 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
   }));
 
   const handleTableAction = (id?: string) => {
+    if (id) getMigrationObject(id);
+
     navigate.push(`/migrate/${network}/${id}`);
   };
 
