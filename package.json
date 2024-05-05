@@ -12,6 +12,7 @@
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.4",
     "@hookform/resolvers": "^3.3.4",
+    "@lottiefiles/react-lottie-player": "^3.5.3",
     "@rainbow-me/rainbowkit": "^2.0.5",
     "@reduxjs/toolkit": "^2.2.3",
     "@svgr/webpack": "^8.1.0",
