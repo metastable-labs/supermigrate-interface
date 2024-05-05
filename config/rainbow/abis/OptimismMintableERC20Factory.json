@@ -417,138 +417,87 @@
     "sources": {
       "lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/Initializable.sol": {
         "keccak256": "0x631188737069917d2f909d29ce62c4d48611d326686ba6683e26b72a23bfac0b",
-        "urls": [
-          "bzz-raw://7a61054ae84cd6c4d04c0c4450ba1d6de41e27e0a2c4f1bcdf58f796b401c609",
-          "dweb:/ipfs/QmUvtdp7X1mRVyC3CsHrtPbgoqWaXHp3S1ZR24tpAQYJWM"
-        ],
+        "urls": ["bzz-raw://7a61054ae84cd6c4d04c0c4450ba1d6de41e27e0a2c4f1bcdf58f796b401c609", "dweb:/ipfs/QmUvtdp7X1mRVyC3CsHrtPbgoqWaXHp3S1ZR24tpAQYJWM"],
         "license": "MIT"
       },
       "lib/openzeppelin-contracts-upgradeable/contracts/utils/introspection/ERC165Upgradeable.sol": {
         "keccak256": "0xdaba3f7c42c55b2896353f32bd27d4d5f8bae741b3b05d4c53f67abc4dc47ce8",
-        "urls": [
-          "bzz-raw://1fa2e61141c602510bcd2cd936ed9561922ac8772a9b9c9a9db091a74e354a45",
-          "dweb:/ipfs/QmcHQDDoEBwJmwUbzoVkytvJsBx3KVHYFFnDkvRGWh9Wmh"
-        ],
+        "urls": ["bzz-raw://1fa2e61141c602510bcd2cd936ed9561922ac8772a9b9c9a9db091a74e354a45", "dweb:/ipfs/QmcHQDDoEBwJmwUbzoVkytvJsBx3KVHYFFnDkvRGWh9Wmh"],
         "license": "MIT"
       },
       "lib/openzeppelin-contracts/contracts/interfaces/draft-IERC6093.sol": {
         "keccak256": "0x9cac1f97ecc92043dd19235d6677e40cf6bac382886a94f7a80a957846b24229",
-        "urls": [
-          "bzz-raw://a1e0c924e0edfdfd4abceeb552d99f1cd95c0d387b38ccb1f67c583607e3d155",
-          "dweb:/ipfs/QmZAi6qKa66zuS3jyEhsQR9bBNnZe1wSognYqw9nvseyUz"
-        ],
+        "urls": ["bzz-raw://a1e0c924e0edfdfd4abceeb552d99f1cd95c0d387b38ccb1f67c583607e3d155", "dweb:/ipfs/QmZAi6qKa66zuS3jyEhsQR9bBNnZe1wSognYqw9nvseyUz"],
         "license": "MIT"
       },
       "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol": {
         "keccak256": "0xca12be071e48f0378179113989f057819c3c1fe70e73e778fb00c9441768cb61",
-        "urls": [
-          "bzz-raw://60e10ff5a0dd6e15a89cd7e1c0190ba139772efeb696994933d2e54a23fab6cc",
-          "dweb:/ipfs/QmVt9Ndx7AiWq1qtzjS5NXsqzfhfUeEQ7XXcLLQJXFvJtK"
-        ],
+        "urls": ["bzz-raw://60e10ff5a0dd6e15a89cd7e1c0190ba139772efeb696994933d2e54a23fab6cc", "dweb:/ipfs/QmVt9Ndx7AiWq1qtzjS5NXsqzfhfUeEQ7XXcLLQJXFvJtK"],
         "license": "MIT"
       },
       "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol": {
         "keccak256": "0xee2337af2dc162a973b4be6d3f7c16f06298259e0af48c5470d2839bfa8a22f4",
-        "urls": [
-          "bzz-raw://30c476b4b2f405c1bb3f0bae15b006d129c80f1bfd9d0f2038160a3bb9745009",
-          "dweb:/ipfs/Qmb3VcuDufv6xbHeVgksC4tHpc5gKYVqBEwjEXW72XzSvN"
-        ],
+        "urls": ["bzz-raw://30c476b4b2f405c1bb3f0bae15b006d129c80f1bfd9d0f2038160a3bb9745009", "dweb:/ipfs/Qmb3VcuDufv6xbHeVgksC4tHpc5gKYVqBEwjEXW72XzSvN"],
         "license": "MIT"
       },
       "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
         "keccak256": "0x88f7b6f070ad1de2bf899da6978ed74b5038eac78c01b7359b92b60c3d965c28",
-        "urls": [
-          "bzz-raw://c436edb6733a036607c6f17cc590e8ee351363a8cb4c564a98d9a66392c89323",
-          "dweb:/ipfs/QmcJvJR2K3EtYcKEXVpQ1WqT6TvAbVem5HR1FirAsqEXFR"
-        ],
+        "urls": ["bzz-raw://c436edb6733a036607c6f17cc590e8ee351363a8cb4c564a98d9a66392c89323", "dweb:/ipfs/QmcJvJR2K3EtYcKEXVpQ1WqT6TvAbVem5HR1FirAsqEXFR"],
         "license": "MIT"
       },
       "lib/openzeppelin-contracts/contracts/utils/Context.sol": {
         "keccak256": "0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2",
-        "urls": [
-          "bzz-raw://6a708e8a5bdb1011c2c381c9a5cfd8a9a956d7d0a9dc1bd8bcdaf52f76ef2f12",
-          "dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
-        ],
+        "urls": ["bzz-raw://6a708e8a5bdb1011c2c381c9a5cfd8a9a956d7d0a9dc1bd8bcdaf52f76ef2f12", "dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"],
         "license": "MIT"
       },
       "lib/openzeppelin-contracts/contracts/utils/Panic.sol": {
         "keccak256": "0x29074fe5a74bb024c57b3570abf6c74d8bceed3438694d470fd0166a3ecd196a",
-        "urls": [
-          "bzz-raw://f4f8435ccbc56e384f4cc9ac9ff491cf30a82f2beac00e33ccc2cf8af3f77cc3",
-          "dweb:/ipfs/QmUKJXxTe6nn1qfgnX8xbnboNNAPUuEmJyGqMZCKNiFBgn"
-        ],
+        "urls": ["bzz-raw://f4f8435ccbc56e384f4cc9ac9ff491cf30a82f2beac00e33ccc2cf8af3f77cc3", "dweb:/ipfs/QmUKJXxTe6nn1qfgnX8xbnboNNAPUuEmJyGqMZCKNiFBgn"],
         "license": "MIT"
       },
       "lib/openzeppelin-contracts/contracts/utils/Strings.sol": {
         "keccak256": "0x55f102ea785d8399c0e58d1108e2d289506dde18abc6db1b7f68c1f9f9bc5792",
-        "urls": [
-          "bzz-raw://6e52e0a7765c943ef14e5bcf11e46e6139fa044be564881378349236bf2e3453",
-          "dweb:/ipfs/QmZEeeXoFPW47amyP35gfzomF9DixqqTEPwzBakv6cZw6i"
-        ],
+        "urls": ["bzz-raw://6e52e0a7765c943ef14e5bcf11e46e6139fa044be564881378349236bf2e3453", "dweb:/ipfs/QmZEeeXoFPW47amyP35gfzomF9DixqqTEPwzBakv6cZw6i"],
         "license": "MIT"
       },
       "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol": {
         "keccak256": "0xc859863e3bda7ec3cddf6dafe2ffe91bcbe648d1395b856b839c32ee9617c44c",
-        "urls": [
-          "bzz-raw://a9d5417888b873cf2225ed5d50b2a67be97c1504134a2a580512168d587ad82e",
-          "dweb:/ipfs/QmNr5fTb2heFW658NZn7dDnofZgFvQTnNxKRJ3wdnR1skX"
-        ],
+        "urls": ["bzz-raw://a9d5417888b873cf2225ed5d50b2a67be97c1504134a2a580512168d587ad82e", "dweb:/ipfs/QmNr5fTb2heFW658NZn7dDnofZgFvQTnNxKRJ3wdnR1skX"],
         "license": "MIT"
       },
       "lib/openzeppelin-contracts/contracts/utils/math/Math.sol": {
         "keccak256": "0x6fe40ce2addf1fe91a86c334b51ef5abe9c3b831d5d4d74ecae1d9c7d06cdccb",
-        "urls": [
-          "bzz-raw://5027588e408027935ac78e32d9e813fda6bf33349b8a5be5c6c936273743369f",
-          "dweb:/ipfs/QmZwSzs94V9u7VSdhw2bhbrogWZ37wvrQFBz6QNJTmKokE"
-        ],
+        "urls": ["bzz-raw://5027588e408027935ac78e32d9e813fda6bf33349b8a5be5c6c936273743369f", "dweb:/ipfs/QmZwSzs94V9u7VSdhw2bhbrogWZ37wvrQFBz6QNJTmKokE"],
         "license": "MIT"
       },
       "lib/openzeppelin-contracts/contracts/utils/math/SafeCast.sol": {
         "keccak256": "0x8cd59334ed58b8884cd1f775afc9400db702e674e5d6a7a438c655b9de788d7e",
-        "urls": [
-          "bzz-raw://99e62c7de7318f413b6352e3f2704ca23e7725ff144e43c8bd574d12dbf29047",
-          "dweb:/ipfs/QmSEXG2rBx1VxU2uFTWdiChjDvA4osEY2mesjmoVeVhHko"
-        ],
+        "urls": ["bzz-raw://99e62c7de7318f413b6352e3f2704ca23e7725ff144e43c8bd574d12dbf29047", "dweb:/ipfs/QmSEXG2rBx1VxU2uFTWdiChjDvA4osEY2mesjmoVeVhHko"],
         "license": "MIT"
       },
       "lib/openzeppelin-contracts/contracts/utils/math/SignedMath.sol": {
         "keccak256": "0x519e2c9d9c4dfd63311fb98663e55ba465772897cd4a98e3a5406a1f5959811f",
-        "urls": [
-          "bzz-raw://c4718d121f448f8fce3b28a276fd194014597319a4133696793893ae13c6e512",
-          "dweb:/ipfs/QmaQyHiKokgyWq9nREub6xGUAEYiGTiv4caigjGCiWZTjZ"
-        ],
+        "urls": ["bzz-raw://c4718d121f448f8fce3b28a276fd194014597319a4133696793893ae13c6e512", "dweb:/ipfs/QmaQyHiKokgyWq9nREub6xGUAEYiGTiv4caigjGCiWZTjZ"],
         "license": "MIT"
       },
       "src/OptimismMintableERC20.sol": {
         "keccak256": "0xfbd06af833204119726cfec22ffb6dbfd88cbbb8788877d5dccf11ae3381d1f2",
-        "urls": [
-          "bzz-raw://da04d956490ead72a91b78e65ce3b630a3f555b186492ee7c097b3c80c1761f4",
-          "dweb:/ipfs/QmVMxZrV4ovrkqVtHb6tfFSZeB9ru9UMbPqNFESUtQjAN1"
-        ],
+        "urls": ["bzz-raw://da04d956490ead72a91b78e65ce3b630a3f555b186492ee7c097b3c80c1761f4", "dweb:/ipfs/QmVMxZrV4ovrkqVtHb6tfFSZeB9ru9UMbPqNFESUtQjAN1"],
         "license": "MIT"
       },
       "src/Semver.sol": {
         "keccak256": "0x790c29824dc0de3f5ea066dfe8abb65bf829d187b266bfa38030463a7f43e552",
-        "urls": [
-          "bzz-raw://d98795c82cc671901077c2881d758dc2ac939f0e1a9c59f9b274a12404af1fd5",
-          "dweb:/ipfs/QmahMiKjW9H8vEmhr4eEu9f4SR7HYJmzGb4fQ4MR7PSu9Q"
-        ],
+        "urls": ["bzz-raw://d98795c82cc671901077c2881d758dc2ac939f0e1a9c59f9b274a12404af1fd5", "dweb:/ipfs/QmahMiKjW9H8vEmhr4eEu9f4SR7HYJmzGb4fQ4MR7PSu9Q"],
         "license": "MIT"
       },
       "src/factory/OptimismMintableERC20Factory.sol": {
         "keccak256": "0x7f0a84584fecb9a9efa696e806f976b98bdb518f7589078c0f7bd0e7a8a09dce",
-        "urls": [
-          "bzz-raw://013b500b3bfc8c91aaa2d2a203dfae574e0f95463f3caadcf1be4604eae44f6a",
-          "dweb:/ipfs/QmTwXkTkBknuT9Dy2JrBfhMpD5yGU1puA57FwEWpR2vQyF"
-        ],
+        "urls": ["bzz-raw://013b500b3bfc8c91aaa2d2a203dfae574e0f95463f3caadcf1be4604eae44f6a", "dweb:/ipfs/QmTwXkTkBknuT9Dy2JrBfhMpD5yGU1puA57FwEWpR2vQyF"],
         "license": "MIT"
       },
       "src/interface/IOptimismMintableERC20.sol": {
         "keccak256": "0x46e7819a5db15e376857f171de4b5b81412461243d628273439a8666a529a9cb",
-        "urls": [
-          "bzz-raw://436f0d75340703d14a18654e14016da25bd06f08ecfd1187eb08bba313989ec2",
-          "dweb:/ipfs/QmYZZtxLmfQegNJVi6RFnduomuUASyFNCJkYhDsXKpM4Pk"
-        ],
+        "urls": ["bzz-raw://436f0d75340703d14a18654e14016da25bd06f08ecfd1187eb08bba313989ec2", "dweb:/ipfs/QmYZZtxLmfQegNJVi6RFnduomuUASyFNCJkYhDsXKpM4Pk"],
         "license": "MIT"
       }
     },
@@ -558,15 +507,9 @@
     "absolutePath": "src/factory/OptimismMintableERC20Factory.sol",
     "id": 5217,
     "exportedSymbols": {
-      "OptimismMintableERC20": [
-        5035
-      ],
-      "OptimismMintableERC20Factory": [
-        5216
-      ],
-      "Semver": [
-        5101
-      ]
+      "OptimismMintableERC20": [5035],
+      "OptimismMintableERC20Factory": [5216],
+      "Semver": [5101]
     },
     "nodeType": "SourceUnit",
     "src": "32:3889:15",
@@ -576,11 +519,7 @@
         "nodeType": "PragmaDirective",
         "src": "32:23:15",
         "nodes": [],
-        "literals": [
-          "solidity",
-          "0.8",
-          ".20"
-        ]
+        "literals": ["solidity", "0.8", ".20"]
       },
       {
         "id": 5105,
@@ -987,9 +926,7 @@
                 "modifierName": {
                   "id": 5134,
                   "name": "Semver",
-                  "nameLocations": [
-                    "2098:6:15"
-                  ],
+                  "nameLocations": ["2098:6:15"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 5101,
                   "src": "2098:6:15"
@@ -1423,10 +1360,7 @@
                       "id": 5176,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        -18,
-                        -18
-                      ],
+                      "overloadedDeclarations": [-18, -18],
                       "referencedDeclaration": -18,
                       "src": "3258:7:15",
                       "typeDescriptions": {
@@ -1455,9 +1389,7 @@
                   "src": "3258:136:15"
                 },
                 {
-                  "assignments": [
-                    5187
-                  ],
+                  "assignments": [5187],
                   "declarations": [
                     {
                       "constant": false,
@@ -1578,9 +1510,7 @@
                             "pathNode": {
                               "id": 5190,
                               "name": "OptimismMintableERC20",
-                              "nameLocations": [
-                                "3451:21:15"
-                              ],
+                              "nameLocations": ["3451:21:15"],
                               "nodeType": "IdentifierPath",
                               "referencedDeclaration": 5035,
                               "src": "3451:21:15"
@@ -1994,9 +1924,7 @@
             "baseName": {
               "id": 5109,
               "name": "Semver",
-              "nameLocations": [
-                "696:6:15"
-              ],
+              "nameLocations": ["696:6:15"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 5101,
               "src": "696:6:15"
@@ -2007,9 +1935,7 @@
           }
         ],
         "canonicalName": "OptimismMintableERC20Factory",
-        "contractDependencies": [
-          5035
-        ],
+        "contractDependencies": [5035],
         "contractKind": "contract",
         "documentation": {
           "id": 5108,
@@ -2018,18 +1944,12 @@
           "text": "@custom:proxied\n @custom:predeployed 0x4200000000000000000000000000000000000012\n @title OptimismMintableERC20Factory\n @notice OptimismMintableERC20Factory is a factory contract that generates OptimismMintableERC20\n         contracts on the network it's deployed to. Simplifies the deployment process for users\n         who may be less familiar with deploying smart contracts. Designed to be backwards\n         compatible with the older StandardL2ERC20Factory contract."
         },
         "fullyImplemented": true,
-        "linearizedBaseContracts": [
-          5216,
-          5101
-        ],
+        "linearizedBaseContracts": [5216, 5101],
         "name": "OptimismMintableERC20Factory",
         "nameLocation": "664:28:15",
         "scope": 5217,
         "usedErrors": [],
-        "usedEvents": [
-          5120,
-          5129
-        ]
+        "usedEvents": [5120, 5129]
       }
     ],
     "license": "MIT"

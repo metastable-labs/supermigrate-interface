@@ -1,7 +1,7 @@
-import { Lang } from "@/application/locale/types";
-import { useAppDispatch, useAppSelector } from "./useRedux";
-import { useRouter } from "next/navigation";
-import { usePathname } from "next/navigation";
+import { Lang } from '@/application/locale/types';
+import { useAppDispatch, useAppSelector } from './useRedux';
+import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 /**
  *

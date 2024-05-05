@@ -1,7 +1,7 @@
-import { Network } from "@/config/rainbow/config";
+import { Network } from '@/config/rainbow/config';
 
-type PullStatus = "merged" | "pending" | "failed";
-type TableVariant = "primary" | "secondary";
+type PullStatus = 'merged' | 'pending' | 'failed';
+type TableVariant = 'primary' | 'secondary';
 
 interface TableItem {
   tokenIcon?: string;
@@ -21,4 +21,11 @@ interface TableProps {
   ctaAction?: (id?: string) => void;
 }
 
-export type { TableItem, TableProps, PullStatus };
+interface EmptyStateProps {
+  isConnected: boolean;
+  network: Network;
+  variant?: TableVariant;
+  action?: () => void;
+}
+
+export type { TableItem, TableProps, PullStatus, EmptyStateProps };

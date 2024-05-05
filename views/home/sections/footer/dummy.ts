@@ -1,16 +1,16 @@
 const extras = [
   {
-    title: "Resources",
+    title: 'Resources',
     links: [
-      { titile: "Blog", url: "#" },
-      { titile: "Github", url: "#" },
+      { titile: 'Blog', url: '#' },
+      { titile: 'Github', url: '#' },
     ],
   },
   {
-    title: "Company",
+    title: 'Company',
     links: [
-      { titile: "Privacy", url: "#" },
-      { titile: "Terms", url: "#" },
+      { titile: 'Privacy', url: '#' },
+      { titile: 'Terms', url: '#' },
     ],
   },
 ];

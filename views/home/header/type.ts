@@ -6,7 +6,6 @@ type NavLink = {
 interface MenuProps {
   menuOpen: boolean;
   links: NavLink[];
-  action: () => void;
 }
 
 export type { NavLink, MenuProps };

@@ -1,19 +1,19 @@
-import "./globals.css";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { LangParamProp } from "@/config/internationalization/i18n";
-import App from "./app";
+import './globals.css';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import { LangParamProp } from '@/config/internationalization/i18n';
+import App from './app';
 
 interface RootProps {
   params: LangParamProp;
   children: React.ReactNode;
 }
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "Superbridge",
-  description: ""
+  title: 'Superbridge',
+  description: '',
 };
 
 export default function RootLayout({ params, children }: Readonly<RootProps>) {

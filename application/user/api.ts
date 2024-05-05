@@ -1,5 +1,5 @@
-import { axiosInstance } from "@/utils/axios";
-import { GithubAuthResponse, User } from "./types";
+import { axiosInstance } from '@/utils/axios';
+import { GithubAuthResponse, User } from './types';
 
 type IUser = {
   fetchUser: () => Promise<User>;

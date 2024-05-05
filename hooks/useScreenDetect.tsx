@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 interface ScreenType {
   isMobile: boolean;
@@ -20,21 +20,19 @@ const useScreenDetect = () => {
     const handleResize = () => {
       setScreenType({
         isMobile: window.innerWidth <= mobileBreakpoint,
-        isTablet:
-          window.innerWidth > mobileBreakpoint &&
-          window.innerWidth <= tabletBreakpoint,
+        isTablet: window.innerWidth > mobileBreakpoint && window.innerWidth <= tabletBreakpoint,
         isDesktop: window.innerWidth > tabletBreakpoint,
       });
     };
 
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       handleResize();
-      window.addEventListener("resize", handleResize);
+      window.addEventListener('resize', handleResize);
     }
 
     return () => {
-      if (typeof window !== "undefined") {
-        window.removeEventListener("resize", handleResize);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', handleResize);
       }
     };
   }, []);

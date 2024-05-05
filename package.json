@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "npx prettier --write ."
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.4",
@@ -15,6 +16,8 @@
     "@reduxjs/toolkit": "^2.2.3",
     "@svgr/webpack": "^8.1.0",
     "@tanstack/react-query": "^5.29.0",
+    "@uniswap/sdk-core": "^5.0.0",
+    "@uniswap/v2-sdk": "^4.3.1",
     "@wagmi/connectors": "^4.1.25",
     "@wagmi/core": "^2.6.16",
     "axios": "^1.6.8",

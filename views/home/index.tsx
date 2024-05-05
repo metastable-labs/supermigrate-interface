@@ -1,21 +1,18 @@
-"use client";
-import { useEffect } from "react";
-import { useAccount } from "wagmi";
-import useConnect from "@/hooks/useConnect";
-import { useConnectModal } from "@rainbow-me/rainbowkit";
-import useUserActions from "@/application/user/actions";
-import useSystemFunctions from "@/hooks/useSystemFunctions";
-import { LangParamProp } from "@/config/internationalization/i18n";
-import { SMContainer } from "@/components";
-import HeroSection from "./hero";
-import SectionOne from "./sections/SectionOne";
-import SectionTwo from "./sections/SectionTwo";
-import SectionThree from "./sections/SectionThree";
-import SectionFour from "./sections/SectionFour";
-import FAQs from "./sections/faqs";
-import LandingHeader from "./header";
-import Testimonials from "./sections/testimonials";
-import Footer from "./sections/footer";
+'use client';
+import { useEffect } from 'react';
+import { useAccount } from 'wagmi';
+import useConnect from '@/hooks/useConnect';
+import { useConnectModal } from '@rainbow-me/rainbowkit';
+import useUserActions from '@/application/user/actions';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
+import { LangParamProp } from '@/config/internationalization/i18n';
+import HeroSection from './hero';
+import SectionOne from './sections/SectionOne';
+import SectionTwo from './sections/SectionTwo';
+import FAQs from './sections/faqs';
+import LandingHeader from './header';
+import Testimonials from './sections/testimonials';
+import Footer from './sections/footer';
 
 export default function HomeView({ lang }: LangParamProp) {
   const { userState, locale } = useSystemFunctions();
@@ -37,16 +34,14 @@ export default function HomeView({ lang }: LangParamProp) {
     <div className="bg-white h-full w-full">
       <LandingHeader />
       <HeroSection />
-      <SMContainer>
-        {/* <LandingNav lang={lang} /> */}
-        <SectionOne />
-        <SectionTwo />
-        <SectionThree />
-        <SectionFour />
-        <Testimonials />
-        <FAQs />
-        {/* < */}
-      </SMContainer>
+
+      {/* <LandingNav lang={lang} /> */}
+      <SectionOne />
+      <SectionTwo />
+      <Testimonials />
+      <FAQs />
+      {/* < */}
+
       <Footer />
     </div>
   );
