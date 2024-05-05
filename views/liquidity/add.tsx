@@ -12,6 +12,7 @@ import { IAdd } from './types';
 import { fetchTokenList } from '@/utils/uniswap';
 import Image from 'next/image';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
+import { handleAmountInput } from '@/utils/helpers';
 
 const Add = ({ defaultId }: IAdd) => {
   const { migrationState } = useSystemFunctions();
@@ -35,13 +36,17 @@ const Add = ({ defaultId }: IAdd) => {
   const handleToken = (token: IOption) => setToken(token);
 
   const handleInputChange = (field: 'amount' | 'liquidity') => (event: React.ChangeEvent<HTMLInputElement>) => {
-    const rawNumber = event.target.value.replace(/\D+/g, '');
-    const num = rawNumber === '' ? '' : parseInt(rawNumber, 10).toLocaleString('en-US');
-    setValues((prev) => ({ ...prev, [field]: num }));
-    updateLiquidity(num, field === 'liquidity');
+    const value = event.target.value;
+
+    const newValue = handleAmountInput(value);
+
+    if (newValue === undefined) return;
+
+    setValues((prev) => ({ ...prev, [field]: newValue }));
+    updateTokenB(newValue, field === 'liquidity');
   };
 
-  const updateLiquidity = (value: string, isLiquidityInput: boolean) => {
+  const updateTokenB = (value: string, isLiquidityInput: boolean) => {
     const numericValue = parseInt(value.replace(/,/g, ''), 10);
 
     if (isNaN(numericValue) || !wallet || !token) return;
@@ -116,7 +121,7 @@ const Add = ({ defaultId }: IAdd) => {
 
   useEffect(() => {
     if (values.amount) {
-      updateLiquidity(values.amount.replace(/,/g, ''), false);
+      updateTokenB(values.amount.replace(/,/g, ''), false);
     }
     if (wallet && token) {
       setButtonText('Supply');
@@ -163,6 +168,7 @@ const Add = ({ defaultId }: IAdd) => {
             onSelect={handleToken}
             selectText="Select token"
             disabled={!token}
+            disableInput
           />
         </>
       )}

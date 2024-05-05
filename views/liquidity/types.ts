@@ -11,6 +11,7 @@ interface ILiquidityInput {
   balanceText?: string;
   balanceValue?: string;
   disabled?: boolean;
+  disableInput?: boolean;
 }
 
 interface IAdd {

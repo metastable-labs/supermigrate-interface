@@ -1,5 +1,3 @@
-import { GrinIcon } from '@/public/icons';
-
 type Rate = {
   name: string;
   ETH: number;

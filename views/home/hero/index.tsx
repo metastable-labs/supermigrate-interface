@@ -34,7 +34,7 @@ const HeroSection = () => {
       <div className="z-30">
         <SMContainer>
           <div className="flex flex-col justify-center items-center gap-[29px]">
-            <div className="w-full flex flex-col justify-center items-start gap-8">
+            <div className="w-full flex flex-col justify-center items-center gap-8">
               <div className="text-[40px] leading-[79px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-white max-w-[674px] text-center">
                 Your gateway to
                 <AnimatePresence mode="popLayout" initial={false}>
@@ -63,11 +63,9 @@ const HeroSection = () => {
         </SMContainer>
       </div>
 
-      <div className="absolute h-full w-full top-0 left-0 z-10">
-        <Player autoplay loop src="https://res.cloudinary.com/djzeufu4j/raw/upload/v1714913894/lottie_ddfob3.json">
-          <Controls visible={false} />
-        </Player>
-      </div>
+      <Player className="absolute h-full top-0 left-0 z-10" autoplay loop src="https://res.cloudinary.com/djzeufu4j/raw/upload/v1714913894/lottie_ddfob3.json">
+        <Controls visible={false} />
+      </Player>
     </motion.section>
   );
 };
