@@ -1,6 +1,6 @@
-import React from "react";
-import { SMSelect } from "@/components";
-import { IOption } from "@/components/select/types";
+import React from 'react';
+import { SMSelect } from '@/components';
+import { IOption } from '@/components/select/types';
 
 const LiquidityInput = ({
   value,

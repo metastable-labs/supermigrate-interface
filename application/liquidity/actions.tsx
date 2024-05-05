@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import useSystemFunctions from "@/hooks/useSystemFunctions";
-import api from "./api";
-import { CallbackProps } from "../store";
-import { setLiquidities, setLiquidity, setLoading } from ".";
-import { Liquidity } from "./types";
+import useSystemFunctions from '@/hooks/useSystemFunctions';
+import api from './api';
+import { CallbackProps } from '../store';
+import { setLiquidities, setLiquidity, setLoading } from '.';
+import { Liquidity } from './types';
 
 const useLiquidityActions = () => {
   const { dispatch } = useSystemFunctions();

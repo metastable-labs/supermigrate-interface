@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { Network } from "@/config/rainbow/config";
-import { NetworkMigrationsView } from "@/views";
+import { Network } from '@/config/rainbow/config';
+import { NetworkMigrationsView } from '@/views';
 
 interface PageProps {
   params: { network: Network };

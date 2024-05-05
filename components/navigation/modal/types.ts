@@ -1,1 +1,1 @@
-export type ModalType = "account" | "wallet" | "network";
+export type ModalType = 'account' | 'wallet' | 'network';

@@ -1,24 +1,16 @@
-import classNames from "classnames";
-import { motion } from "framer-motion";
+import classNames from 'classnames';
+import { motion } from 'framer-motion';
 
-import { IButton } from "./types";
-import { GithubButtonIcon, PlusIcon } from "@/public/icons";
+import { IButton } from './types';
+import { GithubButtonIcon, PlusIcon } from '@/public/icons';
 
-const SMButton = ({
-  network,
-  onClick,
-  text,
-  variant = "git",
-  fullWidth,
-  disabled,
-  type = "button",
-}: IButton) => {
+const SMButton = ({ network, onClick, text, variant = 'git', fullWidth, disabled, type = 'button' }: IButton) => {
   let iconColor;
-  if (network === "base" || network === "optimism" || variant === "bland-new") {
-    iconColor = "white";
+  if (network === 'base' || network === 'optimism' || variant === 'bland-new') {
+    iconColor = 'white';
   }
-  if (network === "mode" || network === "scroll") {
-    iconColor = "#242D01";
+  if (network === 'mode' || network === 'scroll') {
+    iconColor = '#242D01';
   }
 
   return (
@@ -26,44 +18,31 @@ const SMButton = ({
       type={type}
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.9 }}
-      className={classNames(
-        "py-[10px] px-[14px] flex items-center justify-center gap-1 rounded-base",
-        {
-          "border-[0.5px] border-primary-1400": !disabled,
-          "bg-primary-150 pointer-events-none": disabled,
-          "bg-base-github-button": network === "base" && !disabled,
-          "bg-optimism-github-button": network === "optimism" && !disabled,
-          "bg-mode-github-button": network === "mode" && !disabled,
-          "bg-scroll-github-button": network === "scroll" && !disabled,
-          "bg-primary-1300": variant === "bland-new",
-          "shadow-base-github-button": network === "base" && !disabled,
-          "shadow-optimism-github-button": network === "optimism" && !disabled,
-          "shadow-mode-github-button": network === "mode" && !disabled,
-          "shadow-scroll-github-button": network === "scroll" && !disabled,
-          "shadow-bland-new-button": variant === "bland-new",
-          "w-full": fullWidth,
-        }
-      )}
-      onClick={onClick}
-    >
-      {variant === "git" && <GithubButtonIcon color={iconColor} />}
-      {(variant === "new" || variant === "bland-new") && (
-        <PlusIcon color={iconColor} />
-      )}
+      className={classNames('py-[10px] px-[14px] flex items-center justify-center gap-1 rounded-base', {
+        'border-[0.5px] border-primary-1400': !disabled,
+        'bg-primary-150 pointer-events-none': disabled,
+        'bg-base-github-button': network === 'base' && !disabled,
+        'bg-optimism-github-button': network === 'optimism' && !disabled,
+        'bg-mode-github-button': network === 'mode' && !disabled,
+        'bg-scroll-github-button': network === 'scroll' && !disabled,
+        'bg-primary-1300': variant === 'bland-new',
+        'shadow-base-github-button': network === 'base' && !disabled,
+        'shadow-optimism-github-button': network === 'optimism' && !disabled,
+        'shadow-mode-github-button': network === 'mode' && !disabled,
+        'shadow-scroll-github-button': network === 'scroll' && !disabled,
+        'shadow-bland-new-button': variant === 'bland-new',
+        'w-full': fullWidth,
+      })}
+      onClick={onClick}>
+      {variant === 'git' && <GithubButtonIcon color={iconColor} />}
+      {(variant === 'new' || variant === 'bland-new') && <PlusIcon color={iconColor} />}
 
       <span
-        className={classNames(
-          "font-medium tracking-[-0.084px] text-sm text-center transition-all duration-300 capitalize whitespace-nowrap",
-          {
-            "text-white":
-              network === "base" ||
-              network === "optimism" ||
-              variant === "bland-new",
-            "text-primary-950": network === "mode" || network === "scroll",
-            "text-primary-1300": disabled,
-          }
-        )}
-      >
+        className={classNames('font-medium tracking-[-0.084px] text-sm text-center transition-all duration-300 capitalize whitespace-nowrap', {
+          'text-white': network === 'base' || network === 'optimism' || variant === 'bland-new',
+          'text-primary-950': network === 'mode' || network === 'scroll',
+          'text-primary-1300': disabled,
+        })}>
         {text}
       </span>
     </motion.button>

@@ -1,10 +1,10 @@
-"use client";
-import { configureStore } from "@reduxjs/toolkit";
+'use client';
+import { configureStore } from '@reduxjs/toolkit';
 
-import userReducer from "./user";
-import localeReducer from "./locale";
-import migrationReducer from "./migration";
-import liquidityReducer from "./liquidity";
+import userReducer from './user';
+import localeReducer from './locale';
+import migrationReducer from './migration';
+import liquidityReducer from './liquidity';
 
 export interface CallbackProps {
   onSuccess?: Function;

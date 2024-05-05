@@ -1,35 +1,32 @@
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { toast } from "react-toastify";
-import { useChainId } from "wagmi";
+import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { toast } from 'react-toastify';
+import { useChainId } from 'wagmi';
 
-import { Network } from "@/config/rainbow/config";
-import readTokenData from "@/utils/read-contract";
-import Header from "./header";
-import Step1 from "./step-1";
-import Step2 from "./step-2";
-import { FormProp } from "./types";
-import Step3 from "./step-3";
-import Step4 from "./step-4";
-import useMigrationActions from "@/application/migration/actions";
+import { Network } from '@/config/rainbow/config';
+import readTokenData from '@/utils/read-contract';
+import Header from './header';
+import Step1 from './step-1';
+import Step2 from './step-2';
+import { FormProp } from './types';
+import Step3 from './step-3';
+import Step4 from './step-4';
+import useMigrationActions from '@/application/migration/actions';
 
 const schema = yup.object().shape({
-  tokenAddress: yup.string().required("Token Address is Required"),
+  tokenAddress: yup.string().required('Token Address is Required'),
   tokenName: yup.string(),
   tokenSymbol: yup.string(),
   tokenDecimal: yup.string(),
-  tokenDescription: yup.string().required("Token Description is Required"),
+  tokenDescription: yup.string().required('Token Description is Required'),
   websiteLink: yup.string(),
   twitterLink: yup
     .string()
-    .matches(
-      /^(https?:\/\/)?(www\.)?twitter\.com\/[a-zA-Z0-9_]{1,15}\/?$/i,
-      "Invalid Twitter URL"
-    )
-    .required("Twitter URL is Required"),
+    .matches(/^(https?:\/\/)?(www\.)?twitter\.com\/[a-zA-Z0-9_]{1,15}\/?$/i, 'Invalid Twitter URL')
+    .required('Twitter URL is Required'),
 });
 
 const MigrationSteps = ({ network }: { network: Network }) => {
@@ -47,11 +44,11 @@ const MigrationSteps = ({ network }: { network: Network }) => {
     formState: { errors },
     watch,
   } = useForm<FormProp>({
-    mode: "onSubmit",
+    mode: 'onSubmit',
     resolver: yupResolver(schema),
   });
 
-  const tokenAddress = watch("tokenAddress");
+  const tokenAddress = watch('tokenAddress');
 
   const steps = [
     <Step1
@@ -65,25 +62,14 @@ const MigrationSteps = ({ network }: { network: Network }) => {
       setOverridden={setOverridden}
       fetchingTokenAddress={fetchingTokenAddress}
     />,
-    <Step2
-      key={1}
-      register={register}
-      errors={errors}
-      network={network}
-      setStep={setStep}
-      setFile={setFile}
-      file={file}
-    />,
+    <Step2 key={1} register={register} errors={errors} network={network} setStep={setStep} setFile={setFile} file={file} />,
 
     <Step3 key={2} network={network} setStep={setStep} />,
     <Step4 key={2} network={network} setStep={setStep} />,
   ];
 
   const onSubmit = (data: FormProp) => {
-    migrateToken(
-      { ...data, file, overridden },
-      { onSuccess: () => setStep(2) }
-    );
+    migrateToken({ ...data, file, overridden }, { onSuccess: () => setStep(2) });
   };
 
   const fetchTokenData = async () => {
@@ -91,9 +77,9 @@ const MigrationSteps = ({ network }: { network: Network }) => {
     const isAddressMatch = tokenAddress?.match(/^0x[a-fA-F0-9]{40}$/);
     if (!isAddressMatch) {
       setFetchingTokenAddress(false);
-      setValue("tokenName", "");
-      setValue("tokenSymbol", "");
-      setValue("tokenDecimal", "");
+      setValue('tokenName', '');
+      setValue('tokenSymbol', '');
+      setValue('tokenDecimal', '');
       return;
     }
 
@@ -101,16 +87,13 @@ const MigrationSteps = ({ network }: { network: Network }) => {
       setFetchingTokenAddress(true);
       const res = await readTokenData(tokenAddress! as `0x${string}`, chainId);
 
-      setValue("tokenName", res.name);
-      setValue("tokenSymbol", res.symbol);
-      setValue("tokenDecimal", res.decimal.toString());
+      setValue('tokenName', res.name);
+      setValue('tokenSymbol', res.symbol);
+      setValue('tokenDecimal', res.decimal.toString());
     } catch (err) {
-      toast(
-        `Invalid address: Address must be a valid token contract on Ethereum(L1)`,
-        {
-          type: "error",
-        }
-      );
+      toast(`Invalid address: Address must be a valid token contract on Ethereum(L1)`, {
+        type: 'error',
+      });
     } finally {
       setFetchingTokenAddress(false);
     }
@@ -129,12 +112,7 @@ const MigrationSteps = ({ network }: { network: Network }) => {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <AnimatePresence>
-          <motion.div
-            key={step}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
+          <motion.div key={step} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             {steps[step]}
           </motion.div>
         </AnimatePresence>

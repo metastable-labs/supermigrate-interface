@@ -1,4 +1,4 @@
-type FastLinkVariant = "web" | "x";
+type FastLinkVariant = 'web' | 'x';
 
 interface IFastLink {
   variant: FastLinkVariant;

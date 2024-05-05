@@ -1,6 +1,6 @@
-import { Network } from "@/config/rainbow/rainbowkit";
+import { Network } from '@/config/rainbow/rainbowkit';
 
-type ButtonVariants = "git" | "new" | "bland-new" | "plain";
+type ButtonVariants = 'git' | 'new' | 'bland-new' | 'plain';
 
 interface IButton {
   variant?: ButtonVariants;
@@ -9,7 +9,7 @@ interface IButton {
   network?: Network;
   fullWidth?: boolean;
   disabled?: boolean;
-  type?: "button" | "submit" | "reset";
+  type?: 'button' | 'submit' | 'reset';
 }
 
 export type { IButton, ButtonVariants };

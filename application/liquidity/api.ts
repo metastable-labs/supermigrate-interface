@@ -1,5 +1,5 @@
-import { axiosInstance } from "@/utils/axios";
-import { Liquidity } from "./types";
+import { axiosInstance } from '@/utils/axios';
+import { Liquidity } from './types';
 
 type ILiquidity = {
   fetchLiquidities: () => Promise<Liquidity[]>;

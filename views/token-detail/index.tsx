@@ -1,26 +1,26 @@
-"use client";
-import { useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
+'use client';
+import { useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import Image from 'next/image';
 
-import NewMigrateHeader from "../new-migrate/header";
-import { Network } from "@/config/rainbow/config";
-import { SMButton, SMContainer } from "@/components";
-import useSystemFunctions from "@/hooks/useSystemFunctions";
-import useMigrationActions from "@/application/migration/actions";
-import FastLink from "./fast-link";
-import { FastLinkVariant } from "./types";
-import TokenContract from "./contract";
-import PullRequests from "./pull-request";
-import TransactionHash from "./hash";
+import NewMigrateHeader from '../new-migrate/header';
+import { Network } from '@/config/rainbow/config';
+import { SMButton, SMContainer } from '@/components';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
+import useMigrationActions from '@/application/migration/actions';
+import FastLink from './fast-link';
+import { FastLinkVariant } from './types';
+import TokenContract from './contract';
+import PullRequests from './pull-request';
+import TransactionHash from './hash';
 
 const hashes = [
-  { hash: "Base", urlText: "View on basescan", url: "https://basescan.io/" },
-  { hash: "Mode", urlText: "View on modescan", url: "https://modescan.io/" },
+  { hash: 'Base', urlText: 'View on basescan', url: 'https://basescan.io/' },
+  { hash: 'Mode', urlText: 'View on modescan', url: 'https://modescan.io/' },
   {
-    hash: "Optimism",
-    urlText: "View on optimism",
-    url: "https://optimismscan.io/",
+    hash: 'Optimism',
+    urlText: 'View on optimism',
+    url: 'https://optimismscan.io/',
   },
 ];
 
@@ -30,8 +30,8 @@ const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
   const { migration, loading } = migrationState;
 
   const fastlinks = [
-    { variant: "web" as FastLinkVariant, href: migration?.website! },
-    { variant: "x" as FastLinkVariant, href: migration?.twitter! },
+    { variant: 'web' as FastLinkVariant, href: migration?.website! },
+    { variant: 'x' as FastLinkVariant, href: migration?.twitter! },
   ];
 
   useEffect(() => {
@@ -42,12 +42,7 @@ const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
   return (
     <SMContainer>
       <AnimatePresence>
-        <motion.main
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="md:px-8 pb-10 max-w-[1280px]"
-        >
+        <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="md:px-8 pb-10 max-w-[1280px]">
           <div className="pt-5 md:pt-12 md:pb-[86px] flex flex-col gap-8">
             <NewMigrateHeader title="Token info" />
 
@@ -55,21 +50,11 @@ const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
               <div className="flex flex-col gap-6 items-stretch md:flex-row md:gap-3 md:items-start">
                 <div className="w-full flex items-start justify-between">
                   <div className="flex gap-4 md:gap-5 items-center justify-center">
-                    <Image
-                      src={migration?.logo_url || ""}
-                      width={500}
-                      height={500}
-                      alt="logo"
-                      className="md:w-16 md:h-16 w-10 h-10"
-                    />
+                    <Image src={migration?.logo_url || ''} width={500} height={500} alt="logo" className="md:w-16 md:h-16 w-10 h-10" />
 
                     <div>
-                      <h1 className="text-primary-300 text-[20px] leading-[30px] md:text-[30px] md:leading-[38px]">
-                        {migration?.name}
-                      </h1>
-                      <h3 className="text-primary-350 text-sm md:text-base">
-                        {migration?.symbol}
-                      </h3>
+                      <h1 className="text-primary-300 text-[20px] leading-[30px] md:text-[30px] md:leading-[38px]">{migration?.name}</h1>
+                      <h3 className="text-primary-350 text-sm md:text-base">{migration?.symbol}</h3>
                     </div>
                   </div>
 
@@ -81,12 +66,7 @@ const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
                 </div>
 
                 <div className="md:w-[162px]">
-                  <SMButton
-                    text="Create Liquidity"
-                    variant="new"
-                    fullWidth
-                    network={network}
-                  />
+                  <SMButton text="Create Liquidity" variant="new" fullWidth network={network} />
                 </div>
               </div>
 

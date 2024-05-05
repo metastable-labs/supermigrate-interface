@@ -1,25 +1,20 @@
 const faqs = [
   {
-    question:
-      "What are the main benefits of using Supermigrate for blockchain migration?",
+    question: 'What are the main benefits of using Supermigrate for blockchain migration?',
     answer:
-      "Supermigrate offers streamlined processes, expert support, and tools that simplify the transition to Layer 2 solutions, enhancing scalability and efficiency for your blockchain projects.",
+      'Supermigrate offers streamlined processes, expert support, and tools that simplify the transition to Layer 2 solutions, enhancing scalability and efficiency for your blockchain projects.',
   },
   {
-    question: "Does Supermigrate support migration from any blockchain?",
-    answer:
-      "Supermigrate is designed to support a wide range of blockchains, allowing users to seamlessly migrate from popular base layers to advanced Layer 2 solutions.",
+    question: 'Does Supermigrate support migration from any blockchain?',
+    answer: 'Supermigrate is designed to support a wide range of blockchains, allowing users to seamlessly migrate from popular base layers to advanced Layer 2 solutions.',
   },
   {
-    question: "How secure is the migration process with Supermigrate?",
-    answer:
-      "Supermigrate prioritizes security with end-to-end encryption and continuous monitoring to ensure safe and reliable migration of your blockchain assets and data.",
+    question: 'How secure is the migration process with Supermigrate?',
+    answer: 'Supermigrate prioritizes security with end-to-end encryption and continuous monitoring to ensure safe and reliable migration of your blockchain assets and data.',
   },
   {
-    question:
-      "Can Supermigrate help with smart contract deployment on Layer 2?",
-    answer:
-      "Yes, Supermigrate facilitates not only migration but also the deployment and management of smart contracts on Layer 2 platforms to streamline operations and reduce costs.",
+    question: 'Can Supermigrate help with smart contract deployment on Layer 2?',
+    answer: 'Yes, Supermigrate facilitates not only migration but also the deployment and management of smart contracts on Layer 2 platforms to streamline operations and reduce costs.',
   },
   //   {
   //     question:

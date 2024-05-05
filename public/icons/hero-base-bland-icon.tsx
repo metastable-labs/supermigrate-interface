@@ -1,5 +1,5 @@
-"use client";
-import useScreenDetect from "@/hooks/useScreenDetect";
+'use client';
+import useScreenDetect from '@/hooks/useScreenDetect';
 
 const HeroBaseBlandIcon = () => {
   const { isMobile } = useScreenDetect();
@@ -7,28 +7,10 @@ const HeroBaseBlandIcon = () => {
   const width = isMobile ? 56 : 90;
   const height = isMobile ? 56 : 91;
   return (
-    <svg
-      width={width}
-      height={height}
-      viewBox="0 0 90 91"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-    >
-      <rect
-        x="0.000488281"
-        y="0.264893"
-        width="90"
-        height="90"
-        fill="url(#pattern0_1187_67951)"
-      />
+    <svg width={width} height={height} viewBox="0 0 90 91" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+      <rect x="0.000488281" y="0.264893" width="90" height="90" fill="url(#pattern0_1187_67951)" />
       <defs>
-        <pattern
-          id="pattern0_1187_67951"
-          patternContentUnits="objectBoundingBox"
-          width="1"
-          height="1"
-        >
+        <pattern id="pattern0_1187_67951" patternContentUnits="objectBoundingBox" width="1" height="1">
           <use xlinkHref="#image0_1187_67951" transform="scale(0.00684932)" />
         </pattern>
         <image
