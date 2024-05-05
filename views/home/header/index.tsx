@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import classNames from "classnames";
 
-import { SuperMigrateLogo } from "@/public/icons";
+import { Logo, LogoAlt, SuperMigrateLogo } from "@/public/icons";
 import Action from "./action";
 import useScreenDetect from "@/hooks/useScreenDetect";
 import SMHam from "@/components/ham";
@@ -52,8 +52,13 @@ const LandingHeader = () => {
           bounce: 0.3,
         }}
         className={classNames(
-          "px-[18px] py-4 md:px-[14px] md:py-[10px] bg-primary-50 rounded-xl border border-primary-100 shadow-hero-header relative",
-          { "w-full": isMobile || isTablet }
+          "px-[18px] py-4 md:px-[14px] md:py-[10px] relative shadow-hero-header-alt",
+          {
+            "w-full": isMobile || isTablet,
+            "bg-white rounded-base border border-primary-250 md:backdrop-blur-[10px]":
+              !isTop,
+            "md:backdrop-blur-[5px]": isTop,
+          }
         )}
       >
         <motion.div
@@ -67,22 +72,19 @@ const LandingHeader = () => {
           }}
           className="flex items-center justify-between w-full"
         >
-          <div className="flex items-center justify-center md:gap-3">
-            <SuperMigrateLogo />
-            <a
-              href="#home"
-              className="text-sm tracking-[-0.14px] text-primary-650 font-medium hidden md:block"
-            >
-              Supermigrate
-            </a>
-          </div>
+          <a href="#home">
+            <LogoAlt />
+          </a>
 
           <div className="hidden md:flex items-center justify-between min-w-[250px]">
             {navLinks.map(({ name, href }, index) => (
               <a
                 key={index}
                 href={href}
-                className="px-3 py-2 text-sm tracking-[-0.14px] text-primary-650"
+                className={classNames("px-3 py-2 text-sm tracking-[-0.14px]", {
+                  "text-primary-3400": !isTop,
+                  "text-primary-650": isTop,
+                })}
               >
                 {name}
               </a>
@@ -95,7 +97,12 @@ const LandingHeader = () => {
 
           <SMHam isOpen={isMenuOpen} onClick={toggleMenu} />
 
-          <Menu menuOpen={isMenuOpen} links={navLinks} action={() => {}} />
+          <Menu
+            menuOpen={isMenuOpen}
+            links={navLinks}
+            action={() => {}}
+            isTop={isTop}
+          />
         </motion.div>
       </motion.div>
     </div>

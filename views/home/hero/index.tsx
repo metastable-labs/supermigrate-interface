@@ -27,12 +27,14 @@ const icons = [
 ];
 
 const stepTexts = ["Layer 2", "Base", "Optimism", "Mode", "Scroll"];
-const stepTextColors = [
-  { color: "#C2540A", stroke: "#6E330C" },
-  { color: "#375DFB", stroke: "#253EA7" },
-  { color: "#DF1C41", stroke: "#AF1D38" },
-  { color: "#DFFE00", stroke: "#1A1D01" },
-  { color: "#FFEDD8", stroke: "#1A1D01" },
+const stepTextColors = ["#D7FF00", "#C2D6FF", "#F25976", "#DFFE00", "#1A1D01"];
+
+const stepBackgroundColors = [
+  "#002132",
+  "#162664",
+  "#710E21",
+  "#000",
+  "#FFEDD8",
 ];
 
 const HeroSection = () => {
@@ -48,80 +50,46 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section
-      id="home"
-      className="relative z-10 w-full mb-[141px] md:mb-[250px] lg:mb-[326px] pt-[150px] md:pt-[120px] xl:pt-[88px]"
+    <motion.section
+      initial={{ backgroundColor: stepBackgroundColors[step] }}
+      animate={{ backgroundColor: stepBackgroundColors[step] }}
+      className="flex items-center justify-center min-h-[90vh] m-[25px] rounded-base relative"
     >
       <SMContainer>
-        <div className="w-full flex flex-col xl:flex-row items-center xl:justify-between gap-6">
-          <div className="flex flex-col justify-center items-start gap-[29px]">
-            <div className="w-full flex flex-col justify-center items-start gap-8">
-              <p className="text-black text-[38px] leading-[49.4px] md:text-[82px] md:leading-[106.6px] font-medium tracking-[-0.82px] max-w-[300px] lg:max-w-[548px]">
-                Your gateway to
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={step}
-                    initial={{
-                      opacity: 0,
-                      color: "white",
-                      WebkitTextStrokeWidth: 0,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      color: stepTextColors[step].color,
-                      WebkitTextStrokeWidth: "1px",
-                      WebkitTextStrokeColor: stepTextColors[step].stroke,
-                    }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.25 }}
-                    className="whitespace-nowrap"
-                  >
-                    {" "}
-                    {stepTexts[step]}
-                  </motion.span>
-                </AnimatePresence>
-              </p>
-              <p className="text-primary-2350 text-[20px] leading-[31px] max-w-[520px]">
-                Automatically deploy canonical bridged ERC20 to base and Create
-                a PR on the superchain token list repo.
-              </p>
-            </div>
-
-            <HeroButton onClick={() => navigate.push("/migrate")} />
-          </div>
-
-          <div className="relative">
-            <HeroIcon />
-
-            <div className="absolute bottom-[9.5%] z-10 w-full flex items-center justify-center">
-              <AnimatePresence mode="popLayout">
-                <motion.div
+        <div className="flex flex-col justify-center items-center gap-[29px]">
+          <div className="w-full flex flex-col justify-center items-start gap-8">
+            <p className="text-[62px] leading-[79px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-white max-w-[674px] text-center">
+              Your gateway to
+              <br />
+              <AnimatePresence mode="popLayout" initial={false}>
+                <motion.p
                   key={step}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
+                  initial={{
+                    opacity: 0,
+                    color: stepTextColors[step],
+                  }}
+                  animate={{
+                    opacity: 1,
+                    color: stepTextColors[step],
+                  }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="whitespace-nowrap md:min-h-[88px]"
                 >
-                  {icons[step]}
-                </motion.div>
+                  {stepTexts[step]}
+                </motion.p>
               </AnimatePresence>
-            </div>
+            </p>
+            <p className="text-white text-[20px] leading-[31px] max-w-[520px] text-center">
+              Automatically deploy canonical bridged ERC20 to base and Create a
+              PR on the superchain token list repo.
+            </p>
           </div>
+
+          <HeroButton onClick={() => navigate.push("/migrate")} />
         </div>
       </SMContainer>
-
-      <div className="absolute top-0 left-0 z-[-10] flex items-center justify-center">
-        <HeroBGLines />
-      </div>
-
-      <div className="absolute top-0 right-0 z-[-10] invisible md:visible">
-        <HeroFadeShape />
-      </div>
-
-      <div className="absolute top-[93%] md:top-[96%] lg:top-[100%] right-0 w-full flex items-center justify-center md:pb-5">
-        <HeroTiles />
-      </div>
-    </section>
+    </motion.section>
   );
 };
 
