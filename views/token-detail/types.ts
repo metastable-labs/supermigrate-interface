@@ -6,8 +6,8 @@ interface IFastLink {
 }
 
 interface ITransactionHash {
-  hashes: {
-    hash: string;
+  hashes?: {
+    name: string;
     urlText: string;
     url: string;
   }[];

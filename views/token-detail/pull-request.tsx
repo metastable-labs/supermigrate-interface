@@ -29,7 +29,14 @@ const PullRequests = ({ pullRequests }: { pullRequests: PullRequest[] }) => {
         {pullRequests.map((pullRequest, index) => (
           <div key={index} className="p-4 border border-primary-2100 rounded-base flex items-center justify-between w-full bg-primary-2700">
             <div className="flex flex-col items-start gap-1.5 justify-center">
-              <h3 className="text-primary-300 text-sm font-medium capitalize">{pullRequest?.chain}</h3>
+
+              <h3 className="text-primary-300 text-sm font-medium capitalize">
+                {pullRequest.owner === "optimism" ||
+                pullRequest.owner === "iamnotstatic"
+                  ? "Superchain token list repo"
+                  : "Superbridge token list repo"}
+              </h3>
+
               <Status status={pullRequest?.status} />
             </div>
             <a target="_blank" href={pullRequest?.url}>

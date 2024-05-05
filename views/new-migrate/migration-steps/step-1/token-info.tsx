@@ -1,7 +1,7 @@
-import { SMLoader } from '@/components';
-import { Network } from '@/config/rainbow/config';
-import { ITokenInfo } from './types';
-import classNames from 'classnames';
+
+import classNames from "classnames";
+import { SMLoader } from "@/components";
+import { ITokenInfo } from "./types";
 
 const TokenInfo = ({ decimal, name, symbol, loading, network }: ITokenInfo) => {
   const items = [
@@ -9,8 +9,6 @@ const TokenInfo = ({ decimal, name, symbol, loading, network }: ITokenInfo) => {
     { name: 'Token Symbol', value: symbol },
     { name: 'Token Decimal', value: decimal },
   ];
-
-  console.log(network);
 
   return (
     <div className="w-full flex flex-col items-stretch justify-center gap-6 px-6 py-3 bg-white rounded-base border border-primary-2100 min-h-[141px]">

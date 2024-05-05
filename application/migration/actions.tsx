@@ -16,6 +16,7 @@ import { CallbackProps } from '../store';
 const useMigrationActions = () => {
   const { dispatch } = useSystemFunctions();
   const { deployToken, isPending, isConfirmed, getTransactionData, deployTokenWithDecimal } = useContract();
+
   const { address } = useAccount();
   const chainId = useChainId();
 
@@ -45,9 +46,18 @@ const useMigrationActions = () => {
     }
   };
 
-  const getMigrationObject = async (body: Migration) => {
+  const getMigrationObject = async (id: string, body?: Migration) => {
     try {
-      return dispatch(setMigration(body));
+      if (body) {
+        return dispatch(setMigration(body));
+      }
+
+      const migration = await migrationState.migrations?.find(
+        (item) => item.id === id
+      );
+      if (!migration) return;
+
+      return dispatch(setMigration(migration));
     } catch (error: any) {}
   };
 
@@ -118,7 +128,7 @@ const useMigrationActions = () => {
 
       const response = await api.migrateToken(formData);
 
-      getMigrationObject(response);
+      getMigrationObject("", response);
       getMigrations();
     } catch (error: any) {
       setLoadingMigration(false);
