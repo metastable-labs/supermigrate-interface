@@ -16,7 +16,6 @@ import {
   ZoraIcon,
   WorldChainIcon,
   DegenIcon,
-  PGNIcon,
   RaysIcon,
 } from '@/public/icons';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
@@ -40,7 +39,6 @@ const IconSection = ({ variant, comingSoon }: { variant: Network; comingSoon?: b
         {variant === 'zora' && <ZoraIcon />}
         {variant === 'world-chain' && <WorldChainIcon />}
         {variant === 'degen' && <DegenIcon />}
-        {variant === 'pgn' && <PGNIcon />}
       </div>
 
       <div className="flex md:hidden">
@@ -52,7 +50,6 @@ const IconSection = ({ variant, comingSoon }: { variant: Network; comingSoon?: b
         {variant === 'zora' && <ZoraIcon />}
         {variant === 'world-chain' && <WorldChainIcon />}
         {variant === 'degen' && <DegenIcon />}
-        {variant === 'pgn' && <PGNIcon />}
       </div>
     </div>
   );
@@ -93,7 +90,6 @@ const SMCard = ({ title, variant = 'base', chainId: id, comingSoon }: NetworkPro
           'bg-primary-2400 relative': variant === 'zora',
           'bg-black': variant === 'world-chain',
           'bg-primary-2450': variant === 'degen',
-          'bg-primary-2500': variant === 'pgn',
           'pt-4 justify-between': comingSoon,
           'justify-center': !comingSoon,
         })}>
@@ -101,7 +97,7 @@ const SMCard = ({ title, variant = 'base', chainId: id, comingSoon }: NetworkPro
 
         <span
           className={classNames('font-bold text-[14px] leading-[21.7px] text-center whitespace-nowrap', {
-            'text-white': variant === 'base' || variant === 'optimism' || variant === 'linea' || variant === 'zora' || variant === 'world-chain' || variant === 'degen' || variant === 'pgn',
+            'text-white': variant === 'base' || variant === 'optimism' || variant === 'linea' || variant === 'zora' || variant === 'world-chain' || variant === 'degen',
             'text-black': variant === 'mode',
             'text-primary-600': variant === 'scroll',
           })}>
