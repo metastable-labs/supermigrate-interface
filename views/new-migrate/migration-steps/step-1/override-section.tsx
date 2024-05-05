@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { motion } from 'framer-motion';
 
 import { InfoIcon } from '@/public/icons';
-import { Network } from '@/config/rainbow/rainbowkit';
+import { Network } from '@/config/rainbow/config';
 
 const OverrideIcon = ({ overridden, onClick, network }: { overridden: boolean; onClick?: () => void; network: Network }) => {
   return (
