@@ -31,7 +31,6 @@ const NavAction = ({ text, onClick, variant = 'network' }: NavActionProps) => {
   const handleIcon = () => {
     if (variant === 'network' && chainId) {
       const currentNetwork = networks.find((network) => network.chainId === chainId);
-      console.log(currentNetwork);
       if (currentNetwork) {
         return setIcon(currentNetwork?.icon);
       }

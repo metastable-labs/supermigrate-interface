@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import classNames from 'classnames';
 
-import { SuperMigrateLogo } from '@/public/icons';
+import { Logo, LogoAlt, SuperMigrateLogo } from '@/public/icons';
 import Action from './action';
 import useScreenDetect from '@/hooks/useScreenDetect';
 import SMHam from '@/components/ham';
@@ -41,7 +41,7 @@ const LandingHeader = () => {
   }, []);
 
   return (
-    <div className="fixed w-screen z-20 flex justify-center items-center pt-[33px] px-4">
+    <div className="fixed w-screen z-20 flex justify-center items-center pt-3 md:pt-[33px] px-4">
       <motion.div
         initial={{ opacity: 0, y: 0 }}
         animate={{ opacity: 1, y: !isTop ? 5 : 0 }}
@@ -51,7 +51,11 @@ const LandingHeader = () => {
           type: 'spring',
           bounce: 0.3,
         }}
-        className={classNames('px-[18px] py-4 md:px-[14px] md:py-[10px] bg-primary-50 rounded-xl border border-primary-100 shadow-hero-header relative', { 'w-full': isMobile || isTablet })}>
+        className={classNames('px-[18px] py-4 md:px-[14px] md:py-[10px] relative shadow-hero-header-alt', {
+          'w-full': isMobile || isTablet,
+          'bg-white rounded-base border border-primary-250 md:backdrop-blur-[10px]': !isTop || isMobile || isTablet,
+          'md:backdrop-blur-[5px]': isTop,
+        })}>
         <motion.div
           initial={{ width: '87vw' }}
           animate={{ width }}
@@ -62,16 +66,27 @@ const LandingHeader = () => {
             bounce: 0.3,
           }}
           className="flex items-center justify-between w-full">
-          <div className="flex items-center justify-center md:gap-3">
-            <SuperMigrateLogo />
-            <a href="#home" className="text-sm tracking-[-0.14px] text-primary-650 font-medium hidden md:block">
-              Supermigrate
+          {isTop && isDesktop && (
+            <a href="#home">
+              <LogoAlt />
             </a>
-          </div>
+          )}
+
+          {(!isTop || isMobile || isTablet) && (
+            <a href="#home" className="bg-primary-3250 rounded-full pt-[10.35px] pr-[7.4px] pb-[10.2px] pl-[9.3px] flex items-center justify-center w-10 h-10">
+              <Logo />
+            </a>
+          )}
 
           <div className="hidden md:flex items-center justify-between min-w-[250px]">
             {navLinks.map(({ name, href }, index) => (
-              <a key={index} href={href} className="px-3 py-2 text-sm tracking-[-0.14px] text-primary-650">
+              <a
+                key={index}
+                href={href}
+                className={classNames('px-3 py-2 text-sm tracking-[-0.14px]', {
+                  'text-primary-3400': !isTop,
+                  'text-primary-650': isTop,
+                })}>
                 {name}
               </a>
             ))}
@@ -83,7 +98,7 @@ const LandingHeader = () => {
 
           <SMHam isOpen={isMenuOpen} onClick={toggleMenu} />
 
-          <Menu menuOpen={isMenuOpen} links={navLinks} action={() => {}} />
+          <Menu menuOpen={isMenuOpen} links={navLinks} />
         </motion.div>
       </motion.div>
     </div>

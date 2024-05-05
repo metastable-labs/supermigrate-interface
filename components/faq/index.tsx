@@ -3,7 +3,6 @@ import { PlusIcon, MinusIcon } from '@/public/icons';
 import classNames from 'classnames';
 
 const SMFAQ = ({ answer, question, current, onClick }: ISMFAQ) => {
-  console.log(current);
   return (
     <div className={classNames('px-8 py-6 flex flex-col self-stretch items-start rounded-2xl md:w-[440px] lg:w-[576px]', { 'gap-2 bg-primary-1450 transition-colors duration-300': current })}>
       <div className="w-full flex justify-between items-center">

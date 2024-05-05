@@ -1,16 +1,20 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+'use client';
+
+import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 
 import { ISMSelect, IOption } from './types';
 import SMClickAnimation from '../click-animation';
-import { SecondarySelectIcon } from '@/public/icons';
+import SMModal from '../modal';
+import { SearchIcon, SecondarySelectIcon } from '@/public/icons';
 
-const SMSelect = ({ text, disabled, onClick, options }: ISMSelect) => {
+const SMSelect = ({ text, disabled, onClick, options, defaultId }: ISMSelect) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [searchText, setSearchText] = useState('');
   const [selectedOption, setSelectedOption] = useState<IOption>();
+  const [searchedOptions, setSearchedOptions] = useState<IOption[]>(options || []);
 
-  const showOptions = isOpen && Boolean(options?.length);
+  const toggleOpen = () => setIsOpen((prev) => !prev);
 
   const handleValue = (option: IOption) => {
     setIsOpen((prev) => !prev);
@@ -19,10 +23,26 @@ const SMSelect = ({ text, disabled, onClick, options }: ISMSelect) => {
     if (onClick) onClick(option);
   };
 
+  useEffect(() => {
+    if (defaultId && options) {
+      const defaultOption = options.find((option) => option.id === defaultId);
+      if (defaultOption) setSelectedOption(defaultOption);
+    }
+  }, [defaultId, options]);
+
+  useEffect(() => {
+    if (searchText && options) {
+      const filteredOptions = options.filter((option) => option.text.toLowerCase().includes(searchText.toLowerCase()));
+      setSearchedOptions(filteredOptions);
+    } else {
+      setSearchedOptions(options || []);
+    }
+  }, [searchText, options]);
+
   return (
-    <div className="relative">
+    <>
       <SMClickAnimation
-        onClick={() => setIsOpen((prev) => !prev)}
+        onClick={toggleOpen}
         className={classNames(
           'flex justify-between items-center gap-2 cursor-pointer py-[6px] px-3 bg-white rounded-[5px] text-[14px] leading-[21.7px] font-bold text-center text-primary-200 min-w-[113px]',
           { 'pointer-events-none': disabled },
@@ -37,30 +57,47 @@ const SMSelect = ({ text, disabled, onClick, options }: ISMSelect) => {
         <SecondarySelectIcon />
       </SMClickAnimation>
 
-      <AnimatePresence>
-        {showOptions && (
-          <motion.div
-            key={0}
-            initial={{ opacity: 0, maxHeight: 0 }}
-            animate={{ opacity: 1, maxHeight: '200px' }}
-            exit={{ opacity: 0, maxHeight: 0 }}
-            className="w-full bg-primary-150 flex flex-col gap-3 rounded-[5px] absolute z-10 top-[120%] px-2 py-4 overflow-auto">
-            {options?.map((option, index) => (
-              <SMClickAnimation
-                key={index}
+      <SMModal show={isOpen} close={toggleOpen} variant="secondary">
+        <div className="w-[303px] md:w-[408px] flex flex-col gap-5">
+          <h1 className="text-primary-50 text-[18px] leading-[27.9px]">{text}</h1>
+
+          <div className="px-3 py-2.5 flex items-center justify-center gap-2 bg-white border border-primary-250 rounded-base">
+            <SearchIcon />
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              className=" text-primary-700 w-full outline-none placeholder:text-primary-2050 text-sm tracking-[-0.084px]"
+            />
+          </div>
+
+          <div className="flex flex-col self-stretch gap-6  h-[281px] overflow-y-auto overflow-x-visible">
+            {searchedOptions.map((option) => (
+              <div
+                key={option.id}
                 onClick={() => handleValue(option)}
-                className={classNames('flex items-center gap-2 cursor-pointer py-2 px-3 rounded-[5px] text-[14px] leading-[21.7px] font-bold text-center transition-colors duration-200 ease-in-out', {
-                  'bg-primary-200': option.value === selectedOption?.value,
-                  'hover:bg-primary-1300': option.value !== selectedOption?.value,
-                })}>
-                {option.icon}
+                className={classNames(
+                  'flex items-center justify-between self-stretch bg-white hover:bg-primary-650 transition-colors duration-300 gap-2 px-2 rounded-base cursor-pointer text-[14px] leading-[21.7px] font-medium text-primary-200',
+                  {
+                    'shadow-md': selectedOption?.id === option.id,
+                  },
+                )}>
+                <div className="flex items-center justify-center gap-2">
+                  {option.icon}
+                  <div className="flex flex-col">
+                    <span className="text-primary-50">{option.text}</span>
+                    <span className="text-[10px] leading-[15.5px]">{option.text}</span>
+                  </div>
+                </div>
+
                 <span>{option.text}</span>
-              </SMClickAnimation>
+              </div>
             ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+          </div>
+        </div>
+      </SMModal>
+    </>
   );
 };
 

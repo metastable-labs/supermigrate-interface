@@ -94,7 +94,7 @@ const SMTable = ({ data, network, isConnected, variant = 'primary', loading, cta
         )}
       </table>
 
-      {!Boolean(data.length) && !loading && <EmptyState isConnected={isConnected} network={network} />}
+      {!Boolean(data.length) && !loading && <EmptyState isConnected={isConnected} network={network} action={() => ctaAction?.()} variant={variant} />}
 
       {Boolean(data.length) && (
         <div className=" border-t border-primary-1350 flex justify-between items-center px-6 pt-3 pb-4 bg-white">

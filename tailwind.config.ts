@@ -82,6 +82,14 @@ const config: Config = {
           3250: '#002132',
           3300: '#DFFE00',
           3350: '#6B8000',
+          3400: '#181E00',
+          3450: '#D9EB8F',
+          3500: '#001F29',
+          3550: '#CDDCE4',
+          3600: '#B3D400',
+          3650: '#666D80',
+          3700: '#212325',
+          3750: '#D7FF00',
         },
         grey: {
           50: '#717184',
@@ -102,6 +110,7 @@ const config: Config = {
         'small-shadow': '0px 2px 4px 0px rgba(27, 28, 29, 0.04)',
         'hero-header': '0px 20px 25px -5px rgba(0, 0, 0, 0.10), 0px 8px 10px -6px rgba(0, 0, 0, 0.10)',
         'very-light-gray': '0px 1.544px 3.089px 0px rgba(164, 172, 185, 0.24), 0px 0px 0px 1.544px rgba(18, 55, 105, 0.08)',
+        'hero-header-alt': '0px 0px 10px -6px rgba(0, 0, 0, 0.10)',
       },
 
       borderRadius: {

@@ -2,7 +2,7 @@ import Logo from './logo.svg';
 import SMLogo from './sm-logo.svg';
 import MigrateLinkIcon from './migrate-link-icon';
 import BridgeLinkIcon from './bridge-link-icon.svg';
-import LiquidityLinkIcon from './liquidity-link-icon.svg';
+import LiquidityLinkIcon from './liquidity-link-icon';
 import SelectIcon from './select-icon.svg';
 import VerifiedIcon from './verified-icon.svg';
 import HamIcon from './ham-icon.svg';
@@ -81,6 +81,11 @@ import ExclaimIcon from './exclaim-icon.svg';
 import Tiles from './tiles';
 import WebIcon from './web-icon';
 import GitMergeIcon from './git-merge-icon';
+import SearchIcon from './search-icon.svg';
+import SuccessIcon from './success-icon';
+import LogoAlt from './logo-alt.svg';
+import TelegramIcon from './telegram-icon';
+import FooterLogo from './footer-logo.svg';
 
 export {
   Logo,
@@ -166,4 +171,9 @@ export {
   ExclaimIcon,
   WebIcon,
   GitMergeIcon,
+  SearchIcon,
+  SuccessIcon,
+  LogoAlt,
+  TelegramIcon,
+  FooterLogo,
 };

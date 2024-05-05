@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
-import { SMButton, SMClickAnimation, SMSelect } from '@/components';
+import { SMButton, SMClickAnimation } from '@/components';
 import { IOption } from '@/components/select/types';
 import { PlusIcon } from '@/public/icons';
 import { walletOptions, rates, tokenOptions, Rate } from './dummy';
 import Info from './info';
 import Extra from './extra';
 import LiquidityInput from './input';
+import { IAdd } from './types';
 
-const Add = () => {
+const Add = ({ defaultId }: IAdd) => {
   const [step, setStep] = useState(0);
   const [values, setValues] = useState({ amount: '', liquidity: '' });
   const [wallet, setWallet] = useState<IOption>();
@@ -20,6 +22,7 @@ const Add = () => {
   const showText = Boolean(wallet && token) && step === 0;
   const showInputSection = step === 0;
   const showExtra = Boolean(wallet && token) && step === 1;
+  const showInfo = Boolean(wallet && token);
   const disabled = !wallet || !token || !values.amount || !values.liquidity;
 
   const handleWallet = (wallet: IOption) => setWallet(wallet);
@@ -65,6 +68,7 @@ const Add = () => {
     if (step === 1) {
       console.log('values', values);
       setButtonText('Confirming Transaction...');
+      setStep(2);
     }
   };
 
@@ -79,8 +83,14 @@ const Add = () => {
   }, [wallet, token]);
 
   return (
-    <form onSubmit={(e) => e.preventDefault()} className="w-[295px] md:w-[400px] p-1 flex flex-col gap-6 items-start rounded-2xl">
-      <h1 className="text-primary-50 text-[24px] leading-[37.2px] font-medium">{headerText}</h1>
+    <form onSubmit={(e) => e.preventDefault()} className="w-[303px] md:w-[408px] p-1 flex flex-col gap-6 items-start rounded-base">
+      <AnimatePresence>
+        {step !== 2 && (
+          <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="text-primary-50 text-[24px] leading-[37.2px] font-medium">
+            {headerText}
+          </motion.h1>
+        )}
+      </AnimatePresence>
 
       {showInputSection && (
         <>
@@ -89,6 +99,7 @@ const Add = () => {
             onChange={handleInputChange('amount')}
             placeholder="0"
             options={walletOptions}
+            defaultId={defaultId}
             onSelect={handleWallet}
             selectText="Select wallet"
             balanceText={wallet?.text}
@@ -106,6 +117,7 @@ const Add = () => {
             onChange={handleInputChange('liquidity')}
             placeholder="0"
             options={tokenOptions}
+            defaultId={defaultId}
             onSelect={handleToken}
             selectText="Select token"
             disabled={!token}
@@ -115,7 +127,7 @@ const Add = () => {
 
       <Extra amount={parseInt(values.amount.replace(/,/g, ''), 10)} show={showExtra} token={token} wallet={wallet} />
 
-      <Info poolPercentage={9.3} show={Boolean(token && wallet)} token={token?.value} wallet={wallet?.text} amount={parseInt(values.amount.replace(/,/g, ''), 10)} step={step} />
+      <Info poolPercentage={9.3} show={showInfo} token={token?.value} wallet={wallet?.text} amount={parseInt(values.amount.replace(/,/g, ''), 10)} step={step} />
 
       <SMButton text={buttonText} onClick={handleButtonAction} fullWidth network="base" variant="plain" disabled={disabled} />
 

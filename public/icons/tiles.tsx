@@ -26,9 +26,26 @@ const Tiles = ({ network = 'base' }: { network?: Network }) => (
     />
     <defs>
       <linearGradient id="paint0_linear_891_29222" x1="835.935" y1="140.616" x2="835.935" y2="-126.437" gradientUnits="userSpaceOnUse">
-        <motion.stop animate={{ stopColor: colors[network].primary }} />
-        <motion.stop animate={{ stopColor: colors[network].secondary }} offset="0.31674" />
-        <motion.stop animate={{ stopColor: colors[network].tertiary }} offset="0.50309" />
+        <motion.stop
+          initial={{
+            stopColor: colors.base.primary,
+          }}
+          animate={{ stopColor: colors[network].primary }}
+        />
+        <motion.stop
+          initial={{
+            stopColor: colors.base.secondary,
+          }}
+          animate={{ stopColor: colors[network].secondary }}
+          offset="0.31674"
+        />
+        <motion.stop
+          initial={{
+            stopColor: colors.base.tertiary,
+          }}
+          animate={{ stopColor: colors[network].tertiary }}
+          offset="0.50309"
+        />
       </linearGradient>
     </defs>
   </svg>
