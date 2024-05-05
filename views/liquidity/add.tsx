@@ -9,63 +9,70 @@ import Info from './info';
 import Extra from './extra';
 import LiquidityInput from './input';
 import { IAdd } from './types';
-import { fetchTokenList } from '@/utils/uniswap';
+import { fetchTokenList, getPair } from '@/utils/uniswap';
 import Image from 'next/image';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { handleAmountInput } from '@/utils/helpers';
+import { Address } from 'viem';
+import { useChainId } from 'wagmi';
 
 const Add = ({ defaultId }: IAdd) => {
+  const chainId = useChainId();
   const { migrationState } = useSystemFunctions();
   const [step, setStep] = useState(0);
   const [values, setValues] = useState({ amount: '', liquidity: '' });
-  const [wallet, setWallet] = useState<IOption>();
-  const [token, setToken] = useState<IOption>();
+  const [tokenA, setTokenA] = useState<IOption>();
+  const [tokenB, setTokenB] = useState<IOption>();
   const [walletBalance, setWalletBalance] = useState('24.64');
   const [headerText, setHeaderText] = useState('Add Liquidity');
   const [buttonText, setButtonText] = useState('Invalid Pair');
-  const [walletOptions, setWalletOptions] = useState<IOption[]>([]);
-  const [tokenOptions, setTokenOptions] = useState<IOption[]>([]);
+  const [tokenAOptions, setTokenAOptions] = useState<IOption[]>([]);
+  const [tokenBOptions, setTokenBOptions] = useState<IOption[]>([]);
 
-  const showText = Boolean(wallet && token) && step === 0;
+  const showText = Boolean(tokenA && tokenB) && step === 0;
   const showInputSection = step === 0;
-  const showExtra = Boolean(wallet && token) && step === 1;
-  const showInfo = Boolean(wallet && token);
-  const disabled = !wallet || !token || !values.amount || !values.liquidity;
+  const showExtra = Boolean(tokenA && tokenB) && step === 1;
+  const showInfo = Boolean(tokenA && tokenB);
+  const disabled = !tokenA || !tokenB || !values.amount || !values.liquidity;
 
-  const handleWallet = (wallet: IOption) => setWallet(wallet);
-  const handleToken = (token: IOption) => setToken(token);
+  const handleTokenA = (wallet: IOption) => setTokenA(wallet);
+  const handleToken = (token: IOption) => setTokenB(token);
 
-  const handleInputChange = (field: 'amount' | 'liquidity') => (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
 
     const newValue = handleAmountInput(value);
 
     if (newValue === undefined) return;
 
-    setValues((prev) => ({ ...prev, [field]: newValue }));
-    updateTokenB(newValue, field === 'liquidity');
+    setValues((prev) => ({ ...prev, amount: newValue }));
   };
 
-  const updateTokenB = (value: string, isLiquidityInput: boolean) => {
-    const numericValue = parseInt(value.replace(/,/g, ''), 10);
+  const updateTokenB = async () => {
+    try {
+      const value = values.amount;
+      const b = await getPair(chainId, tokenA?.address as Address, tokenB?.address as Address);
+      console.log('kkkkk', b);
+      if (!value) return;
 
-    if (isNaN(numericValue) || !wallet || !token) return;
+      const numericValue = parseInt(value.replace(/,/g, ''), 10);
 
-    const rateEntry = rates.find((rate) => rate.name === token.value);
-    if (!rateEntry) return;
+      if (isNaN(numericValue) || !tokenA || !tokenB) return;
 
-    const conversionRate = rateEntry[wallet.text as keyof Rate];
+      const rateEntry = rates.find((rate) => rate.name === tokenB.value);
+      if (!rateEntry) return;
 
-    if (typeof conversionRate !== 'number') return;
+      const conversionRate = rateEntry[tokenA.text as keyof Rate];
 
-    const calculatedValue = isLiquidityInput ? numericValue / conversionRate : numericValue * conversionRate;
+      if (typeof conversionRate !== 'number') return;
 
-    const formattedValue = calculatedValue.toLocaleString('en-US');
+      const calculatedValue = numericValue * conversionRate;
 
-    if (isLiquidityInput) {
-      setValues((prev) => ({ ...prev, amount: formattedValue }));
-    } else {
+      const formattedValue = calculatedValue.toLocaleString('en-US');
+
       setValues((prev) => ({ ...prev, liquidity: formattedValue }));
+    } catch (error: any) {
+      console.log(error);
     }
   };
 
@@ -91,22 +98,28 @@ const Add = ({ defaultId }: IAdd) => {
       value: token.symbol,
       icon: <Image src={token.logoURI} width={20} height={20} alt={token.symbol} />,
       id: token.symbol,
+      address: token.address,
     }));
 
-    setWalletOptions(walletOptions);
+    setTokenAOptions(walletOptions);
   };
 
   const fetchMigratedTokens = async () => {
     const { migrations } = migrationState;
 
-    const tokenOptions = migrations?.map((token) => ({
-      text: token.name,
-      value: token.symbol,
-      icon: <Image src={token?.logo_url} width={20} height={20} alt={token.symbol} />,
-      id: token.symbol,
-    }));
+    const tokenOptions = migrations?.map((token) => {
+      const chain = token.chains.find((chain) => chain.id === chainId);
 
-    setTokenOptions(tokenOptions);
+      return {
+        text: token.name,
+        value: token.symbol,
+        icon: <Image src={token?.logo_url} width={20} height={20} alt={token.symbol} />,
+        id: token.symbol,
+        address: chain ? (chain.token_address as Address) : (token.chains[1].token_address as Address),
+      };
+    });
+
+    setTokenBOptions(tokenOptions);
   };
 
   useEffect(() => {
@@ -120,14 +133,13 @@ const Add = ({ defaultId }: IAdd) => {
   }, [migrationState.migrations]);
 
   useEffect(() => {
-    if (values.amount) {
-      updateTokenB(values.amount.replace(/,/g, ''), false);
-    }
-    if (wallet && token) {
+    updateTokenB();
+
+    if (tokenA && tokenB) {
       setButtonText('Supply');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [wallet, token]);
+  }, [tokenA, tokenB]);
 
   return (
     <form onSubmit={(e) => e.preventDefault()} className="w-[303px] md:w-[408px] p-1 flex flex-col gap-6 items-start rounded-base">
@@ -143,13 +155,13 @@ const Add = ({ defaultId }: IAdd) => {
         <>
           <LiquidityInput
             value={values.amount}
-            onChange={handleInputChange('amount')}
+            onChange={handleInputChange}
             placeholder="0"
-            options={walletOptions}
+            options={tokenAOptions}
             defaultId={defaultId}
-            onSelect={handleWallet}
+            onSelect={handleTokenA}
             selectText="Select wallet"
-            balanceText={wallet?.text}
+            balanceText={tokenA?.text}
             balanceValue={walletBalance}
           />
 
@@ -159,23 +171,13 @@ const Add = ({ defaultId }: IAdd) => {
             </SMClickAnimation>
           </div>
 
-          <LiquidityInput
-            value={values.liquidity}
-            onChange={handleInputChange('liquidity')}
-            placeholder="0"
-            options={tokenOptions}
-            defaultId={defaultId}
-            onSelect={handleToken}
-            selectText="Select token"
-            disabled={!token}
-            disableInput
-          />
+          <LiquidityInput value={values.liquidity} placeholder="0" options={tokenBOptions} defaultId={defaultId} onSelect={handleToken} selectText="Select token" disabled={!tokenB} disableInput />
         </>
       )}
 
-      <Extra amount={parseInt(values.amount.replace(/,/g, ''), 10)} show={showExtra} token={token} wallet={wallet} />
+      <Extra amount={parseInt(values.amount.replace(/,/g, ''), 10)} show={showExtra} token={tokenB} wallet={tokenA} />
 
-      <Info poolPercentage={9.3} show={showInfo} token={token?.value} wallet={wallet?.text} amount={parseInt(values.amount.replace(/,/g, ''), 10)} step={step} />
+      <Info poolPercentage={9.3} show={showInfo} token={tokenB?.value} wallet={tokenA?.text} amount={parseInt(values.amount.replace(/,/g, ''), 10)} step={step} />
 
       <SMButton text={buttonText} onClick={handleButtonAction} fullWidth network="base" variant="plain" disabled={disabled} />
 

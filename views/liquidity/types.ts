@@ -2,7 +2,7 @@ import { IOption } from '@/components/select/types';
 
 interface ILiquidityInput {
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
   options: IOption[];
   defaultId?: string;
