@@ -29,7 +29,7 @@ const Footer = () => {
     {
       title: resources.title,
       links: [
-        { titile: resources.blog, url: 'https://mirror.xzy/supermigrate.eth/' },
+        { titile: resources.blog, url: 'https://mirror.xyz/supermigrate.eth/' },
         { titile: resources.github, url: 'https://github.com/supermigrate' },
       ],
     },
