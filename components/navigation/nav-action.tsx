@@ -24,6 +24,7 @@ interface NavActionProps {
 
 const NavAction = ({ text, onClick, variant = "network" }: NavActionProps) => {
   const chainId = useChainId();
+  const { isConnected } = useAccount();
   const pathname = usePathname();
   const { userState } = useSystemFunctions();
   const { isConnected } = useAccount();
@@ -39,7 +40,7 @@ const NavAction = ({ text, onClick, variant = "network" }: NavActionProps) => {
       const currentNetwork = networks.find(
         (network) => network.chainId === chainId
       );
-      console.log(currentNetwork);
+      
       if (currentNetwork) {
         return setIcon(currentNetwork?.icon);
       }
