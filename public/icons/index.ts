@@ -83,6 +83,7 @@ import WebIcon from "./web-icon";
 import GitMergeIcon from "./git-merge-icon";
 import SearchIcon from "./search-icon.svg";
 import SuccessIcon from "./success-icon";
+import LogoAlt from "./logo-alt.svg";
 
 export {
   Logo,
@@ -170,4 +171,5 @@ export {
   GitMergeIcon,
   SearchIcon,
   SuccessIcon,
+  LogoAlt,
 };
