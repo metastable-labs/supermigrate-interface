@@ -53,7 +53,7 @@ export const networks: NetworkProps[] = [
     variant: 'mode',
     chainId: mode.id,
     icon: <ModePrimaryMobileIcon />,
-    rpcUrl: 'https://mainnet.modefi.com',
+    rpcUrl: 'https://mainnet.mode.network/',
     factoryAddress: '0xc0c6A811BBf07FA01b946F1C46a9A94c2eE8C73E',
     superFactoryAddress: '0x885E7a50287d62Fc4b490EB38eA599bF2F48c19F',
     abi: OptimismMintableERC20Factory.abi,
