@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 
 import { SMClickAnimation, SMContainer, SMFAQ } from '@/components';
 import { LinkRightArrow } from '@/public/icons';
+import { faqs } from './data';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const FAQs = () => {

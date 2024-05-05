@@ -6,10 +6,16 @@ import classNames from 'classnames';
 import { Logo, LogoAlt, SuperMigrateLogo } from '@/public/icons';
 import Action from './action';
 import useScreenDetect from '@/hooks/useScreenDetect';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
 import SMHam from '@/components/ham';
 import { NavLink } from './type';
 import Menu from './menu';
-import useSystemFunctions from '@/hooks/useSystemFunctions';
+
+const navLinks: NavLink[] = [
+  { name: 'About', href: '#about' },
+  { name: 'Blog', href: 'https://mirror.xyz/supermigrate.eth' },
+  { name: 'FAQ', href: '#faq' },
+];
 
 const LandingHeader = () => {
   const { locale } = useSystemFunctions();
@@ -89,6 +95,7 @@ const LandingHeader = () => {
               <a
                 key={index}
                 href={href}
+                target="_blank"
                 className={classNames('px-3 py-2 text-sm tracking-[-0.14px]', {
                   'text-primary-3400': !isTop,
                   'text-primary-650': isTop,

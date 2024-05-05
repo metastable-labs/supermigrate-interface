@@ -2,13 +2,13 @@
   "landingPage": {
     "navigation": {
       "about": "About",
-      "whitepaper": "Whitepaper",
+      "whitepaper": "Blog",
       "faq": "FAQ",
       "actionText": "Launch app"
     },
     "hero": {
       "title": "Your gateway to",
-      "subtitle": "Automatically deploy canonical bridged ERC20 to base and Create a PR on the superchain token list repo.",
+      "subtitle": "Automatically deploy canonical bridged ERC20 to an L2. Start bridging and adding liquidity to earn rewards all in one place.",
       "actionText": "Start migrating"
     },
     "section1": {
@@ -42,7 +42,7 @@
       "third": {
         "actionText": "Liquidity",
         "title": "Add Liquidity for newly deployed tokens",
-        "content": "An interface that makes it easy for people to provide liquidity for any recently migrated tokens on L2 and get incentivised for doing that."
+        "content": "An interface that makes it easy for people to provide liquidity for any recently migrated tokens on L2 and get rewarding for doing that."
       }
     },
     "testimonial": {
@@ -52,33 +52,32 @@
     },
     "faq": {
       "title": "Frequently Asked Questions",
-      "subtitle": "Everything you need to know about Supermigrate and . Can’t find the answer you’re looking for?",
-      "supportText": "See our Support page",
+      "subtitle": "Everything you need to know about Supermigrate and our integrations",
       "seeMore": "See more FAQ",
       "seeLess": "See less",
       "question1": {
-        "question": "What are the main benefits of using Supermigrate for blockchain migration?",
-        "answer": "Supermigrate offers streamlined processes, expert support, and tools that simplify the transition to Layer 2 solutions, enhancing scalability and efficiency for your blockchain projects."
+        "question": "Is it possible to migrate tokens with different names and tickers to Base?",
+        "answer": "Yes, during the migration process, you should check the “Override” option. This will require addition manual review."
       },
       "question2": {
-        "question": "Does Supermigrate support migration from any blockchain?",
-        "answer": "Supermigrate is designed to support a wide range of blockchains, allowing users to seamlessly migrate from popular base layers to advanced Layer 2 solutions."
+        "question": "How can you see or check documentation or code references for Supermigrate?",
+        "answer": "Here is a link to our github repository: https: //github.com/supermigrate"
       },
       "question3": {
-        "question": "How secure is the migration process with Supermigrate?",
-        "answer": "Supermigrate prioritizes security with end-to-end encryption and continuous monitoring to ensure safe and reliable migration of your blockchain assets and data."
+        "question": "Does Supermigrate support two-way bridging?",
+        "answer": "Yes, with our superbridge integration, you can go from L1 ⇒ L2 and back."
       },
       "question4": {
-        "question": "Can Supermigrate help with smart contract deployment on Layer 2?",
-        "answer": "Yes, Supermigrate facilitates not only migration but also the deployment and management of smart contracts on Layer 2 platforms to streamline operations and reduce costs."
+        "question": "What bridging mechanism is used for Supermigrate?",
+        "answer": "The tokens are deployed using the official OptimismMintableERC20Factory. After token deployment, you can bridge the tokens on our bridging interface which is powered by superbridge."
       },
       "question5": {
-        "question": "How does Supermigrate ensure the interoperability of migrated assets?",
-        "answer": "Supermigrate leverages advanced bridging technology to ensure seamless interoperability between Layer 1 and Layer 2 assets, enabling users to transfer and manage assets across multiple networks."
+        "question": "How many Layer 2 networks are supported currently?",
+        "answer": "We currently support Base, Optimism, and Mode. We are actively adding more networks. Reach out to integrations@metastablelabs.xyz for integration requests"
       },
       "question6": {
-        "question": "What are the fees associated with using Supermigrate for blockchain migration?",
-        "answer": "Supermigrate offers competitive fees for blockchain migration services, with transparent pricing and no hidden costs, ensuring cost-effective solutions for users of all sizes."
+        "question": "Are Polygon tokens supported by Supermigrate?",
+        "answer": "No, currently it only supports Ethereum to L2 migrations."
       }
     },
     "footer": {
@@ -86,11 +85,6 @@
         "title": "Resources",
         "blog": "Blog",
         "github": "Github"
-      },
-      "company": {
-        "title": "Company",
-        "privacy": "Privacy",
-        "terms": "Terms"
       },
       "alert": "Stay up to date",
       "emailPlaceholder": "Enter your email",

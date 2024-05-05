@@ -5,6 +5,7 @@ import * as yup from 'yup';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FooterLogo } from '@/public/icons';
+import { extras } from './data';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const Extra = ({ title, links }: { title: string; links: { titile: string; url: string }[] }) => {
@@ -14,7 +15,7 @@ const Extra = ({ title, links }: { title: string; links: { titile: string; url: 
 
       <div className="flex flex-col gap-3 items-start self-stretch">
         {links.map((link, index) => (
-          <a href={link.url} className="text-primary-3750 font-medium" key={index}>
+          <a href={link.url} target="_blank" className="text-primary-3750 font-medium" key={index}>
             {link.titile}
           </a>
         ))}
@@ -40,15 +41,8 @@ const Footer = () => {
     {
       title: resources.title,
       links: [
-        { titile: resources.blog, url: '#' },
-        { titile: resources.github, url: '#' },
-      ],
-    },
-    {
-      title: company.title,
-      links: [
-        { titile: company.privacy, url: '#' },
-        { titile: company.terms, url: '#' },
+        { titile: resources.blog, url: 'https://mirror.xzy/supermigrate.eth/' },
+        { titile: resources.github, url: 'https://github.com/supermigrate' },
       ],
     },
   ];
