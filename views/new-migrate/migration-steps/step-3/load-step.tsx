@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import moment from 'moment';
 
 import { CheckIcon, LoadingIcon, TrickleIcon } from '@/public/icons';
-import { Network } from '@/config/rainbow/rainbowkit';
+import { Network } from '@/config/rainbow/config';
 import { SMLoader } from '@/components';
 
 const LoadStep = ({
