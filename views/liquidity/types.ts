@@ -17,4 +17,13 @@ interface IAdd {
   defaultId: string;
 }
 
-export type { ILiquidityInput, IAdd };
+interface IInfo {
+  amount: number;
+  show: boolean;
+  wallet?: string;
+  token?: string;
+  poolPercentage: number;
+  step: number;
+}
+
+export type { ILiquidityInput, IAdd, IInfo };
