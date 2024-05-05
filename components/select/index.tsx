@@ -23,6 +23,16 @@ const SMSelect = ({ text, disabled, onClick, options, defaultId }: ISMSelect) =>
     if (onClick) onClick(option);
   };
 
+  const handleSearch = () => {
+    if (!searchText || !options) {
+      return setSearchedOptions(options || []);
+    }
+
+    const filteredOptions = options.filter((option) => option.text.toLowerCase().includes(searchText.toLowerCase()) || option.value.toLowerCase().includes(searchText.toLowerCase()));
+
+    setSearchedOptions([...filteredOptions]);
+  };
+
   useEffect(() => {
     if (defaultId && options) {
       const defaultOption = options.find((option) => option.id === defaultId);
@@ -31,12 +41,8 @@ const SMSelect = ({ text, disabled, onClick, options, defaultId }: ISMSelect) =>
   }, [defaultId, options]);
 
   useEffect(() => {
-    if (searchText && options) {
-      const filteredOptions = options.filter((option) => option.text.toLowerCase().includes(searchText.toLowerCase()));
-      setSearchedOptions(filteredOptions);
-    } else {
-      setSearchedOptions(options || []);
-    }
+    handleSearch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchText, options]);
 
   return (
@@ -73,9 +79,9 @@ const SMSelect = ({ text, disabled, onClick, options, defaultId }: ISMSelect) =>
           </div>
 
           <div className="flex flex-col self-stretch gap-6  h-[281px] overflow-y-auto overflow-x-visible">
-            {searchedOptions.map((option) => (
+            {searchedOptions.map((option, index) => (
               <div
-                key={option.id}
+                key={index}
                 onClick={() => handleValue(option)}
                 className={classNames(
                   'flex items-center justify-between self-stretch bg-white hover:bg-primary-650 transition-colors duration-300 gap-2 px-2 rounded-base cursor-pointer text-[14px] leading-[21.7px] font-medium text-primary-200',
@@ -87,7 +93,7 @@ const SMSelect = ({ text, disabled, onClick, options, defaultId }: ISMSelect) =>
                   {option.icon}
                   <div className="flex flex-col">
                     <span className="text-primary-50">{option.text}</span>
-                    <span className="text-[10px] leading-[15.5px]">{option.text}</span>
+                    <span className="text-[10px] leading-[15.5px]">{option.value}</span>
                   </div>
                 </div>
 

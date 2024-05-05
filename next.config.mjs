@@ -11,7 +11,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['w7.pngwing.com', 'i.pravatar.cc'],
+    domains: ['w7.pngwing.com', 'i.pravatar.cc', 's2.coinmarketcap.com', 'assets.coingecko.com', 'etherscan.io'],
   },
   headers: [
     {

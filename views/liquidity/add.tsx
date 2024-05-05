@@ -4,13 +4,17 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { SMButton, SMClickAnimation } from '@/components';
 import { IOption } from '@/components/select/types';
 import { PlusIcon } from '@/public/icons';
-import { walletOptions, rates, tokenOptions, Rate } from './dummy';
+import { rates, Rate } from './dummy';
 import Info from './info';
 import Extra from './extra';
 import LiquidityInput from './input';
 import { IAdd } from './types';
+import { fetchTokenList } from '@/utils/uniswap';
+import Image from 'next/image';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const Add = ({ defaultId }: IAdd) => {
+  const { migrationState } = useSystemFunctions();
   const [step, setStep] = useState(0);
   const [values, setValues] = useState({ amount: '', liquidity: '' });
   const [wallet, setWallet] = useState<IOption>();
@@ -18,6 +22,8 @@ const Add = ({ defaultId }: IAdd) => {
   const [walletBalance, setWalletBalance] = useState('24.64');
   const [headerText, setHeaderText] = useState('Add Liquidity');
   const [buttonText, setButtonText] = useState('Invalid Pair');
+  const [walletOptions, setWalletOptions] = useState<IOption[]>([]);
+  const [tokenOptions, setTokenOptions] = useState<IOption[]>([]);
 
   const showText = Boolean(wallet && token) && step === 0;
   const showInputSection = step === 0;
@@ -71,6 +77,42 @@ const Add = ({ defaultId }: IAdd) => {
       setStep(2);
     }
   };
+
+  const fetchTokens = async () => {
+    const tokenList = await fetchTokenList();
+
+    const walletOptions = tokenList?.map((token) => ({
+      text: token.name,
+      value: token.symbol,
+      icon: <Image src={token.logoURI} width={20} height={20} alt={token.symbol} />,
+      id: token.symbol,
+    }));
+
+    setWalletOptions(walletOptions);
+  };
+
+  const fetchMigratedTokens = async () => {
+    const { migrations } = migrationState;
+
+    const tokenOptions = migrations?.map((token) => ({
+      text: token.name,
+      value: token.symbol,
+      icon: <Image src={token?.logo_url} width={20} height={20} alt={token.symbol} />,
+      id: token.symbol,
+    }));
+
+    setTokenOptions(tokenOptions);
+  };
+
+  useEffect(() => {
+    fetchTokens();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    fetchMigratedTokens();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [migrationState.migrations]);
 
   useEffect(() => {
     if (values.amount) {
