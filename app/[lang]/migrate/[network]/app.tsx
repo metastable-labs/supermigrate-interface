@@ -20,7 +20,6 @@ const networkBackgrounds: Record<Network, string> = {
   zora: defaultGradient,
   'world-chain': defaultGradient,
   degen: defaultGradient,
-  pgn: defaultGradient,
 };
 
 const App = ({ params, children }: PageProps) => {
