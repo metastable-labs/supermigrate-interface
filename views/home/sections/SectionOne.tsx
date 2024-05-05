@@ -1,28 +1,33 @@
 import { SMContainer } from '@/components';
-import React from 'react';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const SectionOne = () => {
+  const { locale } = useSystemFunctions();
+  const { landingPage } = locale;
+  const { first, second, third, title, titleCont } = landingPage.section1;
+
   const listings = [
     {
-      title: 'Easy',
-      description: 'whether you’re new to L2s, or you don’t have a technical team. Supermigrate makes it easy',
+      title: first.title,
+      description: first.content,
     },
     {
-      title: 'Fast',
-      description: 'Never loose a sleep, fully automated process.',
+      title: second.title,
+      description: second.content,
     },
     {
-      title: 'Earn',
-      description: 'Earn rewards and Incentives for getting on L2s',
+      title: third.title,
+      description: third.content,
     },
   ];
+
   return (
     <SMContainer>
       <section id="about" className="py-[58px] lg:py-[72px] flex flex-col items-stretch gap-12 lg:gap-16">
         <div className="flex flex-col gap-12 lg:gap-16 min-w-full">
           <h1 className="text-left text-[30px] lg:text-[44px] text-black tracking-[0.44px]">
-            Streamlined and easy migration <br className="hidden lg:block" />
-            to Layer 2 Networks
+            {title} <br className="hidden lg:block" />
+            {titleCont}
           </h1>
         </div>
 
