@@ -1,7 +1,6 @@
-import { SMLoader } from '@/components';
-import { Network } from '@/config/rainbow/config';
-import { ITokenInfo } from './types';
 import classNames from 'classnames';
+import { SMLoader } from '@/components';
+import { ITokenInfo } from './types';
 
 const TokenInfo = ({ decimal, name, symbol, loading, network }: ITokenInfo) => {
   const items = [
