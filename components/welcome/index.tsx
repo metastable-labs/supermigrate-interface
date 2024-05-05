@@ -6,9 +6,9 @@ import { TextSampleIcon } from '@/public/icons';
 import SMClickAnimation from '../click-animation';
 
 const texts = [
-  'Once your PR is merged, the token list will update automatically to include your token and your token will be available on the Base Bridge.',
-  'To complete the migration, submit a pull request to the Superchain token repo list.',
-  'For support please reach out to us via our telegram',
+  { text: 'Once your PR is merged, the token list will update automatically to include your token on our bridging interface.' },
+  { text: 'To complete the migration, make sure you verify the migration by adding a link to the verification tweet on the pull request.' },
+  { text: 'For support please reach out to us via our', link: 'https://t.me/+8vDPDkrN_-gwZTA8', linkText: 'telegram channel' },
 ];
 
 const SMWelcome = ({ show, close }: ISMWelcome) => {
@@ -30,13 +30,20 @@ const SMWelcome = ({ show, close }: ISMWelcome) => {
               </div>
 
               <div className="self-stretch flex flex-col items-center justify-center gap-6">
-                {texts.map((text, index) => (
+                {texts.map(({ text, link, linkText }, index) => (
                   <div key={index} className="flex justify-between gap-[17px]">
                     <div className="min-w-6 min-h-6">
                       <TextSampleIcon />
                     </div>
 
-                    <p className="text-primary-2800 text-[14px] leading-[21.7px]">{text}</p>
+                    <p className="text-primary-2800 text-[14px] leading-[21.7px]">
+                      {text}{' '}
+                      {link && linkText && (
+                        <a href={link} className="underline underline-offset-4 text-primary-2400">
+                          {linkText}
+                        </a>
+                      )}
+                    </p>
                   </div>
                 ))}
               </div>
