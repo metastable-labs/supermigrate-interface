@@ -30,7 +30,7 @@
     "section2": {
       "title": "Alles, alles an einem Ort",
       "first": {
-        "actionText": "Migration",
+        "actionText": "Wandern",
         "title": "Stellen Sie kanonisch überbrückte Token bereit",
         "content": "Wir bieten Benutzern einen unkomplizierten Prozess zur Bereitstellung ihrer ERC20-Tokens in L2-Netzwerken, der diese automatisch überbrückbar macht."
       },
