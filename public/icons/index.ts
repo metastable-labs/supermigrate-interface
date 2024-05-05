@@ -86,6 +86,14 @@ import LogoAlt from './logo-alt.svg';
 import TelegramIcon from './telegram-icon';
 import FooterLogo from './footer-logo.svg';
 import TextSampleIcon from './text-sample-icon.svg';
+import EarnIcon from './earn-icon.svg';
+import EasyIcon from './easy-icon.svg';
+import FastIcon from './fast-icon.svg';
+import BridgeLanding from './bridge-landing.svg';
+import MigrateLanding from './migrate-landing.svg';
+import LiquidityLanding from './liquidity-landing.svg';
+import LiquidityLandingAlt from './liquidity-landing-alt.svg';
+import MobileMigrateLanding from './mobile-migrate-landing.svg';
 
 export {
   Logo,
@@ -176,4 +184,12 @@ export {
   TelegramIcon,
   FooterLogo,
   TextSampleIcon,
+  EarnIcon,
+  EasyIcon,
+  FastIcon,
+  BridgeLanding,
+  MigrateLanding,
+  LiquidityLanding,
+  LiquidityLandingAlt,
+  MobileMigrateLanding,
 };
