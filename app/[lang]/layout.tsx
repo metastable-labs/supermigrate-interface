@@ -9,8 +9,8 @@ interface RootProps {
 }
 
 export const metadata: Metadata = {
-  title: 'Superbridge',
-  description: '',
+  title: 'Supermigrate',
+  description: 'Your gateway to L2s',
 };
 
 export default function RootLayout({ params, children }: Readonly<RootProps>) {
