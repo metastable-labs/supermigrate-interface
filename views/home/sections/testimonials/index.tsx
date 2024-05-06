@@ -49,7 +49,7 @@ const Testimonials = () => {
     {
       text: telegramText,
       icon: <TelegramIcon />,
-      link: '#',
+      link: 'https://t.me/+8vDPDkrN_-gwZTA8',
     },
   ];
 
