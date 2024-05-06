@@ -37,7 +37,7 @@ const Footer = () => {
       title: socials.title,
       links: [
         { titile: socials.twitter, url: 'https://twitter.com/BaseMigrate' },
-        { titile: socials.telegram, url: 'https://github.com/supermigrate' },
+        { titile: socials.telegram, url: 'https://t.me/+8vDPDkrN_-gwZTA8' },
       ],
     },
   ];
@@ -52,11 +52,11 @@ const Footer = () => {
             ))}
           </div>
 
-          <div className="flex flex-col min-h-[96px] justify-between">
+          {/* <div className="flex flex-col min-h-[96px] justify-between">
             <span className="text-sm font-medium text-white mb-10 md:mb-0">{alert}</span>
 
             <iframe height="136" src="https://mirror.xyz/supermigrate.eth/subscribe/embed" className="rounded-[16px] max-w-[400px] md:mt-5"></iframe>
-          </div>
+          </div> */}
         </div>
         <span className="text-primary-250 text-sm md:text-base">© 2024 Metastable Labs</span>
       </div>
