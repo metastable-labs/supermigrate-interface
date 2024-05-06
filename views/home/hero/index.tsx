@@ -73,6 +73,8 @@ const HeroText = () => {
     return () => clearInterval(interval);
   }, []);
 
+  console.log(step);
+
   return (
     <AnimatePresence mode="popLayout" initial={false}>
       <motion.h1
