@@ -6,14 +6,20 @@ import { TextSampleIcon } from '@/public/icons';
 import SMClickAnimation from '../click-animation';
 
 const texts = [
-  'Once your PR is merged, the token list will update automatically to include your token and your token will be available on the Base Bridge.',
-  'To complete the migration, submit a pull request to the Superchain token repo list.',
-  'For support please reach out to us via our telegram',
+  { text: 'Once your PR is merged, the token list will update automatically to include your token on our bridging interface.' },
+  { text: 'To complete the migration, make sure you verify the migration by adding a link to the verification tweet on the pull request.' },
+  { text: 'For support please reach out to us via our', link: 'https://t.me/+8vDPDkrN_-gwZTA8', linkText: 'telegram channel' },
 ];
+
+const CheckIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+    <path fill="none" stroke="currentColor" strokeWidth="3" d="M5 12l5 5L20 7" />
+  </svg>
+);
 
 const SMWelcome = ({ show, close }: ISMWelcome) => {
   const [dontShow, setDontShow] = useState(false);
-
+  const toggleDontShow = () => setDontShow((prev) => !prev);
   return (
     <AnimatePresence>
       {show && (
@@ -30,13 +36,20 @@ const SMWelcome = ({ show, close }: ISMWelcome) => {
               </div>
 
               <div className="self-stretch flex flex-col items-center justify-center gap-6">
-                {texts.map((text, index) => (
+                {texts.map(({ text, link, linkText }, index) => (
                   <div key={index} className="flex justify-between gap-[17px]">
                     <div className="min-w-6 min-h-6">
                       <TextSampleIcon />
                     </div>
 
-                    <p className="text-primary-2800 text-[14px] leading-[21.7px]">{text}</p>
+                    <p className="text-primary-2800 text-[14px] leading-[21.7px]">
+                      {text}{' '}
+                      {link && linkText && (
+                        <a href={link} className="underline underline-offset-4 text-primary-2400">
+                          {linkText}
+                        </a>
+                      )}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -51,7 +64,9 @@ const SMWelcome = ({ show, close }: ISMWelcome) => {
 
               <div className="flex items-center justify-center gap-2">
                 <div className="w-5 h-5 p-[1.5px] flex items-center justify-center">
-                  <div className="min-w-full min-h-full rounded-[4px] border border-primary-250 cursor-pointer" />
+                  <div className="min-w-full min-h-full rounded-[4px] border border-primary-250 cursor-pointer" onClick={toggleDontShow}>
+                    {dontShow && <CheckIcon />}
+                  </div>
                 </div>
                 <span className="text-primary-50 tracking-[-0.084px] text-sm">{"Don't show it again"}</span>
               </div>

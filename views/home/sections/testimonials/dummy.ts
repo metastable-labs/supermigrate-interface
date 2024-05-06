@@ -2,185 +2,96 @@ import { ISMTestimonial } from '@/components/testimonial/types';
 
 const testimonials: ISMTestimonial[] = [
   {
-    name: 'Alex Johnson',
-    twitterUrl: 'https://twitter.com/alexjohnson',
-    imageUrl: 'https://i.pravatar.cc/150?img=1',
-    content: 'Fantastic experience with this product. Highly recommended!',
+    name: 'coderdan.eth | aavegotchi 👻💊',
+    twitterUrl:
+      'https://twitter.com/coderdannn/status/1775103301559967778?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1775103301559967778%7Ctwgr%5E3fe630ab87688b72f6b7730004cce1dfea14a9b6%7Ctwcon%5Es1_&ref_url=https%3A%2F%2Fwww.notion.so%2Fsupermigrate%2FTestimonials-be43c1376a0e4d96b7d43a2007f7052b',
+    imageUrl: 'https://pbs.twimg.com/profile_images/1698860354766303232/7RJHjKm3_400x400.jpg',
+    content: 'I just used the @BaseMigrate tool to add $GHST to the official Optimism Superchain bridge for Base! Thanks for making it easy sers @jessepollak @njokuScript',
+    username: 'coderdannn',
   },
   {
-    name: 'Maria Lopez',
-    twitterUrl: 'https://twitter.com/marialopez',
-    imageUrl: 'https://i.pravatar.cc/150?img=2',
-    content: 'This service changed my life! Absolutely incredible!',
+    name: 'binji 🔴',
+    twitterUrl:
+      'https://twitter.com/binji_x/status/1775177777144041568?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1775177777144041568%7Ctwgr%5E3fe630ab87688b72f6b7730004cce1dfea14a9b6%7Ctwcon%5Es1_&ref_url=https%3A%2F%2Fwww.notion.so%2Fsupermigrate%2FTestimonials-be43c1376a0e4d96b7d43a2007f7052b',
+    imageUrl: 'https://pbs.twimg.com/profile_images/1764935303805227008/ViNwpncL_400x400.jpg',
+    content:
+      "basemigrate is bringing all the best tokens to L2 where there is no jaredfromsubway, and better fees + growth opps. if you are an LP that is interested, or wish to advise, please comment below on how you'd like to help. note: BASE is averaging $1.5B in daily dex vol",
+    username: 'binji_x',
   },
   {
-    name: 'Chris Green',
-    twitterUrl: 'https://twitter.com/chrisgreen',
-    imageUrl: 'https://i.pravatar.cc/150?img=3',
-    content: 'Great value for the price, and the customer service was excellent!',
+    name: 'Jesse Pollak (jesse.xyz) 🛡️',
+    twitterUrl:
+      'https://twitter.com/jessepollak/status/1775188959200674294?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1775188959200674294%7Ctwgr%5E3fe630ab87688b72f6b7730004cce1dfea14a9b6%7Ctwcon%5Es1_&ref_url=https%3A%2F%2Fwww.notion.so%2Fsupermigrate%2FTestimonials-be43c1376a0e4d96b7d43a2007f7052b',
+    imageUrl: 'https://pbs.twimg.com/profile_images/1484575656759472128/4vLR6_4F_400x400.png',
+    content: 'so many L1 assets are moving to @base join the party with @BaseMigrate and ping @binji_x if you want to help the great migration',
+    username: 'jessepollak',
   },
   {
-    name: 'Emma Stone',
-    twitterUrl: 'https://twitter.com/emmastone',
-    imageUrl: 'https://i.pravatar.cc/150?img=4',
-    content: 'Truly a five-star experience from start to finish.',
+    name: 'Mist',
+    twitterUrl:
+      'https://twitter.com/MistCoin/status/1778168409747870033?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1778169087987724386%7Ctwgr%5E3fe630ab87688b72f6b7730004cce1dfea14a9b6%7Ctwcon%5Es2_&ref_url=https%3A%2F%2Fwww.notion.so%2Fsupermigrate%2FTestimonials-be43c1376a0e4d96b7d43a2007f7052b',
+    imageUrl: 'https://pbs.twimg.com/profile_images/1715115050778664960/9eBQdVGX_400x400.jpg',
+    content:
+      'We want to be pink-pilled 💘 While we wait for that to come, our mission is making this piece of “Ethereum history” affordable and accessible to everyone. The first ERC-20 token ever is officially live in @base! CA: 0x3d2EbA645c44BBD32A34b7c017667711eb5b173C',
+    username: 'MistCoin',
   },
   {
-    name: 'David Smith',
-    twitterUrl: 'https://twitter.com/davidsmith',
-    imageUrl: 'https://i.pravatar.cc/150?img=5',
-    content: 'The quality is top-notch. I would definitely buy again.',
+    name: 'njoku.eth :-) 🟢 🟡 🔴',
+    twitterUrl:
+      'https://twitter.com/njokuScript/status/1778485790864990385?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1778486763029233909%7Ctwgr%5E3fe630ab87688b72f6b7730004cce1dfea14a9b6%7Ctwcon%5Es2_&ref_url=https%3A%2F%2Fwww.notion.so%2Fsupermigrate%2FTestimonials-be43c1376a0e4d96b7d43a2007f7052b',
+    imageUrl: 'https://pbs.twimg.com/profile_images/1708610953263083521/-z2QYXn3_400x400.jpg',
+    content: '$1M Liquidity and $500k trading volume in less than 3 hours is wild🔥🔥 The great migration is happening!! Powered by @BaseMigrate',
+    username: 'njokuScript',
   },
   {
-    name: 'Sophia Wilson',
-    twitterUrl: 'https://twitter.com/sophiawilson',
-    imageUrl: 'https://i.pravatar.cc/150?img=6',
-    content: "This is the best thing I've ever purchased online.",
+    name: 'Mist',
+    twitterUrl:
+      'https://twitter.com/MistCoin/status/1778808068169433473?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1778808068169433473%7Ctwgr%5E3fe630ab87688b72f6b7730004cce1dfea14a9b6%7Ctwcon%5Es1_&ref_url=https%3A%2F%2Fwww.notion.so%2Fsupermigrate%2FTestimonials-be43c1376a0e4d96b7d43a2007f7052b',
+    imageUrl: 'https://pbs.twimg.com/profile_images/1715115050778664960/9eBQdVGX_400x400.jpg',
+    content: 'We were the first ones bringing some historic assets/tokens to @base cc: @BaseMigrate',
+    username: 'MistCoin',
   },
   {
-    name: 'Ethan Brown',
-    twitterUrl: 'https://twitter.com/ethanbrown',
-    imageUrl: 'https://i.pravatar.cc/150?img=7',
-    content: "Couldn't be happier with the results!",
+    name: 'ck',
+    twitterUrl:
+      'https://twitter.com/stack__sats/status/1778486763029233909?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1778486763029233909%7Ctwgr%5E3fe630ab87688b72f6b7730004cce1dfea14a9b6%7Ctwcon%5Es1_&ref_url=https%3A%2F%2Fwww.notion.so%2Fsupermigrate%2FTestimonials-be43c1376a0e4d96b7d43a2007f7052b',
+    imageUrl: 'https://pbs.twimg.com/profile_images/1771247078435405825/o-p-xEko_400x400.jpg',
+    content: 'based and $zyn-pilled ty for all your help',
+    username: 'stack__sats',
   },
   {
-    name: 'Olivia Miller',
-    twitterUrl: 'https://twitter.com/oliviamiller',
-    imageUrl: 'https://i.pravatar.cc/150?img=8',
-    content: "I tell all my friends about this. It's that good.",
+    name: 'Soft Protocol',
+    twitterUrl:
+      'https://twitter.com/SoftProtocol/status/1780628076541706501?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1780628076541706501%7Ctwgr%5E3fe630ab87688b72f6b7730004cce1dfea14a9b6%7Ctwcon%5Es1_&ref_url=https%3A%2F%2Fwww.notion.so%2Fsupermigrate%2FTestimonials-be43c1376a0e4d96b7d43a2007f7052b',
+    imageUrl: 'https://pbs.twimg.com/profile_images/1775370198864015360/LLuPaTa2_400x400.jpg',
+    content:
+      '🔵 Based Bridge 🔵 Soft Contributors have joined some incredible builders on @base. The mission is clear: help onboard a billion web3 users. Have you bridged yet? h/t: @BaseMigrate & @superbridgeapp for enabling thi',
+    username: 'SoftProtocol',
   },
   {
-    name: 'James Wilson',
-    twitterUrl: 'https://twitter.com/jameswilson',
-    imageUrl: 'https://i.pravatar.cc/150?img=9',
-    content: 'A must-have for anyone considering this type of product.',
+    name: 'Aavegotchi 👻',
+    twitterUrl:
+      'https://twitter.com/aavegotchi/status/1780543470802743364?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1780543470802743364%7Ctwgr%5E3fe630ab87688b72f6b7730004cce1dfea14a9b6%7Ctwcon%5Es1_&ref_url=https%3A%2F%2Fwww.notion.so%2Fsupermigrate%2FTestimonials-be43c1376a0e4d96b7d43a2007f7052b',
+    imageUrl: 'https://pbs.twimg.com/profile_images/1744587144667312128/Ov3ldpxU_400x400.jpg',
+    content:
+      '⚠️BIG NEWS FRENS ⚠️ $GHST is officially BASED MONEY – we’ve landed on @Base 💎👻💎 ca: 0xcd2f22236dd9dfe2356d7c543161d4d260fd9bcb Check out our latest announcement for the full alpha and how to bridge over 👇',
+    username: 'aavegotchi',
   },
   {
-    name: 'Isabella Davis',
-    twitterUrl: 'https://twitter.com/isabelladavis',
-    imageUrl: 'https://i.pravatar.cc/150?img=10',
-    content: 'Exceeded all my expectations.',
+    name: 'Soft Protocol',
+    twitterUrl:
+      'https://twitter.com/SoftProtocol/status/1779250367919984655?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1779250367919984655%7Ctwgr%5E3fe630ab87688b72f6b7730004cce1dfea14a9b6%7Ctwcon%5Es1_&ref_url=https%3A%2F%2Fwww.notion.so%2Fsupermigrate%2FTestimonials-be43c1376a0e4d96b7d43a2007f7052b',
+    imageUrl: 'https://pbs.twimg.com/profile_images/1775370198864015360/LLuPaTa2_400x400.jpg',
+    content: 'https://superbridge.app/base/soft #getsoftgetbased',
+    username: 'SoftProtocol',
   },
   {
-    name: 'Michael Garcia',
-    twitterUrl: 'https://twitter.com/michaelgarcia',
-    imageUrl: 'https://i.pravatar.cc/150?img=11',
-    content: 'Impressive performance. Nothing else comes close.',
-  },
-  {
-    name: 'Emily Rodriguez',
-    twitterUrl: 'https://twitter.com/emilyrodriguez',
-    imageUrl: 'https://i.pravatar.cc/150?img=12',
-    content: "I was skeptical at first, but I'm totally converted now.",
-  },
-  {
-    name: 'Matthew Martinez',
-    twitterUrl: 'https://twitter.com/matthewmartinez',
-    imageUrl: 'https://i.pravatar.cc/150?img=13',
-    content: 'Well worth the investment. I am thoroughly impressed.',
-  },
-  {
-    name: 'Ava Anderson',
-    twitterUrl: 'https://twitter.com/avaanderson',
-    imageUrl: 'https://i.pravatar.cc/150?img=14',
-    content: "Fantastic results! I can't recommend this enough.",
-  },
-  {
-    name: 'Daniel Thomas',
-    twitterUrl: 'https://twitter.com/danielthomas',
-    imageUrl: 'https://i.pravatar.cc/150?img=15',
-    content: "This product is revolutionary! It's a game-changer.",
-  },
-  {
-    name: 'Mia Taylor',
-    twitterUrl: 'https://twitter.com/miataylor',
-    imageUrl: 'https://i.pravatar.cc/150?img=16',
-    content: 'Very happy with the outcome. It was super easy to use.',
-  },
-  {
-    name: 'Jacob Moore',
-    twitterUrl: 'https://twitter.com/jacobmoore',
-    imageUrl: 'https://i.pravatar.cc/150?img=17',
-    content: "A reliable and efficient service that I'd use again.",
-  },
-  {
-    name: 'Madison Lee',
-    twitterUrl: 'https://twitter.com/madisonlee',
-    imageUrl: 'https://i.pravatar.cc/150?img=18',
-    content: 'The customer support was fantastic. Very helpful.',
-  },
-  {
-    name: 'Jayden Perez',
-    twitterUrl: 'https://twitter.com/jaydenperez',
-    imageUrl: 'https://i.pravatar.cc/150?img=19',
-    content: 'The product arrived on time and exceeded my expectations.',
-  },
-  {
-    name: 'Charlotte White',
-    twitterUrl: 'https://twitter.com/charlottewhite',
-    imageUrl: 'https://i.pravatar.cc/150?img=20',
-    content: 'The design is sleek, and the functionality is unbeatable.',
-  },
-  {
-    name: 'Noah Harris',
-    twitterUrl: 'https://twitter.com/noahharris',
-    imageUrl: 'https://i.pravatar.cc/150?img=21',
-    content: "I'm impressed with the quality and performance.",
-  },
-
-  {
-    name: 'Lily Clark',
-    twitterUrl: 'https://twitter.com/lilyclark',
-    imageUrl: 'https://i.pravatar.cc/150?img=22',
-    content: 'Great job on this product. It does everything it promises.',
-  },
-  {
-    name: 'Benjamin Lewis',
-    twitterUrl: 'https://twitter.com/benjaminlewis',
-    imageUrl: 'https://i.pravatar.cc/150?img=23',
-    content: 'I would definitely recommend this to anyone looking for quality.',
-  },
-  {
-    name: 'Zoey Robinson',
-    twitterUrl: 'https://twitter.com/zoeyrobinson',
-    imageUrl: 'https://i.pravatar.cc/150?img=24',
-    content: "This is the best version of this product I've ever used.",
-  },
-  {
-    name: 'William Walker',
-    twitterUrl: 'https://twitter.com/williamwalker',
-    imageUrl: 'https://i.pravatar.cc/150?img=25',
-    content: 'Top-notch quality and service.',
-  },
-  {
-    name: 'Hannah Young',
-    twitterUrl: 'https://twitter.com/hannahyoung',
-    imageUrl: 'https://i.pravatar.cc/150?img=26',
-    content: 'Super satisfied with my purchase. Five stars!',
-  },
-  {
-    name: 'Lucas Allen',
-    twitterUrl: 'https://twitter.com/lucasallen',
-    imageUrl: 'https://i.pravatar.cc/150?img=27',
-    content: 'A great find! This product exceeded my expectations.',
-  },
-  {
-    name: 'Sophie King',
-    twitterUrl: 'https://twitter.com/sophieking',
-    imageUrl: 'https://i.pravatar.cc/150?img=28',
-    content: 'Really impressed with the fast delivery and the quality.',
-  },
-  {
-    name: 'Jack Wright',
-    twitterUrl: 'https://twitter.com/jackwright',
-    imageUrl: 'https://i.pravatar.cc/150?img=29',
-    content: 'They really thought of everything with this product.',
-  },
-  {
-    name: 'Scarlett Martin',
-    twitterUrl: 'https://twitter.com/scarlettmartin',
-    imageUrl: 'https://i.pravatar.cc/150?img=30',
-    content: 'Absolutely flawless performance from this product.',
+    name: 'njoku.eth :-) 🟢 🟡 🔴',
+    twitterUrl:
+      'https://twitter.com/njokuScript/status/1778568439784759456?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1778568439784759456%7Ctwgr%5E3fe630ab87688b72f6b7730004cce1dfea14a9b6%7Ctwcon%5Es1_&ref_url=https%3A%2F%2Fwww.notion.so%2Fsupermigrate%2FTestimonials-be43c1376a0e4d96b7d43a2007f7052b',
+    imageUrl: 'https://pbs.twimg.com/profile_images/1708610953263083521/-z2QYXn3_400x400.jpg',
+    content: 'The great migration is happening!! Powered by @BaseMigrate',
+    username: 'njokuScript',
   },
 ];
 
