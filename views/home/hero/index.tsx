@@ -46,14 +46,14 @@ const HeroSection = () => {
             </div>
             <Link
               href="/migrate"
-              className="flex items-center justify-center px-[18px] py-3 rounded-base shadow-table-cta border-[0.3px] border-primary-3450 text-sm md:text-base min-w-[126px] md:min-w-[187px] transition-all duration-300 bg-white hover:bg-primary-3950 hover:rounded-lg">
+              className="flex items-center justify-center px-[18px] py-3 rounded-base shadow-table-cta border-[0.3px] border-primary-3450 text-sm md:text-base min-w-[126px] md:min-w-[187px] transition-all duration-300 bg-white hover:bg-primary-3950 hover:rounded-lg pointer-events-none">
               {actionText}
             </Link>
           </div>
         </SMContainer>
       </div>
 
-      <div className="absolute h-full w-full top-0 left-0 z-10 overflow-hidden">
+      <div className="absolute h-full w-full top-0 left-0 z-10 overflow-hidden flex items-center justify-center">
         <Player autoplay loop src="https://res.cloudinary.com/djzeufu4j/raw/upload/v1714913894/lottie_ddfob3.json">
           <Controls visible={false} />
         </Player>
