@@ -55,7 +55,7 @@ const LandingHeader = () => {
   return (
     <div className="fixed w-screen z-40 flex justify-center items-center pt-3 md:pt-[33px] px-4">
       <motion.div
-        initial={{ opacity: 0, y: 0 }}
+        initial={{ opacity: 1, y: 0 }}
         animate={{ opacity: 1, y: !isTop ? 5 : 0 }}
         transition={{
           duration: 0.8,
