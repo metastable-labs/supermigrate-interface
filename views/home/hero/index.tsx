@@ -7,6 +7,7 @@ import Link from 'next/link';
 
 import { SMContainer } from '@/components';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
+import classNames from 'classnames';
 
 const stepTexts = ['Layer 2', 'Base', 'Optimism', 'Mode'];
 const stepTextColors = ['#D7FF00', '#C2D6FF', '#F25976', '#DFFE00'];
@@ -65,6 +66,9 @@ const HeroSection = () => {
 const HeroText = () => {
   const [step, setStep] = useState(0);
 
+  const checkIdTextShouldDisplay = (text: string) => {
+    return text === stepTexts[step];
+  };
   useEffect(() => {
     const interval = setInterval(() => {
       setStep((prev) => (prev + 1) % 4);
@@ -72,8 +76,6 @@ const HeroText = () => {
 
     return () => clearInterval(interval);
   }, []);
-
-  console.log(step);
 
   return (
     <AnimatePresence mode="popLayout" initial={false}>
@@ -88,7 +90,9 @@ const HeroText = () => {
         }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
-        className="whitespace-nowrap text-[40px] leading-[59px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-center w-full">
+        className={classNames('whitespace-nowrap text-[40px] leading-[59px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-center w-full', {
+          hidden: !checkIdTextShouldDisplay(stepTexts[step]),
+        })}>
         {stepTexts[step]}
       </motion.h1>
     </AnimatePresence>
