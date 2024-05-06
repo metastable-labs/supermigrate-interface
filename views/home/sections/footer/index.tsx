@@ -23,7 +23,7 @@ const Footer = () => {
   const { locale } = useSystemFunctions();
 
   const { landingPage } = locale;
-  const { alert, resources } = landingPage.footer;
+  const { alert, resources, socials } = landingPage.footer;
 
   const extras = [
     {
@@ -31,6 +31,13 @@ const Footer = () => {
       links: [
         { titile: resources.blog, url: 'https://mirror.xyz/supermigrate.eth/' },
         { titile: resources.github, url: 'https://github.com/supermigrate' },
+      ],
+    },
+    {
+      title: socials.title,
+      links: [
+        { titile: socials.twitter, url: 'https://twitter.com/BaseMigrate' },
+        { titile: socials.telegram, url: 'https://github.com/supermigrate' },
       ],
     },
   ];
