@@ -75,26 +75,31 @@ const HeroText = () => {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [step]);
 
   return (
     <AnimatePresence mode="popLayout" initial={false}>
-      <motion.h1
-        key={step}
-        initial={{
-          opacity: 0,
-        }}
-        animate={{
-          opacity: 1,
-          color: stepTextColors[step],
-        }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-        className={classNames('whitespace-nowrap text-[40px] leading-[59px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-center w-full', {
-          hidden: !checkIdTextShouldDisplay(stepTexts[step]),
-        })}>
-        {stepTexts[step]}
-      </motion.h1>
+      {stepTexts.map(
+        (text, index) =>
+          step === index && (
+            <motion.h1
+              key={index}
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: 1,
+                color: stepTextColors[index],
+              }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className={classNames('whitespace-nowrap text-[40px] leading-[59px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-center w-full', {
+                hidden: !checkIdTextShouldDisplay(stepTexts[index]),
+              })}>
+              {text}
+            </motion.h1>
+          ),
+      )}
     </AnimatePresence>
   );
 };
