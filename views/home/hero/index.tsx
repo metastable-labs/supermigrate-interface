@@ -38,7 +38,7 @@ const HeroSection = () => {
         <SMContainer>
           <div className="flex flex-col justify-center items-center gap-[29px]">
             <div className="w-full flex flex-col justify-center items-center gap-8">
-              <div className="text-[40px] leading-[79px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-white max-w-[674px] text-center w-full">
+              <div className="font-Bitform text-[40px] leading-[79px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-white max-w-[674px] text-center w-full">
                 {title}
                 <HeroText />
               </div>
@@ -46,7 +46,7 @@ const HeroSection = () => {
             </div>
             <Link
               href="/migrate"
-              className="flex items-center justify-center px-[18px] py-3 rounded-base shadow-table-cta border-[0.3px] border-primary-3450 text-sm md:text-base min-w-[126px] md:min-w-[187px] transition-all duration-300 bg-white hover:bg-primary-3950 hover:rounded-lg pointer-events-none">
+              className="font-Bitform flex items-center justify-center px-[18px] py-3 rounded-base shadow-table-cta border-[0.3px] border-primary-3450 text-sm md:text-base min-w-[126px] md:min-w-[187px] transition-all duration-300 bg-white hover:bg-primary-3950 hover:rounded-lg pointer-events-none">
               {actionText}
             </Link>
           </div>

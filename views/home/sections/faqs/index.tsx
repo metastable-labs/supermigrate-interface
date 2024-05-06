@@ -47,7 +47,7 @@ const FAQs = () => {
       <section id="faq" className="py-[58px] lg:py-24 mt-14 lg:mt-24 lg:px-8">
         <div className="flex flex-col md:flex-row gap-16">
           <div className="self-stretch flex flex-col gap-5">
-            <h3 className="text-[24px] leading-[44px] lg:text-[36px] text-primary-300 tracking-[-0.48px] md:tracking-[-0.72px]">{title}</h3>
+            <h3 className="font-Bitform text-[24px] leading-[44px] lg:text-[36px] text-primary-300 tracking-[-0.48px] md:tracking-[-0.72px]">{title}</h3>
 
             <h4 className="text-sm leading-normal lg:text-lg text-primary-350">
               {subtitle}{' '}
@@ -64,7 +64,7 @@ const FAQs = () => {
 
             <div
               onClick={() => setShowMore(!showMore)}
-              className="px-8 py-6 self-stretch flex items-center justify-start gap-1 text-left rounded-2xl min-w-full text-primary-3350 text-lg font-medium cursor-pointer">
+              className="font-Bitform px-8 py-6 self-stretch flex items-center justify-start gap-1 text-left rounded-2xl min-w-full text-primary-3350 text-lg font-medium cursor-pointer">
               {showMore ? seeLess : seeMore}{' '}
               <motion.div initial={{ rotate: 115 }} animate={{ rotate: showMore ? 315 : 135 }} transition={{ duration: 0.3 }} className="flex items-center justify-center">
                 <LinkRightArrow color="#6B8000" width={24} height={24} />

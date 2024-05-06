@@ -38,7 +38,7 @@ const SectionTwo = () => {
   return (
     <section id="about" className="pt-[50px] lg:pt-[50px] flex flex-col items-stretch gap-12 lg:gap-16">
       <div className="flex flex-col gap-12 lg:gap-16 min-w-full">
-        <h1 className="text-left text-[30px] lg:text-[44px] text-black tracking-[0.44px] px-6 lg:px-20">{title}</h1>
+        <h1 className="text-left text-[30px] lg:text-[44px] text-black tracking-[0.44px] px-6 lg:px-20 font-Bitform">{title}</h1>
 
         <div className="px-[30px] pb-20 lg:pb-[100px] flex flex-col items-stretch justify-center gap-12 lg:gap-16">
           {listings.map((item, index) => (
@@ -52,7 +52,7 @@ const SectionTwo = () => {
               <div className="flex flex-col items-start justify-center gap-4">
                 <Link
                   href={item.link}
-                  className={classNames('px-3.5 py-2.5 text-[16px] leading-none rounded-lg shadow-very-light-gray pointer-events-none', {
+                  className={classNames('font-Bitform px-3.5 py-2.5 text-[16px] leading-none rounded-lg shadow-very-light-gray pointer-events-none', {
                     'text-primary-3400 bg-primary-3600': index === 0,
                     'text-white bg-primary-3400': index === 1,
                     'text-primary-3250 bg-primary-3600': index === 2,
@@ -61,7 +61,7 @@ const SectionTwo = () => {
                 </Link>
 
                 <h2
-                  className={classNames('text-[20px] leading-[30px] lg:text-[30px] lg:leading-[39px] tracking-[-0.3px]', {
+                  className={classNames('text-[20px] leading-[30px] lg:text-[30px] lg:leading-[39px] tracking-[-0.3px] font-Bitform', {
                     'text-primary-3600': index === 0 || index === 2,
                     'text-primary-3400': index === 1,
                   })}>

@@ -124,6 +124,7 @@ const config: Config = {
       },
       fontFamily: {
         Bitform: ['Bitform'],
+        Aeonik: ['Aeonik'],
       },
     },
   },

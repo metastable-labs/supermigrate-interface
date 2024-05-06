@@ -29,7 +29,7 @@ const SectionOne = () => {
     <SMContainer>
       <section id="about" className="py-[58px] lg:py-[72px] flex flex-col items-stretch gap-12 lg:gap-16">
         <div className="flex flex-col gap-12 lg:gap-16 min-w-full">
-          <h1 className="text-left text-[30px] lg:text-[44px] text-black tracking-[0.44px]">
+          <h1 className="font-Bitform text-left text-[30px] lg:text-[44px] text-black tracking-[0.44px]">
             {title} <br className="hidden lg:block" />
             {titleCont}
           </h1>
@@ -43,7 +43,7 @@ const SectionOne = () => {
                 <div className="flex-1 h-[1px] bg-primary-2050" />
                 <ForwardIcon />
               </div>
-              <h1 className="text-[20px] leading-[39.24px] lg:text-[24px] lg:leading-[43.244px] text-xl font-medium text-white">{item?.title}</h1>
+              <h1 className="text-[20px] leading-[39.24px] lg:text-[24px] lg:leading-[43.244px] text-xl font-medium text-white font-Bitform">{item?.title}</h1>
               <h2 className="text-primary-3550 text-sm lg:text-lg">{item?.description}</h2>
 
               <div className="absolute bottom-0 left-0 flex items-center justify-center w-full">{item?.icon}</div>
