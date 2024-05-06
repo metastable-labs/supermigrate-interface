@@ -44,12 +44,12 @@ const Testimonials = () => {
     {
       text: twitterText,
       icon: <XIcon color="#0A0D14" width={20} height={20} />,
-      link: 'https://twitter.com/BaseMigrate',
+      link: 'https://twitter.com/supermigrate',
     },
     {
       text: telegramText,
       icon: <TelegramIcon />,
-      link: '#',
+      link: 'https://t.me/+8vDPDkrN_-gwZTA8',
     },
   ];
 

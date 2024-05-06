@@ -10,7 +10,7 @@ interface RootProps {
 
 export const metadata: Metadata = {
   title: 'Supermigrate',
-  description: 'Automatically deploy canonical bridged ERC20 to an L2',
+  description: 'Your gateway to L2s',
 };
 
 export default function RootLayout({ params, children }: Readonly<RootProps>) {

@@ -30,7 +30,7 @@
     "section2": {
       "title": "Everything, all in one place",
       "first": {
-        "actionText": "Migration",
+        "actionText": "Migrate",
         "title": "Deploy canonical bridged tokens",
         "content": "We're providing a straightforward process for users to deploy their ERC20 tokens on L2 networks that automatically makes it bridgable."
       },
@@ -87,10 +87,10 @@
         "blog": "Blog",
         "github": "Github"
       },
-      "company": {
-        "title": "Company",
-        "privacy": "Privacy",
-        "terms": "Terms"
+      "socials": {
+        "title": "Socials",
+        "twitter": "Twitter",
+        "telegram": "Telegram"
       },
       "alert": "Stay up to date",
       "emailPlaceholder": "Enter your email",

@@ -87,10 +87,10 @@ type Lang = {
         blog: string;
         github: string;
       };
-      company: {
+      socials: {
         title: string;
-        privacy: string;
-        terms: string;
+        twitter: string;
+        telegram: string;
       };
       alert: string;
       emailPlaceholder: string;

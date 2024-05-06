@@ -7,8 +7,13 @@ import { store } from '@/application/store';
 import RainbowProvider from '@/config/rainbow/rainbowkit';
 import { LangParamProp } from '@/config/internationalization/i18n';
 import AppHome from '.';
+import { SMTiles } from '@/components';
+import { usePathname } from 'next/navigation';
+import { isHomePage } from '@/components/navigation';
 
 const App = ({ locale, children }: { locale: LangParamProp; children: ReactNode }) => {
+  const pathname = usePathname();
+  const isHome = isHomePage(pathname);
   const cookieOptions = {
     path: '/',
     expires: new Date(new Date().getTime() + 8 * 60 * 60 * 1000),
@@ -19,6 +24,11 @@ const App = ({ locale, children }: { locale: LangParamProp; children: ReactNode 
       <RainbowProvider>
         <ReduxProvider store={store}>
           <AppHome locale={locale}>{children}</AppHome>
+          {!isHome && (
+            <div className="flex justify-center fixed w-screen bottom-0 -z-10">
+              <SMTiles />
+            </div>
+          )}
         </ReduxProvider>
       </RainbowProvider>
     </CookiesProvider>

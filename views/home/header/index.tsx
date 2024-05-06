@@ -33,7 +33,7 @@ const LandingHeader = () => {
 
   const navLinks: NavLink[] = [
     { name: navigation.about, href: '#about' },
-    { name: navigation.whitepaper, href: '#whitepaper' },
+    { name: navigation.whitepaper, href: 'https://mirror.xyz/supermigrate.eth/' },
     { name: navigation.faq, href: '#faq' },
   ];
 
@@ -55,7 +55,7 @@ const LandingHeader = () => {
   return (
     <div className="fixed w-screen z-40 flex justify-center items-center pt-3 md:pt-[33px] px-4">
       <motion.div
-        initial={{ opacity: 0, y: 0 }}
+        initial={{ opacity: 1, y: 0 }}
         animate={{ opacity: 1, y: !isTop ? 5 : 0 }}
         transition={{
           duration: 0.8,
@@ -95,7 +95,7 @@ const LandingHeader = () => {
               <a
                 key={index}
                 href={href}
-                target="_blank"
+                target={href.startsWith('http') ? '_blank' : '_self'}
                 className={classNames('px-3 py-2 text-sm tracking-[-0.14px]', {
                   'text-primary-3400': !isTop,
                   'text-primary-650': isTop,

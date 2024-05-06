@@ -77,7 +77,6 @@ import SolanaIcon from './solana-icon.svg';
 import PolygonIcon from './polygon-icon.svg';
 import GrinIcon from './grin-icon.svg';
 import ExclaimIcon from './exclaim-icon.svg';
-import Tiles from './tiles';
 import WebIcon from './web-icon';
 import GitMergeIcon from './git-merge-icon';
 import SearchIcon from './search-icon.svg';
@@ -85,6 +84,16 @@ import SuccessIcon from './success-icon';
 import LogoAlt from './logo-alt.svg';
 import TelegramIcon from './telegram-icon';
 import FooterLogo from './footer-logo.svg';
+import TextSampleIcon from './text-sample-icon.svg';
+import EarnIcon from './earn-icon.svg';
+import EasyIcon from './easy-icon.svg';
+import FastIcon from './fast-icon.svg';
+import BridgeLanding from './bridge-landing.svg';
+import MigrateLanding from './migrate-landing.svg';
+import LiquidityLanding from './liquidity-landing.svg';
+import LiquidityLandingAlt from './liquidity-landing-alt.svg';
+import MobileMigrateLanding from './mobile-migrate-landing.svg';
+import ForwardIcon from './forward-icon.svg';
 
 export {
   Logo,
@@ -100,7 +109,6 @@ export {
   VerifiedIcon,
   HamIcon,
   CloseIcon,
-  Tiles,
   BaseSecondaryDesktopIcon,
   BaseSecondaryMobileIcon,
   OptimismDesktopIcon,
@@ -174,4 +182,14 @@ export {
   LogoAlt,
   TelegramIcon,
   FooterLogo,
+  TextSampleIcon,
+  EarnIcon,
+  EasyIcon,
+  FastIcon,
+  BridgeLanding,
+  MigrateLanding,
+  LiquidityLanding,
+  LiquidityLandingAlt,
+  MobileMigrateLanding,
+  ForwardIcon,
 };

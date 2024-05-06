@@ -10,5 +10,8 @@ import SMTestimonial from './testimonial';
 import SMFAQ from './faq';
 import SMSelect from './select';
 import SMLoader from './loader';
+import SMWelcome from './welcome';
+import SMTiles from './tiles';
+import SMBottomComment from './bottomComment';
 
-export { SMContainer, SMClickAnimation, SMNavigation, SMModal, SMTable, SMButton, SMInput, SMFileInput, SMTestimonial, SMFAQ, SMSelect, SMLoader };
+export { SMContainer, SMClickAnimation, SMNavigation, SMModal, SMTable, SMButton, SMInput, SMFileInput, SMTestimonial, SMFAQ, SMSelect, SMLoader, SMWelcome, SMTiles, SMBottomComment };
