@@ -32,7 +32,7 @@ const HeroSection = () => {
     <motion.section
       initial={{ backgroundColor: stepBackgroundColors[step] }}
       animate={{ backgroundColor: stepBackgroundColors[step] }}
-      className="flex items-center justify-center min-h-[94.5vh] m-5 md:m-[25px] rounded-base relative"
+      className="flex items-center justify-center min-h-[94.5vh] md:m-[25px] md:rounded-base relative"
       id="home">
       <div className="z-30">
         <SMContainer>
@@ -40,7 +40,7 @@ const HeroSection = () => {
             <div className="w-full flex flex-col justify-center items-center gap-8">
               <div className="text-[40px] leading-[79px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-white max-w-[674px] text-center w-full">
                 {title}
-                <AnimatePresence mode="popLayout" initial={false}>
+                <AnimatePresence mode="wait" initial={false}>
                   <motion.p
                     key={step}
                     initial={{
@@ -52,7 +52,7 @@ const HeroSection = () => {
                       color: stepTextColors[step],
                     }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.25 }}
                     className="whitespace-nowrap text-[40px] leading-[59px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-center w-full">
                     {stepTexts[step]}
                   </motion.p>
@@ -66,7 +66,7 @@ const HeroSection = () => {
         </SMContainer>
       </div>
 
-      <div className="absolute h-full w-full top-0 left-0 z-10">
+      <div className="absolute h-full w-full top-0 left-0 z-10 overflow-hidden">
         <Player autoplay loop src="https://res.cloudinary.com/djzeufu4j/raw/upload/v1714913894/lottie_ddfob3.json">
           <Controls visible={false} />
         </Player>
