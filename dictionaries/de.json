@@ -87,10 +87,10 @@
         "blog": "Blog",
         "github": "Github"
       },
-      "company": {
-        "title": "Unternehmen",
-        "privacy": "Privatsphäre",
-        "terms": "Bedingungen"
+      "socials": {
+        "title": "Soziale Netzwerke",
+        "twitter": "Twitter",
+        "telegram": "Telegramm"
       },
       "alert": "Auf dem Laufenden bleiben",
       "emailPlaceholder": "Geben sie ihre E-Mail Adresse ein",
