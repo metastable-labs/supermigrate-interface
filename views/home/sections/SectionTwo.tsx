@@ -52,7 +52,7 @@ const SectionTwo = () => {
               <div className="flex flex-col items-start justify-center gap-4">
                 <Link
                   href={item.link}
-                  className={classNames('px-3.5 py-2.5 text-[16px] leading-none rounded-lg shadow-very-light-gray', {
+                  className={classNames('px-3.5 py-2.5 text-[16px] leading-none rounded-lg shadow-very-light-gray pointer-events-none', {
                     'text-primary-3400 bg-primary-3600': index === 0,
                     'text-white bg-primary-3400': index === 1,
                     'text-primary-3250 bg-primary-3600': index === 2,
