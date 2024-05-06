@@ -87,10 +87,10 @@
         "blog": "Blog",
         "github": "Github"
       },
-      "company": {
-        "title": "Company",
-        "privacy": "Privacy",
-        "terms": "Terms"
+      "socials": {
+        "title": "Socials",
+        "twitter": "Twitter",
+        "telegram": "Telegram"
       },
       "alert": "Stay up to date",
       "emailPlaceholder": "Enter your email",

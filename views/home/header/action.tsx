@@ -8,7 +8,7 @@ const Action = () => {
   const { landingPage } = locale;
   const { navigation } = landingPage;
   return (
-    <Link href="/migrate">
+    <Link href="/migrate" className="pointer-events-none">
       <motion.button
         whileHover={{ scale: 1.04 }}
         whileTap={{ scale: 0.9 }}
