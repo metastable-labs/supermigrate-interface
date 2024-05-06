@@ -3,9 +3,9 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
+import Link from 'next/link';
 
 import { SMContainer } from '@/components';
-import HeroButton from './button';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const stepTexts = ['Layer 2', 'Base', 'Optimism', 'Mode'];
@@ -15,10 +15,10 @@ const stepBackgroundColors = ['#002132', '#162664', '#710E21', '#000'];
 
 const HeroSection = () => {
   const [step, setStep] = useState(0);
-  const { navigate, locale } = useSystemFunctions();
+  const { locale } = useSystemFunctions();
 
   const { landingPage } = locale;
-  const { subtitle, title } = landingPage.hero;
+  const { subtitle, title, actionText } = landingPage.hero;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -32,7 +32,7 @@ const HeroSection = () => {
     <motion.section
       initial={{ backgroundColor: stepBackgroundColors[step] }}
       animate={{ backgroundColor: stepBackgroundColors[step] }}
-      className="flex items-center justify-center min-h-[94.5vh] md:m-[25px] md:rounded-base relative"
+      className="flex items-center justify-center min-h-[100vh] md:min-h-[94.5vh] md:m-[25px] md:rounded-base relative"
       id="home">
       <div className="z-30">
         <SMContainer>
@@ -40,28 +40,15 @@ const HeroSection = () => {
             <div className="w-full flex flex-col justify-center items-center gap-8">
               <div className="text-[40px] leading-[79px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-white max-w-[674px] text-center w-full">
                 {title}
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.p
-                    key={step}
-                    initial={{
-                      opacity: 0,
-                      color: stepTextColors[step],
-                    }}
-                    animate={{
-                      opacity: 1,
-                      color: stepTextColors[step],
-                    }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.25 }}
-                    className="whitespace-nowrap text-[40px] leading-[59px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-center w-full">
-                    {stepTexts[step]}
-                  </motion.p>
-                </AnimatePresence>
+                <HeroText />
               </div>
               <p className="text-white text-[20px] leading-[31px] max-w-[520px] text-center">{subtitle}</p>
             </div>
-
-            <HeroButton onClick={() => navigate.push('/migrate')} />
+            <Link
+              href="/migrate"
+              className="flex items-center justify-center px-[18px] py-3 rounded-base shadow-table-cta border-[0.3px] border-primary-3450 text-sm md:text-base min-w-[126px] md:min-w-[187px] transition-all duration-300 bg-white hover:bg-primary-3950 hover:rounded-lg">
+              {actionText}
+            </Link>
           </div>
         </SMContainer>
       </div>
@@ -75,4 +62,34 @@ const HeroSection = () => {
   );
 };
 
+const HeroText = () => {
+  const [step, setStep] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStep((prev) => (prev + 1) % 4);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <AnimatePresence mode="popLayout" initial={false}>
+      <motion.h1
+        key={step}
+        initial={{
+          opacity: 0,
+        }}
+        animate={{
+          opacity: 1,
+          color: stepTextColors[step],
+        }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+        className="whitespace-nowrap text-[40px] leading-[59px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-center w-full">
+        {stepTexts[step]}
+      </motion.h1>
+    </AnimatePresence>
+  );
+};
 export default HeroSection;
