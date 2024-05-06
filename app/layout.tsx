@@ -1,7 +1,8 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { LangParamProp } from '@/config/internationalization/i18n';
-import App from './app';
+import App from './[lang]/app';
 
 interface RootProps {
   params: LangParamProp;
@@ -11,7 +12,7 @@ interface RootProps {
 export const metadata: Metadata = {
   title: 'Supermigrate',
   description: 'Your gateway to L2s',
-  keywords: ['base', 'migrate', 'erc20', 'tokens', 'migrate ERC20 tokens to base network', 'base network', 'base migrate', 'erc20 token to base network', 'migrate erc20 tokens'],
+  keywords: ['base', 'migrate', 'Migration', 'Layer 2', 'Layer 1', 'Ethereum', 'base migrate', 'erc20 token to base network', 'migrate erc20 tokens'],
   applicationName: 'Supermigrate',
   authors: [{ name: 'Justice Eziefule', url: 'https://github.com/meisterjustice' }],
   openGraph: {
@@ -47,6 +48,17 @@ export default function RootLayout({ params, children }: Readonly<RootProps>) {
   return (
     <html lang={params.lang}>
       <body className="font-Aeonik" suppressHydrationWarning={true}>
+        {/** Google Analytics */}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-KP3SGTMZQD" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-KP3SGTMZQD');
+        `}
+        </Script>
         <App locale={params}>{children}</App>
       </body>
     </html>
