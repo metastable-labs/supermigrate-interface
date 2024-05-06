@@ -16,7 +16,7 @@ const SMTestimonial = ({ content, imageUrl, name, twitterUrl, username }: ISMTes
         <Image src="https://res.cloudinary.com/palmlight/image/upload/v1714329710/twitter-x-line_iekg46.svg" height={24} width={24} alt="Twitter" />
       </div>
 
-      <p className="text-primary-3650 text-[10px] leading-[15px] md:text-base">{content}</p>
+      <p className="text-primary-3650 text-[10px] leading-[15px] md:text-base">{content.substring(0, 80)}...</p>
     </a>
   );
 };
