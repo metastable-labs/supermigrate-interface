@@ -11,9 +11,15 @@ const texts = [
   { text: 'For support please reach out to us via our', link: 'https://t.me/+8vDPDkrN_-gwZTA8', linkText: 'telegram channel' },
 ];
 
+const CheckIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+    <path fill="none" stroke="currentColor" strokeWidth="3" d="M5 12l5 5L20 7" />
+  </svg>
+);
+
 const SMWelcome = ({ show, close }: ISMWelcome) => {
   const [dontShow, setDontShow] = useState(false);
-
+  const toggleDontShow = () => setDontShow((prev) => !prev);
   return (
     <AnimatePresence>
       {show && (
@@ -58,7 +64,9 @@ const SMWelcome = ({ show, close }: ISMWelcome) => {
 
               <div className="flex items-center justify-center gap-2">
                 <div className="w-5 h-5 p-[1.5px] flex items-center justify-center">
-                  <div className="min-w-full min-h-full rounded-[4px] border border-primary-250 cursor-pointer" />
+                  <div className="min-w-full min-h-full rounded-[4px] border border-primary-250 cursor-pointer" onClick={toggleDontShow}>
+                    {dontShow && <CheckIcon />}
+                  </div>
                 </div>
                 <span className="text-primary-50 tracking-[-0.084px] text-sm">{"Don't show it again"}</span>
               </div>
