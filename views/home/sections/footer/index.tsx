@@ -36,7 +36,7 @@ const Footer = () => {
     {
       title: socials.title,
       links: [
-        { titile: socials.twitter, url: 'https://twitter.com/BaseMigrate' },
+        { titile: socials.twitter, url: 'https://twitter.com/supermigrate' },
         { titile: socials.telegram, url: 'https://t.me/+8vDPDkrN_-gwZTA8' },
       ],
     },
