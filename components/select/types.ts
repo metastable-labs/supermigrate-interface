@@ -8,6 +8,7 @@ export interface IOption {
   icon: ReactElement;
   id: string;
   address: Address | string;
+  decimals: number;
 }
 
 export interface ISMSelect {

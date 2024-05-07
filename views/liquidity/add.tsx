@@ -57,7 +57,8 @@ const Add = ({ defaultId }: IAdd) => {
       const value = values.amount;
       const b = await getPairAddress(tokenA?.address as Address, '0x940181a94a35a4569e4529a3cdfb74e38fd98631');
       console.log('kkkkk', b);
-
+      const d = await getEquivalentAmount(100000000000000000000, tokenA?.address as Address, '0x940181a94a35a4569e4529a3cdfb74e38fd98631', tokenA?.decimals!, 18);
+      console.log('this is the equivalent', d);
       return;
       // if (!value) return;
 
@@ -108,6 +109,7 @@ const Add = ({ defaultId }: IAdd) => {
         icon: <Image src="https://cdn.pixabay.com/photo/2021/05/24/09/15/ethereum-6278326_1280.png" width={20} height={20} alt="ETH" />,
         address: '0x',
         id: 'ETH',
+        decimals: 18,
       },
     ];
 
@@ -117,6 +119,7 @@ const Add = ({ defaultId }: IAdd) => {
       icon: <Image src={token.logoURI} width={20} height={20} alt={token.symbol} />,
       id: token.symbol,
       address: token.address,
+      decimals: token.decimals,
     }));
 
     setTokenAOptions([...nativeToken, ...walletOptions]);
@@ -134,6 +137,7 @@ const Add = ({ defaultId }: IAdd) => {
         icon: <Image src={token?.logo_url} width={20} height={20} alt={token.symbol} />,
         id: token.symbol,
         address: chain ? (chain.token_address as Address) : (token.chains[1].token_address as Address),
+        decimals: chain?.token_detail_override?.decimals || token.chains[1].token_detail_override?.decimals || token.decimals,
       };
     });
 

@@ -61,7 +61,9 @@ const useLiquidity = () => {
     const tokenA = new Token(chainId, _tokenA, tokenADecimal);
     const tokenB = new Token(chainId, _tokenB, tokenBDecimal);
     const pair = new Pair(CurrencyAmount.fromRawAmount(tokenA, amountA), CurrencyAmount.fromRawAmount(tokenB, 0));
+    console.log('PAIR', pair);
     const result = pair.getOutputAmount(amountA);
+    console.log('RESULT', result);
     return {
       amount: result[0],
       pairAddress: result[1],
