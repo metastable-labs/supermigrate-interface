@@ -12,7 +12,7 @@ const NewMigrateView = ({ network }: { network: Network }) => {
       <AnimatePresence>
         <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="md:px-8 pb-10 max-w-[1280px]">
           <div className="pt-5 md:pt-12 md:pb-[86px] flex flex-col gap-8">
-            <NewMigrateHeader />
+            <NewMigrateHeader network={network} />
 
             <MigrationSteps network={network} />
           </div>
