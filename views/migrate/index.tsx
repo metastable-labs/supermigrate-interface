@@ -1,21 +1,39 @@
 'use client';
+import { useEffect, useState } from 'react';
+import { useCookies } from 'react-cookie';
 
-import { SMContainer } from '@/components';
+import { SMBottomComment, SMContainer, SMWelcome } from '@/components';
 import { LangParamProp } from '@/config/internationalization/i18n';
 import SelectionComponent from './selection';
 
 export default function MigrateView({ lang }: LangParamProp) {
+  const [showWelcome, setShowWelcome] = useState(false);
+  const [cookies] = useCookies(['SMHasShownWelcomeModal']);
+
+  const closeWelcome = () => setShowWelcome(false);
+
+  useEffect(() => {
+    if (!cookies) return;
+
+    const hasShowWelcomeModalToUser = cookies.SMHasShownWelcomeModal;
+    if (!hasShowWelcomeModalToUser) {
+      setShowWelcome(true);
+    }
+  }, [cookies]);
   return (
     <div className="pb-28 lg:pb-0">
       <SMContainer>
         <SelectionComponent />
       </SMContainer>
 
-      <div className="fixed bottom-0 left-0 w-full px-6 py-3 bg-primary-3250 flex items-center justify-center">
-        <p className="text-primary-3850 text-[14px] leading-[24px]">
-          {`We are adding more L2/L3 Integrations. If you'd like us to support your network, reach out to`} <a className="underline underline-offset-4">integrations@metastablelabs.xyz</a>
-        </p>
-      </div>
+      <SMWelcome show={showWelcome} close={closeWelcome} />
+
+      <SMBottomComment
+        comment={"We are adding more L2/L3 Integrations. If you'd like us to support your network, reach out to"}
+        link="https://metastablelabs.xyz/"
+        linkText="integrations@metastablelabs.xyz"
+        show
+      />
     </div>
   );
 }

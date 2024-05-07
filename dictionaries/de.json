@@ -30,7 +30,7 @@
     "section2": {
       "title": "Alles, alles an einem Ort",
       "first": {
-        "actionText": "Migration",
+        "actionText": "Wandern",
         "title": "Stellen Sie kanonisch überbrückte Token bereit",
         "content": "Wir bieten Benutzern einen unkomplizierten Prozess zur Bereitstellung ihrer ERC20-Tokens in L2-Netzwerken, der diese automatisch überbrückbar macht."
       },
@@ -57,28 +57,28 @@
       "seeMore": "Weitere FAQ anzeigen",
       "seeLess": "Weniger sehen",
       "question1": {
-        "question": "Was sind die Hauptvorteile der Verwendung von Supermigrate für die Blockchain-Migration?",
-        "answer": "Supermigrate bietet optimierte Prozesse, Expertenunterstützung und Tools, die den Übergang zu Layer-2-Lösungen vereinfachen und so die Skalierbarkeit und Effizienz Ihrer Blockchain-Projekte verbessern."
+        "question": "Ist es möglich, Token mit unterschiedlichen Namen und Tickern zu Base zu migrieren?",
+        "answer": "Ja, während des Migrationsprozesses sollten Sie die Option „Überschreiben“ aktivieren. Dies erfordert eine zusätzliche manuelle Überprüfung."
       },
       "question2": {
-        "question": "Unterstützt Supermigrate die Migration von einer beliebigen Blockchain?",
-        "answer": "Supermigrate ist so konzipiert, dass es eine breite Palette von Blockchains unterstützt und Benutzern die nahtlose Migration von beliebten Basisschichten zu erweiterten Schicht-2-Lösungen ermöglicht."
+        "question": "Wie können Sie Dokumentation oder Code-Referenzen für Supermigrate sehen oder überprüfen?",
+        "answer": "Hier ist ein Link zu unserem Github-Repository: https://github.com/supermigrate"
       },
       "question3": {
-        "question": "Wie sicher ist der Migrationsprozess mit Supermigrate?",
-        "answer": "Supermigrate legt großen Wert auf Sicherheit mit End-to-End-Verschlüsselung und kontinuierlicher Überwachung, um eine sichere und zuverlässige Migration Ihrer Blockchain-Assets und -Daten zu gewährleisten."
+        "question": "Unterstützt Supermigrate bidirektionales Bridging?",
+        "answer": "Ja, mit unserer Superbridge-Integration können Sie von L1 ⇒ L2 und zurück wechseln."
       },
       "question4": {
-        "question": "Kann Supermigrate bei der Bereitstellung intelligenter Verträge auf Layer 2 helfen?",
-        "answer": "Ja, Supermigrate erleichtert nicht nur die Migration, sondern auch die Bereitstellung und Verwaltung intelligenter Verträge auf Layer-2-Plattformen, um Abläufe zu rationalisieren und Kosten zu senken."
+        "question": "Welcher Überbrückungsmechanismus wird für Supermigrate verwendet?",
+        "answer": "Die Token werden mithilfe der offiziellen OptimismMintableERC20Factory bereitgestellt. Nach der Token-Bereitstellung können Sie die Token auf unserer Bridging-Schnittstelle überbrücken, die von Superbridge unterstützt wird."
       },
       "question5": {
-        "question": "Wie stellt Supermigrate die Interoperabilität migrierter Assets sicher?",
-        "answer": "Supermigrate nutzt fortschrittliche Bridging-Technologie, um eine nahtlose Interoperabilität zwischen Layer-1- und Layer-2-Assets sicherzustellen und Benutzern die Übertragung und Verwaltung von Assets über mehrere Netzwerke hinweg zu ermöglichen."
+        "question": "Wie viele Layer-2-Netzwerke werden derzeit unterstützt?",
+        "answer": "Wir unterstützen derzeit Basis, Optimismus und Modus. Wir fügen aktiv weitere Netzwerke hinzu. Für Integrationsanfragen wenden Sie sich bitte an integrations@metatablelabs.xyz"
       },
       "question6": {
-        "question": "Welche Gebühren sind mit der Nutzung von Supermigrate für die Blockchain-Migration verbunden?",
-        "answer": "Supermigrate bietet wettbewerbsfähige Gebühren für Blockchain-Migrationsdienste mit transparenten Preisen und ohne versteckte Kosten und gewährleistet so kostengünstige Lösungen für Benutzer jeder Größe."
+        "question": "Werden Polygon-Token von Supermigrate unterstützt?",
+        "answer": "Nein, derzeit werden nur Migrationen von Ethereum zu L2 unterstützt."
       }
     },
     "footer": {
@@ -87,10 +87,10 @@
         "blog": "Blog",
         "github": "Github"
       },
-      "company": {
-        "title": "Unternehmen",
-        "privacy": "Privatsphäre",
-        "terms": "Bedingungen"
+      "socials": {
+        "title": "Soziale Netzwerke",
+        "twitter": "Twitter",
+        "telegram": "Telegramm"
       },
       "alert": "Auf dem Laufenden bleiben",
       "emailPlaceholder": "Geben sie ihre E-Mail Adresse ein",

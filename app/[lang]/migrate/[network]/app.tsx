@@ -1,7 +1,5 @@
 'use client';
 import { ReactNode, useEffect } from 'react';
-
-import { Tiles } from '@/public/icons';
 import { Network } from '@/config/rainbow/config';
 
 interface PageProps {

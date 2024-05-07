@@ -23,34 +23,34 @@ const Footer = () => {
   const { locale } = useSystemFunctions();
 
   const { landingPage } = locale;
-  const { alert, resources } = landingPage.footer;
+  const { alert, resources, socials } = landingPage.footer;
 
   const extras = [
     {
       title: resources.title,
       links: [
-        { titile: resources.blog, url: 'https://mirror.xzy/supermigrate.eth/' },
+        { titile: resources.blog, url: 'https://mirror.xyz/supermigrate.eth/' },
         { titile: resources.github, url: 'https://github.com/supermigrate' },
+      ],
+    },
+    {
+      title: socials.title,
+      links: [
+        { titile: socials.twitter, url: 'https://twitter.com/supermigrate' },
+        { titile: socials.telegram, url: 'https://t.me/+8vDPDkrN_-gwZTA8' },
       ],
     },
   ];
 
   return (
-    <footer className="w-full px-8 pb-6 pt-16 md:px-20 md:pb-12 bg-primary-3250 relative min-h-[384px]">
-      <div className="self-stretch flex flex-col gap-32 md:flex-row md:items-end md:justify-between">
-        <div className="flex flex-col gap-11 md:flex-row md:items-center md:justify-between ">
-          <div className="flex self-stretch md:self-auto items-start gap-8">
-            {extras.map((extra) => (
-              <Extra key={extra.title} {...extra} />
-            ))}
-          </div>
-
-          <div className="flex flex-col min-h-[96px] justify-between">
-            <span className="text-sm font-medium text-white mb-10 md:mb-0">{alert}</span>
-
-            <iframe height="136" src="https://mirror.xyz/supermigrate.eth/subscribe/embed" className="rounded-[16px] max-w-[400px] md:mt-5"></iframe>
-          </div>
+    <footer className="w-full px-8 pb-10 lg:pb-6 pt-16 md:px-20 md:pb-12 bg-primary-3250 relative lg:min-h-[384px]">
+      <div className="self-stretch flex gap-x-10 gap-y-32 flex-row items-end justify-between flex-wrap">
+        <div className="flex self-stretch md:self-auto items-start gap-8">
+          {extras.map((extra) => (
+            <Extra key={extra.title} {...extra} />
+          ))}
         </div>
+
         <span className="text-primary-250 text-sm md:text-base">© 2024 Metastable Labs</span>
       </div>
 

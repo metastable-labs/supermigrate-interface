@@ -4,12 +4,12 @@
       "about": "About",
       "whitepaper": "Blog",
       "faq": "FAQ",
-      "actionText": "Launch app"
+      "actionText": "Coming Soon"
     },
     "hero": {
       "title": "Your gateway to",
       "subtitle": "Automatically deploy canonical bridged ERC20 to an L2. Start bridging and adding liquidity to earn rewards all in one place.",
-      "actionText": "Start migrating"
+      "actionText": "Coming Soon"
     },
     "section1": {
       "title": "Streamlined and easy migration",
@@ -30,7 +30,7 @@
     "section2": {
       "title": "Everything, all in one place",
       "first": {
-        "actionText": "Migration",
+        "actionText": "Migrate",
         "title": "Deploy canonical bridged tokens",
         "content": "We're providing a straightforward process for users to deploy their ERC20 tokens on L2 networks that automatically makes it bridgable."
       },
@@ -53,6 +53,7 @@
     "faq": {
       "title": "Frequently Asked Questions",
       "subtitle": "Everything you need to know about Supermigrate and our integrations",
+      "supportText": "",
       "seeMore": "See more FAQ",
       "seeLess": "See less",
       "question1": {
@@ -85,6 +86,11 @@
         "title": "Resources",
         "blog": "Blog",
         "github": "Github"
+      },
+      "socials": {
+        "title": "Socials",
+        "twitter": "Twitter",
+        "telegram": "Telegram"
       },
       "alert": "Stay up to date",
       "emailPlaceholder": "Enter your email",

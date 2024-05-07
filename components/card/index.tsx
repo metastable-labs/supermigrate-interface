@@ -81,7 +81,7 @@ const SMCard = ({ title, variant = 'base', chainId: id, comingSoon }: NetworkPro
         'pointer-events-none': comingSoon,
       })}>
       <div
-        className={classNames('flex flex-col items-center gap-2 rounded-xl border-[0.701px] border-primary-250 h-full px-12 py-[54px]', {
+        className={classNames('flex flex-col items-center gap-2 rounded-base border-[0.701px] border-primary-250 h-full px-12 py-[54px]', {
           'bg-primary-400': variant === 'base',
           'bg-primary-450': variant === 'optimism',
           'bg-primary-500': variant === 'mode',
