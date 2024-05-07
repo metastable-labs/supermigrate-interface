@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import TokenList from '@uniswap/default-token-list';
 
 import { SMButton, SMClickAnimation } from '@/components';
 import { IOption } from '@/components/select/types';
@@ -9,16 +10,19 @@ import Info from './info';
 import Extra from './extra';
 import LiquidityInput from './input';
 import { IAdd } from './types';
-import { fetchTokenList, getPair } from '@/utils/uniswap';
+import { getPair } from '@/utils/uniswap';
 import Image from 'next/image';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { handleAmountInput } from '@/utils/helpers';
 import { Address } from 'viem';
 import { useChainId } from 'wagmi';
+import useLiquidity from '@/hooks/useLiquidity';
 
 const Add = ({ defaultId }: IAdd) => {
   const chainId = useChainId();
   const { migrationState } = useSystemFunctions();
+  const { getEquivalentAmount, getPairAddress } = useLiquidity();
+
   const [step, setStep] = useState(0);
   const [values, setValues] = useState({ amount: '', liquidity: '' });
   const [tokenA, setTokenA] = useState<IOption>();
@@ -51,26 +55,28 @@ const Add = ({ defaultId }: IAdd) => {
   const updateTokenB = async () => {
     try {
       const value = values.amount;
-      const b = await getPair(chainId, tokenA?.address as Address, tokenB?.address as Address);
+      const b = await getPairAddress(tokenA?.address as Address, '0x940181a94a35a4569e4529a3cdfb74e38fd98631');
       console.log('kkkkk', b);
-      if (!value) return;
 
-      const numericValue = parseInt(value.replace(/,/g, ''), 10);
+      return;
+      // if (!value) return;
 
-      if (isNaN(numericValue) || !tokenA || !tokenB) return;
+      // const numericValue = parseInt(value.replace(/,/g, ''), 10);
 
-      const rateEntry = rates.find((rate) => rate.name === tokenB.value);
-      if (!rateEntry) return;
+      // if (isNaN(numericValue) || !tokenA || !tokenB) return;
 
-      const conversionRate = rateEntry[tokenA.text as keyof Rate];
+      // const rateEntry = rates.find((rate) => rate.name === tokenB.value);
+      // if (!rateEntry) return;
 
-      if (typeof conversionRate !== 'number') return;
+      // const conversionRate = rateEntry[tokenA.text as keyof Rate];
 
-      const calculatedValue = numericValue * conversionRate;
+      // if (typeof conversionRate !== 'number') return;
 
-      const formattedValue = calculatedValue.toLocaleString('en-US');
+      // const calculatedValue = numericValue * conversionRate;
 
-      setValues((prev) => ({ ...prev, liquidity: formattedValue }));
+      // const formattedValue = calculatedValue.toLocaleString('en-US');
+
+      // setValues((prev) => ({ ...prev, liquidity: formattedValue }));
     } catch (error: any) {
       console.log(error);
     }
@@ -84,14 +90,26 @@ const Add = ({ defaultId }: IAdd) => {
     }
 
     if (step === 1) {
-      console.log('values', values);
       setButtonText('Confirming Transaction...');
       setStep(2);
     }
   };
 
   const fetchTokens = async () => {
-    const tokenList = await fetchTokenList();
+    const tokenList = TokenList.tokens.filter((token) => token.chainId === chainId);
+
+    if (!tokenList) return;
+
+    const nativeToken = [
+      {
+        text: 'Ethereum',
+        value: 'ETH',
+        symbol: 'ETH',
+        icon: <Image src="https://cdn.pixabay.com/photo/2021/05/24/09/15/ethereum-6278326_1280.png" width={20} height={20} alt="ETH" />,
+        address: '0x',
+        id: 'ETH',
+      },
+    ];
 
     const walletOptions = tokenList?.map((token) => ({
       text: token.name,
@@ -101,7 +119,7 @@ const Add = ({ defaultId }: IAdd) => {
       address: token.address,
     }));
 
-    setTokenAOptions(walletOptions);
+    setTokenAOptions([...nativeToken, ...walletOptions]);
   };
 
   const fetchMigratedTokens = async () => {

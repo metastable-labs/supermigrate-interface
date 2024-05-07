@@ -11,7 +11,20 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['w7.pngwing.com', 'i.pravatar.cc', 's2.coinmarketcap.com', 'assets.coingecko.com', 'etherscan.io', 'pbs.twimg.com'],
+    domains: [
+      'w7.pngwing.com',
+      'i.pravatar.cc',
+      's2.coinmarketcap.com',
+      'assets.coingecko.com',
+      'etherscan.io',
+      'pbs.twimg.com',
+      'basescan.org',
+      'raw.githubusercontent.com',
+      'ethereum-optimism.github.io',
+      'cdn.pixabay.com',
+      '',
+      'ipfs',
+    ],
   },
   headers: [
     {

@@ -8,8 +8,6 @@ import { wagmiConfig } from '@/config/rainbow/rainbowkit';
 import { readContract, writeContract } from '@wagmi/core';
 import { getAccount } from '@wagmi/core';
 import { Address } from 'viem';
-import { schema } from '@uniswap/token-lists';
-import Ajv from 'ajv';
 
 import { V2_FACTORY_ADDRESSES, V2_ROUTER_ADDRESSES } from '@uniswap/sdk-core';
 import UNISWAP_V2_ROUTER_ABI from '../abis/UniswapV2Router.json';
@@ -116,22 +114,4 @@ export async function addLiquidityEth(token: Address, amountERC20Desired: number
   } catch (error) {
     return error;
   }
-}
-
-const ARBITRUM_LIST = 'https://bridge.arbitrum.io/token-list-42161.json';
-
-/**
- * @notice function to fetch token list from Uniswap.
- */
-export async function fetchTokenList(): Promise<IToken[]> {
-  const ajv = new Ajv({ allErrors: true, verbose: true });
-
-  const validator = ajv.compile(schema);
-  const response = await fetch(ARBITRUM_LIST);
-  const data = await response.json();
-  const valid = validator(data);
-  if (!valid) {
-    return [];
-  }
-  return data.tokens;
 }
