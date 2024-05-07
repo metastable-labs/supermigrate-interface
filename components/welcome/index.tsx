@@ -20,6 +20,13 @@ const CheckIcon = () => (
 const SMWelcome = ({ show, close }: ISMWelcome) => {
   const [dontShow, setDontShow] = useState(false);
   const toggleDontShow = () => setDontShow((prev) => !prev);
+
+  const handleClose = () => {
+    if (dontShow) {
+      localStorage.setItem('dontShowWelcome', 'true');
+    }
+    close();
+  };
   return (
     <AnimatePresence>
       {show && (
@@ -57,7 +64,7 @@ const SMWelcome = ({ show, close }: ISMWelcome) => {
 
             <div className="self-stretch py-4 flex flex-col gap-3 justify-center items-center border-t border-primary-250">
               <SMClickAnimation
-                onClick={close}
+                onClick={handleClose}
                 className="self-stretch bg-primary-3250 shadow-welcome-button rounded-base px-3.5 py-2.5 flex items-center justify-center text-primary-3900 text-sm tracking-[-0.084px]">
                 Agree and Continue
               </SMClickAnimation>
