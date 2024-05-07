@@ -12,7 +12,7 @@
  */
 
 import { useChainId } from 'wagmi';
-import { CurrencyAmount } from '@uniswap/sdk-core';
+import { CurrencyAmount, Token } from '@uniswap/sdk-core';
 import { Pair } from '@uniswap/v2-sdk';
 import { addLiquidity, addLiquidityEth, getPair, getUniswapRouterAddress } from '@/utils/uniswap';
 import { Address, erc20Abi } from 'viem';
@@ -57,8 +57,10 @@ const useLiquidity = () => {
     return pair;
   };
 
-  const getEquivalentAmount = async (amountA: CurrencyAmount<any>, amountB: CurrencyAmount<any>) => {
-    const pair = new Pair(amountA, amountB);
+  const getEquivalentAmount = async (amountA: any, _tokenA: Address, _tokenB: Address, tokenADecimal: number, tokenBDecimal: number) => {
+    const tokenA = new Token(chainId, _tokenA, tokenADecimal);
+    const tokenB = new Token(chainId, _tokenB, tokenBDecimal);
+    const pair = new Pair(CurrencyAmount.fromRawAmount(tokenA, amountA), CurrencyAmount.fromRawAmount(tokenB, 0));
     const result = pair.getOutputAmount(amountA);
     return {
       amount: result[0],
