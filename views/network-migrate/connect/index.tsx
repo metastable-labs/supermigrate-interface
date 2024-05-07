@@ -33,7 +33,7 @@ const Connect = ({ network }: { network: Network }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className={classNames('py-6 px-4 md:px-8 rounded-xl self-stretch flex flex-col md:flex-row md:justify-between items-start md:items-end gap-[18px] md:gap-[10px]', {
+            className={classNames('py-6 px-4 md:px-8 rounded-base self-stretch flex flex-col md:flex-row md:justify-between items-start md:items-end gap-[18px] md:gap-[10px]', {
               'bg-primary-750': network === 'base',
               'bg-primary-800': network === 'optimism',
               'bg-primary-850': network === 'mode',
