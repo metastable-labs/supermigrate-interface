@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useCookies } from 'react-cookie';
 
 import { TextSampleIcon } from '@/public/icons';
 import SMClickAnimation from '../click-animation';
@@ -18,14 +19,22 @@ const CheckIcon = () => (
 );
 
 const SMWelcome = ({ show, close }: ISMWelcome) => {
+  const [cookies, setCookie] = useCookies(['SMHasShownWelcomeModal']);
   const [dontShow, setDontShow] = useState(false);
   const toggleDontShow = () => setDontShow((prev) => !prev);
 
   const handleClose = () => {
     if (dontShow) {
-      localStorage.setItem('dontShowWelcome', 'true');
+      return setCookie('SMHasShownWelcomeModal', 'true', {
+        // expires in 1 year
+        expires: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 365 * 100),
+      });
     }
-    close();
+    setCookie('SMHasShownWelcomeModal', 'true', {
+      // expires in 1 week
+      expires: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 7),
+    });
+    return close();
   };
   return (
     <AnimatePresence>

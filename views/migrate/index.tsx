@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { useCookies } from 'react-cookie';
 
 import { SMBottomComment, SMContainer, SMWelcome } from '@/components';
 import { LangParamProp } from '@/config/internationalization/i18n';
@@ -7,17 +8,18 @@ import SelectionComponent from './selection';
 
 export default function MigrateView({ lang }: LangParamProp) {
   const [showWelcome, setShowWelcome] = useState(false);
+  const [cookies] = useCookies(['SMHasShownWelcomeModal']);
 
   const closeWelcome = () => setShowWelcome(false);
 
   useEffect(() => {
-    const dontShowAgain = localStorage.getItem('dontShowWelcome');
-    if (dontShowAgain === 'true') {
-      setShowWelcome(false);
-    } else {
+    if (!cookies) return;
+
+    const hasShowWelcomeModalToUser = cookies.SMHasShownWelcomeModal;
+    if (!hasShowWelcomeModalToUser) {
       setShowWelcome(true);
     }
-  }, []);
+  }, [cookies]);
   return (
     <div className="pb-28 lg:pb-0">
       <SMContainer>

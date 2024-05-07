@@ -1,17 +1,19 @@
 'use client';
-import { useState } from 'react';
 import { useChainId } from 'wagmi';
 
 import { LangParamProp } from '@/config/internationalization/i18n';
 import { SMButton } from '@/components';
 import { ExclaimIcon } from '@/public/icons';
 import { networks } from '@/config/rainbow/config';
+import { acceptedBridgeNetworks } from './dummy';
 
 const BridgeView = ({ lang }: LangParamProp) => {
-  const [supported, setSupported] = useState(true);
   const chainId = useChainId();
 
-  const network = networks.find((item) => item.chainId === chainId);
+  const currentNetwork = networks.find((item) => item.chainId === chainId);
+  const network = currentNetwork?.title?.toLowerCase?.();
+
+  const supported = acceptedBridgeNetworks.includes(network || '');
 
   if (!supported) {
     return (
@@ -36,7 +38,7 @@ const BridgeView = ({ lang }: LangParamProp) => {
     );
   }
 
-  return <iframe src={`https://superbridge.app/${network?.title?.toLowerCase?.()}`} className="w-full min-h-screen" onError={(e) => console.error('Iframe failed to load:', e)} />;
+  return <iframe src={`https://superbridge.app/${network}?graffiti=supermigrate`} className="w-full min-h-screen" onError={(e) => console.error('Iframe failed to load:', e)} />;
 };
 
 export default BridgeView;
