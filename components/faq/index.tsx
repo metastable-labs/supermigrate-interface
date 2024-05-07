@@ -6,7 +6,7 @@ const SMFAQ = ({ answer, question, current, onClick }: ISMFAQ) => {
   return (
     <div className={classNames('px-8 py-6 flex flex-col self-stretch items-start rounded-2xl md:w-[440px] lg:w-[576px]', { 'gap-2 bg-primary-1450 transition-colors duration-300': current })}>
       <div onClick={onClick} className="w-full flex justify-between items-center cursor-pointer">
-        <p className="w-full text-primary-300 text-[16px] leading-[24px] md:text-lg font-medium">{question}</p>
+        <p className="w-full text-primary-300 text-[16px] leading-[24px] md:text-lg font-medium font-Bitform">{question}</p>
 
         <AnimatePresence mode="popLayout">
           {current ? (

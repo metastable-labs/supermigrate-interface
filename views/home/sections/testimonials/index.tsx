@@ -23,7 +23,7 @@ const SocialLink = ({ icon, link, text, isMobile }: ISocialLink) => (
       {icon}
 
       <div className="flex items-center justify-center gap-2">
-        <h2 className="lg:text-base text-primary-3250 text-xs whitespace-nowrap">{text}</h2>
+        <h2 className="font-Bitform lg:text-base text-primary-3250 text-xs whitespace-nowrap">{text}</h2>
 
         {!isMobile && <LinkRightArrow color="#0A0D14" width={24} height={24} />}
       </div>
@@ -44,7 +44,7 @@ const Testimonials = () => {
     {
       text: twitterText,
       icon: <XIcon color="#0A0D14" width={20} height={20} />,
-      link: 'https://twitter.com/BaseMigrate',
+      link: 'https://twitter.com/supermigrate',
     },
     {
       text: telegramText,
@@ -56,7 +56,7 @@ const Testimonials = () => {
   return (
     <SMContainer>
       <div className="flex items-center justify-between">
-        <h1 className="lg:text-[42px] xl:text-[46px] lg:leading-[59.8px] lg:tracking-[-0.46px] text-[24px] leading-[31.2px] tracking-[-0.24px] text-black whitespace-nowrap">{title}</h1>
+        <h1 className="font-Bitform lg:text-[42px] xl:text-[46px] lg:leading-[59.8px] lg:tracking-[-0.46px] text-[24px] leading-[31.2px] tracking-[-0.24px] text-black whitespace-nowrap">{title}</h1>
 
         <div className="hidden xl:flex items-center gap-4">
           {socialLinks.map((link, index) => (
