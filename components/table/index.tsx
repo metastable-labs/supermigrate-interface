@@ -11,20 +11,20 @@ import EmptyState from './empty';
 import Status from './status';
 import Address from './address';
 
-const headers = [
-  { key: 'tokenName', label: 'Token Name' },
-  {
-    key: 'status',
-    label: 'Migration Status',
-    mobileLabel: 'Status',
-    secondaryLabel: 'Token Address',
-  },
-  { key: 'action', label: 'Contract on Base', secondaryLabel: 'Pool' },
-  { key: 'cta', label: 'Action' },
-];
-
 const SMTable = ({ data, network, isConnected, variant = 'primary', loading, ctaAction }: TableProps) => {
   const [isMobileView, setIsMobileView] = useState(false);
+
+  const headers = [
+    { key: 'tokenName', label: 'Token Name' },
+    {
+      key: 'status',
+      label: 'Migration Status',
+      mobileLabel: 'Status',
+      secondaryLabel: 'Token Address',
+    },
+    { key: 'action', label: `Contract on ${network}`, secondaryLabel: 'Pool' },
+    { key: 'cta', label: 'Action' },
+  ];
 
   useEffect(() => {
     const handleResize = () => setIsMobileView(window.innerWidth < 768);
@@ -34,7 +34,7 @@ const SMTable = ({ data, network, isConnected, variant = 'primary', loading, cta
   }, []);
 
   return (
-    <div className={classNames('self-stretch overflow-x-auto rounded-xl border border-primary-1350 flex flex-col justify-between bg-white', {})}>
+    <div className={classNames('self-stretch overflow-x-auto rounded-base border border-primary-1350 flex flex-col justify-between bg-white', {})}>
       {loading && <div className="flex-1 flex items-center justify-center italic font-medium text-xs">Loading...</div>}
 
       <table className="md:min-w-full divide-y divide-primary-1350">
