@@ -1,7 +1,9 @@
+import { networks } from '@/config/rainbow/config';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 import useTruncateText from '@/hooks/useTruncateText';
 import { CopySecondaryIcon, LinkRightArrow, MergedSecondaryIcon, MergedTertiaryIcon } from '@/public/icons';
 import { getScanLink } from '@/utils/helpers';
+import { useChainId } from 'wagmi';
 
 const Link = ({ link, text }: { link: string; text: string }) => {
   return (
@@ -14,24 +16,26 @@ const Link = ({ link, text }: { link: string; text: string }) => {
 
 const Left = () => {
   const { migrationState } = useSystemFunctions();
+  const chainId = useChainId();
   const { migration } = migrationState;
 
-  const pullRequestsLength = migration?.pull_requests?.length! - 1;
   const chainsLength = migration?.chains?.length! - 1;
-  const title = migration?.pull_requests[pullRequestsLength].chain === 'base' ? 'based' : 'super';
   const address = migration?.chains[chainsLength].token_address;
-  const txHash = migration?.chains[chainsLength].transaction_hash;
 
   const truncateAddress = useTruncateText(address || '', 7, 4);
 
-  const links = migration?.pull_requests?.map((pullRequest) => ({
-    text: pullRequest.owner === 'optimism' || pullRequest.owner === 'iamnotstatic' ? 'View Pull request on token list repo' : 'View Pull request on Superbridge',
-    link: pullRequest.url,
-  }));
+  const currentNetwork = networks.find((network) => network.chainId === chainId);
+
+  const links = migration?.pull_requests
+    ?.filter((pullRequest) => pullRequest.chain === currentNetwork?.variant)
+    .map((pullRequest) => ({
+      text: pullRequest.owner === 'optimism' || pullRequest.owner === 'iamnotstatic' ? 'View Pull request on token list repo' : 'View Pull request on Superbridge',
+      link: pullRequest.url,
+    }));
 
   // filter chains and retrurn only the ones that are not on chain id 1
   const hashes = migration?.chains
-    ?.filter((chain) => chain.id !== 1)
+    ?.filter((chain) => chain.id === chainId)
     .map((chain) => ({
       urlText: `View on ${chain.name}scan`,
       url: getScanLink(chain.id, chain.transaction_hash),

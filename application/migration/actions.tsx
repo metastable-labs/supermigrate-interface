@@ -64,7 +64,7 @@ const useMigrationActions = () => {
       dispatch(setMigration(undefined));
 
       setData(data);
-      if (data.tokenDecimal === '18') {
+      if (chainId !== 34443 && data.tokenDecimal === '18') {
         deployToken(data.tokenAddress, data.tokenName!, data.tokenSymbol!);
         return callback?.onSuccess?.();
       }
@@ -96,7 +96,7 @@ const useMigrationActions = () => {
       formData.append('twitter', data?.twitterLink!);
 
       const deployedToken = await networks.find((network) => network.chainId === chainId);
-      const topicIndex = data?.tokenDecimal === '18' ? 1 : 2;
+      const topicIndex = data?.tokenDecimal === '18' && chainId !== 34443 ? 1 : 2;
 
       const tokenAddress = txData?.logs?.[1]?.topics?.[topicIndex];
 
