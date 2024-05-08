@@ -10,6 +10,7 @@ interface TableItem {
   tokenAddress?: string;
   poolUrl?: string;
   id?: string;
+  scanUrl?: string;
 }
 
 interface TableProps {

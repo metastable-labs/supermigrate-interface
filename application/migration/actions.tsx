@@ -61,14 +61,16 @@ const useMigrationActions = () => {
   const migrateToken = async (data: FormProp, callback?: CallbackProps) => {
     try {
       dispatch(setLoading(true));
+      dispatch(setMigration(undefined));
 
+      setData(data);
       if (data.tokenDecimal === '18') {
         deployToken(data.tokenAddress, data.tokenName!, data.tokenSymbol!);
+        return callback?.onSuccess?.();
       }
 
       deployTokenWithDecimal(data.tokenAddress, data.tokenName!, data.tokenSymbol!, data.tokenDecimal!);
-      setData(data);
-      callback?.onSuccess?.();
+      return callback?.onSuccess?.();
     } catch (error: any) {
       dispatch(setLoading(false));
     }
