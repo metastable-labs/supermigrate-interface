@@ -1,4 +1,5 @@
 import { networks } from '@/config/rainbow/config';
+import useCopy from '@/hooks/useCopy';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 import useTruncateText from '@/hooks/useTruncateText';
 import { CopySecondaryIcon, LinkRightArrow, MergedSecondaryIcon, MergedTertiaryIcon } from '@/public/icons';
@@ -15,6 +16,7 @@ const Link = ({ link, text }: { link: string; text: string }) => {
 };
 
 const Left = () => {
+  const copy = useCopy();
   const { migrationState } = useSystemFunctions();
   const chainId = useChainId();
   const { migration } = migrationState;
@@ -60,7 +62,7 @@ const Left = () => {
       <div className="flex flex-col items-start gap-2 self-stretch">
         <h1 className="text-primary-200 text-[14px] leading-[28px]">Token Details</h1>
 
-        <div className="flex items-center justify-center gap-2 text-primary-50 text-[16px] leading-[30px] font-medium">
+        <div onClick={() => copy(address!)} className="flex items-center justify-center gap-2 text-primary-50 text-[16px] leading-[30px] font-medium">
           {truncateAddress}
           <CopySecondaryIcon />
         </div>
