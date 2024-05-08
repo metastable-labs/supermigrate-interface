@@ -28,21 +28,19 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
 
   const action = () => navigate.push(`/migrate/${network}/new`);
 
-  const tableData = migrations?.filter?.((migration) => {
-    const tokenHasChain = migration.chains?.find((chain) => chain.id === chaninId);
+  const tableData = migrations
+    ?.filter?.((migration) => migration.chains?.find((chain) => chain.id === chaninId))
+    .map((migration) => {
+      const chain = migration.chains?.find((chain) => chain.id === chaninId);
 
-    if (tokenHasChain) {
       return {
         tokenIcon: migration.logo_url,
         tokenName: migration.name,
         pullStatus: migration?.status === 'processing' ? 'pending' : migration?.status === 'failed' ? 'failed' : ('merged' as PullStatus),
         id: migration.id,
-        scanUrl: getScanLink(tokenHasChain.id, tokenHasChain.transaction_hash),
+        scanUrl: getScanLink(chain?.id!, chain?.transaction_hash!),
       };
-    }
-  });
-
-  console.log(tableData);
+    });
 
   const handleTableAction = (id?: string) => {
     if (id) getMigrationObject(id);
