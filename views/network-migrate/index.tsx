@@ -45,7 +45,7 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
   const handleTableAction = (id?: string) => {
     if (id) getMigrationObject(id);
 
-    navigate.push(`/migrate/${network}/${id}`);
+    navigate.push(`/${network}/migrate/${id}`);
   };
 
   const handleGithubConnection = async () => {
