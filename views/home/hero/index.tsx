@@ -46,7 +46,7 @@ const HeroSection = () => {
               <p className="text-white text-[20px] leading-[31px] max-w-[520px] text-center">{subtitle}</p>
             </div>
             <Link
-              href="/migrate"
+              href="/dashboard"
               className="font-Bitform flex items-center justify-center px-[18px] py-3 rounded-base shadow-table-cta border-[0.3px] border-primary-3450 text-sm md:text-base min-w-[126px] md:min-w-[187px] transition-all duration-300 bg-white hover:bg-primary-3950 hover:rounded-lg pointer-events-none">
               {actionText}
             </Link>
