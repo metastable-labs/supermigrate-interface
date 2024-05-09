@@ -25,15 +25,15 @@ const SMWelcome = ({ show, close }: ISMWelcome) => {
 
   const handleClose = () => {
     if (dontShow) {
-      return setCookie('SMHasShownWelcomeModal', 'true', {
-        // expires in 1 year
+      setCookie('SMHasShownWelcomeModal', 'true', {
         expires: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 365 * 100),
       });
+    } else {
+      setCookie('SMHasShownWelcomeModal', 'true', {
+        expires: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 7),
+      });
     }
-    setCookie('SMHasShownWelcomeModal', 'true', {
-      // expires in 1 week
-      expires: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 7),
-    });
+
     return close();
   };
   return (
