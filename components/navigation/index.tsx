@@ -126,7 +126,7 @@ const SMNavigation = () => {
 
         <SMModal show={Boolean(modalType)} close={closeModal}>
           {modalType === 'account' && <AccountModal close={closeModal} />}
-          {modalType === 'wallet' && <WalletModal close={closeModal} />}
+          {modalType === 'wallet' && <WalletModal close={closeModal} network={network} />}
           {modalType === 'network' && <NetworkModal close={closeModal} />}
         </SMModal>
       </div>
