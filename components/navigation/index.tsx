@@ -51,18 +51,21 @@ const SMNavigation = () => {
   const { switchChain } = useSwitchChain();
   const { openConnectModal } = useConnectModal();
   const { userState } = useSystemFunctions();
-
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [modalType, setModalType] = useState<ModalType>();
 
   const isHome = isHomePage(pathname);
   const { user } = userState;
+  const connectedNetwork = networks.find((chain) => chain.chainId === chainId);
+  const network = connectedNetwork?.variant || 'base';
 
   const updatedLinks = links?.map((link) => {
-    const regex = new RegExp(`^/[a-z]{2}${link.href}`);
+    const updatedHref = `/${network}${link.href}`;
+    const regex = new RegExp(`^/[a-z]{2}/${network}${link.href}$`);
     return {
       ...link,
+      href: updatedHref,
       isActive: regex.test(pathname),
     };
   });
