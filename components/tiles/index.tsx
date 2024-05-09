@@ -1,9 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
+import { useChainId } from 'wagmi';
 
 import { networks } from '@/config/rainbow/config';
-import { useChainId } from 'wagmi';
 
 interface ColorConfig {
   primary: string;
@@ -18,11 +19,19 @@ const colors: { [key: string]: ColorConfig } = {
   scroll: { primary: '#D2E5F8', secondary: '#DAECFF', tertiary: '#F6F8FA' },
 };
 
+const dashboardRegex = /^\/[a-z]{2}\/dashboard$/;
+
 const SMTiles = () => {
   const chainId = useChainId();
+  const pathname = usePathname();
 
   const connectedNetwork = networks.find((chain) => chain.chainId === chainId);
-  const network = connectedNetwork?.variant || 'base';
+  let network = connectedNetwork?.variant || 'base';
+
+  if (dashboardRegex.test(pathname)) {
+    network = 'base';
+  }
+
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="235" viewBox="0 0 1440 235" fill="none" className="xl:scale-125 2xl:scale-[2]">
       <path
