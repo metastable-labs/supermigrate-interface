@@ -59,7 +59,7 @@ export default function RootLayout({ params, children }: Readonly<RootProps>) {
           gtag('config', 'G-KP3SGTMZQD');
         `}
         </Script>
-        <App locale={params}>{children}</App>
+        {children}
       </body>
     </html>
   );
