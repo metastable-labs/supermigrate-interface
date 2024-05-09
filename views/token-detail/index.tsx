@@ -29,7 +29,7 @@ const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
 
   // filter chains and retrurn only the ones that are not on chain id 1
   const hashes = migration?.chains
-    ?.filter((chain) => chain.id !== 1)
+    ?.filter((chain) => chain.name === network)
     .map((chain) => ({
       name: chain.name,
       urlText: `View on ${chain.name}scan`,
@@ -85,7 +85,7 @@ const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
 
                 <div className="p-6 border border-primary-250 rounded-base flex flex-col gap-9 bg-white">
                   <TokenContract chains={migration?.chains || []} />
-                  <PullRequests pullRequests={migration?.pull_requests || []} />
+                  <PullRequests network={network} pullRequests={migration?.pull_requests || []} />
                   <TransactionHash hashes={hashes} />
                 </div>
               </div>

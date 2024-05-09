@@ -11,9 +11,12 @@ import { Network } from '@/config/rainbow/config';
 import SMLoader from '@/components/loader';
 import useUserActions from '@/application/user/actions';
 import useMigrationActions from '@/application/migration/actions';
+import { useChainId } from 'wagmi';
+import { getScanLink } from '@/utils/helpers';
 
 const NetworkMigrationsView = ({ network }: { network: Network }) => {
   const { navigate, userState, migrationState } = useSystemFunctions();
+  const chaninId = useChainId();
   const { authenticateGithub } = useUserActions();
   const { getMigrationObject } = useMigrationActions();
   const searchParams = useSearchParams();
@@ -25,12 +28,19 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
 
   const action = () => navigate.push(`/migrate/${network}/new`);
 
-  const tableData = migrations?.map?.((migration) => ({
-    tokenIcon: migration.logo_url,
-    tokenName: migration.name,
-    pullStatus: migration?.status === 'processing' ? 'pending' : migration?.status === 'failed' ? 'failed' : ('merged' as PullStatus),
-    id: migration.id,
-  }));
+  const tableData = migrations
+    ?.filter?.((migration) => migration.chains?.find((chain) => chain.id === chaninId))
+    .map((migration) => {
+      const chain = migration.chains?.find((chain) => chain.id === chaninId);
+
+      return {
+        tokenIcon: migration.logo_url,
+        tokenName: migration.name,
+        pullStatus: migration?.status === 'processing' ? 'pending' : migration?.status === 'failed' ? 'failed' : ('merged' as PullStatus),
+        id: migration.id,
+        scanUrl: getScanLink(chain?.id!, chain?.transaction_hash!),
+      };
+    });
 
   const handleTableAction = (id?: string) => {
     if (id) getMigrationObject(id);
