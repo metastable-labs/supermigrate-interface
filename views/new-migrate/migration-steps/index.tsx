@@ -15,7 +15,7 @@ import { FormProp } from './types';
 import Step3 from './step-3';
 import Step4 from './step-4';
 import useMigrationActions from '@/application/migration/actions';
-import { SMBottomComment } from '@/components';
+import { SMAnnouncement } from '@/components';
 
 const schema = yup.object().shape({
   tokenAddress: yup.string().required('Token Address is Required'),
@@ -119,7 +119,7 @@ const MigrationSteps = ({ network }: { network: Network }) => {
         </AnimatePresence>
       </form>
 
-      <SMBottomComment comment="After the automated checks pass and a reviewer approves the PR, then it will automatically be merged." show={step === 3} />
+      <SMAnnouncement comment="After the automated checks pass and a reviewer approves the PR, then it will automatically be merged." show={step === 3} />
     </div>
   );
 };
