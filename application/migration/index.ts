@@ -34,8 +34,12 @@ export const migrationReducer = createSlice({
       state.migrations = [...action.payload];
     },
 
-    setMigration: (state, action: PayloadAction<Migration>) => {
-      state.migration = { ...state.migration, ...action.payload };
+    setMigration: (state, action: PayloadAction<Migration | undefined>) => {
+      if (action.payload) {
+        state.migration = { ...action.payload };
+      } else {
+        state.migration = undefined;
+      }
     },
   },
 });
