@@ -22,7 +22,7 @@ const NavAction = ({ text, onClick, variant = 'network' }: NavActionProps) => {
   const pathname = usePathname();
   const { userState } = useSystemFunctions();
   const truncateText = useTruncateText(text || '', 4, 4);
-  const shouldHide = /\/[a-zA-Z]{2}\/migrate$/.test(pathname); // Hide network select on migrate page
+  const shouldHide = /\/[a-zA-Z]{2}\/dashboard$/.test(pathname); // Hide network select on dashboard page
 
   const { user } = userState;
 
