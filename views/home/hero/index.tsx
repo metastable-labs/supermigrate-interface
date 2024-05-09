@@ -33,7 +33,7 @@ const HeroSection = () => {
     <motion.section
       initial={{ backgroundColor: stepBackgroundColors[step] }}
       animate={{ backgroundColor: stepBackgroundColors[step] }}
-      className="flex items-center justify-center min-h-[100vh] md:min-h-[94.5vh] md:m-[25px] md:rounded-base relative"
+      className="flex items-center justify-center min-h-[100vh] md:min-h-[94.5vh] md:mx-[25px] md:mb-[25px] md:mt-[75px] mt-[70px] md:rounded-base relative"
       id="home">
       <div className="z-30">
         <SMContainer>
