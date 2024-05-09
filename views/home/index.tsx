@@ -13,6 +13,7 @@ import FAQs from './sections/faqs';
 import LandingHeader from './header';
 import Testimonials from './sections/testimonials';
 import Footer from './sections/footer';
+import { SMAnnouncement } from '@/components';
 
 export default function HomeView({ lang }: LangParamProp) {
   const { userState, locale } = useSystemFunctions();
@@ -32,6 +33,8 @@ export default function HomeView({ lang }: LangParamProp) {
 
   return (
     <div className="bg-white h-full w-full">
+      <SMAnnouncement comment="Please make sure you’re on supermigrate.xyz. Beware of scammers" show variant="top" />
+
       <LandingHeader />
       <HeroSection />
 
