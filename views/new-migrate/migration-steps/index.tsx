@@ -66,7 +66,7 @@ const MigrationSteps = ({ network }: { network: Network }) => {
     <Step2 key={1} register={register} errors={errors} network={network} setStep={setStep} setFile={setFile} file={file} />,
 
     <Step3 key={2} network={network} setStep={setStep} />,
-    <Step4 key={2} network={network} setStep={setStep} />,
+    <Step4 key={2} />,
   ];
 
   const onSubmit = (data: FormProp) => {
