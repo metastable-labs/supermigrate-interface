@@ -3,18 +3,19 @@ import classNames from 'classnames';
 
 import { PullRequest } from '@/application/migration/types';
 import { LinkRightArrow } from '@/public/icons';
-import { MergedSecondaryIcon, GitMergeIcon } from '@/public/icons';
+import { MergedSecondaryIcon, GitMergeIcon, GitCloseIcon } from '@/public/icons';
 
 const Status = ({ status }: { status: string }) => (
   <div className="flex items-center justify-center pt-0.5">
     {status === 'merged' && <GitMergeIcon />}
     {status === 'open' && <MergedSecondaryIcon width={20} height={20} color="#B47818" />}
+    {status === 'closed' && <GitCloseIcon />}
 
     <span
       className={classNames('text-sm font-medium text-center', {
         'text-primary-3100': status === 'merged',
         'text-primary-3150': status === 'open',
-        'text-primary-450': status === 'closed',
+        'text-primary-200': status === 'closed',
       })}>
       {status === 'open' ? 'Pending' : status === 'merged' ? 'Merged' : 'Closed'}
     </span>
