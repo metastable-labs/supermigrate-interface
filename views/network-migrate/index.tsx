@@ -26,7 +26,7 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
 
   const code = searchParams.get('code');
 
-  const action = () => navigate.push(`/migrate/${network}/new`);
+  const action = () => navigate.push(`/${network}/migrate/new`);
 
   const tableData = migrations
     ?.filter?.((migration) => migration.chains?.find((chain) => chain.id === chaninId))
