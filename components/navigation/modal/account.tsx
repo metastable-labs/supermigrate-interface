@@ -5,6 +5,7 @@ import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { DisconnectIcon, GitHubMobileIcon } from '@/public/icons';
 import { setTokenHeader } from '@/utils/axios';
 import { setUser } from '@/application/user';
+import { setMigration, setMigrations } from '@/application/migration';
 
 const AccountModal = ({ close }: { close: () => void }) => {
   const { userState, navigate, dispatch } = useSystemFunctions();
@@ -13,7 +14,9 @@ const AccountModal = ({ close }: { close: () => void }) => {
   const action = async () => {
     await removeCookie('SMauthtoken');
     await setTokenHeader();
-    await dispatch(setUser(undefined));
+    dispatch(setUser(undefined));
+    dispatch(setMigrations([]));
+    dispatch(setMigration(undefined));
     close();
   };
 
