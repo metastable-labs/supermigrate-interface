@@ -6,6 +6,7 @@ interface INavLink {
   icon: ReactElement;
   href: string;
   isActive: boolean;
+  comingSoon?: boolean;
 }
 
 type INavLinks = INavLink[];

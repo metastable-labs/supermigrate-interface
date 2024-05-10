@@ -10,9 +10,10 @@ interface NavLinkProps {
   href: string;
   isActive: boolean;
   fullWidth?: boolean;
+  comingSoon?: boolean;
 }
 
-const NavLink = ({ title, icon, href, isActive, fullWidth }: NavLinkProps) => {
+const NavLink = ({ title, icon, href, isActive, fullWidth, comingSoon }: NavLinkProps) => {
   return (
     <Link
       href={href}
@@ -20,9 +21,17 @@ const NavLink = ({ title, icon, href, isActive, fullWidth }: NavLinkProps) => {
         'bg-primary-150 text-primary-50': isActive,
         'bg-white text-primary-200': !isActive,
         'w-full': fullWidth,
+        'pointer-events-none': comingSoon,
       })}>
       {icon}
       <span className="tracking-[-0.084px] text-sm">{title}</span>
+      {comingSoon && (
+        <div className="min-h-full flex items-end -m-1">
+          <div className="flex items-center px-2 py-[2px] bg-primary-2550 rounded-full text-[8px] leading-[12px] font-medium tracking-[0.16px] capitalize text-white whitespace-nowrap">
+            coming soon
+          </div>
+        </div>
+      )}
     </Link>
   );
 };
