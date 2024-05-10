@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import classNames from 'classnames';
 import { useAccount, useChainId, useSwitchChain } from 'wagmi';
+import { useCookies } from 'react-cookie';
 
 import Left from './left';
 import Right from './right';
@@ -47,6 +48,7 @@ const links: INavLinks = [
 
 const SMNavigation = () => {
   const { isConnected, isDisconnected, address } = useAccount();
+  const [cookies] = useCookies(['SMauthtoken']);
   const chainId = useChainId();
   const { switchChain } = useSwitchChain();
   const { openConnectModal } = useConnectModal();
@@ -94,7 +96,7 @@ const SMNavigation = () => {
 
   const actionItems: INavActions = [
     {
-      text: user?.username,
+      text: cookies.SMauthtoken ? user?.username : undefined,
       variant: 'account',
     },
     {

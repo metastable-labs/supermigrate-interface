@@ -51,6 +51,10 @@ const NavAction = ({ text, onClick, variant = 'network' }: NavActionProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [variant, chainId]);
 
+  if (!text && variant !== 'network') {
+    return null;
+  }
+
   return (
     <SMClickAnimation
       onClick={onClick}

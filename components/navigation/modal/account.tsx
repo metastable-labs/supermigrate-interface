@@ -1,10 +1,17 @@
+import { useCookies } from 'react-cookie';
+
 import SMClickAnimation from '@/components/click-animation';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { DisconnectIcon, GitHubMobileIcon } from '@/public/icons';
 
 const AccountModal = ({ close }: { close: () => void }) => {
-  const { userState } = useSystemFunctions();
-  const action = () => {};
+  const { userState, navigate } = useSystemFunctions();
+  const [cookies, setCookies, removeCookie] = useCookies(['SMauthtoken']);
+
+  const action = async () => {
+    await removeCookie('SMauthtoken');
+    close();
+  };
 
   const modalTitle = `@${userState?.user?.username}`;
 
