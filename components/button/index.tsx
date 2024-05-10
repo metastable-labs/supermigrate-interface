@@ -36,8 +36,8 @@ const SMButton = ({ network, onClick, text, variant = 'git', fullWidth, disabled
         'w-full': fullWidth,
       })}
       onClick={onClick}>
-      {variant === 'git' && <GithubButtonIcon color={iconColor} />}
-      {(variant === 'new' || variant === 'bland-new') && <PlusIcon color={iconColor} />}
+      {!loading && variant === 'git' && <GithubButtonIcon color={iconColor} />}
+      {!loading && (variant === 'new' || variant === 'bland-new') && <PlusIcon color={iconColor} />}
 
       <div
         className={classNames('font-medium tracking-[-0.084px] text-sm text-center transition-all duration-300 capitalize whitespace-nowrap', {

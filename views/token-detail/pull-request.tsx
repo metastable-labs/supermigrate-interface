@@ -27,7 +27,7 @@ const PullRequests = ({ pullRequests, network }: { pullRequests: PullRequest[]; 
 
   return (
     <div className="flex flex-col gap-5">
-      <h1 className="text-primary-50 text-[16px] leading-[24.8px] md:text-[20px] md:leading-[31px]">Pull request status</h1>
+      {links?.length > 0 && <h1 className="text-primary-50 text-[16px] leading-[24.8px] md:text-[20px] md:leading-[31px]">Pull request status</h1>}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {links.map((pullRequest, index) => (

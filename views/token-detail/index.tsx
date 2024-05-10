@@ -103,7 +103,7 @@ const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
                   </div>
 
                   <div className="md:w-[162px]">
-                    <SMButton text={buttonText} variant="new" fullWidth network={network} onClick={handleStartBridging} />
+                    <SMButton loading={addToBridgeLoading} text={buttonText} variant="new" fullWidth network={network} onClick={handleStartBridging} />
                   </div>
                 </div>
 
