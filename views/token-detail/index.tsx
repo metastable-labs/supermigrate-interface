@@ -18,9 +18,10 @@ import Add from '../liquidity/add';
 
 const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
   const { migrationState, userState, navigate } = useSystemFunctions();
-  const { getMigration } = useMigrationActions();
+  const { getMigration, addToBridge } = useMigrationActions();
   const [showModal, setShowModal] = useState(false);
-  const { migration, loading } = migrationState;
+  const [buttonText, setButtonText] = useState('Start Bridging');
+  const { migration, loading, addToBridgeLoading } = migrationState;
 
   const fastlinks = [
     { variant: 'web' as FastLinkVariant, href: migration?.website! },
@@ -37,13 +38,34 @@ const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
     }));
 
   const toggleShowModal = () => setShowModal((prev) => !prev);
-  // const handleStartBridging = () => navigate.push(`/${network}/bridge/${migration?.name.toLowerCase()}`);
-  const handleStartBridging = () => navigate.push(`/${network}/bridge`);
+
+  const handleStartBridging = () => {
+    if (!Boolean(migration?.pull_requests?.length)) {
+      return addToBridge(id);
+    }
+
+    return navigate.push(`/${network}/bridge`);
+  };
+
+  const checkBtnText = () => {
+    if (!Boolean(migration?.pull_requests?.length)) {
+      return setButtonText('Add to Bridge');
+    }
+
+    setButtonText('Start Bridging');
+  };
 
   useEffect(() => {
+    if (!id) return;
+
     getMigration(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
+
+  useEffect(() => {
+    checkBtnText();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [migration]);
 
   if ((loading && !migration) || userState.loading) {
     return (
@@ -81,7 +103,7 @@ const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
                   </div>
 
                   <div className="md:w-[162px]">
-                    <SMButton text="Start Bridging" variant="new" fullWidth network={network} onClick={handleStartBridging} />
+                    <SMButton text={buttonText} variant="new" fullWidth network={network} onClick={handleStartBridging} />
                   </div>
                 </div>
 
