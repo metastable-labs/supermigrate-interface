@@ -10,6 +10,7 @@ interface IButton {
   fullWidth?: boolean;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
+  loading?: boolean;
 }
 
 export type { IButton, ButtonVariants };
