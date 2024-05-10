@@ -66,12 +66,14 @@ const SMTable = ({ data, network, isConnected, variant = 'primary', loading, cta
                   />
                   <div>{item.tokenName}</div>
                 </td>
+
                 <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden md:table-cell">
                   {variant === 'primary' && <Status status={item?.pullStatus} />}
                   {variant === 'secondary' && <Address address={item?.tokenAddress} />}
                 </td>
+
                 {variant === 'primary' && (
-                  <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 justify-center md:justify-start items-center gap-2 md:flex">
+                  <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 justify-center md:justify-start items-center gap-2 md:flex hidden">
                     <a href={item.scanUrl} target="_blank" className="text-[14px] leading-[20px]  text-primary-1650 border-b border-b-primary-1650 flex items-center justify-center gap-1">
                       <div>View on {network}scan</div>
                     </a>

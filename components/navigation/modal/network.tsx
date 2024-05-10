@@ -21,7 +21,7 @@ const NetworkModal = ({ close }: { close: () => void }) => {
 
     try {
       await switchChain({ chainId: id });
-      navigate.replace(`/migrate/${network.toLowerCase()}`);
+      navigate.replace(`/${network.toLowerCase()}/migrate`);
       close();
     } catch (error) {
       // Handle exceptions that may occur during the switch
