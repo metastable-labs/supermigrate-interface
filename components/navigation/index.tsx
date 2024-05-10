@@ -38,12 +38,13 @@ const links: INavLinks = [
     href: '/bridge',
     isActive: false,
   },
-  // {
-  //   title: 'Liquidity',
-  //   icon: <LiquidityLinkIcon />,
-  //   href: '/liquidity',
-  //   isActive: false,
-  // },
+  {
+    title: 'Liquidity',
+    icon: <LiquidityLinkIcon />,
+    href: '/liquidity',
+    isActive: false,
+    comingSoon: true,
+  },
 ];
 
 const SMNavigation = () => {
