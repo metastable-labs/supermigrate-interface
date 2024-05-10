@@ -3,13 +3,17 @@ import { useCookies } from 'react-cookie';
 import SMClickAnimation from '@/components/click-animation';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { DisconnectIcon, GitHubMobileIcon } from '@/public/icons';
+import { setTokenHeader } from '@/utils/axios';
+import { setUser } from '@/application/user';
 
 const AccountModal = ({ close }: { close: () => void }) => {
-  const { userState, navigate } = useSystemFunctions();
+  const { userState, navigate, dispatch } = useSystemFunctions();
   const [cookies, setCookies, removeCookie] = useCookies(['SMauthtoken']);
 
   const action = async () => {
     await removeCookie('SMauthtoken');
+    await setTokenHeader();
+    await dispatch(setUser(undefined));
     close();
   };
 

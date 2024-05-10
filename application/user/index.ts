@@ -22,8 +22,12 @@ export const userReducer = createSlice({
       state.loading = action.payload;
     },
 
-    setUser: (state, action: PayloadAction<User>) => {
-      state.user = { ...state.user, ...action.payload };
+    setUser: (state, action: PayloadAction<User | undefined>) => {
+      if (action.payload) {
+        state.user = { ...action.payload };
+      } else {
+        state.user = undefined;
+      }
     },
   },
 });
