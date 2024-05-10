@@ -17,7 +17,7 @@ import { getScanLink } from '@/utils/helpers';
 import Add from '../liquidity/add';
 
 const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
-  const { migrationState, userState } = useSystemFunctions();
+  const { migrationState, userState, navigate } = useSystemFunctions();
   const { getMigration } = useMigrationActions();
   const [showModal, setShowModal] = useState(false);
   const { migration, loading } = migrationState;
@@ -37,6 +37,8 @@ const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
     }));
 
   const toggleShowModal = () => setShowModal((prev) => !prev);
+  // const handleStartBridging = () => navigate.push(`/${network}/bridge/${migration?.name.toLowerCase()}`);
+  const handleStartBridging = () => navigate.push(`/${network}/bridge`);
 
   useEffect(() => {
     getMigration(id);
@@ -79,7 +81,7 @@ const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
                   </div>
 
                   <div className="md:w-[162px]">
-                    <SMButton text="Create Liquidity" variant="new" fullWidth network={network} onClick={toggleShowModal} />
+                    <SMButton text="Start Bridging" variant="new" fullWidth network={network} onClick={handleStartBridging} />
                   </div>
                 </div>
 
