@@ -25,6 +25,8 @@ const Connect = ({ network }: { network: Network }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  console.log(githubAuthUrl);
+
   return (
     <>
       <AnimatePresence>
