@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { LoadingIcon } from '@/public/icons';
 import { ISMLoader } from './types';
 
-const SMLoader = ({ variant = 'small' }: ISMLoader) => {
+const SMLoader = ({ variant = 'small', color }: ISMLoader) => {
   let width, height;
 
   switch (variant) {
@@ -33,7 +33,7 @@ const SMLoader = ({ variant = 'small' }: ISMLoader) => {
           repeatType: 'loop',
         },
       }}>
-      <LoadingIcon width={width} height={height} />
+      <LoadingIcon color={color} width={width} height={height} />
     </motion.span>
   );
 };
