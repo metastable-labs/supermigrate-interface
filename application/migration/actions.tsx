@@ -12,6 +12,7 @@ import { setLoading, setLoadingMigration, setMigration, setMigrations, setAddToB
 import api from './api';
 import { CallbackProps } from '../store';
 import { Migration } from './types';
+import { toast } from 'react-toastify';
 
 const useMigrationActions = () => {
   const { dispatch, migrationState } = useSystemFunctions();
@@ -82,6 +83,9 @@ const useMigrationActions = () => {
       const migration = await api.addToBridge(id);
 
       getMigrations();
+      toast('Successfully added to tokenbridge repo', {
+        type: 'success',
+      });
       return dispatch(setMigration(migration));
     } catch (error: any) {
     } finally {
@@ -94,7 +98,7 @@ const useMigrationActions = () => {
       if (isPending || !isConfirmed) return;
 
       dispatch(setLoading(false));
-      setLoadingMigration(true);
+      dispatch(setLoadingMigration(true));
       const txData = await getTransactionData();
 
       const formData = new FormData();
@@ -142,10 +146,8 @@ const useMigrationActions = () => {
 
       getMigrationObject('', response);
       getMigrations();
-    } catch (error: any) {
-      setLoadingMigration(false);
     } finally {
-      setLoadingMigration(false);
+      dispatch(setLoadingMigration(false));
     }
   };
 
