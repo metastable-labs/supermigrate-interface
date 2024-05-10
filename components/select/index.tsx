@@ -57,7 +57,7 @@ const SMSelect = ({ text, disabled, onClick, options, defaultId }: ISMSelect) =>
         {selectedOption && (
           <div className="flex items-center gap-2">
             {selectedOption.icon}
-            <span className="whitespace-nowrap">{selectedOption.text}</span>
+            <span className="whitespace-nowrap">{selectedOption.value}</span>
           </div>
         )}
         <SecondarySelectIcon />

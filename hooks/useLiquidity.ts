@@ -15,7 +15,7 @@ import { useChainId } from 'wagmi';
 import { CurrencyAmount, Token } from '@uniswap/sdk-core';
 import { Pair } from '@uniswap/v2-sdk';
 import { addLiquidity, addLiquidityEth, getPair, getUniswapRouterAddress } from '@/utils/uniswap';
-import { Address, erc20Abi } from 'viem';
+import { Address, erc20Abi, parseEther, parseUnits } from 'viem';
 import { readContract, writeContract } from '@wagmi/core';
 import { wagmiConfig } from '@/config/rainbow/rainbowkit';
 
@@ -23,23 +23,34 @@ const useLiquidity = () => {
   const chainId: any = useChainId();
 
   const addLiquidityForToken = async (tokenA: Address, amountADesired: number, amountBDesired: number, tokenB?: Address) => {
-    let liquidityResult: any;
-    if (!tokenB) {
-      liquidityResult = await addLiquidity(tokenA, tokenB!, amountADesired, amountBDesired);
-    } else {
-      liquidityResult = await addLiquidityEth(tokenA, amountADesired, amountBDesired);
+    try {
+      let liquidityResult: any;
+      if (!tokenB) {
+        liquidityResult = await addLiquidity(tokenA, tokenB!, amountADesired, amountBDesired);
+      } else {
+        liquidityResult = await addLiquidityEth(tokenA, amountADesired, amountBDesired);
+      }
+      return liquidityResult;
+    } catch (e) {
+      console.log(e);
     }
-    return liquidityResult;
   };
 
-  const approveToken = async (amount: any, tokenAddress: Address) => {
-    const result = await writeContract(wagmiConfig, {
-      abi: erc20Abi,
-      address: tokenAddress,
-      functionName: 'approve',
-      args: [getUniswapRouterAddress(chainId), BigInt(amount)],
-    });
-    return result;
+  const approveToken = async (amount: string, tokenAddress: Address, tokenDecimal: number) => {
+    try {
+      // const formattedAmount = tokenDecimal === 18 ? parseEther(amount) : parseUnits(amount, tokenDecimal);
+      const formattedAmount = parseEther(amount);
+
+      const result = await writeContract(wagmiConfig, {
+        abi: erc20Abi,
+        address: tokenAddress,
+        functionName: 'approve',
+        args: [getUniswapRouterAddress(chainId), formattedAmount],
+      });
+      return result;
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const checkTokenAllowance = async (ownerAddress: Address, tokenAddress: Address) => {

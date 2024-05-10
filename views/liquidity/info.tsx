@@ -1,37 +1,43 @@
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { rates } from './dummy';
 import { IInfo } from './types';
 import { SuccessIcon } from '@/public/icons';
 
-const Info = ({ amount, show, token, wallet, poolPercentage, step }: IInfo) => {
-  const tokenRate: any = rates?.find((rate) => rate?.name === token)?.[wallet!];
-
+const Info = ({ tokenAAmount, show, tokenB, tokenA, poolPercentage, step, tokenRate, networkFee, tokenBAmount }: IInfo) => {
   let items = [
     {
-      primaryText: `${wallet} deposited`,
-      secondaryText: `${amount} ${wallet}`,
+      primaryText: `${tokenA} deposited`,
+      secondaryText: `${tokenAAmount} ${tokenA}`,
       condition: step >= 1,
     },
     {
-      primaryText: `$${token} deposited`,
-      secondaryText: `${(tokenRate! * amount).toLocaleString()} ${token}`,
+      primaryText: `$${tokenB} deposited`,
+      secondaryText: `${tokenBAmount} ${tokenB}`,
       condition: step >= 1,
-    },
-    {
-      primaryText: 'Rate',
-      secondaryText: `1 ${wallet} = ${tokenRate?.toLocaleString()} ${token}`,
-    },
-    {
-      primaryText: 'Share of pool',
-      secondaryText: `${poolPercentage}%`,
-    },
-    {
-      primaryText: 'Network fee',
-      secondaryText: `0.0046${wallet}`,
-      tertiaryText: `$${2.03}`,
     },
   ];
+
+  if (tokenRate) {
+    items[2] = {
+      primaryText: 'Rate',
+      secondaryText: `1 ${tokenA} = ${tokenRate} ${tokenB}`,
+      condition: true,
+    };
+  }
+
+  items[3] = {
+    primaryText: 'Share of pool',
+    secondaryText: poolPercentage ? `${poolPercentage}%` : '--',
+    condition: true,
+  };
+
+  if (networkFee) {
+    items[4] = {
+      primaryText: 'Network fee',
+      secondaryText: `${networkFee}${tokenA}`,
+      condition: true,
+    };
+  }
 
   items = items.filter((item) => item.condition !== false);
 
@@ -58,7 +64,7 @@ const Info = ({ amount, show, token, wallet, poolPercentage, step }: IInfo) => {
                   <span>{item.primaryText}:</span>
 
                   <div className="flex items-center justify-center gap-2 font-medium">
-                    {item.tertiaryText && <span className="text-primary-2050">{item.tertiaryText}</span>}
+                    {/* {item.tertiaryText && <span className="text-primary-2050">{item.tertiaryText}</span>} */}
 
                     <span>{item.secondaryText}</span>
                   </div>

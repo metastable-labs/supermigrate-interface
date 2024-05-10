@@ -6,12 +6,8 @@ import classNames from 'classnames';
 import { IOption } from '@/components/select/types';
 import { rates } from './dummy';
 
-const Extra = ({ wallet, token, amount, show }: { wallet?: IOption; token?: IOption; amount: number; show: boolean }) => {
-  const tokenRate: any = rates?.find((rate) => rate?.name === token?.value)?.[wallet?.text!];
-
-  const total = amount * tokenRate;
-  const formattedTotal = total.toLocaleString();
-  const isLargeNumber = formattedTotal.replace(/,/g, '').length > 7;
+const Extra = ({ wallet, token, amount, show }: { wallet?: IOption; token?: IOption; amount: string; show: boolean }) => {
+  const isLargeNumber = amount.replace(/,/g, '').length > 7;
 
   return (
     <AnimatePresence>
@@ -23,7 +19,7 @@ const Extra = ({ wallet, token, amount, show }: { wallet?: IOption; token?: IOpt
                 'text-[34px] leading-[52.7px]': !isLargeNumber,
                 'text-[28px] leading-[46.7px]': isLargeNumber,
               })}>
-              {formattedTotal}
+              {amount}
             </span>
             <span className="text-[20px] leading-[31px] text-primary-200">{token?.text}</span>
           </p>
