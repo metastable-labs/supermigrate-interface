@@ -8,7 +8,7 @@ import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { FormProp } from '@/views/new-migrate/migration-steps/types';
 import useContract from '@/hooks/useContract';
 import { networks } from '@/config/rainbow/config';
-import { setLoading, setLoadingMigration, setMigration, setMigrations } from '.';
+import { setLoading, setLoadingMigration, setMigration, setMigrations, setAddToBridgeLoading } from '.';
 import api from './api';
 import { CallbackProps } from '../store';
 import { Migration } from './types';
@@ -73,6 +73,19 @@ const useMigrationActions = () => {
       return callback?.onSuccess?.();
     } catch (error: any) {
       dispatch(setLoading(false));
+    }
+  };
+
+  const addToBridge = async (id: string) => {
+    try {
+      dispatch(setAddToBridgeLoading(true));
+      const migration = await api.addToBridge(id);
+
+      getMigrations();
+      return dispatch(setMigration(migration));
+    } catch (error: any) {
+    } finally {
+      dispatch(setAddToBridgeLoading(false));
     }
   };
 
@@ -146,6 +159,7 @@ const useMigrationActions = () => {
     getMigration,
     getMigrationObject,
     migrateToken,
+    addToBridge,
   };
 };
 
