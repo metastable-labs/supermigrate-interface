@@ -94,6 +94,7 @@ import LiquidityLanding from './liquidity-landing.svg';
 import LiquidityLandingAlt from './liquidity-landing-alt.svg';
 import MobileMigrateLanding from './mobile-migrate-landing.svg';
 import ForwardIcon from './forward-icon.svg';
+import GitCloseIcon from './git-close-icon.svg';
 
 export {
   Logo,
@@ -192,4 +193,5 @@ export {
   LiquidityLandingAlt,
   MobileMigrateLanding,
   ForwardIcon,
+  GitCloseIcon,
 };

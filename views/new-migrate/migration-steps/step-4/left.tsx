@@ -1,3 +1,4 @@
+import { SMClickAnimation } from '@/components';
 import { networks } from '@/config/rainbow/config';
 import useCopy from '@/hooks/useCopy';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
@@ -62,10 +63,10 @@ const Left = () => {
       <div className="flex flex-col items-start gap-2 self-stretch">
         <h1 className="text-primary-200 text-[14px] leading-[28px]">Token Details</h1>
 
-        <div onClick={() => copy(address!)} className="flex items-center justify-center gap-2 text-primary-50 text-[16px] leading-[30px] font-medium">
+        <SMClickAnimation onClick={() => copy(address!)} className="flex items-center justify-center gap-2 text-primary-50 text-[16px] leading-[30px] font-medium">
           {truncateAddress}
           <CopySecondaryIcon />
-        </div>
+        </SMClickAnimation>
 
         {hashes?.map((hash, index) => (
           <a key={index} href={hash.url} target="_blank" className="text-primary-3350 text-[16px] leading-[30px] flex items-center justify-center gap-2 pb-[3px] underline underline-offset-4">

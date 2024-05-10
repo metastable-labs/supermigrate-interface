@@ -8,8 +8,9 @@ import useTruncateText from '@/hooks/useTruncateText';
 import { DisconnectIcon, CopyIcon, WalletIcon } from '@/public/icons';
 import { wagmiConfig } from '@/config/rainbow/rainbowkit';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
+import { Network } from '@/config/rainbow/config';
 
-const WalletModal = ({ close }: { close: () => void }) => {
+const WalletModal = ({ close, network }: { close: () => void; network: Network }) => {
   const copy = useCopy();
   const { address } = useAccount();
   const truncateWallet = useTruncateText((address as string) || '', 6, 6);
@@ -18,7 +19,7 @@ const WalletModal = ({ close }: { close: () => void }) => {
   const disconnectAction = () => {
     disconnect(wagmiConfig);
     close();
-    navigate.replace('/migrate');
+    navigate.replace(`/${network}/migrate`);
   };
 
   return (

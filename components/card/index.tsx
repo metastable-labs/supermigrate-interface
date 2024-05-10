@@ -67,11 +67,11 @@ const SMCard = ({ title, variant = 'base', chainId: id, comingSoon }: NetworkPro
       return openConnectModal && openConnectModal();
     }
 
-    if (chainId === id) return navigate.push(`migrate/${variant}`);
+    if (chainId === id) return navigate.push(`${variant}/migrate`);
 
     await switchChain({ chainId: id });
 
-    return navigate.push(`migrate/${variant}`);
+    return navigate.push(`${variant}/migrate`);
   };
 
   return (

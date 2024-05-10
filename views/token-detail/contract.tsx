@@ -24,8 +24,8 @@ const TokenContract = ({ chains }: { chains: Chain[] }) => {
           <div key={index} className="p-4 border border-primary-2100 rounded-base flex items-center justify-between w-full bg-primary-2700">
             <div className="flex flex-col items-start gap-1.5 justify-center">
               <h3 className="text-primary-200 text-[12px] leading-[17.4px] capitalize">{chain.name}</h3>
-              <h3 className="text-primary-300 text-sm font-medium hidden md:block">{chain.token_address}</h3>
-              <h3 className="text-primary-300 text-sm font-medium md:hidden block">{truncateAddress(chain.token_address)}</h3>
+              <h3 className="text-primary-300 text-sm font-medium hidden lg:block">{chain.token_address}</h3>
+              <h3 className="text-primary-300 text-sm font-medium lg:hidden block">{truncateAddress(chain.token_address)}</h3>
             </div>
             <SMClickAnimation onClick={() => copy(chain.token_address)}>
               <CopySecondaryIcon />
