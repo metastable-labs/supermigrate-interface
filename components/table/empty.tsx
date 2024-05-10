@@ -13,11 +13,11 @@ const EmptyState = ({ isConnected, network, variant = 'primary', action }: Empty
   const [path, setPath] = useState('');
 
   const buttonText = isConnected ? (variant === 'primary' ? 'new migration' : 'new liquidity') : 'connect gitHub';
-  const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=Iv1.c178abebc418bb02&redirect_uri=http://${path}`;
+  const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=Iv1.c178abebc418bb02&redirect_uri=https://${path}`;
 
   const handleButton = () => {
     if (isConnected && variant === 'primary') {
-      return navigate.push(`/${network}/migrate/new`);
+      return navigate.push(`/migrate/${network}/migrate/new`);
     }
 
     if (isConnected && variant === 'secondary') {
