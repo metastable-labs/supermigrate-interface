@@ -3,12 +3,14 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 import { Migration } from './types';
+import { set } from 'react-hook-form';
 
 export interface MigrationState {
   migrations: Migration[];
   migration: Migration | undefined;
   loading: boolean;
   loadingMigration: boolean;
+  addToBridgeLoading: boolean;
 }
 
 const initialState: MigrationState = {
@@ -16,6 +18,7 @@ const initialState: MigrationState = {
   migration: undefined,
   loading: false,
   loadingMigration: false,
+  addToBridgeLoading: false,
 };
 
 export const migrationReducer = createSlice({
@@ -41,9 +44,13 @@ export const migrationReducer = createSlice({
         state.migration = undefined;
       }
     },
+
+    setAddToBridgeLoading: (state, action: PayloadAction<boolean>) => {
+      state.addToBridgeLoading = action.payload;
+    },
   },
 });
 
-export const { setLoading, setMigrations, setMigration, setLoadingMigration } = migrationReducer.actions;
+export const { setLoading, setMigrations, setMigration, setLoadingMigration, setAddToBridgeLoading } = migrationReducer.actions;
 
 export default migrationReducer.reducer;

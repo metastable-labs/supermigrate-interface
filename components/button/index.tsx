@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 import { IButton } from './types';
 import { GithubButtonIcon, PlusIcon } from '@/public/icons';
-import { SMLoader } from '..';
+import SMLoader from '../loader';
 
 const SMButton = ({ network, onClick, text, variant = 'git', fullWidth, disabled, type = 'button', loading }: IButton) => {
   let iconColor;
@@ -20,6 +20,7 @@ const SMButton = ({ network, onClick, text, variant = 'git', fullWidth, disabled
       type={type}
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.9 }}
+      disabled={disabled || loading}
       className={classNames('py-[10px] px-[14px] flex items-center justify-center gap-1 rounded-base', {
         'border-[0.5px] border-primary-1400': !disabled,
         'bg-primary-150 pointer-events-none': disabled || loading,
@@ -36,8 +37,8 @@ const SMButton = ({ network, onClick, text, variant = 'git', fullWidth, disabled
         'w-full': fullWidth,
       })}
       onClick={onClick}>
-      {variant === 'git' && <GithubButtonIcon color={iconColor} />}
-      {(variant === 'new' || variant === 'bland-new') && <PlusIcon color={iconColor} />}
+      {!loading && variant === 'git' && <GithubButtonIcon color={iconColor} />}
+      {!loading && (variant === 'new' || variant === 'bland-new') && <PlusIcon color={iconColor} />}
 
       <div
         className={classNames('font-medium tracking-[-0.084px] text-sm text-center transition-all duration-300 capitalize whitespace-nowrap', {

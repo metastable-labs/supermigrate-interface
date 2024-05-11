@@ -4,12 +4,12 @@
       "about": "About",
       "whitepaper": "Blog",
       "faq": "FAQ",
-      "actionText": "Coming Soon"
+      "actionText": "Launch App"
     },
     "hero": {
       "title": "Your gateway to",
       "subtitle": "Automatically deploy canonical bridged ERC20 to an L2. Start bridging and adding liquidity to earn rewards all in one place.",
-      "actionText": "Coming Soon"
+      "actionText": "Start Migrating"
     },
     "section1": {
       "title": "Streamlined and easy migration",

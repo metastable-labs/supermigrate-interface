@@ -8,10 +8,11 @@ import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { FormProp } from '@/views/new-migrate/migration-steps/types';
 import useContract from '@/hooks/useContract';
 import { networks } from '@/config/rainbow/config';
-import { setLoading, setLoadingMigration, setMigration, setMigrations } from '.';
+import { setLoading, setLoadingMigration, setMigration, setMigrations, setAddToBridgeLoading } from '.';
 import api from './api';
 import { CallbackProps } from '../store';
 import { Migration } from './types';
+import { toast } from 'react-toastify';
 
 const useMigrationActions = () => {
   const { dispatch, migrationState } = useSystemFunctions();
@@ -76,12 +77,28 @@ const useMigrationActions = () => {
     }
   };
 
+  const addToBridge = async (id: string) => {
+    try {
+      dispatch(setAddToBridgeLoading(true));
+      const migration = await api.addToBridge(id);
+
+      getMigrations();
+      toast('Successfully added to tokenbridge repo', {
+        type: 'success',
+      });
+      return dispatch(setMigration(migration));
+    } catch (error: any) {
+    } finally {
+      dispatch(setAddToBridgeLoading(false));
+    }
+  };
+
   const _submitData = async () => {
     try {
       if (isPending || !isConfirmed) return;
 
       dispatch(setLoading(false));
-      setLoadingMigration(true);
+      dispatch(setLoadingMigration(true));
       const txData = await getTransactionData();
 
       const formData = new FormData();
@@ -129,10 +146,8 @@ const useMigrationActions = () => {
 
       getMigrationObject('', response);
       getMigrations();
-    } catch (error: any) {
-      setLoadingMigration(false);
     } finally {
-      setLoadingMigration(false);
+      dispatch(setLoadingMigration(false));
     }
   };
 
@@ -146,6 +161,7 @@ const useMigrationActions = () => {
     getMigration,
     getMigrationObject,
     migrateToken,
+    addToBridge,
   };
 };
 

@@ -47,7 +47,7 @@ const HeroSection = () => {
             </div>
             <Link
               href="/dashboard"
-              className="font-Bitform flex items-center justify-center px-[18px] py-3 rounded-base shadow-table-cta border-[0.3px] border-primary-3450 text-sm md:text-base min-w-[126px] md:min-w-[187px] transition-all duration-300 bg-white hover:bg-primary-3950 hover:rounded-lg pointer-events-none">
+              className="font-Bitform flex items-center justify-center px-[18px] py-3 rounded-base shadow-table-cta border-[0.3px] border-primary-3450 text-sm md:text-base min-w-[126px] md:min-w-[187px] transition-all duration-300 bg-white hover:bg-primary-3950 hover:rounded-lg">
               {actionText}
             </Link>
           </div>

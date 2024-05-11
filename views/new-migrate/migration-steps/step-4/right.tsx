@@ -12,7 +12,7 @@ const verifySteps: VerifyStepProps[] = [
   },
 ];
 
-const twitterUrl = 'https://twitter.com/intent/tweet?text=I%20just%20performed%20a%20migration%20using%20%40BaseMigrate';
+const twitterUrl = `https://twitter.com/intent/tweet?text=@supermigrate`;
 
 const VerifyStep = ({ text, variant = 'x' }: VerifyStepProps) => {
   return (

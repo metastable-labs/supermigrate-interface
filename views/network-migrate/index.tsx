@@ -1,6 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useCookies } from 'react-cookie';
 import { useSearchParams } from 'next/navigation';
 
 import { SMContainer, SMTable, SMButton } from '@/components';
@@ -20,6 +21,7 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
   const { authenticateGithub } = useUserActions();
   const { getMigrationObject } = useMigrationActions();
   const searchParams = useSearchParams();
+  const [cookies] = useCookies(['SMauthtoken']);
 
   const { loading, user } = userState;
   const { migrations, loading: migration_loading } = migrationState;
@@ -80,7 +82,7 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
                 <p className="text-[14px] text-primary-350 md:text-base max-w-[399px] text-wrap">Manage all your Migrations and create new ones</p>
               </div>
 
-              <SMButton onClick={action} text="new migration" variant="new" network={network} />
+              {cookies.SMauthtoken && <SMButton onClick={action} text="new migration" variant="new" network={network} />}
             </div>
 
             <SMTable isConnected={user ? true : false} data={tableData} network={network} ctaAction={handleTableAction} />
