@@ -8,7 +8,7 @@ import { wagmiConfig } from '@/config/rainbow/rainbowkit';
 import { getAccount } from '@wagmi/core';
 import { Address } from 'viem';
 import { useWriteContract } from 'wagmi';
-import AERODROME_ROUTER_ABI from '../abis/AerodromeRouter.json';
+import AERODROME_ROUTER_ABI from '../config/rainbow/abis/AerodromeRouter.json';
 
 export function calculateSlippageAmount(value: number) {
   return [(value * 95) / 100, (value * 5) / 100];
@@ -17,6 +17,11 @@ export function calculateSlippageAmount(value: number) {
 export function getAerodromeRouterAddress(chainId: number | undefined): Address {
   if (chainId === 8453) return '0xcF77a3Ba9A5CA399B7c97c74d54e5b1Beb874E43'; // Base
   if (chainId === 84532) return '0x70bD534579cbaBbE9Cd4AD4210e29CC9BA1E9287'; // Base Sepolia
+  return '0x';
+}
+export function getAerodromeFactoryAddress(chainId: number | undefined): Address {
+  if (chainId === 8453) return '0x420DD381b31aEf6683db6B902084cB0FFECe40Da'; // Base
+
   return '0x';
 }
 
