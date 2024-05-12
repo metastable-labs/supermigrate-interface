@@ -14,13 +14,17 @@
 import { useChainId } from 'wagmi';
 import { CurrencyAmount, Token } from '@uniswap/sdk-core';
 import { Pair } from '@uniswap/v2-sdk';
-import { addLiquidity, addLiquidityEth, getPair, getUniswapRouterAddress } from '@/utils/uniswap';
+import { getPair, getUniswapRouterAddress } from '@/utils/uniswap';
 import { Address, erc20Abi, parseEther, parseUnits } from 'viem';
 import { readContract, writeContract } from '@wagmi/core';
 import { wagmiConfig } from '@/config/rainbow/rainbowkit';
+import { networks } from '@/config/rainbow/config';
+import { addLiquidity, addLiquidityEth } from '@/utils/aerodrome';
 
 const useLiquidity = () => {
   const chainId: any = useChainId();
+
+  const currentNetwork = networks.find((network) => network.chainId === chainId);
 
   const addLiquidityForToken = async (tokenA: Address, amountADesired: number, amountBDesired: number, tokenB?: Address) => {
     try {
@@ -45,7 +49,7 @@ const useLiquidity = () => {
         abi: erc20Abi,
         address: tokenAddress,
         functionName: 'approve',
-        args: [getUniswapRouterAddress(chainId), formattedAmount],
+        args: [currentNetwork?.velodromeRouterAddress!, formattedAmount],
       });
       return result;
     } catch (e) {
@@ -58,35 +62,39 @@ const useLiquidity = () => {
       abi: erc20Abi,
       address: tokenAddress,
       functionName: 'allowance',
-      args: [ownerAddress, getUniswapRouterAddress(chainId)],
+      args: [ownerAddress, currentNetwork?.velodromeRouterAddress!],
     });
     return result;
   };
 
   const getPairAddress = async (tokenA: Address, tokenB: Address) => {
-    const pair = await getPair(chainId, tokenA, tokenB);
-    return pair;
+    const result = await readContract(wagmiConfig, {
+      abi: currentNetwork?.velodromeFactoryAbi,
+      address: currentNetwork?.velodromeFactoryAddress!,
+      functionName: 'getpool',
+      args: [tokenA, tokenB, false],
+    });
+    return result;
   };
 
-  const getEquivalentAmount = async (amountA: any, _tokenA: Address, _tokenB: Address, tokenADecimal: number, tokenBDecimal: number) => {
-    const tokenA = new Token(chainId, _tokenA, tokenADecimal);
-    const tokenB = new Token(chainId, _tokenB, tokenBDecimal);
-    const pair = new Pair(CurrencyAmount.fromRawAmount(tokenA, amountA), CurrencyAmount.fromRawAmount(tokenB, 0));
-    console.log('PAIR', pair);
-    const result = pair.getOutputAmount(amountA);
-    console.log('RESULT', result);
-    return {
-      amount: result[0],
-      pairAddress: result[1],
-    };
-  };
+  //   const getEquivalentAmount = async (amountA: any, _tokenA: Address, _tokenB: Address, tokenADecimal: number, tokenBDecimal: number) => {
+  //     const tokenA = new Token(chainId, _tokenA, tokenADecimal);
+  //     const tokenB = new Token(chainId, _tokenB, tokenBDecimal);
+  //     const pair = new Pair(CurrencyAmount.fromRawAmount(tokenA, amountA), CurrencyAmount.fromRawAmount(tokenB, 0));
+  //     console.log('PAIR', pair);
+  //     const result = pair.getOutputAmount(amountA);
+  //     console.log('RESULT', result);
+  //     return {
+  //       amount: result[0],
+  //       pairAddress: result[1],
+  //     };
+  //   };
 
   return {
     addLiquidityForToken,
     approveToken,
     checkTokenAllowance,
     getPairAddress,
-    getEquivalentAmount,
   };
 };
 

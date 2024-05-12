@@ -26,7 +26,7 @@ const ethAddress = '0x0000000000000000000000000000000000000000';
 const Add = ({ defaultId }: IAdd) => {
   const chainId = useChainId();
   const { migrationState } = useSystemFunctions();
-  const { getEquivalentAmount, getPairAddress, approveToken, checkTokenAllowance, addLiquidityForToken } = useLiquidity();
+  const { getPairAddress, approveToken, checkTokenAllowance, addLiquidityForToken } = useLiquidity();
   const { address } = useAccount();
 
   const [step, setStep] = useState(0);
