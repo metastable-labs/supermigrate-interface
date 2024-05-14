@@ -77,17 +77,22 @@ const useMigrationActions = () => {
     }
   };
 
-  const addToBridge = async (id: string) => {
+  const addToBridge = async (id: string, data: FormData, callback?: CallbackProps) => {
     try {
       dispatch(setAddToBridgeLoading(true));
-      const migration = await api.addToBridge(id);
+      const migration = await api.addToBridge(id, data);
 
       getMigrations();
       toast('Successfully added to tokenbridge repo', {
         type: 'success',
       });
-      return dispatch(setMigration(migration));
+      dispatch(setMigration(migration));
+      return callback?.onSuccess?.();
     } catch (error: any) {
+      toast(error?.response?.data?.message, {
+        type: 'error',
+      });
+      callback?.onError?.();
     } finally {
       dispatch(setAddToBridgeLoading(false));
     }
