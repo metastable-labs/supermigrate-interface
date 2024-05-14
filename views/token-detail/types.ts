@@ -1,3 +1,5 @@
+import { Network } from '@/config/rainbow/config';
+
 type FastLinkVariant = 'web' | 'x';
 
 interface IFastLink {
@@ -13,4 +15,11 @@ interface ITransactionHash {
   }[];
 }
 
-export type { IFastLink, FastLinkVariant, ITransactionHash };
+interface AddToBridgeProps {
+  show: boolean;
+  close: () => void;
+  network: Network;
+  id: string;
+}
+
+export type { IFastLink, FastLinkVariant, ITransactionHash, AddToBridgeProps };
