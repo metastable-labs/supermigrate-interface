@@ -13,5 +13,6 @@ import SMLoader from './loader';
 import SMWelcome from './welcome';
 import SMTiles from './tiles';
 import SMAnnouncement from './announcement';
+import SMFileSample from './file-sample';
 
-export { SMContainer, SMClickAnimation, SMNavigation, SMModal, SMTable, SMButton, SMInput, SMFileInput, SMTestimonial, SMFAQ, SMSelect, SMLoader, SMWelcome, SMTiles, SMAnnouncement };
+export { SMContainer, SMClickAnimation, SMNavigation, SMModal, SMTable, SMButton, SMInput, SMFileInput, SMTestimonial, SMFAQ, SMSelect, SMLoader, SMWelcome, SMTiles, SMAnnouncement, SMFileSample };
