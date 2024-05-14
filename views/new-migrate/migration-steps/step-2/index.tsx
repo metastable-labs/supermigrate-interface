@@ -1,8 +1,7 @@
 'use client';
 
 import { StepProps } from '../types';
-import { SMButton, SMFileInput, SMInput } from '@/components';
-import FileSample from './file-sample';
+import { SMButton, SMFileInput, SMFileSample, SMInput } from '@/components';
 
 const Step2 = ({ errors, network, register, setFile, file }: StepProps) => {
   const twitterLinkError = errors?.twitterLink;
@@ -21,7 +20,7 @@ const Step2 = ({ errors, network, register, setFile, file }: StepProps) => {
       <div className="w-full flex flex-col gap-1">
         <SMFileInput name="image" handleFileChange={handleFile} label="Token Image" isRequired />
 
-        <FileSample file={file} deleteFile={deleteFile} />
+        <SMFileSample file={file} deleteFile={deleteFile} />
       </div>
 
       <SMInput name="websiteLink" register={register?.('websiteLink')} placeholder="Logo URL" error={errors?.websiteLink} type="text" label="Website Link" />
