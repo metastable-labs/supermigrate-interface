@@ -43,7 +43,7 @@ const HeroSection = () => {
                 {title}
                 <HeroText />
               </div>
-              <p className="text-white text-[20px] leading-[31px] max-w-[520px] text-center">{subtitle}</p>
+              <p className="text-white text-lg leading-[31px] max-w-[520px] text-center">{subtitle}</p>
             </div>
             <Link
               href="/dashboard"
