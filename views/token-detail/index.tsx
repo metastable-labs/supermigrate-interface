@@ -21,7 +21,7 @@ const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
   const { migrationState, userState, navigate } = useSystemFunctions();
   const { getMigration } = useMigrationActions();
   const [showModal, setShowModal] = useState(false);
-  const [showAddToBridge, setShowAddToBridge] = useState(true);
+  const [showAddToBridge, setShowAddToBridge] = useState(false);
   const [buttonText, setButtonText] = useState('Start Bridging');
   const { migration, loading, addToBridgeLoading } = migrationState;
 
