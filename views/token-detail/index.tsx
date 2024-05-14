@@ -15,11 +15,13 @@ import PullRequests from './pull-request';
 import TransactionHash from './hash';
 import { getScanLink } from '@/utils/helpers';
 import Add from '../liquidity/add';
+import AddToBridge from './add-to-bridge';
 
 const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
   const { migrationState, userState, navigate } = useSystemFunctions();
-  const { getMigration, addToBridge } = useMigrationActions();
+  const { getMigration } = useMigrationActions();
   const [showModal, setShowModal] = useState(false);
+  const [showAddToBridge, setShowAddToBridge] = useState(true);
   const [buttonText, setButtonText] = useState('Start Bridging');
   const { migration, loading, addToBridgeLoading } = migrationState;
 
@@ -41,7 +43,7 @@ const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
 
   const handleStartBridging = () => {
     if (!Boolean(migration?.pull_requests?.length)) {
-      return addToBridge(id);
+      return setShowAddToBridge(true);
     }
 
     return navigate.push(`/${network}/bridge`);
@@ -121,6 +123,8 @@ const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
       <SMModal show={showModal} close={toggleShowModal} variant="secondary">
         <Add defaultId={id} />
       </SMModal>
+
+      <AddToBridge show={showAddToBridge} close={() => setShowAddToBridge(false)} network={network} id={id} />
     </>
   );
 };
