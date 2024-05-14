@@ -14,7 +14,6 @@ export const metadata: Metadata = {
   description: 'Your gateway to L2s',
   keywords: ['base', 'migrate', 'Migration', 'Layer 2', 'Layer 1', 'Ethereum', 'base migrate', 'erc20 token to base network', 'migrate erc20 tokens', 'onchain', 'superchain', 'supermigrate'],
   applicationName: 'Supermigrate',
-  authors: [{ name: 'Justice Eziefule', url: 'https://github.com/meisterjustice' }],
   openGraph: {
     title: 'Supermigrate',
     description: 'Your gateway to L2s',
