@@ -58,10 +58,10 @@ const LandingHeader = () => {
         initial={{ opacity: 1, y: 0 }}
         animate={{ opacity: 1, y: !isTop ? 5 : 0 }}
         transition={{
-          duration: 0.8,
+          duration: 1.2,
           ease: [0.6, 0.01, -0.05, 0.9],
           type: 'spring',
-          bounce: 0.3,
+          bounce: 0.2,
         }}
         className={classNames('px-[18px] py-4 md:px-[14px] md:py-[10px] relative shadow-hero-header-alt', {
           'w-full': isMobile || isTablet,
@@ -72,10 +72,10 @@ const LandingHeader = () => {
           initial={{ width: '87vw' }}
           animate={{ width }}
           transition={{
-            duration: 0.8,
+            duration: 1.2,
             ease: [0.6, 0.01, -0.05, 0.9],
             type: 'spring',
-            bounce: 0.3,
+            bounce: 0.2,
           }}
           className="flex items-center justify-between w-full">
           {isTop && isDesktop && (
