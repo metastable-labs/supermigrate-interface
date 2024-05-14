@@ -5,7 +5,7 @@ type IMigration = {
   fetchMigrations: () => Promise<Migration[]>;
   fetchMigration: (id: string) => Promise<Migration>;
   migrateToken: (data: FormData) => Promise<Migration>;
-  addToBridge: (id: string) => Promise<Migration>;
+  addToBridge: (id: string, data: FormData) => Promise<Migration>;
 };
 
 const migration: IMigration = {
@@ -27,8 +27,8 @@ const migration: IMigration = {
     return response.data?.data;
   },
 
-  addToBridge: async (id: string): Promise<Migration> => {
-    const response = await axiosInstance.post(`migrations/${id}/superbridge`);
+  addToBridge: async (id: string, data: FormData): Promise<Migration> => {
+    const response = await axiosInstance.post(`migrations/${id}/superbridge`, data);
 
     return response.data?.data;
   },
