@@ -17,7 +17,7 @@ const EmptyState = ({ isConnected, network, variant = 'primary', action }: Empty
 
   const handleButton = () => {
     if (isConnected && variant === 'primary') {
-      return navigate.push(`/migrate/${network}/migrate/new`);
+      return navigate.push(`/${network}/migrate/new`);
     }
 
     if (isConnected && variant === 'secondary') {
