@@ -112,6 +112,7 @@ type Lang = {
       alert: string;
     };
   };
+  comingSoon: string;
 };
 
 export type { Lang };
