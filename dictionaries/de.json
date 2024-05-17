@@ -118,5 +118,46 @@
     "bridge": "Brücke",
     "liquidity": "Liquidität",
     "connect": "Verbinden"
+  },
+  "migrate": {
+    "title": "Migrationen",
+    "subtitle": "Verwalten Sie alle Ihre Migrationen und erstellen Sie neue",
+    "buttonText": "Neue Migration",
+    "connect": {
+      "title": "Bitte verbinden Sie Github, um fortzufahren",
+      "subtitle": "Das verbundene Github-Konto wird zum Forken und Erstellen eines PR für das Superchain-Token-List-Repo verwendet",
+      "buttonText": "Github verbinden"
+    }
+  },
+  "components": {
+    "table": {
+      "headers": {
+        "first": { "label": "Tokenname" },
+        "second": {
+          "label": "Migrationsstatus",
+          "mobileLabel": "Status",
+          "secondaryLabel": "Token-Adresse"
+        },
+        "third": { "label": "Vertrag am", "secondaryLabel": "Schwimmbad" },
+        "fourth": { "label": "Aktion" }
+      },
+      "empty": {
+        "title": {
+          "primary": "Noch keine Migrationen",
+          "secondary": "Noch keine Liquidität",
+          "default": "Bitte verbinden Sie GitHub"
+        },
+        "subtitle": {
+          "primary": "Sie haben noch keine Migrationen durchgeführt. Neue Migrationen werden hier angezeigt",
+          "secondary": "Sie haben noch keine Liquidität hinzugefügt, neue Liquiditäten werden hier angezeigt",
+          "default": "Verbinden Sie Ihren GitHub, um Ihren zu sehen"
+        },
+        "buttonText": {
+          "primary": "neue Migration",
+          "secondary": "neue Liquidität",
+          "default": "Github verbinden"
+        }
+      }
+    }
   }
 }
