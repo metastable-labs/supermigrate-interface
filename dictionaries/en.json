@@ -118,5 +118,46 @@
     "bridge": "Bridge",
     "liquidity": "Liquidity",
     "connect": "Connect"
+  },
+  "migrate": {
+    "title": "Migrations",
+    "subtitle": "Manage all your Migrations and create new ones",
+    "buttonText": "New Migration",
+    "connect": {
+      "title": "Please connect Github to continue",
+      "subtitle": "The Github account connected will be used to fork and create a PR on the Superchain token list repo",
+      "buttonText": "connect github"
+    }
+  },
+  "components": {
+    "table": {
+      "headers": {
+        "first": { "label": "Token Name" },
+        "second": {
+          "label": "Migration Status",
+          "mobileLabel": "Status",
+          "secondaryLabel": "Token Address"
+        },
+        "third": { "label": "Contract on", "secondaryLabel": "Pool" },
+        "fourth": { "label": "Action" }
+      },
+      "empty": {
+        "title": {
+          "primary": "No Migrations yet",
+          "secondary": "No Liquidities yet",
+          "default": "Please connect GitHub"
+        },
+        "subtitle": {
+          "primary": "You haven’t done any migrations, new migrations will show here",
+          "secondary": "You haven’t added any liquidity yet, new liquidities will show here",
+          "default": "Connect your GitHub to see your"
+        },
+        "buttonText": {
+          "primary": "new Migration",
+          "secondary": "new Liquidity",
+          "default": "connect GitHub"
+        }
+      }
+    }
   }
 }
