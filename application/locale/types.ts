@@ -129,6 +129,56 @@ type Lang = {
       buttonText: string;
     };
   };
+  components: {
+    table: {
+      headers: {
+        first: { label: string };
+        second: {
+          label: string;
+          mobileLabel: string;
+          secondaryLabel: string;
+        };
+        third: { label: string; secondaryLabel: string };
+        fourth: { label: string };
+      };
+      empty: {
+        title: {
+          primary: string;
+          secondary: string;
+          default: string;
+        };
+        subtitle: {
+          primary: string;
+          secondary: string;
+          default: string;
+        };
+        buttonText: {
+          primary: string;
+          secondary: string;
+          default: string;
+        };
+      };
+      body: {
+        status: {
+          success: string;
+          pending: string;
+          failed: string;
+        };
+        contract: {
+          text: string;
+        };
+        action: {
+          primary: string;
+          secondary: string;
+        };
+      };
+      footer: {
+        previous: string;
+        next: string;
+        page: string;
+      };
+    };
+  };
 };
 
 export type { Lang };
