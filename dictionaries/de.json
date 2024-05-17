@@ -112,5 +112,11 @@
       "alert": "Zeige es nicht noch einmal"
     }
   },
-  "comingSoon": "Demnächst"
+  "comingSoon": "Demnächst",
+  "navigation": {
+    "migrate": "Wandern",
+    "bridge": "Brücke",
+    "liquidity": "Liquidität",
+    "connect": "Verbinden"
+  }
 }
