@@ -9,10 +9,11 @@ import { EmptyStateProps } from './types';
 
 const EmptyState = ({ isConnected, network, variant = 'primary', action }: EmptyStateProps) => {
   const { isMobile } = useScreenDetect();
-  const { navigate, pathname } = useSystemFunctions();
+  const { navigate, pathname, locale } = useSystemFunctions();
   const [path, setPath] = useState('');
 
-  const buttonText = isConnected ? (variant === 'primary' ? 'new migration' : 'new liquidity') : 'connect gitHub';
+  const { buttonText: button, subtitle, title } = locale.components.table.empty;
+  const buttonText = isConnected ? (variant === 'primary' ? button.primary : button.secondary) : button.default;
   const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=Iv1.c178abebc418bb02&redirect_uri=https://${path}`;
 
   const handleButton = () => {
@@ -52,14 +53,14 @@ const EmptyState = ({ isConnected, network, variant = 'primary', action }: Empty
         </div>
 
         <h1 className="text-primary-1750 text-[20px] leading-[30px] text-center font-medium">
-          {isConnected && variant === 'primary' && 'No migrations yet'}
-          {isConnected && variant === 'secondary' && 'No Liquidities yet'}
-          {!isConnected && 'Connect GitHub'}
+          {isConnected && variant === 'primary' && title.primary}
+          {isConnected && variant === 'secondary' && title.secondary}
+          {!isConnected && title.default}
         </h1>
         <span className="text-primary-1500 text-[14px] leading-[24px] text-center">
-          {isConnected && variant === 'primary' && 'You haven’t done any migrations, new migrations will show here'}
-          {isConnected && variant === 'secondary' && 'You haven’t added any liquidity yet, new liquidities will show here'}
-          {!isConnected && 'Connect your GitHub to see your migrations'}
+          {isConnected && variant === 'primary' && subtitle.primary}
+          {isConnected && variant === 'secondary' && subtitle.secondary}
+          {!isConnected && `${subtitle.default} ${variant === 'primary' ? 'migrations' : 'liquidities'}`}
         </span>
       </div>
 
