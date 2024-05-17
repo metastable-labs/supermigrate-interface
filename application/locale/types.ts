@@ -113,6 +113,12 @@ type Lang = {
     };
   };
   comingSoon: string;
+  navigation: {
+    migrate: string;
+    bridge: string;
+    liquidity: string;
+    connect: string;
+  };
 };
 
 export type { Lang };
