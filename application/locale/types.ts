@@ -98,6 +98,9 @@ type Lang = {
     };
   };
   dashboard: {
+    title: string;
+    subtitle: string;
+    announcement: string;
     welcome: {
       header: string;
       subheader: string;
