@@ -98,6 +98,9 @@
     }
   },
   "dashboard": {
+    "title": "Wählen Sie ein Netzwerk aus",
+    "subtitle": "Wählen Sie ein Netzwerk aus, um eine neue Migration zu starten",
+    "announcement": "Wir fügen weitere L2/L3-Integrationen hinzu. Wenn Sie möchten, dass wir Ihr Netzwerk unterstützen, wenden Sie sich an",
     "welcome": {
       "header": "Willkommen bei Supermigrate",
       "subheader": "Beachten Sie bitte:",
@@ -108,5 +111,6 @@
       "buttonText": "Zustimmen und fortfahren",
       "alert": "Zeige es nicht noch einmal"
     }
-  }
+  },
+  "comingSoon": "Demnächst"
 }
