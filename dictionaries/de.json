@@ -157,6 +157,25 @@
           "secondary": "neue Liquidität",
           "default": "Github verbinden"
         }
+      },
+      "body": {
+        "status": {
+          "success": "Erfolg",
+          "pending": "Ausstehend",
+          "failed": "Fehlgeschlagen"
+        },
+        "contract": {
+          "text": "Weiter ansehen"
+        },
+        "action": {
+          "primary": "Sicht",
+          "secondary": "Liquidität hinzufügen"
+        }
+      },
+      "footer": {
+        "previous": "Vorherige",
+        "next": "Nächste",
+        "page": "Seite"
       }
     }
   }
