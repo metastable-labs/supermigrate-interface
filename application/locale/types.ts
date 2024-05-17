@@ -119,6 +119,16 @@ type Lang = {
     liquidity: string;
     connect: string;
   };
+  migrate: {
+    title: string;
+    subtitle: string;
+    buttonText: string;
+    connect: {
+      title: string;
+      subtitle: string;
+      buttonText: string;
+    };
+  };
 };
 
 export type { Lang };
