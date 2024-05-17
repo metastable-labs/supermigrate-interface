@@ -96,5 +96,17 @@
       "emailPlaceholder": "Geben sie ihre E-Mail Adresse ein",
       "subscribe": "Abonnieren"
     }
+  },
+  "dashboard": {
+    "welcome": {
+      "header": "Willkommen bei Supermigrate",
+      "subheader": "Beachten Sie bitte:",
+      "first": "Sobald Ihr PR zusammengeführt ist, wird die Token-Liste automatisch aktualisiert, um Ihren Token in unsere Bridging-Schnittstelle aufzunehmen.",
+      "second": "Um die Migration abzuschließen, stellen Sie sicher, dass Sie die Migration überprüfen, indem Sie im Pull-Request einen Link zum Bestätigungs-Tweet hinzufügen.",
+      "third": "Für Unterstützung kontaktieren Sie uns bitte über unsere",
+      "linkText": "Telegrammkanal",
+      "buttonText": "Zustimmen und fortfahren",
+      "alert": "Zeige es nicht noch einmal"
+    }
   }
 }
