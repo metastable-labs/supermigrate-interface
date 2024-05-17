@@ -96,5 +96,17 @@
       "emailPlaceholder": "Enter your email",
       "subscribe": "Subscribe"
     }
+  },
+  "dashboard": {
+    "welcome": {
+      "header": "Welcome to Supermigrate",
+      "subheader": "Please take note:",
+      "first": "Once your PR is merged, the token list will update automatically to include your token on our bridging interface.",
+      "second": "To complete the migration, make sure you verify the migration by adding a link to the verification tweet on the pull request.",
+      "third": "For support please reach out to us via our",
+      "linkText": "telegram channel",
+      "buttonText": "Agree and Continue",
+      "alert": "Don't show it again"
+    }
   }
 }
