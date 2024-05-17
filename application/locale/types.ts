@@ -97,6 +97,18 @@ type Lang = {
       subscribe: string;
     };
   };
+  dashboard: {
+    welcome: {
+      header: string;
+      subheader: string;
+      first: string;
+      second: string;
+      third: string;
+      linkText: string;
+      buttonText: string;
+      alert: string;
+    };
+  };
 };
 
 export type { Lang };
