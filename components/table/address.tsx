@@ -2,8 +2,9 @@ import useTruncateText from '@/hooks/useTruncateText';
 import useCopy from '@/hooks/useCopy';
 import SMClickAnimation from '../click-animation';
 import { SecondaryCopyIcon } from '@/public/icons';
+import { AddressProps } from './types';
 
-const Address = ({ address }: { address?: string }) => {
+const Address = ({ address }: AddressProps) => {
   const truncateWallet = useTruncateText(address!, 5, 5);
   const copy = useCopy();
 
