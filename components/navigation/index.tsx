@@ -25,43 +25,44 @@ export const isHomePage = (path: string): boolean => {
   return homePageRegex.test(path);
 };
 
-const links: INavLinks = [
-  {
-    title: 'Migrate',
-    icon: <MigrateLinkIcon />,
-    href: '/migrate',
-    isActive: false,
-  },
-  {
-    title: 'Bridge',
-    icon: <BridgeLinkIcon />,
-    href: '/bridge',
-    isActive: false,
-  },
-  {
-    title: 'Liquidity',
-    icon: <LiquidityLinkIcon />,
-    href: '/liquidity',
-    isActive: false,
-    comingSoon: true,
-  },
-];
-
 const SMNavigation = () => {
   const { isConnected, isDisconnected, address } = useAccount();
   const [cookies] = useCookies(['SMauthtoken']);
   const chainId = useChainId();
   const { switchChain } = useSwitchChain();
   const { openConnectModal } = useConnectModal();
-  const { userState } = useSystemFunctions();
+  const { userState, locale } = useSystemFunctions();
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [modalType, setModalType] = useState<ModalType>();
 
   const isHome = isHomePage(pathname);
   const { user } = userState;
+  const { bridge, connect, liquidity, migrate } = locale.navigation;
   const connectedNetwork = networks.find((chain) => chain.chainId === chainId);
   const network = connectedNetwork?.variant || 'base';
+
+  const links: INavLinks = [
+    {
+      title: migrate,
+      icon: <MigrateLinkIcon />,
+      href: '/migrate',
+      isActive: false,
+    },
+    {
+      title: bridge,
+      icon: <BridgeLinkIcon />,
+      href: '/bridge',
+      isActive: false,
+    },
+    {
+      title: liquidity,
+      icon: <LiquidityLinkIcon />,
+      href: '/liquidity',
+      isActive: false,
+      comingSoon: true,
+    },
+  ];
 
   const updatedLinks = links?.map((link) => {
     const updatedHref = `/${network}${link.href}`;
@@ -104,7 +105,7 @@ const SMNavigation = () => {
       variant: 'network',
     },
     {
-      text: address || 'Connect',
+      text: address || connect,
       variant: 'wallet',
     },
   ];
