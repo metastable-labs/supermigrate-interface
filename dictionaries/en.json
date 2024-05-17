@@ -112,5 +112,11 @@
       "alert": "Don't show it again"
     }
   },
-  "comingSoon": "Coming Soon"
+  "comingSoon": "Coming Soon",
+  "navigation": {
+    "migrate": "Migrate",
+    "bridge": "Bridge",
+    "liquidity": "Liquidity",
+    "connect": "Connect"
+  }
 }
