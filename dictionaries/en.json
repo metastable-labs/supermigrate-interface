@@ -157,6 +157,25 @@
           "secondary": "new Liquidity",
           "default": "connect GitHub"
         }
+      },
+      "body": {
+        "status": {
+          "success": "Success",
+          "pending": "Pending",
+          "failed": "Failed"
+        },
+        "contract": {
+          "text": "View on"
+        },
+        "action": {
+          "primary": "View",
+          "secondary": "Add Liquidity"
+        }
+      },
+      "footer": {
+        "previous": "Previous",
+        "next": "Next",
+        "page": "Page"
       }
     }
   }
