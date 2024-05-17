@@ -5,12 +5,7 @@ import { useCookies } from 'react-cookie';
 
 import { TextSampleIcon } from '@/public/icons';
 import SMClickAnimation from '../click-animation';
-
-const texts = [
-  { text: 'Once your PR is merged, the token list will update automatically to include your token on our bridging interface.' },
-  { text: 'To complete the migration, make sure you verify the migration by adding a link to the verification tweet on the pull request.' },
-  { text: 'For support please reach out to us via our', link: 'https://t.me/+8vDPDkrN_-gwZTA8', linkText: 'telegram channel' },
-];
+import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const CheckIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -21,6 +16,14 @@ const CheckIcon = () => (
 const SMWelcome = ({ show, close }: ISMWelcome) => {
   const [cookies, setCookie] = useCookies(['SMHasShownWelcomeModal']);
   const [dontShow, setDontShow] = useState(false);
+  const { locale } = useSystemFunctions();
+
+  const { welcome } = locale.dashboard;
+
+  const { header, subheader, first, second, third, linkText, buttonText, alert } = welcome;
+
+  const texts = [{ text: first }, { text: second }, { text: third, link: 'https://t.me/+8vDPDkrN_-gwZTA8', linkText: linkText }];
+
   const toggleDontShow = () => setDontShow((prev) => !prev);
 
   const handleClose = () => {
@@ -36,6 +39,7 @@ const SMWelcome = ({ show, close }: ISMWelcome) => {
 
     return close();
   };
+
   return (
     <AnimatePresence>
       {show && (
@@ -47,8 +51,8 @@ const SMWelcome = ({ show, close }: ISMWelcome) => {
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} className="flex flex-col justify-center items-center bg-white p-5 rounded-base max-w-[440px]">
             <div className="pb-5 self-stretch flex flex-col items-center gap-6">
               <div className="self-stretch flex flex-col justify-center items-start gap-1">
-                <h1 className="text-primary-1750 text-[20px] leading-[30px]">Welcome to Supermigrate</h1>
-                <h5 className="text-primary-350 text-[14px] leading-[24px]">Please take note:</h5>
+                <h1 className="text-primary-1750 text-[20px] leading-[30px]">{header}</h1>
+                <h5 className="text-primary-350 text-[14px] leading-[24px]">{subheader}</h5>
               </div>
 
               <div className="self-stretch flex flex-col items-center justify-center gap-6">
@@ -75,7 +79,7 @@ const SMWelcome = ({ show, close }: ISMWelcome) => {
               <SMClickAnimation
                 onClick={handleClose}
                 className="self-stretch bg-primary-3250 shadow-welcome-button rounded-base px-3.5 py-2.5 flex items-center justify-center text-primary-3900 text-sm tracking-[-0.084px]">
-                Agree and Continue
+                {buttonText}
               </SMClickAnimation>
 
               <div className="flex items-center justify-center gap-2">
@@ -84,7 +88,7 @@ const SMWelcome = ({ show, close }: ISMWelcome) => {
                     {dontShow && <CheckIcon />}
                   </div>
                 </div>
-                <span className="text-primary-50 tracking-[-0.084px] text-sm">{"Don't show it again"}</span>
+                <span className="text-primary-50 tracking-[-0.084px] text-sm">{alert}</span>
               </div>
             </div>
           </motion.div>
