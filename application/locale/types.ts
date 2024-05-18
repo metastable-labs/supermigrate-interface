@@ -186,6 +186,7 @@ type Lang = {
       subtitle: string;
       buttonText: string;
       completed: string;
+      required: string;
     };
   };
 };

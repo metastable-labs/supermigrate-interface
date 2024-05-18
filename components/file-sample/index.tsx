@@ -1,7 +1,8 @@
 'use client';
-
-import { DeleteIcon, CheckSmallIcon, PDFIcon } from '@/public/icons';
 import { AnimatePresence, motion } from 'framer-motion';
+
+import useSystemFunctions from '@/hooks/useSystemFunctions';
+import { DeleteIcon, CheckSmallIcon, PDFIcon } from '@/public/icons';
 
 const formatFileSize = (bytes: number, decimals = 2) => {
   if (bytes === 0) return '0 Bytes';
@@ -13,6 +14,8 @@ const formatFileSize = (bytes: number, decimals = 2) => {
 };
 
 const SMFileSample = ({ file, deleteFile }: ISMFileSmaple) => {
+  const { locale } = useSystemFunctions();
+  const { completed } = locale.components.fileInput;
   const fileSize = file ? formatFileSize(file.size) : '';
 
   return (
@@ -37,7 +40,7 @@ const SMFileSample = ({ file, deleteFile }: ISMFileSmaple) => {
 
                 <CheckSmallIcon />
 
-                <span className="text-primary-50">Completed</span>
+                <span className="text-primary-50">{completed}</span>
               </div>
             </div>
           </div>

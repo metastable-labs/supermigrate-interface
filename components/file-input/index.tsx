@@ -6,10 +6,14 @@ import { motion } from 'framer-motion';
 
 import { ISMFileInput } from './types';
 import { UploadIcon } from '@/public/icons';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
+import SMClickAnimation from '../click-animation';
 
 const SMFileInput = ({ name, handleFileChange, disabled, isRequired, label, network = 'base' }: ISMFileInput) => {
   const documentInputRef = useRef<HTMLInputElement>(null);
   const [isDragOver, setIsDragOver] = useState(false);
+  const { locale } = useSystemFunctions();
+  const { buttonText, title, subtitle, required } = locale.components.fileInput;
 
   const handleButtonClick = () => {
     if (documentInputRef.current) {
@@ -42,7 +46,7 @@ const SMFileInput = ({ name, handleFileChange, disabled, isRequired, label, netw
           'flex items-center justify-center gap-2 text-primary-50 font-medium': isRequired,
         })}>
         {label}
-        <span className="text-primary-1950 font-normal">{'(Required)'}</span>
+        <span className="text-primary-1950 font-normal">{`(${required})`}</span>
       </label>
 
       <div
@@ -61,13 +65,13 @@ const SMFileInput = ({ name, handleFileChange, disabled, isRequired, label, netw
         </motion.div>
 
         <p className="flex flex-col self-stretch gap-1 text-center">
-          <span className="text-primary-50 text-sm tracking-[-0.084px] font-medium">Choose a file or drag & drop it here.</span>
-          <span className="text-primary-2050 text-xs font-normal">SVG formats, up to 5 MB.</span>
+          <p className="text-primary-50 text-sm tracking-[-0.084px] font-medium max-w-[332px] text-center">{title}</p>
+          <span className="text-primary-2050 text-xs font-normal">{subtitle}</span>
         </p>
 
-        <button onClick={handleButtonClick} className="px-4 py-[6px] flex items-center justify-center shadow-fade-dark rounded-lg bg-white border border-primary-250">
-          <span className="text-sm tracking-[-0.084px] text-primary-200 font-medium text-center px-1">Browse</span>
-        </button>
+        <SMClickAnimation onClick={handleButtonClick} className="px-4 py-[6px] flex items-center justify-center shadow-fade-dark rounded-lg bg-white border border-primary-250">
+          <span className="text-sm tracking-[-0.084px] text-primary-200 font-medium text-center px-1">{buttonText}</span>
+        </SMClickAnimation>
       </div>
 
       <input ref={documentInputRef} id="file-input" type="file" accept=".svg" className="hidden" onChange={handleFileChange} />
