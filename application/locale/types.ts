@@ -178,6 +178,15 @@ type Lang = {
         page: string;
       };
     };
+    input: {
+      required: string;
+    };
+    fileInput: {
+      title: string;
+      subtitle: string;
+      buttonText: string;
+      completed: string;
+    };
   };
 };
 
