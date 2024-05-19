@@ -5,40 +5,41 @@ import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { StepProps } from '../types';
 import LoadStep from './load-step';
 
-const initialSteps = [
-  {
-    title: 'Token Contract Deployed',
-    loading: true,
-    passed: false,
-    date: new Date(),
-    step: 1,
-  },
-  {
-    title: 'Contract Verified',
-    loading: false,
-    passed: false,
-    date: new Date(),
-    step: 2,
-  },
-  {
-    title: 'Forking Superchain Token List to Github repo',
-    loading: false,
-    passed: false,
-    date: new Date(),
-    step: 3,
-  },
-  {
-    title: 'Adding Data to forked superchain repo',
-    loading: false,
-    passed: false,
-    date: new Date(),
-    step: 4,
-  },
-];
-
 const Step3 = ({ network, setStep }: StepProps) => {
-  const { migrationState } = useSystemFunctions();
+  const { migrationState, locale } = useSystemFunctions();
   const { loading, loadingMigration, migration } = migrationState;
+  const { announcement, step1, step2, step3, step4 } = locale.newMigration.step3;
+
+  const initialSteps = [
+    {
+      title: step1,
+      loading: true,
+      passed: false,
+      date: new Date(),
+      step: 1,
+    },
+    {
+      title: step2,
+      loading: false,
+      passed: false,
+      date: new Date(),
+      step: 2,
+    },
+    {
+      title: step3,
+      loading: false,
+      passed: false,
+      date: new Date(),
+      step: 3,
+    },
+    {
+      title: step4,
+      loading: false,
+      passed: false,
+      date: new Date(),
+      step: 4,
+    },
+  ];
 
   const [steps, setSteps] = useState(initialSteps);
 
@@ -108,7 +109,7 @@ const Step3 = ({ network, setStep }: StepProps) => {
       </div>
 
       <div className="min-w-full px-6 py-3 rounded-xl bg-primary-650 self-stretch text-primary-700 text-[14px] leading-[24px] shadow-md">
-        <p className="max-w-[400px]">If you are connected to your mobile wallet, check it to sign transaction</p>
+        <p className="max-w-[400px]">{announcement}</p>
       </div>
     </div>
   );
