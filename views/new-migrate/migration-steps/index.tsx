@@ -16,6 +16,7 @@ import Step3 from './step-3';
 import Step4 from './step-4';
 import useMigrationActions from '@/application/migration/actions';
 import { SMAnnouncement } from '@/components';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const schema = yup.object().shape({
   tokenAddress: yup.string().required('Token Address is Required'),
@@ -31,12 +32,13 @@ const schema = yup.object().shape({
 });
 
 const MigrationSteps = ({ network }: { network: Network }) => {
-  const chainId = useChainId();
   const { migrateToken } = useMigrationActions();
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(3);
   const [file, setFile] = useState<File | null>(null);
   const [overridden, setOverridden] = useState(false);
   const [fetchingTokenAddress, setFetchingTokenAddress] = useState(false);
+  const { locale } = useSystemFunctions();
+  const { announcement } = locale.newMigration.step4;
 
   const {
     register,
@@ -112,14 +114,14 @@ const MigrationSteps = ({ network }: { network: Network }) => {
       <Header step={step} network={network} setStep={setStep} />
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <AnimatePresence>
+        <AnimatePresence mode="popLayout">
           <motion.div key={step} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             {steps[step]}
           </motion.div>
         </AnimatePresence>
       </form>
 
-      <SMAnnouncement comment="After the automated checks pass and a reviewer approves the PR, then it will automatically be merged." show={step === 3} />
+      <SMAnnouncement comment={announcement} show={step === 3} />
     </div>
   );
 };
