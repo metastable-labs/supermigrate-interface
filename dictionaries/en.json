@@ -297,5 +297,12 @@
       "title": "Transaction hash",
       "viewOn": "View on"
     }
+  },
+  "liquidty": {
+    "comingSoon": {
+      "title": "Coming Soon",
+      "subtitle": "We’re rolling out this feature soon!",
+      "buttonText": "Back Home"
+    }
   }
 }
