@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
-import { useChainId } from 'wagmi';
 
 import { Network } from '@/config/rainbow/config';
 import readTokenData from '@/utils/read-contract';
@@ -33,7 +32,7 @@ const schema = yup.object().shape({
 
 const MigrationSteps = ({ network }: { network: Network }) => {
   const { migrateToken } = useMigrationActions();
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(0);
   const [file, setFile] = useState<File | null>(null);
   const [overridden, setOverridden] = useState(false);
   const [fetchingTokenAddress, setFetchingTokenAddress] = useState(false);
