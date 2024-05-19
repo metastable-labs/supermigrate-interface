@@ -298,6 +298,13 @@ type Lang = {
       viewOn: string;
     };
   };
+  liquidty: {
+    comingSoon: {
+      title: string;
+      subtitle: string;
+      buttonText: string;
+    };
+  };
 };
 
 export type { Lang };
