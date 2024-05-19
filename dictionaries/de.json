@@ -270,5 +270,32 @@
       },
       "announcement": "Nachdem die automatisierten Prüfungen bestanden wurden und ein Prüfer die PR genehmigt, wird sie automatisch zusammengeführt."
     }
+  },
+  "tokenDetail": {
+    "websiteText": "Webseite",
+    "twitterText": "Twitter",
+    "buttonText": {
+      "primary": "Zur Bridge hinzufügen",
+      "secondary": "Beginnen Sie mit der Überbrückung"
+    },
+    "tokenContract": {
+      "title": "Token-Vertrag"
+    },
+    "pullRequest": {
+      "title": "Pull-Request-Status",
+      "subtitle": {
+        "primary": "Superchain-Token-Listen-Repo",
+        "secondary": "Superbridge-Token-Listen-Repo"
+      },
+      "status": {
+        "pending": "Ausstehend",
+        "merged": "Zusammengeführt",
+        "closed": "Geschlossen"
+      }
+    },
+    "transactionHash": {
+      "title": "Transaktions-Hash",
+      "viewOn": "Weiter ansehen"
+    }
   }
 }
