@@ -267,7 +267,8 @@
         "xText": "Erstellen Sie den Tweet unten über das Konto der von Ihnen angegebenen Twitter-URL",
         "gitText": "Gehen Sie zu den Pull-Anfragen und fügen Sie einen Kommentar mit der Aufschrift „Genehmigt“ mit einem Link zum Tweet hinzu",
         "linkText": "Überprüfung der Migration auf @supermigrate"
-      }
+      },
+      "announcement": "Nachdem die automatisierten Prüfungen bestanden wurden und ein Prüfer die PR genehmigt, wird sie automatisch zusammengeführt."
     }
   }
 }
