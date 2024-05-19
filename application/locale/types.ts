@@ -188,6 +188,87 @@ type Lang = {
       completed: string;
       required: string;
     };
+    newMigration: {
+      navigation: {
+        first: string;
+        second: {
+          primary: string;
+          secondary: string;
+        };
+      };
+      header: {
+        first: string;
+        second: string;
+      };
+      step1: {
+        addressInput: {
+          label: string;
+          placeholder: string;
+        };
+        nameInput: {
+          label: string;
+          placeholder: string;
+        };
+        symbolInput: {
+          label: string;
+          placeholder: string;
+        };
+        decimalInput: {
+          label: string;
+          placeholder: string;
+        };
+        descriptionInput: {
+          label: string;
+          placeholder: string;
+        };
+        tokenInfo: {
+          name: string;
+          symbol: string;
+          decimals: string;
+        };
+        buttonText: string;
+        override: string;
+      };
+      step2: {
+        imageInput: {
+          label: string;
+        };
+        websiteInput: {
+          label: string;
+          placeholder: string;
+        };
+        twitterInput: {
+          label: string;
+          placeholder: string;
+        };
+        buttonText: string;
+      };
+      step3: {
+        step1: string;
+        step2: string;
+        step3: string;
+        step4: string;
+        announcement: string;
+      };
+      step4: {
+        left: {
+          title: string;
+          subtitle: string;
+          linkTexts: {
+            primary: string;
+            secondary: string;
+          };
+          viewOn: string;
+        };
+        right: {
+          title: string;
+          subtitle: string;
+          xText: string;
+          gitText: string;
+          linkText: string;
+        };
+      };
+    };
   };
 };
 
