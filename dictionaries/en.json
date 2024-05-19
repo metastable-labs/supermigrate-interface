@@ -177,6 +177,97 @@
         "next": "Next",
         "page": "Page"
       }
+    },
+    "input": {
+      "required": "Required"
+    },
+    "fileInput": {
+      "title": "Choose a file or drag & drop it here.",
+      "subtitle": "SVG formats, up to 5 MB.",
+      "buttonText": "Browse",
+      "completed": "Completed",
+      "required": "Required"
+    }
+  },
+  "newMigration": {
+    "navigation": {
+      "first": "Migrate",
+      "second": {
+        "primary": "New Migration",
+        "secondary": "Token info"
+      }
+    },
+    "header": {
+      "first": "Token info",
+      "second": "Social"
+    },
+    "step1": {
+      "addressInput": {
+        "label": "Token Address on Ethereum (L1)",
+        "placeholder": "Token Address"
+      },
+      "nameInput": {
+        "label": "Token Name",
+        "placeholder": "Token Name"
+      },
+      "symbolInput": {
+        "label": "Token Symbol",
+        "placeholder": "$token"
+      },
+      "decimalInput": {
+        "label": "Token Decimal",
+        "placeholder": "Token Decimal"
+      },
+      "descriptionInput": {
+        "label": "Token Description",
+        "placeholder": "Token Description"
+      },
+      "tokenInfo": {
+        "name": "Token Name",
+        "symbol": "Token Symbol",
+        "decimals": "Token Decimal"
+      },
+      "buttonText": "Next",
+      "override": "Override"
+    },
+    "step2": {
+      "imageInput": {
+        "label": "Token Image"
+      },
+      "websiteInput": {
+        "label": "Website Link",
+        "placeholder": "Logo URL"
+      },
+      "twitterInput": {
+        "label": "Twitter Link",
+        "placeholder": "Twitter URL"
+      },
+      "buttonText": "Next"
+    },
+    "step3": {
+      "step1": "Token Contract Deployed",
+      "step2": "Contract Verified",
+      "step3": "Forking Superchain Token List to Github repo",
+      "step4": "Adding Data to forked superchain repo",
+      "announcement": "If you are connected to your mobile wallet, check it to sign transaction"
+    },
+    "step4": {
+      "left": {
+        "title": "Migration Successful!",
+        "subtitle": "Token Details",
+        "linkTexts": {
+          "primary": "View Pull request on token list repo",
+          "secondary": "View Pull request on Superbridge"
+        },
+        "viewOn": "View on"
+      },
+      "right": {
+        "title": "Verifying Migration",
+        "subtitle": "Please follow these steps to verify migration:",
+        "xText": "Make the tweet below from the account of the twitter URL you provided",
+        "gitText": "Go to the Pull requests and add a comment saying approved with a link to the tweet",
+        "linkText": "Verifying migration on @supermigrate"
+      }
     }
   }
 }
