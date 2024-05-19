@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 import { WebIcon, XIcon } from '@/public/icons';
 import { IFastLink } from './types';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const checkRef = (href?: string) => {
   if (!href) return '';
@@ -15,8 +16,10 @@ const checkRef = (href?: string) => {
 };
 
 const FastLink = ({ variant, href }: IFastLink) => {
-  // check if href does not start with http or https and append https
+  const { locale } = useSystemFunctions();
   const url = checkRef(href);
+
+  const { twitterText, websiteText } = locale.tokenDetail;
 
   if (!href) return null;
 
@@ -26,8 +29,8 @@ const FastLink = ({ variant, href }: IFastLink) => {
       {variant === 'x' && <XIcon color="#525866" width={20} height={20} />}
 
       <span className="hidden md:block text-primary-200 text-sm font-bold">
-        {variant === 'web' && 'Website'}
-        {variant === 'x' && 'Twitter'}
+        {variant === 'web' && websiteText}
+        {variant === 'x' && twitterText}
       </span>
     </motion.a>
   );
