@@ -18,12 +18,13 @@ import Add from '../liquidity/add';
 import AddToBridge from './add-to-bridge';
 
 const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
-  const { migrationState, userState, navigate } = useSystemFunctions();
+  const { migrationState, userState, navigate, locale } = useSystemFunctions();
   const { getMigration } = useMigrationActions();
   const [showModal, setShowModal] = useState(false);
   const [showAddToBridge, setShowAddToBridge] = useState(false);
   const [buttonText, setButtonText] = useState('Start Bridging');
   const { migration, loading, addToBridgeLoading } = migrationState;
+  const { secondary } = locale.newMigration.navigation.second;
 
   const fastlinks = [
     { variant: 'web' as FastLinkVariant, href: migration?.website! },
@@ -83,7 +84,7 @@ const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
         <AnimatePresence>
           <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="md:px-8 pb-10 max-w-[1280px]">
             <div className="pt-5 md:pt-12 md:pb-[86px] flex flex-col gap-8">
-              <NewMigrateHeader network={network} title="Token info" />
+              <NewMigrateHeader network={network} title={secondary} />
 
               <div className="flex flex-col gap-8 md:gap-9">
                 <div className="flex flex-col gap-6 items-stretch md:flex-row md:gap-3 md:items-start">
