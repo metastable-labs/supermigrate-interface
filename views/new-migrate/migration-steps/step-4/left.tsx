@@ -18,9 +18,10 @@ const Link = ({ link, text }: { link: string; text: string }) => {
 
 const Left = () => {
   const copy = useCopy();
-  const { migrationState } = useSystemFunctions();
+  const { migrationState, locale } = useSystemFunctions();
   const chainId = useChainId();
   const { migration } = migrationState;
+  const { linkTexts, subtitle, title, viewOn } = locale.newMigration.step4.left;
 
   const chainsLength = migration?.chains?.length! - 1;
   const address = migration?.chains[chainsLength].token_address;
@@ -32,7 +33,7 @@ const Left = () => {
   const links = migration?.pull_requests
     ?.filter((pullRequest) => pullRequest.chain === currentNetwork?.variant)
     .map((pullRequest) => ({
-      text: pullRequest.owner === 'optimism' || pullRequest.owner === 'iamnotstatic' ? 'View Pull request on token list repo' : 'View Pull request on Superbridge',
+      text: pullRequest.owner === 'optimism' || pullRequest.owner === 'iamnotstatic' ? linkTexts.primary : linkTexts.secondary,
       link: pullRequest.url,
     }));
 
@@ -40,7 +41,7 @@ const Left = () => {
   const hashes = migration?.chains
     ?.filter((chain) => chain.id === chainId)
     .map((chain) => ({
-      urlText: `View on ${chain.name}scan`,
+      urlText: `${viewOn} ${chain.name}scan`,
       url: getScanLink(chain.id, chain.transaction_hash),
     }));
 
@@ -52,7 +53,7 @@ const Left = () => {
         </div>
 
         <div className="flex flex-col gap-5 self-stretch items-start">
-          <h1 className="text-[30px] md:text-[36px] leading-[44px] font-medium tracking-[0.6px] md:tracking-[-0.72px] text-primary-300 whitespace-nowrap">Migration Successful!</h1>
+          <h1 className="text-[30px] md:text-[36px] leading-[44px] font-medium tracking-[0.6px] md:tracking-[-0.72px] text-primary-300 whitespace-nowrap">{title}</h1>
 
           {links?.map((link, index) => (
             <Link key={index} link={link.link!} text={link.text} />
@@ -61,7 +62,7 @@ const Left = () => {
       </div>
 
       <div className="flex flex-col items-start gap-2 self-stretch">
-        <h1 className="text-primary-200 text-[14px] leading-[28px]">Token Details</h1>
+        <h1 className="text-primary-200 text-[14px] leading-[28px]">{subtitle}</h1>
 
         <SMClickAnimation onClick={() => copy(address!)} className="flex items-center justify-center gap-2 text-primary-50 text-[16px] leading-[30px] font-medium">
           {truncateAddress}
