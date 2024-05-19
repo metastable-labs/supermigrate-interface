@@ -25,6 +25,8 @@ const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
   const [buttonText, setButtonText] = useState('Start Bridging');
   const { migration, loading, addToBridgeLoading } = migrationState;
   const { secondary } = locale.newMigration.navigation.second;
+  const { viewOn } = locale.tokenDetail.transactionHash;
+  const { primary: primaryButtonText, secondary: secondaryButtonText } = locale.tokenDetail.buttonText;
 
   const fastlinks = [
     { variant: 'web' as FastLinkVariant, href: migration?.website! },
@@ -36,7 +38,7 @@ const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
     ?.filter((chain) => chain.name === network)
     .map((chain) => ({
       name: chain.name,
-      urlText: `View on ${chain.name}scan`,
+      urlText: `${viewOn} ${chain.name}scan`,
       url: getScanLink(chain.id, chain.transaction_hash),
     }));
 
@@ -52,10 +54,10 @@ const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
 
   const checkBtnText = () => {
     if (!Boolean(migration?.pull_requests?.length)) {
-      return setButtonText('Add to Bridge');
+      return setButtonText(primaryButtonText);
     }
 
-    setButtonText('Start Bridging');
+    setButtonText(secondaryButtonText);
   };
 
   useEffect(() => {
@@ -105,7 +107,7 @@ const TokenDetailView = ({ id, network }: { id: string; network: Network }) => {
                     </div>
                   </div>
 
-                  <div className="md:w-[162px]">
+                  <div className="md:w-fit">
                     <SMButton loading={addToBridgeLoading} text={buttonText} variant="new" fullWidth network={network} onClick={handleStartBridging} />
                   </div>
                 </div>
