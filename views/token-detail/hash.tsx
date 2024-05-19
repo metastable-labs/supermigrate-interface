@@ -3,11 +3,14 @@
 import { LinkRightArrow } from '@/public/icons';
 
 import { ITransactionHash } from './types';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const TransactionHash = ({ hashes }: ITransactionHash) => {
+  const { locale } = useSystemFunctions();
+  const { title } = locale.tokenDetail.transactionHash;
   return (
     <div className="flex flex-col gap-5">
-      <h1 className="text-primary-50 text-[16px] leading-[24.8px] md:text-[20px] md:leading-[31px]">Transaction hash</h1>
+      <h1 className="text-primary-50 text-[16px] leading-[24.8px] md:text-[20px] md:leading-[31px]">{title}</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {hashes?.map((hash, index) => (
