@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 import { InfoIcon } from '@/public/icons';
 import { Network } from '@/config/rainbow/config';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const OverrideIcon = ({ overridden, onClick, network }: { overridden: boolean; onClick?: () => void; network: Network }) => {
   return (
@@ -38,10 +39,12 @@ const OverrideIcon = ({ overridden, onClick, network }: { overridden: boolean; o
 };
 
 const OverrideSection = ({ handleOverride, overridden, network }: { handleOverride: () => void; overridden: boolean; network: Network }) => {
+  const { locale } = useSystemFunctions();
+  const { override } = locale.newMigration.step1;
   return (
     <div className="self-stretch flex items-center justify-start gap-1">
       <OverrideIcon overridden={overridden} onClick={handleOverride} network={network} />
-      <span className="text-primary-50 text-[14px] leading-none tracking-[-0.084px] text-ellipsis">Override</span>
+      <span className="text-primary-50 text-[14px] leading-none tracking-[-0.084px] text-ellipsis">{override}</span>
       <div>
         <InfoIcon />
       </div>
