@@ -35,7 +35,7 @@ const VerifyStep = ({ text, variant = 'x' }: VerifyStepProps) => {
 };
 
 const Right = () => (
-  <div className="flex flex-col item-center gap-11 min-w-[343px] lg:w-[556px] py-[50px] border border-primary-1350 rounded-base">
+  <div className="flex flex-col item-center gap-11 min-w-[343px] lg:w-[556px] py-[50px] px-5 md:px-0 border border-primary-1350 rounded-base shadow-table-cta bg-white">
     <p className="self-stretch flex flex-col items-start gap-3 md:gap-[10px] md:px-8">
       <span className="text-primary-300 text-[24px] leading-[36px] md:leading-[44px] tracking-[-0.48px] font-medium">Verifying Migration</span>
       <span className="text-primary-1500 text-sm md:text-[16px] md:leading-[30px]">Please follow these steps to verify migration:</span>
