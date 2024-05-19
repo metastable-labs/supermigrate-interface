@@ -14,7 +14,7 @@ import { Network } from '@/config/rainbow/config';
 export type LiquidityViewProps = LangParamProp & { network: Network };
 
 const LiquidityView = ({ lang, network }: LiquidityViewProps) => {
-  const { userState, liquidityState, navigate } = useSystemFunctions();
+  const { userState, liquidityState, navigate, locale } = useSystemFunctions();
   const [showInfo, setShowInfo] = useState(true);
   const [selectedToken, setSelectedToken] = useState('');
   const [showModal, setShowModal] = useState(true);
@@ -22,6 +22,7 @@ const LiquidityView = ({ lang, network }: LiquidityViewProps) => {
 
   const { loading } = userState;
   const { loading: liquidity_loading, liquidities } = liquidityState;
+  const { buttonText, subtitle, title } = locale.liquidty.comingSoon;
 
   const toggleShowInfo = () => setShowInfo((prev) => !prev);
 
@@ -57,11 +58,11 @@ const LiquidityView = ({ lang, network }: LiquidityViewProps) => {
               </div>
             </div>
 
-            <h1 className="text-primary-1750 text-[20px] leading-[30px] text-center">Coming soon</h1>
-            <span className="text-primary-1500 text-[14px] leading-[24px] text-center">We’re rolling out this feature soon!</span>
+            <h1 className="text-primary-1750 text-[20px] leading-[30px] text-center">{title}</h1>
+            <span className="text-primary-1500 text-[14px] leading-[24px] text-center">{subtitle}</span>
           </div>
 
-          <SMButton text="Back home" network={network} onClick={() => navigate.push(`/${network}/migrate`)} variant="plain" />
+          <SMButton text={buttonText} network={network} onClick={() => navigate.push(`/${network}/migrate`)} variant="plain" />
         </div>
       </div>
     </div>
