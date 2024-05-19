@@ -271,6 +271,33 @@ type Lang = {
       announcement: string;
     };
   };
+  tokenDetail: {
+    websiteText: string;
+    twitterText: string;
+    buttonText: {
+      primary: string;
+      secondary: string;
+    };
+    tokenContract: {
+      title: string;
+    };
+    pullRequest: {
+      title: string;
+      subtitle: {
+        primary: string;
+        secondary: string;
+      };
+      status: {
+        pending: string;
+        merged: string;
+        closed: string;
+      };
+    };
+    transactionHash: {
+      title: string;
+      viewOn: string;
+    };
+  };
 };
 
 export type { Lang };
