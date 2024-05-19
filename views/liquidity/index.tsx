@@ -62,7 +62,7 @@ const LiquidityView = ({ lang, network }: LiquidityViewProps) => {
             <span className="text-primary-1500 text-[14px] leading-[24px] text-center">{subtitle}</span>
           </div>
 
-          <SMButton text={buttonText} network={network} onClick={() => navigate.push(`/${network}/migrate`)} variant="plain" />
+          <SMButton text={buttonText} network={network} onClick={() => navigate.push('/dashboard')} variant="plain" />
         </div>
       </div>
     </div>

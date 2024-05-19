@@ -60,7 +60,6 @@ const SMNavigation = () => {
       icon: <LiquidityLinkIcon />,
       href: '/liquidity',
       isActive: false,
-      comingSoon: true,
     },
   ];
 
