@@ -270,5 +270,32 @@
       },
       "announcement": "After the automated checks pass and a reviewer approves the PR, then it will automatically be merged."
     }
+  },
+  "tokenDetail": {
+    "websiteText": "Website",
+    "twitterText": "Twitter",
+    "buttonText": {
+      "primary": "Add to Bridge",
+      "secondary": "Start Bridging"
+    },
+    "tokenContract": {
+      "title": "Token Contract"
+    },
+    "pullRequest": {
+      "title": "Pull request status",
+      "subtitle": {
+        "primary": "Superchain token list repo",
+        "secondary": "Superbridge token list repo"
+      },
+      "status": {
+        "pending": "Pending",
+        "merged": "Merged",
+        "closed": "Closed"
+      }
+    },
+    "transactionHash": {
+      "title": "Transaction hash",
+      "viewOn": "View on"
+    }
   }
 }
