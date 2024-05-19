@@ -297,5 +297,12 @@
       "title": "Transaktions-Hash",
       "viewOn": "Weiter ansehen"
     }
+  },
+  "liquidty": {
+    "comingSoon": {
+      "title": "Demnächst",
+      "subtitle": "Wir führen diese Funktion bald ein!",
+      "buttonText": "Zurück zuhause"
+    }
   }
 }
