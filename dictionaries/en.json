@@ -267,7 +267,8 @@
         "xText": "Make the tweet below from the account of the twitter URL you provided",
         "gitText": "Go to the Pull requests and add a comment saying approved with a link to the tweet",
         "linkText": "Verifying migration on @supermigrate"
-      }
+      },
+      "announcement": "After the automated checks pass and a reviewer approves the PR, then it will automatically be merged."
     }
   }
 }
