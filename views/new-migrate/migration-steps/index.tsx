@@ -26,7 +26,7 @@ const schema = yup.object().shape({
   websiteLink: yup.string(),
   twitterLink: yup
     .string()
-    .matches(/^(https?:\/\/)?(www\.)?twitter\.com\/[a-zA-Z0-9_]{1,15}\/?$/i, 'Invalid Twitter URL')
+    .matches(/^(https?:\/\/)?(www\.)?(twitter\.com|x\.com)\/[a-zA-Z0-9_]{1,15}\/?$/i, 'Invalid Twitter URL')
     .required('Twitter URL is Required'),
 });
 
