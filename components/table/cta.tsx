@@ -3,8 +3,9 @@
 import { motion } from 'framer-motion';
 import { RightArrowIcon, LeftArrowIcon } from '@/public/icons';
 import classNames from 'classnames';
+import { CTAProps } from './types';
 
-const CTA = ({ title, onClick, normal = false }: { title: string; onClick: () => void; normal?: boolean }) => {
+const CTA = ({ title, onClick, normal = false }: CTAProps) => {
   return (
     <motion.button
       whileHover={{ scale: 1.04 }}

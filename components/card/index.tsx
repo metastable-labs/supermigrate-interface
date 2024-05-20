@@ -22,11 +22,13 @@ import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { Network, NetworkProps } from '@/config/rainbow/config';
 
 const IconSection = ({ variant, comingSoon }: { variant: Network; comingSoon?: boolean }) => {
+  const { locale } = useSystemFunctions();
+  const { comingSoon: comingSoonText } = locale;
   return (
     <div className="flex flex-col items-center justify-center gap-7">
       {comingSoon && (
         <div className="flex items-center px-2 py-[2px] bg-primary-2550 rounded-full">
-          <span className="text-[8px] leading-[12px] font-medium tracking-[0.16px] capitalize text-white whitespace-nowrap">coming soon</span>
+          <span className="text-[8px] leading-[12px] font-medium tracking-[0.16px] capitalize text-white whitespace-nowrap">{comingSoonText}</span>
         </div>
       )}
 

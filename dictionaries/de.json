@@ -96,5 +96,213 @@
       "emailPlaceholder": "Geben sie ihre E-Mail Adresse ein",
       "subscribe": "Abonnieren"
     }
+  },
+  "dashboard": {
+    "title": "Wählen Sie ein Netzwerk aus",
+    "subtitle": "Wählen Sie ein Netzwerk aus, um eine neue Migration zu starten",
+    "announcement": "Wir fügen weitere L2/L3-Integrationen hinzu. Wenn Sie möchten, dass wir Ihr Netzwerk unterstützen, wenden Sie sich an",
+    "welcome": {
+      "header": "Willkommen bei Supermigrate",
+      "subheader": "Beachten Sie bitte:",
+      "first": "Sobald Ihr PR zusammengeführt ist, wird die Token-Liste automatisch aktualisiert, um Ihren Token in unsere Bridging-Schnittstelle aufzunehmen.",
+      "second": "Um die Migration abzuschließen, stellen Sie sicher, dass Sie die Migration überprüfen, indem Sie im Pull-Request einen Link zum Bestätigungs-Tweet hinzufügen.",
+      "third": "Für Unterstützung kontaktieren Sie uns bitte über unsere",
+      "linkText": "Telegrammkanal",
+      "buttonText": "Zustimmen und fortfahren",
+      "alert": "Zeige es nicht noch einmal"
+    }
+  },
+  "comingSoon": "Demnächst",
+  "navigation": {
+    "migrate": "Wandern",
+    "bridge": "Brücke",
+    "liquidity": "Liquidität",
+    "connect": "Verbinden"
+  },
+  "migrate": {
+    "title": "Migrationen",
+    "subtitle": "Verwalten Sie alle Ihre Migrationen und erstellen Sie neue",
+    "buttonText": "Neue Migration",
+    "connect": {
+      "title": "Bitte verbinden Sie Github, um fortzufahren",
+      "subtitle": "Das verbundene Github-Konto wird zum Forken und Erstellen eines PR für das Superchain-Token-List-Repo verwendet",
+      "buttonText": "Github verbinden"
+    }
+  },
+  "components": {
+    "table": {
+      "headers": {
+        "first": { "label": "Tokenname" },
+        "second": {
+          "label": "Migrationsstatus",
+          "mobileLabel": "Status",
+          "secondaryLabel": "Token-Adresse"
+        },
+        "third": { "label": "Vertrag am", "secondaryLabel": "Schwimmbad" },
+        "fourth": { "label": "Aktion" }
+      },
+      "empty": {
+        "title": {
+          "primary": "Noch keine Migrationen",
+          "secondary": "Noch keine Liquidität",
+          "default": "Bitte verbinden Sie GitHub"
+        },
+        "subtitle": {
+          "primary": "Sie haben noch keine Migrationen durchgeführt. Neue Migrationen werden hier angezeigt",
+          "secondary": "Sie haben noch keine Liquidität hinzugefügt, neue Liquiditäten werden hier angezeigt",
+          "default": "Verbinden Sie Ihren GitHub, um Ihren zu sehen"
+        },
+        "buttonText": {
+          "primary": "neue Migration",
+          "secondary": "neue Liquidität",
+          "default": "Github verbinden"
+        }
+      },
+      "body": {
+        "status": {
+          "success": "Erfolg",
+          "pending": "Ausstehend",
+          "failed": "Fehlgeschlagen"
+        },
+        "contract": {
+          "text": "Weiter ansehen"
+        },
+        "action": {
+          "primary": "Sicht",
+          "secondary": "Liquidität hinzufügen"
+        }
+      },
+      "footer": {
+        "previous": "Vorherige",
+        "next": "Nächste",
+        "page": "Seite"
+      }
+    },
+    "input": {
+      "required": "Erforderlich"
+    },
+    "fileInput": {
+      "title": "Wählen Sie eine Datei aus oder ziehen Sie sie per Drag & Drop hierher.",
+      "subtitle": "SVG-Formate, bis zu 5 MB.",
+      "buttonText": "Durchsuche",
+      "completed": "Vollendet",
+      "required": "Erforderlich"
+    }
+  },
+  "newMigration": {
+    "navigation": {
+      "first": "Wandern",
+      "second": {
+        "primary": "Neue Migration",
+        "secondary": "Token-Informationen"
+      }
+    },
+    "header": {
+      "first": "Token-Informationen",
+      "second": "Sozial"
+    },
+    "step1": {
+      "addressInput": {
+        "label": "Token-Adresse auf Ethereum (L1)",
+        "placeholder": "Token-Adresse"
+      },
+      "nameInput": {
+        "label": "Tokenname",
+        "placeholder": "Tokenname"
+      },
+      "symbolInput": {
+        "label": "Token-Symbol",
+        "placeholder": "$token"
+      },
+      "decimalInput": {
+        "label": "Token-Dezimalzahl",
+        "placeholder": "Token-Dezimalzahl"
+      },
+      "descriptionInput": {
+        "label": "Token-Beschreibung",
+        "placeholder": "Token-Beschreibung"
+      },
+      "tokenInfo": {
+        "name": "Tokenname",
+        "symbol": "Token-Symbol",
+        "decimals": "Token-Dezimalzahl"
+      },
+      "buttonText": "Nächste",
+      "override": "Überschreiben"
+    },
+    "step2": {
+      "imageInput": {
+        "label": "Token-Bild"
+      },
+      "websiteInput": {
+        "label": "Website-Link",
+        "placeholder": "Logo-URL"
+      },
+      "twitterInput": {
+        "label": "Twitter-Link",
+        "placeholder": "Twitter-URL"
+      },
+      "buttonText": "Nächste"
+    },
+    "step3": {
+      "step1": "Token-Vertrag bereitgestellt",
+      "step2": "Vertrag bestätigt",
+      "step3": "Forking der Superchain-Token-Liste in das Github-Repo",
+      "step4": "Hinzufügen von Daten zum geforkten Superchain-Repo",
+      "announcement": "Wenn Sie mit Ihrer mobilen Geldbörse verbunden sind, überprüfen Sie diese, um die Transaktion zu signieren"
+    },
+    "step4": {
+      "left": {
+        "title": "Migration erfolgreich!",
+        "subtitle": "Token-Details",
+        "linkTexts": {
+          "primary": "Pull-Anfrage im Token-Listen-Repo anzeigen",
+          "secondary": "Pull-Anfrage auf Superbridge anzeigen"
+        },
+        "viewOn": "Weiter ansehen"
+      },
+      "right": {
+        "title": "Migration überprüfen",
+        "subtitle": "Bitte befolgen Sie diese Schritte, um die Migration zu überprüfen:",
+        "xText": "Erstellen Sie den Tweet unten über das Konto der von Ihnen angegebenen Twitter-URL",
+        "gitText": "Gehen Sie zu den Pull-Anfragen und fügen Sie einen Kommentar mit der Aufschrift „Genehmigt“ mit einem Link zum Tweet hinzu",
+        "linkText": "Überprüfung der Migration auf @supermigrate"
+      },
+      "announcement": "Nachdem die automatisierten Prüfungen bestanden wurden und ein Prüfer die PR genehmigt, wird sie automatisch zusammengeführt."
+    }
+  },
+  "tokenDetail": {
+    "websiteText": "Webseite",
+    "twitterText": "Twitter",
+    "buttonText": {
+      "primary": "Zur Bridge hinzufügen",
+      "secondary": "Beginnen Sie mit der Überbrückung"
+    },
+    "tokenContract": {
+      "title": "Token-Vertrag"
+    },
+    "pullRequest": {
+      "title": "Pull-Request-Status",
+      "subtitle": {
+        "primary": "Superchain-Token-Listen-Repo",
+        "secondary": "Superbridge-Token-Listen-Repo"
+      },
+      "status": {
+        "pending": "Ausstehend",
+        "merged": "Zusammengeführt",
+        "closed": "Geschlossen"
+      }
+    },
+    "transactionHash": {
+      "title": "Transaktions-Hash",
+      "viewOn": "Weiter ansehen"
+    }
+  },
+  "liquidty": {
+    "comingSoon": {
+      "title": "Demnächst",
+      "subtitle": "Wir führen diese Funktion bald ein!",
+      "buttonText": "Zurück zuhause"
+    }
   }
 }

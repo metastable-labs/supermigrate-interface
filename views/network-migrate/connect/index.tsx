@@ -7,8 +7,10 @@ import { Network } from '@/config/rainbow/config';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const Connect = ({ network }: { network: Network }) => {
-  const { userState, pathname } = useSystemFunctions();
+  const { userState, pathname, locale } = useSystemFunctions();
   const { loading, user } = userState;
+
+  const { buttonText, subtitle, title } = locale.migrate.connect;
 
   const [path, setPath] = useState('');
 
@@ -47,7 +49,7 @@ const Connect = ({ network }: { network: Network }) => {
                   'text-primary-1150': network === 'mode',
                   'text-primary-550': network === 'scroll',
                 })}>
-                Please connect Github to continue
+                {title}
               </h1>
               <p
                 className={classNames('text-sm md:text-base max-w-[399px] text-wrap', {
@@ -56,12 +58,12 @@ const Connect = ({ network }: { network: Network }) => {
                   'text-primary-1200': network === 'mode',
                   'text-primary-1250': network === 'scroll',
                 })}>
-                The Github account connected will be used to fork and create a PR on the Superchain token list repo
+                {subtitle}
               </p>
             </div>
 
             <a href={githubAuthUrl}>
-              <SMButton disabled={loading} network={network} text="connect github" variant="git" />
+              <SMButton disabled={loading} network={network} text={buttonText} variant="git" />
             </a>
           </motion.div>
         )}

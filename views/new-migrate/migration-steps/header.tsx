@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import { CheckIcon, RightCarretDarkIcon } from '@/public/icons';
 import { Network } from '@/config/rainbow/config';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const Step = ({ step, title, current, passed, network, onClick }: { step: number; title: string; current: boolean; passed: boolean; network: Network; onClick?: (step: number) => void }) => {
   return (
@@ -47,13 +48,16 @@ const Step = ({ step, title, current, passed, network, onClick }: { step: number
 };
 
 const Header = ({ step, network, setStep }: { step: number; network: Network; setStep: (step: number) => void }) => {
+  const { locale } = useSystemFunctions();
+  const { first, second } = locale.newMigration.header;
+
   return (
     <AnimatePresence>
       {step < 2 && (
         <motion.div key={0} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex items-center justify-center gap-4">
-          <Step current={step === 0} network={network} passed={step != 0} step={1} title="Token info" onClick={setStep} />
+          <Step current={step === 0} network={network} passed={step != 0} step={1} title={first} onClick={setStep} />
           <RightCarretDarkIcon />
-          <Step current={step === 1} network={network} passed={step > 1} step={2} title="Social" />
+          <Step current={step === 1} network={network} passed={step > 1} step={2} title={second} />
         </motion.div>
       )}
     </AnimatePresence>

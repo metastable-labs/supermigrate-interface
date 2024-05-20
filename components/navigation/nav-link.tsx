@@ -1,4 +1,5 @@
 import { networks } from '@/config/rainbow/config';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { ReactNode } from 'react';
@@ -14,6 +15,8 @@ interface NavLinkProps {
 }
 
 const NavLink = ({ title, icon, href, isActive, fullWidth, comingSoon }: NavLinkProps) => {
+  const { locale } = useSystemFunctions();
+  const { comingSoon: comingSoonText } = locale;
   return (
     <Link
       href={href}
@@ -28,7 +31,7 @@ const NavLink = ({ title, icon, href, isActive, fullWidth, comingSoon }: NavLink
       {comingSoon && (
         <div className="min-h-full flex items-end -m-1">
           <div className="flex items-center px-2 py-[2px] bg-primary-2550 rounded-full text-[8px] leading-[12px] font-medium tracking-[0.16px] capitalize text-white whitespace-nowrap">
-            coming soon
+            {comingSoonText}
           </div>
         </div>
       )}

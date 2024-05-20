@@ -29,4 +29,18 @@ interface EmptyStateProps {
   action?: () => void;
 }
 
-export type { TableItem, TableProps, PullStatus, EmptyStateProps };
+interface StatusProps {
+  status?: PullStatus;
+}
+
+interface CTAProps {
+  title: string;
+  onClick: () => void;
+  normal?: boolean;
+}
+
+interface AddressProps {
+  address?: string;
+}
+
+export type { TableItem, TableProps, PullStatus, EmptyStateProps, StatusProps, CTAProps, AddressProps };
