@@ -21,7 +21,7 @@ const Step2 = ({ errors, network, register, setFile, file }: StepProps) => {
   return (
     <div className="flex flex-col items-center justify-center gap-6 rounded-xl border border-primary-2100 bg-white p-6 min-w-[343px] md:min-w-[448px]">
       <div className="w-full flex flex-col gap-1">
-        <SMFileInput name="image" handleFileChange={handleFile} label={imageInput.label} isRequired />
+        <SMFileInput name="image" handleFileChange={handleFile} label={imageInput.label} isRequired show={!file} />
 
         <SMFileSample file={file} deleteFile={deleteFile} />
       </div>
