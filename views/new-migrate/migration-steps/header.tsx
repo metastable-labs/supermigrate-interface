@@ -16,7 +16,7 @@ const Step = ({ step, title, current, passed, network, onClick }: { step: number
         className={classNames('rounded-full w-5 h-5 flex items-center justify-center transition-all duration-300', {
           'bg-primary-1650': current && network === 'base',
           'bg-primary-1950': current && network === 'optimism',
-          'bg-primary-500': current && network === 'mode',
+          'bg-primary-4000': current && network === 'mode',
           'bg-primary-550': current && network === 'scroll',
           'bg-primary-1800': passed,
           'bg-white border border-primary-250': !current && !passed,

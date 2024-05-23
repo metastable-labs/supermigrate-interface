@@ -23,7 +23,7 @@ const TokenInfo = ({ decimal, name, symbol, loading, network }: ITokenInfo) => {
               className={classNames('font-normal transition-colors duration-300', {
                 'text-primary-1650': network === 'base',
                 'text-primary-2150': network === 'optimism',
-                'text-primary-500': network === 'mode',
+                'text-primary-4000': network === 'mode',
                 'text-primary-550': network === 'scroll',
               })}>
               {item.value}
