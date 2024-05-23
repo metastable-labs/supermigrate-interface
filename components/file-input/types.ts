@@ -8,6 +8,7 @@ interface ISMFileInput {
   isRequired?: boolean;
   handleFileChange: any;
   network?: Network;
+  show?: boolean;
 }
 
 export type { ISMFileInput };
