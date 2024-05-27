@@ -97,6 +97,9 @@ import ForwardIcon from './forward-icon.svg';
 import GitCloseIcon from './git-close-icon.svg';
 import SVGIcon from './svg-icon.svg';
 import EarnLinkIcon from './earn-link-icon';
+import EarnAnnouncement from './earn-announcement';
+import WalletAltIcon from './wallet-alt-icon';
+import BarcodeIcon from './barcode-icon';
 
 export {
   Logo,
@@ -198,4 +201,7 @@ export {
   GitCloseIcon,
   SVGIcon,
   EarnLinkIcon,
+  EarnAnnouncement,
+  WalletAltIcon,
+  BarcodeIcon,
 };
