@@ -96,6 +96,7 @@ import MobileMigrateLanding from './mobile-migrate-landing.svg';
 import ForwardIcon from './forward-icon.svg';
 import GitCloseIcon from './git-close-icon.svg';
 import SVGIcon from './svg-icon.svg';
+import EarnLinkIcon from './earn-link-icon';
 
 export {
   Logo,
@@ -196,4 +197,5 @@ export {
   ForwardIcon,
   GitCloseIcon,
   SVGIcon,
+  EarnLinkIcon,
 };

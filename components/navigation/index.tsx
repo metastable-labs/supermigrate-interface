@@ -9,7 +9,7 @@ import { useCookies } from 'react-cookie';
 import Left from './left';
 import Right from './right';
 import Menu from './menu';
-import { BridgeLinkIcon, LiquidityLinkIcon, MigrateLinkIcon } from '@/public/icons';
+import { BridgeLinkIcon, EarnLinkIcon, LiquidityLinkIcon, MigrateLinkIcon } from '@/public/icons';
 import { networks } from '@/config/rainbow/config';
 import { INavActions, INavLinks } from './types';
 import SMModal from '../modal';
@@ -38,7 +38,7 @@ const SMNavigation = () => {
 
   const isHome = isHomePage(pathname);
   const { user } = userState;
-  const { bridge, connect, liquidity, migrate } = locale.navigation;
+  const { bridge, connect, liquidity, migrate, earn } = locale.navigation;
   const connectedNetwork = networks.find((chain) => chain.chainId === chainId);
   const network = connectedNetwork?.variant || 'base';
 
@@ -59,6 +59,12 @@ const SMNavigation = () => {
       title: liquidity,
       icon: <LiquidityLinkIcon />,
       href: '/liquidity',
+      isActive: false,
+    },
+    {
+      title: earn,
+      icon: <EarnLinkIcon />,
+      href: '/earn',
       isActive: false,
     },
   ];

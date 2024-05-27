@@ -117,6 +117,7 @@ type Lang = {
     migrate: string;
     bridge: string;
     liquidity: string;
+    earn: string;
     connect: string;
   };
   migrate: {
