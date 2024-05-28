@@ -28,4 +28,8 @@ interface ActionProps {
   icon?: ReactElement;
 }
 
-export type { InfoProps, ActionProps, Badge, BadgeType, BadgeVariant };
+interface ReferralsSectionProps {
+  copy: (text: string) => void;
+}
+
+export type { InfoProps, ActionProps, Badge, BadgeType, BadgeVariant, ReferralsSectionProps };
