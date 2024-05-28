@@ -1,3 +1,4 @@
+import { TableItem } from '@/components/table/types';
 import { ActionProps } from './types';
 import { BTCIcon, TokenomyIcon, SoftdaoIcon, POKTIcon } from '@/public/icons';
 
@@ -149,4 +150,51 @@ const featuredTokens: ActionProps[] = [
   },
 ];
 
-export { activities, featuredTokens };
+const leaderBoard: TableItem[] = [
+  {
+    tokenAddress: '0xa04f6b6b21bff727260edb156b65e03041652706',
+    points: 245678,
+  },
+  {
+    tokenAddress: '0xb15e6b1b32cff637361feb267c76f04051763817',
+    points: 123456,
+  },
+  {
+    tokenAddress: '0xc26f7b2c43dff747462fec278d87g05162874928',
+    points: 987654,
+  },
+  {
+    tokenAddress: '0xd37g8b3d54eff857573fed289e98h06273985039',
+    points: 543210,
+  },
+  {
+    tokenAddress: '0xe48h9b4e65gff967684gfe390f09i07384a96150',
+    points: 678901,
+  },
+  {
+    tokenAddress: '0xf59i0b5f76hff077795hgf401g10j08495b07261',
+    points: 112233,
+  },
+  {
+    tokenAddress: '0xg6aj1b6g87iff1878a6hfh512h21k095a1b18372',
+    points: 445566,
+  },
+  {
+    tokenAddress: '0xh7bk2b7h98jff2979b7ihg623i32l0a5b2c29483',
+    points: 789012,
+  },
+  {
+    tokenAddress: '0xi8cl3c8i09kff3a0ac8jih734j43m1b6c3d30594',
+    points: 234567,
+  },
+  {
+    tokenAddress: '0xj9dm4d9j10lff4b1bd9kjh845k54n2c7d4e41605',
+    points: 890123,
+  },
+  {
+    tokenAddress: '0xkaen5e0k21mff5c2ceakli956l65o3d8e5f52716',
+    points: 345678,
+  },
+];
+
+export { activities, featuredTokens, leaderBoard };
