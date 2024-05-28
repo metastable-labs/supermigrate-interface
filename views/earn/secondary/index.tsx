@@ -3,10 +3,10 @@ import classNames from 'classnames';
 import useScreenDetect from '@/hooks/useScreenDetect';
 import { CopyIcon, EarnWelcome, Logo } from '@/public/icons';
 import { InfoProps } from './types';
-import { SMClickAnimation } from '@/components';
+import { SMClickAnimation, SMTable } from '@/components';
 import useCopy from '@/hooks/useCopy';
 import Action from './action';
-import { activities, featuredTokens } from './dummy';
+import { activities, featuredTokens, leaderBoard } from './dummy';
 
 const Info = ({ hasIcon, title, value, textRight }: InfoProps) => (
   <div className={classNames('', { 'flex items-center justify-center gap-2.5': hasIcon, 'text-right': textRight, 'text-left': !textRight })}>
@@ -103,6 +103,8 @@ const Secondary = () => {
 
         <div className="p-6 flex flex-col items-start gap-6 self-stretch bg-white">
           <h2 className="tracking-[-0.48px] text-[24px] leading-[36px] font-Bitform text-primary-3400">Leaderboard</h2>
+
+          <SMTable data={leaderBoard} variant="tertiary" network="base" loading={false} isConnected />
         </div>
       </div>
     </div>
