@@ -107,6 +107,7 @@ import BTCIcon from './btc-icon.svg';
 import TokenomyIcon from './tokenomy-icon.svg';
 import POKTIcon from './pokt-icon.svg';
 import SoftdaoIcon from './softdao-icon.svg';
+import MobileWalletIcon from './mobile-wallet-icon.svg';
 
 export {
   Logo,
@@ -218,4 +219,5 @@ export {
   TokenomyIcon,
   POKTIcon,
   SoftdaoIcon,
+  MobileWalletIcon,
 };
