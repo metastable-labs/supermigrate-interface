@@ -13,7 +13,7 @@ import { Network } from '@/config/rainbow/config';
 const WalletModal = ({ close, network }: { close: () => void; network: Network }) => {
   const copy = useCopy();
   const { address } = useAccount();
-  const truncateWallet = useTruncateText((address as string) || '', 6, 6);
+  const { truncatedText } = useTruncateText((address as string) || '', 6, 6);
   const { navigate } = useSystemFunctions();
 
   const disconnectAction = () => {
@@ -26,7 +26,7 @@ const WalletModal = ({ close, network }: { close: () => void; network: Network }
     <div className="flex flex-col gap-6 min-w-[300px] md:min-w-80">
       <h1 className="text-[20px] leading-[30px] text-primary-1750 text-left font-medium flex items-center gap-1">
         <WalletIcon />
-        {truncateWallet}
+        {truncatedText}
       </h1>
       <div className="flex items-center justify-center gap-3">
         <SMClickAnimation className="flex-1 bg-primary-150 flex items-center justify-center p-3 rounded-base" onClick={() => copy(address as string)}>
