@@ -26,7 +26,7 @@ const Left = () => {
   const chainsLength = migration?.chains?.length! - 1;
   const address = migration?.chains[chainsLength].token_address;
 
-  const truncateAddress = useTruncateText(address || '', 7, 4);
+  const { truncatedText } = useTruncateText(address || '', 7, 4);
 
   const currentNetwork = networks.find((network) => network.chainId === chainId);
 
@@ -65,7 +65,7 @@ const Left = () => {
         <h1 className="text-primary-200 text-[14px] leading-[28px]">{subtitle}</h1>
 
         <SMClickAnimation onClick={() => copy(address!)} className="flex items-center justify-center gap-2 text-primary-50 text-[16px] leading-[30px] font-medium">
-          {truncateAddress}
+          {truncatedText}
           <CopySecondaryIcon />
         </SMClickAnimation>
 
