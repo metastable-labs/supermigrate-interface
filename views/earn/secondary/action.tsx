@@ -20,7 +20,7 @@ const getIconColor = (variant?: BadgeVariant) => {
 
 const BadgeComponent = ({ text, type, variant }: Badge) => (
   <div
-    className={classNames('py-1 pl-1 pr-2 flex  items-center justify-center gap-0.5 rounded-full text-[14px] leading-[21px] font-medium', {
+    className={classNames('py-1 pl-1 pr-2 flex  items-center justify-center gap-0.5 rounded-full text-xs md:text-[14px] md:leading-[21px] font-medium', {
       'text-primary-4200 bg-primary-4500': variant === 'mint',
       'text-primary-200 bg-primary-150': variant === 'plain',
       'text-primary-2650 bg-primary-4450': variant === 'tertiary',
@@ -54,9 +54,9 @@ const Action = ({ action, buttonText, icon, subtitle, title, badges, hasWarning,
           <div className="flex flex-col space-y-3">
             <div className="flex items-start justify-start space-x-3">
               <div
-                className={classNames('', {
-                  'text-[20px] leading-[30px] text-primary-3400 tracking-[-0.4px] font-Bitform': !titleAlt,
-                  'text-[20px] leading-[38px] text-primary-300 font-Bitform': titleAlt,
+                className={classNames('text-lg', {
+                  'md:text-[20px] md:leading-[30px] text-primary-3400 tracking-[-0.4px] font-Bitform': !titleAlt,
+                  'md:text-[20px] md:leading-[38px] text-primary-300 font-Bitform': titleAlt,
                 })}>
                 <p className="block lg:hidden">{truncateTitle(title)}</p>
                 <p className="hidden lg:block">{title}</p>
@@ -66,7 +66,7 @@ const Action = ({ action, buttonText, icon, subtitle, title, badges, hasWarning,
               {titleBadge && <BadgeComponent {...titleBadge} />}
             </div>
 
-            {subtitle && <p className="text-base text-primary-350">{subtitle}</p>}
+            {subtitle && <p className="text-sm md:text-base text-primary-350">{subtitle}</p>}
           </div>
         </div>
 
@@ -79,7 +79,7 @@ const Action = ({ action, buttonText, icon, subtitle, title, badges, hasWarning,
         )}
 
         {hasWarning && (
-          <div className="py-3 px-6 flex items-center justify-center gap-1 self-stretch bg-primary-4150 rounded-xl text-primary-3400">
+          <div className="py-3 px-6 flex items-center justify-center gap-1 self-stretch bg-primary-4150 rounded-xl text-primary-3400 text-xs md:text-[14px] md:leading-[21px]">
             <div className="min-w-fit">
               <WarningIcon />
             </div>
