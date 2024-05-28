@@ -6,30 +6,46 @@ import classNames from 'classnames';
 
 import { TableProps } from './types';
 import CTA from './cta';
-import { LinkRightArrow } from '@/public/icons';
+import { LinkRightArrow, MobileWalletIcon } from '@/public/icons';
 import EmptyState from './empty';
 import Status from './status';
 import Address from './address';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
+import useTruncateText from '@/hooks/useTruncateText';
+
+const getHeaderLabel = (header: any, isMobileView: boolean, variant: string) => {
+  if (isMobileView && header.mobileLabel && variant !== 'tertiary') {
+    return header.mobileLabel;
+  }
+  if (variant === 'primary') {
+    return header.label;
+  }
+  if (variant === 'tertiary') {
+    return header.tertiaryLabel;
+  }
+  return header.secondaryLabel || header.label;
+};
 
 const SMTable = ({ data, network, isConnected, variant = 'primary', loading, ctaAction }: TableProps) => {
   const [isMobileView, setIsMobileView] = useState(false);
   const { locale } = useSystemFunctions();
+  const { truncate } = useTruncateText(undefined, 4, 4);
 
   const { first, fourth, second, third } = locale.components.table.headers;
   const { contract, action } = locale.components.table.body;
   const { next, page, previous } = locale.components.table.footer;
 
   const headers = [
-    { key: 'tokenName', label: first.label },
+    { key: 'tokenName', label: first.label, tertiaryLabel: '#' },
     {
       key: 'status',
       label: second.label,
       mobileLabel: second.mobileLabel,
       secondaryLabel: second.secondaryLabel,
+      tertiaryLabel: 'Participant',
     },
     { key: 'action', label: `${third.label} ${network}`, secondaryLabel: third.secondaryLabel },
-    { key: 'cta', label: fourth.label },
+    { key: 'cta', label: fourth.label, tertiaryLabel: 'Points' },
   ].filter((header) => variant === 'primary' || header.key !== 'action');
 
   useEffect(() => {
@@ -52,9 +68,10 @@ const SMTable = ({ data, network, isConnected, variant = 'primary', loading, cta
                 scope="col"
                 className={classNames('px-4 md:px-6 py-3 text-left text-xs font-medium', {
                   'whitespace-nowrap': index === 0 || index === 2,
-                  'hidden md:table-cell': index === 1 || (index === 2 && variant === 'primary'),
+                  'hidden md:table-cell': (index === 1 && variant !== 'tertiary') || (index === 2 && variant === 'primary'),
+                  'w-[83px]': index === 0 && variant === 'tertiary',
                 })}>
-                {isMobileView && header.mobileLabel ? header.mobileLabel : variant === 'primary' ? header.label : header.secondaryLabel || header.label}
+                {getHeaderLabel(header, isMobileView, variant)}
               </th>
             ))}
           </tr>
@@ -64,19 +81,36 @@ const SMTable = ({ data, network, isConnected, variant = 'primary', loading, cta
           <tbody className="bg-white divide-y divide-gray-200">
             {data.map((item, index) => (
               <tr key={index}>
-                <td className="min-h-[71px] px-4 md:px-6 py-4 text-sm font-medium text-gray-900 flex items-center gap-3">
-                  <Image
-                    src={item?.tokenIcon || 'https://w7.pngwing.com/pngs/730/454/png-transparent-smiley-emoticon-face-grinning-smiley-face-face-smiley-emoticon-thumbnail.png'}
-                    alt={`${item.tokenName} icon`}
-                    width={20}
-                    height={20}
-                  />
-                  <div>{item.tokenName}</div>
+                <td className={classNames('min-h-[71px] px-4 md:px-6 py-4 text-sm font-medium text-gray-900 flex items-center gap-3', { 'w-[83px]': variant === 'tertiary' })}>
+                  {variant !== 'tertiary' && (
+                    <>
+                      <Image
+                        src={item?.tokenIcon || 'https://w7.pngwing.com/pngs/730/454/png-transparent-smiley-emoticon-face-grinning-smiley-face-face-smiley-emoticon-thumbnail.png'}
+                        alt={`${item.tokenName} icon`}
+                        width={20}
+                        height={20}
+                      />
+                      <div>{item.tokenName}</div>
+                    </>
+                  )}
+
+                  {variant === 'tertiary' && <div className="w-full flex items-center justify-center">{index + 1}</div>}
                 </td>
 
-                <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden md:table-cell">
+                <td
+                  className={classNames('min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500', {
+                    'hidden md:table-cell': variant !== 'tertiary',
+                    'w-4/6': variant === 'tertiary',
+                  })}>
                   {variant === 'primary' && <Status status={item?.pullStatus} />}
                   {variant === 'secondary' && <Address address={item?.tokenAddress} />}
+                  {variant === 'tertiary' && (
+                    <div className="flex items-center justify-start gap-1">
+                      <MobileWalletIcon />
+
+                      {truncate(item?.tokenAddress!)}
+                    </div>
+                  )}
                 </td>
 
                 {variant === 'primary' && (
@@ -92,7 +126,8 @@ const SMTable = ({ data, network, isConnected, variant = 'primary', loading, cta
                 )}
 
                 <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm font-medium">
-                  <CTA title={variant === 'primary' ? action.primary : action.secondary} onClick={() => ctaAction?.(item?.id)} normal />
+                  {variant !== 'tertiary' && <CTA title={variant === 'primary' ? action.primary : action.secondary} onClick={() => ctaAction?.(item?.id)} normal />}
+                  {variant === 'tertiary' && <span>{item.points?.toLocaleString()}</span>}
                 </td>
               </tr>
             ))}

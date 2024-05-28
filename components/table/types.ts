@@ -1,7 +1,7 @@
 import { Network } from '@/config/rainbow/config';
 
 type PullStatus = 'merged' | 'pending' | 'failed';
-type TableVariant = 'primary' | 'secondary';
+type TableVariant = 'primary' | 'secondary' | 'tertiary';
 
 interface TableItem {
   tokenIcon?: string;
@@ -11,6 +11,7 @@ interface TableItem {
   poolUrl?: string;
   id?: string;
   scanUrl?: string;
+  points?: number;
 }
 
 interface TableProps {
