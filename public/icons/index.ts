@@ -100,7 +100,7 @@ import EarnLinkIcon from './earn-link-icon';
 import EarnAnnouncement from './earn-announcement';
 import WalletAltIcon from './wallet-alt-icon';
 import BarcodeIcon from './barcode-icon';
-import EarnWelcome from './earn-welcome';
+import DesktopEarnWelcome from './earn-welcome';
 import WarningIcon from './warning-icon.svg';
 import FlashIcon from './flash-icon';
 import BTCIcon from './btc-icon.svg';
@@ -108,6 +108,8 @@ import TokenomyIcon from './tokenomy-icon.svg';
 import POKTIcon from './pokt-icon.svg';
 import SoftdaoIcon from './softdao-icon.svg';
 import MobileWalletIcon from './mobile-wallet-icon.svg';
+import MobileEarnWelcome from './mobile-earn-welcome.svg';
+import MobileFooterLogo from './mobile-footer-logo.svg';
 
 export {
   Logo,
@@ -212,7 +214,7 @@ export {
   EarnAnnouncement,
   WalletAltIcon,
   BarcodeIcon,
-  EarnWelcome,
+  DesktopEarnWelcome,
   WarningIcon,
   FlashIcon,
   BTCIcon,
@@ -220,4 +222,6 @@ export {
   POKTIcon,
   SoftdaoIcon,
   MobileWalletIcon,
+  MobileEarnWelcome,
+  MobileFooterLogo,
 };
