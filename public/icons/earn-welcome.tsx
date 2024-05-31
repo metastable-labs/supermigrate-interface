@@ -1,4 +1,4 @@
-const EarnWelcome = ({ height = 101, width = 1216 }: { width?: number; height?: number }) => (
+const DesktopEarnWelcome = ({ height = 101, width = 1216 }: { width?: number; height?: number }) => (
   <svg width={width} height={height} viewBox="0 0 1216 101" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clip-path="url(#clip0_2700_25202)">
       <rect width="1216" height="101" fill="#002132" />
@@ -131,4 +131,4 @@ const EarnWelcome = ({ height = 101, width = 1216 }: { width?: number; height?: 
   </svg>
 );
 
-export default EarnWelcome;
+export default DesktopEarnWelcome;
