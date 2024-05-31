@@ -11,13 +11,17 @@ const activities: ActionProps[] = [
     badges: [
       {
         text: '1.5x Migrate PTS multipliers for featured tokens',
+        mobileText: '1.5x PTS multiplier for featured tokens',
         type: 'primary',
         variant: 'primary',
+        fullWidth: true,
       },
       {
         text: '3x Migrate PTS multiplier for tokens that migrated using Supermigrate',
+        mobileText: '3x PTS multiplier for Supermigrate tokens',
         type: 'primary',
         variant: 'secondary',
+        fullWidth: true,
       },
     ],
     hasWarning: true,
@@ -26,6 +30,7 @@ const activities: ActionProps[] = [
     title: 'Social Interaction',
     titleBadge: {
       text: '250 PTS',
+      mobileText: '250 PTS',
       type: 'primary',
       variant: 'mint',
     },
@@ -34,21 +39,26 @@ const activities: ActionProps[] = [
     action: () => {},
     badges: [
       {
-        text: '1x PTS multipliers for Verified account',
+        text: '1x PTS multipliers Verified account',
+        mobileText: '1x PTS multipliers Verified account',
         type: 'primary',
         variant: 'primary',
       },
       {
         text: '2x PTS multiplier for accounts above 2,000 followers',
+        mobileText: '2x PTS multiplier accounts with 2k followers',
         type: 'primary',
         variant: 'tertiary',
+        fullWidth: true,
       },
     ],
   },
   {
     title: 'The Great Migration NFT',
+    mobileTitle: 'TGM NFT',
     titleBadge: {
       text: '500 PTS',
+      mobileText: '500 PTS',
       type: 'primary',
       variant: 'mint',
     },
@@ -60,6 +70,7 @@ const activities: ActionProps[] = [
     title: 'Referral',
     titleBadge: {
       text: '250 PTS',
+      mobileText: '250 PTS',
       type: 'primary',
       variant: 'mint',
     },
@@ -69,6 +80,7 @@ const activities: ActionProps[] = [
     badges: [
       {
         text: '10% of points from referrals',
+        mobileText: '10% of points from referrals',
         type: 'primary',
         variant: 'primary',
       },
@@ -86,11 +98,13 @@ const featuredTokens: ActionProps[] = [
     badges: [
       {
         text: 'Migrate Points',
+        mobileText: 'Migrate Points',
         type: 'primary',
         variant: 'plain',
       },
       {
         text: 'Migrated with Supermigrate',
+        mobileText: 'Migrated with Supermigrate',
         type: 'secondary',
         variant: 'mint',
       },
@@ -105,11 +119,13 @@ const featuredTokens: ActionProps[] = [
     badges: [
       {
         text: 'Migrate Points',
+        mobileText: 'Migrate Points',
         type: 'primary',
         variant: 'plain',
       },
       {
         text: 'Migrated with Supermigrate',
+        mobileText: 'Migrated with Supermigrate',
         type: 'secondary',
         variant: 'mint',
       },
@@ -124,11 +140,13 @@ const featuredTokens: ActionProps[] = [
     badges: [
       {
         text: 'Migrate Points',
+        mobileText: 'Migrate Points',
         type: 'primary',
         variant: 'plain',
       },
       {
         text: 'Migrated with Supermigrate',
+        mobileText: 'Migrated with Supermigrate',
         type: 'secondary',
         variant: 'mint',
       },
@@ -143,6 +161,7 @@ const featuredTokens: ActionProps[] = [
     badges: [
       {
         text: 'Migrate Points',
+        mobileText: 'Migrate Points',
         type: 'primary',
         variant: 'plain',
       },
