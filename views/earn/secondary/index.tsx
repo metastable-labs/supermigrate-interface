@@ -4,14 +4,14 @@ import { useMemo } from 'react';
 import classNames from 'classnames';
 import useScreenDetect from '@/hooks/useScreenDetect';
 import useCopy from '@/hooks/useCopy';
-import { CopyIcon, EarnWelcome, Logo } from '@/public/icons';
+import { CopyIcon, DesktopEarnWelcome, Logo, MobileEarnWelcome } from '@/public/icons';
 import { SMClickAnimation, SMTable } from '@/components';
 import Action from './action';
 import { activities, featuredTokens, leaderBoard } from './dummy';
 import { InfoProps, ReferralsSectionProps } from './types';
 
-const Info = ({ hasIcon, title, value, textRight }: InfoProps) => (
-  <div className={classNames('', { 'flex items-center justify-center gap-2.5': hasIcon, 'text-right': textRight, 'text-left': !textRight })}>
+const Info = ({ hasIcon, title, value }: InfoProps) => (
+  <div className={classNames('p-6 bg-white border border-primary-3450 rounded-base w-full text-center', { 'flex items-center justify-center gap-2.5': hasIcon })}>
     {hasIcon && (
       <div className="bg-primary-3250 rounded-full pt-[10.35px] pr-[7.4px] pb-[10.2px] pl-[9.3px] flex items-center justify-center md:w-10 md:h-10">
         <Logo />
@@ -25,16 +25,20 @@ const Info = ({ hasIcon, title, value, textRight }: InfoProps) => (
 );
 
 const DashboardHeader = () => (
-  <div className="flex flex-col items-center justify-center -space-y-6 md:space-y-1 lg:space-y-5 pb-2 md:pb-3.5 lg:pb-5 border-b border-b-primary-1350">
-    <div className="flex items-center justify-center overflow-hidden max-w-full">
-      <EarnWelcome />
+  <div className="flex flex-col items-center justify-center md:space-y-1 lg:space-y-5 pb-2 md:pb-3.5 lg:pb-5 border-b border-b-primary-1350">
+    <div className="hidden md:flex items-center justify-center overflow-hidden max-w-full">
+      <DesktopEarnWelcome />
     </div>
-    <div className="flex items-center justify-start text-primary-300 text-lg md:text-[30px] md:leading-[38px] w-full">Dashboard</div>
+    <div className="md:hidden flex items-center justify-center overflow-hidden max-w-full">
+      <MobileEarnWelcome />
+    </div>
+
+    <div className="flex items-center justify-start sm:justify-center md:justify-start text-primary-300 text-lg md:text-[30px] md:leading-[38px] w-full">Dashboard</div>
   </div>
 );
 
 const InfoSection = ({ infoData }: { infoData: InfoProps[] }) => (
-  <div className="w-full lg:w-3/5 flex flex-wrap items-center justify-between p-6 bg-white border border-primary-3450 rounded-base gap-y-5">
+  <div className="w-full lg:w-3/5 grid grid-cols-1 md:grid-cols-3 items-center justify-between gap-[22px]">
     {infoData.map((info, index) => (
       <Info key={index} {...info} />
     ))}
