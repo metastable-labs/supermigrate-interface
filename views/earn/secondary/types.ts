@@ -4,7 +4,6 @@ interface InfoProps {
   title: string;
   value: number;
   hasIcon?: boolean;
-  textRight?: boolean;
 }
 
 type BadgeType = 'primary' | 'secondary';
@@ -12,12 +11,15 @@ type BadgeVariant = 'primary' | 'secondary' | 'tertiary' | 'mint' | 'plain';
 
 interface Badge {
   text: string;
+  mobileText?: string;
   type?: BadgeType;
   variant?: BadgeVariant;
+  fullWidth?: boolean;
 }
 
 interface ActionProps {
   title: string;
+  mobileTitle?: string;
   titleAlt?: string;
   titleBadge?: Badge;
   subtitle?: string;
