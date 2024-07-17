@@ -14,6 +14,7 @@ const config: Config = {
         'light-button-border': 'linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%)',
         'very-light-gray': 'linear-gradient(180deg, rgba(228, 229, 231, 0.48) 0%, rgba(247, 248, 248, 0.00) 100%, rgba(228, 229, 231, 0.00) 100%)',
         'welcome-button': 'linear-gradient(180deg, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.00) 100%), #002132',
+        'peach-gradient': 'linear-gradient(180deg, #FFF 0%, #FFFEF7 23.69%)',
       },
       colors: {
         primary: {
@@ -96,6 +97,13 @@ const config: Config = {
           3900: 'rgba(214, 254, 0, 0.85)',
           3950: '#F4F4F4',
           4000: '#699000',
+          4050: '#2B3400',
+          4100: '#FCFCFC',
+          4150: '#EFEFEF',
+          4200: '#6F767E',
+          4250: '#32AE60',
+          4300: '#F5FFCB',
+          4350: '#F2F4F7',
         },
         grey: {
           50: '#717184',

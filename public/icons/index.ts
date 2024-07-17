@@ -1,4 +1,4 @@
-import Logo from './logo.svg';
+import Logo from './logo';
 import SMLogo from './sm-logo.svg';
 import MigrateLinkIcon from './migrate-link-icon';
 import BridgeLinkIcon from './bridge-link-icon.svg';
@@ -10,7 +10,7 @@ import CloseIcon from './close-icon.svg';
 import GitHubDesktopIcon from './github-desktop-icon.svg';
 import GitHubMobileIcon from './github-mobile-icon.svg';
 import BasePrimaryDesktopIcon from './base-primary-desktop-icon.svg';
-import BasePrimaryMobileIcon from './base-primary-mobile-icon.svg';
+import BasePrimaryMobileIcon from './base-primary-mobile-icon';
 import BaseSecondaryDesktopIcon from './base-secondary-desktop-icon.svg';
 import BaseSecondaryMobileIcon from './base-secondary-mobile-icon.svg';
 import OptimismDesktopIcon from './optimism-desktop-icon.svg';
@@ -25,8 +25,8 @@ import LinkRightArrow from './link-right-arrow';
 import DoubleCheckIcon from './double-check-icon.svg';
 import MergedIcon from './merged-icon.svg';
 import RoundedCloseIcon from './rounded-close-icon.svg';
-import OptimismPrimaryMobileIcon from './optimism-primary-mobile-icon.svg';
-import ModePrimaryMobileIcon from './mode-primary-mobile-icon.svg';
+import OptimismPrimaryMobileIcon from './optimism-primary-mobile-icon';
+import ModePrimaryMobileIcon from './mode-primary-mobile-icon';
 import ScrollPrimaryMobileIcon from './scroll-primary-mobile-icon.svg';
 import DisconnectIcon from './disconnect-icon.svg';
 import CopyIcon from './copy-icon.svg';
@@ -96,6 +96,10 @@ import MobileMigrateLanding from './mobile-migrate-landing.svg';
 import ForwardIcon from './forward-icon.svg';
 import GitCloseIcon from './git-close-icon.svg';
 import SVGIcon from './svg-icon.svg';
+import EthIcon from './eth-icon';
+import ChangeIndicatorIcon from './change-indicator-icon';
+import UniswapIcon from './uniswap-icon';
+import LayerTwoIcon from './LayerTwoIcon';
 
 export {
   Logo,
@@ -196,4 +200,8 @@ export {
   ForwardIcon,
   GitCloseIcon,
   SVGIcon,
+  EthIcon,
+  ChangeIndicatorIcon,
+  UniswapIcon,
+  LayerTwoIcon,
 };
