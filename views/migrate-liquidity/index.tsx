@@ -48,8 +48,8 @@ const MigrateLiquidityView = ({ lang, migrationId, network }: MigrateLiquidityVi
       <div className="pt-12 pb-[86px] flex flex-col items-stretch gap-8">
         <Header network={network} tokenAddress={tokenAddress} tokenSymbol="RAZ" />
 
-        <div className="flex flex-col md:flex-row gap-9">
-          <div className="w-full md:min-w-[66.666666%] md:max-w-[66.666666%] flex flex-col items-stretch gap-[46px]">
+        <div className="flex flex-col xl:flex-row gap-9">
+          <div className="w-full xl:min-w-[66.666666%] xl:max-w-[66.666666%] flex flex-col items-stretch gap-[46px]">
             <div className="flex flex-col items-stretch gap-6 md:px-6">
               <div className="self-stretch flex items-center justify-between">
                 <div className="flex items-center justify-center gap-3">
@@ -101,7 +101,7 @@ const MigrateLiquidityView = ({ lang, migrationId, network }: MigrateLiquidityVi
             </div>
           </div>
 
-          <div className="w-full md:min-w-[33.333333%] md:max-w-[33.333333%] flex flex-col items-stretch gap-4">
+          <div className="w-full xl:min-w-[33.333333%] xl:max-w-[33.333333%] flex flex-col items-stretch gap-4">
             <div className="self-stretch p-6 flex flex-col gap-9 border border-primary-3450 bg-white rounded-base">
               <div className="self-stretch flex flex-col gap-4">
                 <h5 className="text-[16px] leading-[20px] tracking-[-0.096px] text-primary-4050">Liquidity composition</h5>
@@ -112,7 +112,7 @@ const MigrateLiquidityView = ({ lang, migrationId, network }: MigrateLiquidityVi
                       <div key={index} className="flex items-center justify-center gap-1">
                         {icon}
                         <div className="flex items-center justify-center gap-2">
-                          <span className="text-[16px] leading-[19.2px] text-primary-50 font-Bitform">
+                          <span className="text-sm md:text-[16px] md:leading-[19.2px] text-primary-50 font-Bitform">
                             {value} <span className="text-primary-2050">ETH</span>
                           </span>
 
