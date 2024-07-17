@@ -28,6 +28,7 @@ const SMTable = ({ data, network, isConnected, variant = 'primary', loading, cta
                   'whitespace-nowrap': index === 0 || index === 2,
                   'hidden md:table-cell': index === 1 || (index === 2 && variant === 'primary'),
                   'hidden sm:table-cell': (index === 2 || index === 4) && variant === 'secondary',
+                  hidden: index === 4 && variant === 'primary',
                 })}>
                 {header[variant]} {variant === 'primary' && index === 2 && network}
               </th>
