@@ -1,5 +1,8 @@
 'use client';
 import { ReactNode, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
+
 import { Network } from '@/config/rainbow/config';
 
 interface PageProps {
@@ -21,31 +24,29 @@ const networkBackgrounds: Record<Network, string> = {
 };
 
 const App = ({ params, children }: PageProps) => {
+  const pathname = usePathname();
+
+  const isLiquidityRoutes = pathname.includes('liquidity');
+
   useEffect(() => {
-    const bgDiv = document.createElement('div');
-    bgDiv.style.position = 'fixed';
-    bgDiv.style.top = '0';
-    bgDiv.style.left = '0';
-    bgDiv.style.width = '100vw';
-    bgDiv.style.height = '100vh';
-    bgDiv.style.backgroundImage = networkBackgrounds[params.network];
-    bgDiv.style.backgroundSize = 'cover';
-    bgDiv.style.backgroundPosition = 'center';
-    bgDiv.style.zIndex = '-10';
-    bgDiv.style.opacity = '0.1';
-    bgDiv.style.transition = 'background 300ms ease-in-out';
-    bgDiv.style.pointerEvents = 'none';
+    if (isLiquidityRoutes) {
+      document.body.classList.add('bg-peach-gradient');
+    } else {
+      document.body.classList.remove('bg-peach-gradient');
+    }
+  }, [isLiquidityRoutes]);
 
-    document.body.appendChild(bgDiv);
-
-    return () => {
-      if (document.body.contains(bgDiv)) {
-        document.body.removeChild(bgDiv);
-      }
-    };
-  }, [params.network]);
-
-  return <main>{children}</main>;
+  return (
+    <main>
+      {children}
+      {!isLiquidityRoutes && (
+        <motion.div
+          animate={{ backgroundImage: networkBackgrounds[params.network] }}
+          className="fixed top-0 left-0 w-screen h-screen bg-cover bg-center -z-10 opacity-10 transition-all duration-300 ease-in-out pointer-events-none"
+        />
+      )}
+    </main>
+  );
 };
 
 export default App;
