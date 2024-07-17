@@ -20,20 +20,18 @@ const SMButton = ({ network, onClick, text, variant = 'git', fullWidth, disabled
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.9 }}
       disabled={disabled || loading}
-      className={classNames('py-[10px] px-[14px] flex items-center justify-center gap-1 rounded-base', {
+      className={classNames('px-[14px] flex items-center justify-center gap-1 font-Bitform', {
         'border-[0.5px] border-primary-1400': !disabled,
         'bg-primary-150 pointer-events-none': disabled || loading,
-        'bg-base-github-button': network === 'base' && !disabled,
-        'bg-optimism-github-button': network === 'optimism' && !disabled,
-        'bg-mode-github-button': network === 'mode' && !disabled,
-        'bg-scroll-github-button': network === 'scroll' && !disabled,
-        'bg-primary-1300': variant === 'bland-new',
-        'shadow-base-github-button': network === 'base' && !disabled,
-        'shadow-optimism-github-button': network === 'optimism' && !disabled,
-        'shadow-mode-github-button': network === 'mode' && !disabled,
-        'shadow-scroll-github-button': network === 'scroll' && !disabled,
-        'shadow-bland-new-button': variant === 'bland-new',
+        'bg-base-github-button shadow-base-github-button': network === 'base' && !disabled,
+        'bg-optimism-github-button shadow-optimism-github-button': network === 'optimism' && !disabled,
+        'bg-mode-github-button shadow-mode-github-button': network === 'mode' && !disabled,
+        'bg-scroll-github-button shadow-scroll-github-button': network === 'scroll' && !disabled,
+        'bg-primary-1300 shadow-bland-new-button': variant === 'bland-new',
+        'bg-primary-3250 shadow-welcome-button': variant === 'tertiary' && !disabled,
         'w-full': fullWidth,
+        'rounded-lg py-2': variant === 'tertiary',
+        'rounded-base py-[10px]': variant !== 'tertiary',
       })}
       onClick={onClick}>
       {!loading && variant === 'git' && <GithubButtonIcon color={iconColor} />}
@@ -41,9 +39,10 @@ const SMButton = ({ network, onClick, text, variant = 'git', fullWidth, disabled
 
       <div
         className={classNames('font-medium tracking-[-0.084px] text-sm text-center transition-all duration-300 capitalize whitespace-nowrap', {
-          'text-white': network === 'base' || network === 'optimism' || variant === 'bland-new',
-          'text-primary-950': network === 'mode' || network === 'scroll',
+          'text-white': (network === 'base' || network === 'optimism' || variant === 'bland-new') && !disabled,
+          'text-primary-950': (network === 'mode' || network === 'scroll') && !disabled,
           'text-primary-1300': disabled,
+          'text-primary-4400': variant === 'tertiary' && !disabled,
         })}>
         {loading ? <SMLoader color="#ffffff" /> : text}
       </div>

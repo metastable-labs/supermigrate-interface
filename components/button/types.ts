@@ -1,6 +1,6 @@
 import { Network } from '@/config/rainbow/config';
 
-type ButtonVariants = 'git' | 'new' | 'bland-new' | 'plain';
+type ButtonVariants = 'git' | 'new' | 'bland-new' | 'plain' | 'tertiary';
 
 interface IButton {
   variant?: ButtonVariants;
