@@ -123,7 +123,10 @@ const Row = ({ index, item, variant, ctaAction, rowClick, network }: IRow) => {
 
       {variant === 'secondary' && (
         <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap hidden sm:table-cell">
-          <span>{item?.apy}%</span>
+          <span>
+            {item?.apy}
+            <span className="font-sans">%</span>
+          </span>
         </td>
       )}
     </tr>
