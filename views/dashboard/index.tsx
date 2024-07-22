@@ -31,7 +31,7 @@ export default function DashboardView({ lang }: LangParamProp) {
       <SMAnnouncement
         comment={"We are adding more L2/L3 Integrations. If you'd like us to support your network, reach out to"}
         link="https://metastablelabs.xyz/"
-        linkText="integrations@metastablelabs.xyz"
+        linkText="admin@metastablelabs.xyz"
         show
       />
     </div>
