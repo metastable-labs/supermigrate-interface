@@ -33,7 +33,7 @@ export default function DashboardView({ lang }: LangParamProp) {
 
       <SMWelcome show={showWelcome} close={closeWelcome} />
 
-      <SMAnnouncement comment={announcement} link="https://metastablelabs.xyz/" linkText="integrations@metastablelabs.xyz" show />
+      <SMAnnouncement comment={announcement} link="mailto:admin@metastablelabs.xyz" linkText="admin@metastablelabs.xyz" show />
     </div>
   );
 }
