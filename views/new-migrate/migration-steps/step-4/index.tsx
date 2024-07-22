@@ -1,12 +1,11 @@
 'use client';
-import classNames from 'classnames';
 
 import Right from './right';
 import Left from './left';
 
 const Step4 = () => {
   return (
-    <div className={classNames('w-full flex flex-col md:flex-row items-center justify-center gap-14 md:gap-[60px]')}>
+    <div className="w-full flex flex-col md:flex-row items-center justify-center gap-14 md:gap-[60px] pb-36 flex-wrap">
       <Left />
       <Right />
     </div>

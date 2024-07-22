@@ -1,0 +1,308 @@
+{
+  "landingPage": {
+    "navigation": {
+      "about": "Acerca de",
+      "whitepaper": "Blog",
+      "faq": "Preguntas frecuentes",
+      "actionText": "Lanzar aplicación"
+    },
+    "hero": {
+      "title": "Tu puerta de entrada a",
+      "subtitle": "Implementa automáticamente ERC20 puenteados canónicos en una L2. Comienza a migrar y agregar liquidez para ganar recompensas, todo en un solo lugar.",
+      "actionText": "Comenzar a migrar"
+    },
+    "section1": {
+      "title": "Migración simplificada y fácil",
+      "titleCont": "a redes de capa 2",
+      "first": {
+        "title": "Fácil",
+        "content": "ya seas nuevo en las L2 o no tengas un equipo técnico. Supermigrate lo hace fácil"
+      },
+      "second": {
+        "title": "Rápido",
+        "content": "Nunca pierdas el sueño, proceso totalmente automatizado."
+      },
+      "third": {
+        "title": "Gana",
+        "content": "Gana recompensas e incentivos por ingresar a las L2"
+      }
+    },
+    "section2": {
+      "title": "Todo, en un solo lugar",
+      "first": {
+        "actionText": "Migrar",
+        "title": "Implementar tokens puenteados canónicos",
+        "content": "Estamos proporcionando un proceso sencillo para que los usuarios implementen sus tokens ERC20 en redes L2 que automáticamente los hace puentables."
+      },
+      "second": {
+        "actionText": "Puente",
+        "title": "Mover tokens entre L1 <> L2",
+        "content": "Hacemos que sea sencillo para los usuarios transferir activos entre redes L1 y L2."
+      },
+      "third": {
+        "actionText": "Liquidez",
+        "title": "Agregar liquidez para tokens recién implementados",
+        "content": "Una interfaz que facilita a las personas proporcionar liquidez para cualquier token recién migrado en L2 y ser recompensados por hacerlo."
+      }
+    },
+    "testimonial": {
+      "title": "Hacemos que L1<>L2 sea fácil",
+      "twitterText": "Síguenos",
+      "telegramText": "Únete a la comunidad"
+    },
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "subtitle": "Todo lo que necesitas saber sobre Supermigrate y nuestras integraciones",
+      "supportText": "",
+      "seeMore": "Ver más preguntas frecuentes",
+      "seeLess": "Ver menos",
+      "question1": {
+        "question": "¿Es posible migrar tokens con diferentes nombres y tickers a Base?",
+        "answer": "Sí, durante el proceso de migración, debes marcar la opción 'Override'. Esto requerirá una revisión manual adicional."
+      },
+      "question2": {
+        "question": "¿Cómo puedes ver o consultar documentación o referencias de código para Supermigrate?",
+        "answer": "Aquí hay un enlace a nuestro repositorio de github: https: //github.com/supermigrate"
+      },
+      "question3": {
+        "question": "¿Supermigrate admite puentes bidireccionales?",
+        "answer": "Sí, con nuestra integración superbridge, puedes ir de L1 ⇒ L2 y viceversa."
+      },
+      "question4": {
+        "question": "¿Qué mecanismo de puenteo se utiliza para Supermigrate?",
+        "answer": "Los tokens se implementan utilizando el OptimismMintableERC20Factory oficial. Después de la implementación del token, puedes puentear los tokens en nuestra interfaz de puenteo que es potenciada por superbridge."
+      },
+      "question5": {
+        "question": "¿Cuántas redes de capa 2 se admiten actualmente?",
+        "answer": "Actualmente admitimos Base, Optimism y Mode. Estamos agregando más redes activamente. Comunícate con integrations@metastablelabs.xyz para solicitudes de integración."
+      },
+      "question6": {
+        "question": "¿Supermigrate admite tokens de Polygon?",
+        "answer": "No, actualmente solo admite migraciones de Ethereum a L2."
+      }
+    },
+    "footer": {
+      "resources": {
+        "title": "Recursos",
+        "blog": "Blog",
+        "github": "Github"
+      },
+      "socials": {
+        "title": "Redes sociales",
+        "twitter": "Twitter",
+        "telegram": "Telegram"
+      },
+      "alert": "Mantente al día",
+      "emailPlaceholder": "Introduce tu email",
+      "subscribe": "Suscribirse"
+    }
+  },
+  "dashboard": {
+    "title": "Selecciona una red",
+    "subtitle": "Selecciona una red para comenzar una nueva migración",
+    "announcement": "Estamos agregando más integraciones L2/L3. Si deseas que admitamos tu red, comunícate con",
+    "welcome": {
+      "header": "Bienvenido a Supermigrate",
+      "subheader": "Toma nota por favor:",
+      "first": "Una vez que tu PR se fusione, la lista de tokens se actualizará automáticamente para incluir tu token en nuestra interfaz de puenteo.",
+      "second": "Para completar la migración, asegúrate de verificar la migración agregando un enlace al tweet de verificación en la solicitud de extracción.",
+      "third": "Para soporte, por favor contáctanos a través de nuestro",
+      "linkText": "canal de telegram",
+      "buttonText": "Aceptar y continuar",
+      "alert": "No mostrar esto de nuevo"
+    }
+  },
+  "comingSoon": "Próximamente",
+  "navigation": {
+    "migrate": "Migrar",
+    "bridge": "Puente",
+    "liquidity": "Liquidez",
+    "connect": "Conectar"
+  },
+  "migrate": {
+    "title": "Migraciones",
+    "subtitle": "Gestiona todas tus migraciones y crea nuevas",
+    "buttonText": "Nueva migración",
+    "connect": {
+      "title": "Por favor conecta Github para continuar",
+      "subtitle": "La cuenta de Github conectada se usará para hacer un fork y crear un PR en el repositorio de lista de tokens de Superchain",
+      "buttonText": "conectar github"
+    }
+  },
+  "components": {
+    "table": {
+      "headers": {
+        "first": { "label": "Nombre del Token" },
+        "second": {
+          "label": "Estado de la Migración",
+          "mobileLabel": "Estado",
+          "secondaryLabel": "Dirección del Token"
+        },
+        "third": { "label": "Contrato en", "secondaryLabel": "Pool" },
+        "fourth": { "label": "Acción" }
+      },
+      "empty": {
+        "title": {
+          "primary": "Aún no hay migraciones",
+          "secondary": "Aún no hay liquididades",
+          "default": "Por favor conecta GitHub"
+        },
+        "subtitle": {
+          "primary": "Aún no has hecho ninguna migración, las nuevas migraciones se mostrarán aquí",
+          "secondary": "Aún no has agregado ninguna liquidez, las nuevas liquididades se mostrarán aquí",
+          "default": "Conecta tu GitHub para ver tu"
+        },
+        "buttonText": {
+          "primary": "nueva Migración",
+          "secondary": "nueva Liquidez",
+          "default": "conectar GitHub"
+        }
+      },
+      "body": {
+        "status": {
+          "success": "Éxito",
+          "pending": "Pendiente",
+          "failed": "Fallido"
+        },
+        "contract": {
+          "text": "Ver en"
+        },
+        "action": {
+          "primary": "Ver",
+          "secondary": "Agregar Liquidez"
+        }
+      },
+      "footer": {
+        "previous": "Anterior",
+        "next": "Siguiente",
+        "page": "Página"
+      }
+    },
+    "input": {
+      "required": "Requerido"
+    },
+    "fileInput": {
+      "title": "Elige un archivo o arrástralo aquí.",
+      "subtitle": "Formatos SVG, hasta 5 MB.",
+      "buttonText": "Buscar",
+      "completed": "Completado",
+      "required": "Requerido"
+    }
+  },
+  "newMigration": {
+    "navigation": {
+      "first": "Migrar",
+      "second": {
+        "primary": "Nueva Migración",
+        "secondary": "Información del Token"
+      }
+    },
+    "header": {
+      "first": "Información del Token",
+      "second": "Social"
+    },
+    "step1": {
+      "addressInput": {
+        "label": "Dirección del Token en Ethereum (L1)",
+        "placeholder": "Dirección del Token"
+      },
+      "nameInput": {
+        "label": "Nombre del Token",
+        "placeholder": "Nombre del Token"
+      },
+      "symbolInput": {
+        "label": "Símbolo del Token",
+        "placeholder": "$token"
+      },
+      "decimalInput": {
+        "label": "Decimales del Token",
+        "placeholder": "Decimales del Token"
+      },
+      "descriptionInput": {
+        "label": "Descripción del Token",
+        "placeholder": "Descripción del Token"
+      },
+      "tokenInfo": {
+        "name": "Nombre del Token",
+        "symbol": "Símbolo del Token",
+        "decimals": "Decimales del Token"
+      },
+      "buttonText": "Siguiente",
+      "override": "Sobrescribir"
+    },
+    "step2": {
+      "imageInput": {
+        "label": "Imagen del Token"
+      },
+      "websiteInput": {
+        "label": "Enlace al Sitio Web",
+        "placeholder": "URL del Logo"
+      },
+      "twitterInput": {
+        "label": "Enlace a Twitter",
+        "placeholder": "URL de Twitter"
+      },
+      "buttonText": "Siguiente"
+    },
+    "step3": {
+      "step1": "Contrato del Token Implementado",
+      "step2": "Contrato Verificado",
+      "step3": "Forking lista de tokens de Superchain a repositorio de Github",
+      "step4": "Agregando datos al repositorio de superchain bifurcado",
+      "announcement": "Si estás conectado a tu billetera móvil, revísala para firmar la transacción"
+    },
+    "step4": {
+      "left": {
+        "title": "¡Migración Exitosa!",
+        "subtitle": "Detalles del Token",
+        "linkTexts": {
+          "primary": "Ver solicitud de extracción en el repositorio de lista de tokens",
+          "secondary": "Ver solicitud de extracción en Superbridge"
+        },
+        "viewOn": "Ver en"
+      },
+      "right": {
+        "title": "Verificando Migración",
+        "subtitle": "Por favor sigue estos pasos para verificar la migración:",
+        "xText": "Haz el siguiente tweet desde la cuenta del URL de Twitter que proporcionaste",
+        "gitText": "Ve a las solicitudes de extracción y agrega un comentario diciendo aprobado con un enlace al tweet",
+        "linkText": "Verificando migración en @supermigrate"
+      },
+      "announcement": "Después de que pasen las verificaciones automáticas y un revisor apruebe la PR, se fusionará automáticamente."
+    }
+  },
+  "tokenDetail": {
+    "websiteText": "Sitio Web",
+    "twitterText": "Twitter",
+    "buttonText": {
+      "primary": "Agregar al Puente",
+      "secondary": "Comenzar Puenteo"
+    },
+    "tokenContract": {
+      "title": "Contrato del Token"
+    },
+    "pullRequest": {
+      "title": "Estado de la solicitud de extracción",
+      "subtitle": {
+        "primary": "Repositorio de lista de tokens de Superchain",
+        "secondary": "Repositorio de lista de tokens de Superbridge"
+      },
+      "status": {
+        "pending": "Pendiente",
+        "merged": "Fusionado",
+        "closed": "Cerrado"
+      }
+    },
+    "transactionHash": {
+      "title": "Hash de la transacción",
+      "viewOn": "Ver en"
+    }
+  },
+  "liquidty": {
+    "comingSoon": {
+      "title": "Próximamente",
+      "subtitle": "¡Estamos implementando esta función pronto!",
+      "buttonText": "Volver a inicio"
+    }
+  }
+}

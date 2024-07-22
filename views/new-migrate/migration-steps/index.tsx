@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
-import { useChainId } from 'wagmi';
 
 import { Network } from '@/config/rainbow/config';
 import readTokenData from '@/utils/read-contract';
@@ -16,6 +15,7 @@ import Step3 from './step-3';
 import Step4 from './step-4';
 import useMigrationActions from '@/application/migration/actions';
 import { SMAnnouncement } from '@/components';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const schema = yup.object().shape({
   tokenAddress: yup.string().required('Token Address is Required'),
@@ -26,17 +26,18 @@ const schema = yup.object().shape({
   websiteLink: yup.string(),
   twitterLink: yup
     .string()
-    .matches(/^(https?:\/\/)?(www\.)?twitter\.com\/[a-zA-Z0-9_]{1,15}\/?$/i, 'Invalid Twitter URL')
+    .matches(/^(https?:\/\/)?(www\.)?(twitter\.com|x\.com)\/[a-zA-Z0-9_]{1,15}\/?$/i, 'Invalid Twitter URL')
     .required('Twitter URL is Required'),
 });
 
 const MigrationSteps = ({ network }: { network: Network }) => {
-  const chainId = useChainId();
   const { migrateToken } = useMigrationActions();
   const [step, setStep] = useState(0);
   const [file, setFile] = useState<File | null>(null);
   const [overridden, setOverridden] = useState(false);
   const [fetchingTokenAddress, setFetchingTokenAddress] = useState(false);
+  const { locale } = useSystemFunctions();
+  const { announcement } = locale.newMigration.step4;
 
   const {
     register,
@@ -112,14 +113,14 @@ const MigrationSteps = ({ network }: { network: Network }) => {
       <Header step={step} network={network} setStep={setStep} />
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <AnimatePresence>
+        <AnimatePresence mode="popLayout">
           <motion.div key={step} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             {steps[step]}
           </motion.div>
         </AnimatePresence>
       </form>
 
-      <SMAnnouncement comment="After the automated checks pass and a reviewer approves the PR, then it will automatically be merged." show={step === 3} />
+      <SMAnnouncement comment={announcement} show={step === 3} />
     </div>
   );
 };

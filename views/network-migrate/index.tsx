@@ -16,7 +16,7 @@ import { useChainId } from 'wagmi';
 import { getScanLink } from '@/utils/helpers';
 
 const NetworkMigrationsView = ({ network }: { network: Network }) => {
-  const { navigate, userState, migrationState } = useSystemFunctions();
+  const { navigate, userState, migrationState, locale } = useSystemFunctions();
   const chaninId = useChainId();
   const { authenticateGithub } = useUserActions();
   const { getMigrationObject } = useMigrationActions();
@@ -25,10 +25,9 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
 
   const { loading, user } = userState;
   const { migrations, loading: migration_loading } = migrationState;
+  const { buttonText, subtitle, title } = locale.migrate;
 
   const code = searchParams.get('code');
-
-  const action = () => navigate.push(`/${network}/migrate/new`);
 
   const tableData = migrations
     ?.filter?.((migration) => migration.chains?.find((chain) => chain.id === chaninId))
@@ -43,6 +42,8 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
         scanUrl: getScanLink(chain?.id!, chain?.transaction_hash!),
       };
     });
+
+  const action = () => navigate.push(`/${network}/migrate/new`);
 
   const handleTableAction = (id?: string) => {
     if (id) getMigrationObject(id);
@@ -78,11 +79,11 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
 
             <div className="self-stretch pb-5 border-b border-primary-1350 flex flex-col md:flex-row md:justify-between items-start md:items-end gap-[14px] md:gap-8">
               <div className="flex-1 flex flex-col gap-1 items-start">
-                <h1 className="text-[20px] md:text-[30px] text-primary-300 leading-[38px] font-medium">Migrations</h1>
-                <p className="text-[14px] text-primary-350 md:text-base max-w-[399px] text-wrap">Manage all your Migrations and create new ones</p>
+                <h1 className="text-[20px] md:text-[30px] text-primary-300 leading-[38px] font-medium">{title}</h1>
+                <p className="text-[14px] text-primary-350 md:text-base max-w-[450px] text-wrap">{subtitle}</p>
               </div>
 
-              {cookies.SMauthtoken && <SMButton onClick={action} text="new migration" variant="new" network={network} />}
+              {cookies.SMauthtoken && <SMButton onClick={action} text={buttonText} variant="new" network={network} />}
             </div>
 
             <SMTable isConnected={user ? true : false} data={tableData} network={network} ctaAction={handleTableAction} />

@@ -1,8 +1,11 @@
 import classNames from 'classnames';
 
 import { ISMInput } from './types';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const SMInput = ({ name, className, disabled, error, isRequired, label, placeholder, register, rows = 3, type, variant = 'primary' }: ISMInput) => {
+  const { locale } = useSystemFunctions();
+  const { required } = locale.components.input;
   return (
     <div className={classNames('w-full text-sm tracking-[-0.084px] text-primary-50 flex flex-col items-start gap-1', { 'text-primary-1950': error })}>
       <label
@@ -11,7 +14,7 @@ const SMInput = ({ name, className, disabled, error, isRequired, label, placehol
           'flex items-center justify-center gap-2 text-primary-50 font-medium': isRequired,
         })}>
         {label}
-        {isRequired && <span className="text-primary-1950 font-normal">{'(Required)'}</span>}
+        {isRequired && <span className="text-primary-1950 font-normal">{`(${required})`}</span>}
       </label>
 
       {variant === 'primary' && (

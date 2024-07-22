@@ -10,20 +10,26 @@ import { LinkRightArrow } from '@/public/icons';
 import EmptyState from './empty';
 import Status from './status';
 import Address from './address';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const SMTable = ({ data, network, isConnected, variant = 'primary', loading, ctaAction }: TableProps) => {
   const [isMobileView, setIsMobileView] = useState(false);
+  const { locale } = useSystemFunctions();
+
+  const { first, fourth, second, third } = locale.components.table.headers;
+  const { contract, action } = locale.components.table.body;
+  const { next, page, previous } = locale.components.table.footer;
 
   const headers = [
-    { key: 'tokenName', label: 'Token Name' },
+    { key: 'tokenName', label: first.label },
     {
       key: 'status',
-      label: 'Migration Status',
-      mobileLabel: 'Status',
-      secondaryLabel: 'Token Address',
+      label: second.label,
+      mobileLabel: second.mobileLabel,
+      secondaryLabel: second.secondaryLabel,
     },
-    { key: 'action', label: `Contract on ${network}`, secondaryLabel: 'Pool' },
-    { key: 'cta', label: 'Action' },
+    { key: 'action', label: `${third.label} ${network}`, secondaryLabel: third.secondaryLabel },
+    { key: 'cta', label: fourth.label },
   ].filter((header) => variant === 'primary' || header.key !== 'action');
 
   useEffect(() => {
@@ -53,6 +59,7 @@ const SMTable = ({ data, network, isConnected, variant = 'primary', loading, cta
             ))}
           </tr>
         </thead>
+
         {Boolean(data.length) && !loading && (
           <tbody className="bg-white divide-y divide-gray-200">
             {data.map((item, index) => (
@@ -75,7 +82,9 @@ const SMTable = ({ data, network, isConnected, variant = 'primary', loading, cta
                 {variant === 'primary' && (
                   <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 justify-center md:justify-start items-center gap-2 md:flex hidden">
                     <a href={item.scanUrl} target="_blank" className="text-[14px] leading-[20px]  text-primary-1650 border-b border-b-primary-1650 flex items-center justify-center gap-1">
-                      <div>View on {network}scan</div>
+                      <div>
+                        {contract.text} {network}scan
+                      </div>
                     </a>
 
                     <LinkRightArrow />
@@ -83,7 +92,7 @@ const SMTable = ({ data, network, isConnected, variant = 'primary', loading, cta
                 )}
 
                 <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm font-medium">
-                  <CTA title={variant === 'primary' ? 'View' : 'Add Liquidity'} onClick={() => ctaAction?.(item?.id)} normal />
+                  <CTA title={variant === 'primary' ? action.primary : action.secondary} onClick={() => ctaAction?.(item?.id)} normal />
                 </td>
               </tr>
             ))}
@@ -95,11 +104,11 @@ const SMTable = ({ data, network, isConnected, variant = 'primary', loading, cta
 
       {Boolean(data.length) && (
         <div className=" border-t border-primary-1350 flex justify-between items-center px-6 pt-3 pb-4 bg-white">
-          <CTA title="Previous" onClick={() => {}} />
+          <CTA title={previous} onClick={() => {}} />
 
-          <span className="flex items-center justify-center px-3 text-sm text-primary-1600">Page 1 of 1</span>
+          <span className="flex items-center justify-center px-3 text-sm text-primary-1600">{page} 1 of 1</span>
 
-          <CTA title="Next" onClick={() => {}} />
+          <CTA title={next} onClick={() => {}} />
         </div>
       )}
     </div>

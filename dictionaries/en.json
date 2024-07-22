@@ -96,5 +96,213 @@
       "emailPlaceholder": "Enter your email",
       "subscribe": "Subscribe"
     }
+  },
+  "dashboard": {
+    "title": "Select a network",
+    "subtitle": "Select a network to start a new migration",
+    "announcement": "We are adding more L2/L3 Integrations. If you'd like us to support your network, reach out to",
+    "welcome": {
+      "header": "Welcome to Supermigrate",
+      "subheader": "Please take note:",
+      "first": "Once your PR is merged, the token list will update automatically to include your token on our bridging interface.",
+      "second": "To complete the migration, make sure you verify the migration by adding a link to the verification tweet on the pull request.",
+      "third": "For support please reach out to us via our",
+      "linkText": "telegram channel",
+      "buttonText": "Agree and Continue",
+      "alert": "Don't show it again"
+    }
+  },
+  "comingSoon": "Coming Soon",
+  "navigation": {
+    "migrate": "Migrate",
+    "bridge": "Bridge",
+    "liquidity": "Liquidity",
+    "connect": "Connect"
+  },
+  "migrate": {
+    "title": "Migrations",
+    "subtitle": "Manage all your Migrations and create new ones",
+    "buttonText": "New Migration",
+    "connect": {
+      "title": "Please connect Github to continue",
+      "subtitle": "The Github account connected will be used to fork and create a PR on the Superchain token list repo",
+      "buttonText": "connect github"
+    }
+  },
+  "components": {
+    "table": {
+      "headers": {
+        "first": { "label": "Token Name" },
+        "second": {
+          "label": "Migration Status",
+          "mobileLabel": "Status",
+          "secondaryLabel": "Token Address"
+        },
+        "third": { "label": "Contract on", "secondaryLabel": "Pool" },
+        "fourth": { "label": "Action" }
+      },
+      "empty": {
+        "title": {
+          "primary": "No Migrations yet",
+          "secondary": "No Liquidities yet",
+          "default": "Please connect GitHub"
+        },
+        "subtitle": {
+          "primary": "You haven’t done any migrations, new migrations will show here",
+          "secondary": "You haven’t added any liquidity yet, new liquidities will show here",
+          "default": "Connect your GitHub to see your"
+        },
+        "buttonText": {
+          "primary": "new Migration",
+          "secondary": "new Liquidity",
+          "default": "connect GitHub"
+        }
+      },
+      "body": {
+        "status": {
+          "success": "Success",
+          "pending": "Pending",
+          "failed": "Failed"
+        },
+        "contract": {
+          "text": "View on"
+        },
+        "action": {
+          "primary": "View",
+          "secondary": "Add Liquidity"
+        }
+      },
+      "footer": {
+        "previous": "Previous",
+        "next": "Next",
+        "page": "Page"
+      }
+    },
+    "input": {
+      "required": "Required"
+    },
+    "fileInput": {
+      "title": "Choose a file or drag & drop it here.",
+      "subtitle": "SVG formats, up to 5 MB.",
+      "buttonText": "Browse",
+      "completed": "Completed",
+      "required": "Required"
+    }
+  },
+  "newMigration": {
+    "navigation": {
+      "first": "Migrate",
+      "second": {
+        "primary": "New Migration",
+        "secondary": "Token info"
+      }
+    },
+    "header": {
+      "first": "Token info",
+      "second": "Social"
+    },
+    "step1": {
+      "addressInput": {
+        "label": "Token Address on Ethereum (L1)",
+        "placeholder": "Token Address"
+      },
+      "nameInput": {
+        "label": "Token Name",
+        "placeholder": "Token Name"
+      },
+      "symbolInput": {
+        "label": "Token Symbol",
+        "placeholder": "$token"
+      },
+      "decimalInput": {
+        "label": "Token Decimal",
+        "placeholder": "Token Decimal"
+      },
+      "descriptionInput": {
+        "label": "Token Description",
+        "placeholder": "Token Description"
+      },
+      "tokenInfo": {
+        "name": "Token Name",
+        "symbol": "Token Symbol",
+        "decimals": "Token Decimal"
+      },
+      "buttonText": "Next",
+      "override": "Override"
+    },
+    "step2": {
+      "imageInput": {
+        "label": "Token Image"
+      },
+      "websiteInput": {
+        "label": "Website Link",
+        "placeholder": "Logo URL"
+      },
+      "twitterInput": {
+        "label": "Twitter Link",
+        "placeholder": "Twitter URL"
+      },
+      "buttonText": "Next"
+    },
+    "step3": {
+      "step1": "Token Contract Deployed",
+      "step2": "Contract Verified",
+      "step3": "Forking Superchain Token List to Github repo",
+      "step4": "Adding Data to forked superchain repo",
+      "announcement": "If you are connected to your mobile wallet, check it to sign transaction"
+    },
+    "step4": {
+      "left": {
+        "title": "Migration Successful!",
+        "subtitle": "Token Details",
+        "linkTexts": {
+          "primary": "View Pull request on token list repo",
+          "secondary": "View Pull request on Superbridge"
+        },
+        "viewOn": "View on"
+      },
+      "right": {
+        "title": "Verifying Migration",
+        "subtitle": "Please follow these steps to verify migration:",
+        "xText": "Make the tweet below from the account of the twitter URL you provided",
+        "gitText": "Go to the Pull requests and add a comment saying approved with a link to the tweet",
+        "linkText": "Verifying migration on @supermigrate"
+      },
+      "announcement": "After the automated checks pass and a reviewer approves the PR, then it will automatically be merged."
+    }
+  },
+  "tokenDetail": {
+    "websiteText": "Website",
+    "twitterText": "Twitter",
+    "buttonText": {
+      "primary": "Add to Bridge",
+      "secondary": "Start Bridging"
+    },
+    "tokenContract": {
+      "title": "Token Contract"
+    },
+    "pullRequest": {
+      "title": "Pull request status",
+      "subtitle": {
+        "primary": "Superchain token list repo",
+        "secondary": "Superbridge token list repo"
+      },
+      "status": {
+        "pending": "Pending",
+        "merged": "Merged",
+        "closed": "Closed"
+      }
+    },
+    "transactionHash": {
+      "title": "Transaction hash",
+      "viewOn": "View on"
+    }
+  },
+  "liquidty": {
+    "comingSoon": {
+      "title": "Coming Soon",
+      "subtitle": "We’re rolling out this feature soon!",
+      "buttonText": "Back Home"
+    }
   }
 }

@@ -5,10 +5,14 @@ import { useCookies } from 'react-cookie';
 import { SMAnnouncement, SMContainer, SMWelcome } from '@/components';
 import { LangParamProp } from '@/config/internationalization/i18n';
 import SelectionComponent from './selection';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 export default function DashboardView({ lang }: LangParamProp) {
   const [showWelcome, setShowWelcome] = useState(false);
   const [cookies] = useCookies(['SMHasShownWelcomeModal']);
+  const { locale } = useSystemFunctions();
+
+  const { announcement } = locale.dashboard;
 
   const closeWelcome = () => setShowWelcome(false);
 
@@ -20,6 +24,7 @@ export default function DashboardView({ lang }: LangParamProp) {
       setShowWelcome(true);
     }
   }, [cookies]);
+
   return (
     <div className="pb-28 lg:pb-0">
       <SMContainer>
@@ -28,12 +33,7 @@ export default function DashboardView({ lang }: LangParamProp) {
 
       <SMWelcome show={showWelcome} close={closeWelcome} />
 
-      <SMAnnouncement
-        comment={"We are adding more L2/L3 Integrations. If you'd like us to support your network, reach out to"}
-        link="https://metastablelabs.xyz/"
-        linkText="admin@metastablelabs.xyz"
-        show
-      />
+      <SMAnnouncement comment={announcement} link="https://metastablelabs.xyz/" linkText="admin@metastablelabs.xyz" show />
     </div>
   );
 }

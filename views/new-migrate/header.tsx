@@ -5,8 +5,9 @@ import { Network } from '@/config/rainbow/config';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { HomeIcon, RightCarretLightIcon } from '@/public/icons';
 
-const NewMigrateHeader = ({ title = 'New Migration', network }: { title?: string; network: Network }) => {
-  const { navigate } = useSystemFunctions();
+const NewMigrateHeader = ({ title, network }: { title: string; network: Network }) => {
+  const { navigate, locale } = useSystemFunctions();
+  const { first } = locale.newMigration.navigation;
 
   const handleMigrateClick = () => {
     if (window.history.length > 2) {
@@ -25,7 +26,7 @@ const NewMigrateHeader = ({ title = 'New Migration', network }: { title?: string
 
         <RightCarretLightIcon />
 
-        <SMClickAnimation onClick={handleMigrateClick}>Migrate</SMClickAnimation>
+        <SMClickAnimation onClick={handleMigrateClick}>{first}</SMClickAnimation>
 
         <RightCarretLightIcon />
 
