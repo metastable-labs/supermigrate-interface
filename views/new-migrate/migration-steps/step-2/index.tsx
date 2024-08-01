@@ -1,4 +1,6 @@
 'use client';
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { StepProps } from '../types';
@@ -17,6 +19,13 @@ const Step2 = ({ errors, network, register, setFile, file }: StepProps) => {
   };
 
   const deleteFile = () => setFile?.(null);
+
+  useEffect(() => {
+    if (file && file.size > 10000000) {
+      toast.error('Please upload a file smaller than 10MB');
+      setFile?.(null);
+    }
+  }, [file, setFile]);
 
   return (
     <div className="flex flex-col items-center justify-center gap-6 rounded-xl border border-primary-2100 bg-white p-6 min-w-[343px] md:min-w-[448px]">
