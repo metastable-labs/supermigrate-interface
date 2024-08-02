@@ -183,7 +183,7 @@
     },
     "fileInput": {
       "title": "Wählen Sie eine Datei aus oder ziehen Sie sie per Drag & Drop hierher.",
-      "subtitle": "SVG-Formate, bis zu 5 MB.",
+      "subtitle": "SVG-Formate, bis zu 10 MB.",
       "buttonText": "Durchsuche",
       "completed": "Vollendet",
       "required": "Erforderlich"

@@ -183,7 +183,7 @@
     },
     "fileInput": {
       "title": "Choisissez un fichier ou glissez-déposez-le ici.",
-      "subtitle": "Formats SVG, jusqu'à 5 Mo.",
+      "subtitle": "Formats SVG, jusqu'à 10 Mo.",
       "buttonText": "Parcourir",
       "completed": "Terminé",
       "required": "Requis"

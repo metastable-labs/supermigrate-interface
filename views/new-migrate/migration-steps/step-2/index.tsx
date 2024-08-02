@@ -1,4 +1,6 @@
 'use client';
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { StepProps } from '../types';
@@ -13,6 +15,12 @@ const Step2 = ({ errors, network, register, setFile, file }: StepProps) => {
 
   const handleFile = (e: any) => {
     const file = e.target?.files?.[0];
+
+    if (file && file.size > 10000000) {
+      toast.error('Please upload a file smaller than 10MB');
+      return;
+    }
+
     setFile?.(file);
   };
 
