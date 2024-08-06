@@ -11,7 +11,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['w7.pngwing.com', 'i.pravatar.cc', 'pbs.twimg.com'],
+    domains: ['w7.pngwing.com', 'i.pravatar.cc', 'pbs.twimg.com', 'res.cloudinary.com'],
   },
   headers: [
     {
