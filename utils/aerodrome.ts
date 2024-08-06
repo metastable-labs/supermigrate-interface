@@ -7,17 +7,11 @@
 import { wagmiConfig } from '@/config/rainbow/rainbowkit';
 import { getAccount } from '@wagmi/core';
 import { Address } from 'viem';
-import { useWriteContract } from 'wagmi';
-import AERODROME_ROUTER_ABI from '../abis/AerodromeRouter.json';
+import { readContract, writeContract } from '@wagmi/core';
+import { networks } from '@/config/rainbow/config';
 
 export function calculateSlippageAmount(value: number) {
   return [(value * 95) / 100, (value * 5) / 100];
-}
-
-export function getAerodromeRouterAddress(chainId: number | undefined): Address {
-  if (chainId === 8453) return '0xcF77a3Ba9A5CA399B7c97c74d54e5b1Beb874E43'; // Base
-  if (chainId === 84532) return '0x70bD534579cbaBbE9Cd4AD4210e29CC9BA1E9287'; // Base Sepolia
-  return '0x';
 }
 
 /**
@@ -34,16 +28,19 @@ export async function addLiquidity(tokenA: Address, tokenB: Address, amountADesi
   const amountBMin = calculateSlippageAmount(amountBDesired)[0];
 
   const { chainId, address } = getAccount(wagmiConfig);
-  const { writeContract, error, isError } = useWriteContract();
+  const currentNetwork = networks.find((network) => network.chainId === chainId);
 
-  writeContract({
-    abi: AERODROME_ROUTER_ABI,
-    address: getAerodromeRouterAddress(chainId),
-    functionName: 'addLiquidity',
-    args: [tokenA, tokenB, amountADesired, amountBDesired, amountAMin, amountBMin, address, deadline],
-  });
-
-  return { error, isError };
+  try {
+    const result = await writeContract(wagmiConfig, {
+      abi: currentNetwork?.velodromeRouterAbi!,
+      address: currentNetwork?.velodromeRouterAddress!,
+      functionName: 'addLiquidity',
+      args: [tokenA, tokenB, false, amountADesired, amountBDesired, amountAMin, amountBMin, address!, deadline],
+    });
+    return result;
+  } catch (err) {
+    return err;
+  }
 }
 
 /**
@@ -59,14 +56,17 @@ export async function addLiquidityEth(token: Address, amountERC20Desired: number
   const amountNativeMin = calculateSlippageAmount(amountETHDesired)[0];
 
   const { chainId, address } = getAccount(wagmiConfig);
-  const { writeContract, error, isError } = useWriteContract();
+  const currentNetwork = networks.find((network) => network.chainId === chainId);
 
-  writeContract({
-    abi: AERODROME_ROUTER_ABI,
-    address: getAerodromeRouterAddress(chainId),
-    functionName: 'addLiquidityETH',
-    args: [token, amountERC20Desired, amountETHDesired, amountERC20Min, amountNativeMin, address, deadline],
-  });
-
-  return { error, isError };
+  try {
+    const result = await writeContract(wagmiConfig, {
+      abi: currentNetwork?.velodromeRouterAbi,
+      address: currentNetwork?.velodromeRouterAddress!,
+      functionName: 'addLiquidityETH',
+      args: [token, false, amountERC20Desired, amountETHDesired, amountERC20Min, amountNativeMin, address!, deadline],
+    });
+    return result;
+  } catch (err) {
+    return err;
+  }
 }

@@ -8,9 +8,24 @@ import { wagmiConfig } from '@/config/rainbow/rainbowkit';
 import { readContract, writeContract } from '@wagmi/core';
 import { getAccount } from '@wagmi/core';
 import { Address } from 'viem';
+
 import { V2_FACTORY_ADDRESSES, V2_ROUTER_ADDRESSES } from '@uniswap/sdk-core';
 import UNISWAP_V2_ROUTER_ABI from '../abis/UniswapV2Router.json';
 import UNISWAP_V2_FACTORY_ABI from '../abis/UniswapV2Factory.json';
+
+export type IToken = {
+  address: Address;
+  name: string;
+  symbol: string;
+  decimals: number;
+  chainId: number;
+  logoURI: string;
+  extensions: {
+    l1Address: Address;
+    l1GatewayAddress: Address;
+    l2GatewayAddress: Address;
+  };
+};
 
 export function calculateSlippageAmount(value: number) {
   return [(value * 95) / 100, (value * 5) / 100];

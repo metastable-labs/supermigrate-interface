@@ -2,7 +2,7 @@ import { IOption } from '@/components/select/types';
 
 interface ILiquidityInput {
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
   options: IOption[];
   defaultId?: string;
@@ -11,6 +11,7 @@ interface ILiquidityInput {
   balanceText?: string;
   balanceValue?: string;
   disabled?: boolean;
+  disableInput?: boolean;
 }
 
 interface IAdd {
@@ -18,12 +19,15 @@ interface IAdd {
 }
 
 interface IInfo {
-  amount: number;
+  tokenAAmount: string;
   show: boolean;
-  wallet?: string;
-  token?: string;
-  poolPercentage: number;
+  tokenA?: string;
+  tokenB?: string;
+  poolPercentage?: string;
   step: number;
+  tokenRate?: string;
+  networkFee?: string;
+  tokenBAmount: string;
 }
 
 export type { ILiquidityInput, IAdd, IInfo };

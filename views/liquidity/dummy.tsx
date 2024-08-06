@@ -1,47 +1,3 @@
-import { EthereumIcon, BitcoinIcon, SolanaIcon, PolygonIcon, GrinIcon } from '@/public/icons';
-
-const walletOptions = [
-  {
-    text: 'ETH',
-    value: '0xAbc1234567890DeF1234567890ABcDeF12345678',
-    icon: <EthereumIcon />,
-    id: 'eth',
-  },
-  {
-    text: 'BTC',
-    value: '0xAbc1234567890DeF1234567890ABcDeF1234567',
-    icon: <BitcoinIcon />,
-    id: 'btc',
-  },
-  {
-    text: 'SOL',
-    value: '0xAbc1234567890DeF1234567890ABcDeF1234568',
-    icon: <SolanaIcon />,
-    id: 'sol',
-  },
-  {
-    text: 'MATIC',
-    value: '0xAbc1234567890DeF1234567890ABcDeF1235678',
-    icon: <PolygonIcon />,
-    id: 'matic',
-  },
-];
-
-const tokenOptions = [
-  { text: 'NJO', value: 'NJOKU', icon: <GrinIcon />, id: 'njo' },
-  { text: 'ETH', value: 'ETHOS', icon: <GrinIcon />, id: 'eth' },
-  { text: 'LIN', value: 'LINKR', icon: <GrinIcon />, id: 'lin' },
-  { text: 'DAI', value: 'DAIOS', icon: <GrinIcon />, id: 'dai' },
-  { text: 'UNI', value: 'UNIK', icon: <GrinIcon />, id: 'uni' },
-  { text: 'COM', value: 'COMPQ', icon: <GrinIcon />, id: 'com' },
-  { text: 'AAV', value: 'AAVEY', icon: <GrinIcon />, id: 'aav' },
-  { text: 'SNX', value: 'SNXK', icon: <GrinIcon />, id: 'snx' },
-  { text: 'MKR', value: 'MKRR', icon: <GrinIcon />, id: 'mkr' },
-  { text: 'YFI', value: 'YFIL', icon: <GrinIcon />, id: 'yfi' },
-  { text: 'CHO', value: 'CHOCO', icon: <GrinIcon />, id: 'cho' },
-  { text: 'MEI', value: 'MEISTER', icon: <GrinIcon />, id: 'mei' },
-];
-
 type Rate = {
   name: string;
   ETH: number;
@@ -141,5 +97,5 @@ const tableData = [
   },
 ];
 
-export { walletOptions, tokenOptions, rates, tableData };
+export { rates, tableData };
 export type { Rate };

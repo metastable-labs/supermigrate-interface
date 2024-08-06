@@ -17,6 +17,7 @@
     "@reduxjs/toolkit": "^2.2.3",
     "@svgr/webpack": "^8.1.0",
     "@tanstack/react-query": "^5.29.0",
+    "@uniswap/default-token-list": "^11.19.0",
     "@uniswap/sdk-core": "^5.0.0",
     "@uniswap/v2-sdk": "^4.3.1",
     "@wagmi/connectors": "^4.1.25",

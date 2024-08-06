@@ -16,6 +16,7 @@ const SMButton = ({ network, onClick, text, variant = 'git', fullWidth, disabled
 
   return (
     <motion.button
+      disabled={disabled || loading}
       type={type}
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.9 }}
