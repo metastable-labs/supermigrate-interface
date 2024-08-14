@@ -5,5 +5,6 @@ import BridgeView from './bridge';
 import NewMigrateView from './new-migrate';
 import NetworkMigrationsView from './network-migrate';
 import TokenDetailView from './token-detail';
+import MigrateLiquidityView from './migrate-liquidity';
 
-export { HomeView, DashboardView, LiquidityView, BridgeView, NewMigrateView, NetworkMigrationsView, TokenDetailView };
+export { HomeView, DashboardView, LiquidityView, BridgeView, NewMigrateView, NetworkMigrationsView, TokenDetailView, MigrateLiquidityView };

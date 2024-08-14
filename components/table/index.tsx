@@ -1,43 +1,17 @@
 'use client';
-
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import classNames from 'classnames';
 
 import { TableProps } from './types';
 import CTA from './cta';
-import { LinkRightArrow } from '@/public/icons';
 import EmptyState from './empty';
-import Status from './status';
-import Address from './address';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
+import { headers } from './utils';
+import Row from './row';
 
-const SMTable = ({ data, network, isConnected, variant = 'primary', loading, ctaAction }: TableProps) => {
-  const [isMobileView, setIsMobileView] = useState(false);
+const SMTable = ({ data, network, isConnected, variant = 'primary', loading, ctaAction, rowClick }: TableProps) => {
   const { locale } = useSystemFunctions();
 
-  const { first, fourth, second, third } = locale.components.table.headers;
-  const { contract, action } = locale.components.table.body;
   const { next, page, previous } = locale.components.table.footer;
-
-  const headers = [
-    { key: 'tokenName', label: first.label },
-    {
-      key: 'status',
-      label: second.label,
-      mobileLabel: second.mobileLabel,
-      secondaryLabel: second.secondaryLabel,
-    },
-    { key: 'action', label: `${third.label} ${network}`, secondaryLabel: third.secondaryLabel },
-    { key: 'cta', label: fourth.label },
-  ].filter((header) => variant === 'primary' || header.key !== 'action');
-
-  useEffect(() => {
-    const handleResize = () => setIsMobileView(window.innerWidth < 768);
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   return (
     <div className={classNames('self-stretch overflow-x-auto rounded-base border border-primary-1350 flex flex-col justify-between bg-white', {})}>
@@ -48,13 +22,15 @@ const SMTable = ({ data, network, isConnected, variant = 'primary', loading, cta
           <tr>
             {headers.map((header, index) => (
               <th
-                key={header.key}
                 scope="col"
+                key={header.key}
                 className={classNames('px-4 md:px-6 py-3 text-left text-xs font-medium', {
                   'whitespace-nowrap': index === 0 || index === 2,
                   'hidden md:table-cell': index === 1 || (index === 2 && variant === 'primary'),
+                  'hidden sm:table-cell': (index === 2 || index === 4) && variant === 'secondary',
+                  hidden: index === 4 && variant === 'primary',
                 })}>
-                {isMobileView && header.mobileLabel ? header.mobileLabel : variant === 'primary' ? header.label : header.secondaryLabel || header.label}
+                {header[variant]} {variant === 'primary' && index === 2 && network}
               </th>
             ))}
           </tr>
@@ -63,38 +39,7 @@ const SMTable = ({ data, network, isConnected, variant = 'primary', loading, cta
         {Boolean(data.length) && !loading && (
           <tbody className="bg-white divide-y divide-gray-200">
             {data.map((item, index) => (
-              <tr key={index}>
-                <td className="min-h-[71px] px-4 md:px-6 py-4 text-sm font-medium text-gray-900 flex items-center gap-3">
-                  <Image
-                    src={item?.tokenIcon || 'https://w7.pngwing.com/pngs/730/454/png-transparent-smiley-emoticon-face-grinning-smiley-face-face-smiley-emoticon-thumbnail.png'}
-                    alt={`${item.tokenName} icon`}
-                    width={20}
-                    height={20}
-                  />
-                  <div>{item.tokenName}</div>
-                </td>
-
-                <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden md:table-cell">
-                  {variant === 'primary' && <Status status={item?.pullStatus} />}
-                  {variant === 'secondary' && <Address address={item?.tokenAddress} />}
-                </td>
-
-                {variant === 'primary' && (
-                  <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm text-gray-500 justify-center md:justify-start items-center gap-2 md:flex hidden">
-                    <a href={item.scanUrl} target="_blank" className="text-[14px] leading-[20px]  text-primary-1650 border-b border-b-primary-1650 flex items-center justify-center gap-1">
-                      <div>
-                        {contract.text} {network}scan
-                      </div>
-                    </a>
-
-                    <LinkRightArrow />
-                  </td>
-                )}
-
-                <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap text-sm font-medium">
-                  <CTA title={variant === 'primary' ? action.primary : action.secondary} onClick={() => ctaAction?.(item?.id)} normal />
-                </td>
-              </tr>
+              <Row key={index} variant={variant} item={item} index={index} ctaAction={ctaAction} rowClick={rowClick} network={network} />
             ))}
           </tbody>
         )}
