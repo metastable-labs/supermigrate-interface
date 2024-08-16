@@ -31,13 +31,18 @@ const ClaimModal = ({ id, close, show }: { id?: string; close: () => void; show:
     close();
   };
 
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Claiming', amount, 'Aero');
+  };
+
   useEffect(() => {
     setAeroBalance(24.74);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <SMModal show={show} close={closeModal}>
-      <form className="p-1 w-80 md:w-[334px] flex flex-col items-stretch gap-6">
+      <form className="p-1 w-80 md:w-[334px] flex flex-col items-stretch gap-6" onSubmit={onSubmit}>
         <h1 className="text-primary-50 text-[20px] leading-[31px] font-medium">Claim Aero</h1>
 
         <div className="self-stretch flex flex-col gap-5">
