@@ -67,7 +67,7 @@ const rates: Rate[] = [
   { name: 'YFIL', ETH: 24000, BTC: 370000, SOL: 13500, MATIC: 3200 },
 ];
 
-const tableData: TableItem[] = [
+const allTableData: TableItem[] = [
   {
     tokenIcon: 'https://res.cloudinary.com/dxnd4k222/image/upload/fl_preserve_transparency/v1717743095/crypto-icon-instance_ygqnhb.jpg',
     tokenSymbol: 'RAZ',
@@ -178,5 +178,224 @@ const tableData: TableItem[] = [
   },
 ];
 
-export { walletOptions, tokenOptions, rates, tableData };
+const myTableData: TableItem[] = [
+  {
+    tokenIcon: 'https://res.cloudinary.com/dxnd4k222/image/upload/fl_preserve_transparency/v1717743095/crypto-icon-instance_ygqnhb.jpg',
+    tokenSymbol: 'RAZ',
+    poolTotal: {
+      eth: 28.4,
+      auxiliary: 700_000,
+    },
+    emmisions: {
+      emmisions: 0.99,
+      id: 'raz',
+    },
+    lpMigrated: {
+      eth: 2.4,
+      auxiliary: 600_000,
+    },
+    id: 'raz',
+    apy: 3.87,
+  },
+  {
+    tokenIcon: 'https://res.cloudinary.com/dxnd4k222/image/upload/fl_preserve_transparency/v1717743095/crypto-icon-instance_ygqnhb.jpg',
+    tokenSymbol: 'NJK',
+    poolTotal: {
+      eth: 22.4,
+      auxiliary: 450_000,
+    },
+    emmisions: {
+      emmisions: 0.69,
+      id: 'raz',
+    },
+    lpMigrated: {
+      eth: 5.4,
+      auxiliary: 40_000,
+    },
+    id: 'njk',
+    apy: 4.2,
+  },
+  {
+    tokenIcon: 'https://res.cloudinary.com/dxnd4k222/image/upload/fl_preserve_transparency/v1717743095/crypto-icon-instance_ygqnhb.jpg',
+    tokenSymbol: 'MEI',
+    poolTotal: {
+      eth: 28.4,
+      auxiliary: 700_000,
+    },
+    emmisions: {
+      emmisions: 0.99,
+      id: 'raz',
+    },
+    lpMigrated: {
+      eth: 2.4,
+      auxiliary: 600_000,
+    },
+    id: 'mei',
+    apy: 5.0,
+  },
+  {
+    tokenIcon: 'https://res.cloudinary.com/dxnd4k222/image/upload/fl_preserve_transparency/v1717743095/crypto-icon-instance_ygqnhb.jpg',
+    tokenSymbol: 'XYZ',
+    poolTotal: {
+      eth: 22.4,
+      auxiliary: 450_000,
+    },
+    emmisions: {
+      emmisions: 0.69,
+      id: 'raz',
+    },
+    lpMigrated: {
+      eth: 5.4,
+      auxiliary: 40_000,
+    },
+    id: 'xyz',
+    apy: 3.5,
+  },
+  {
+    tokenIcon: 'https://res.cloudinary.com/dxnd4k222/image/upload/fl_preserve_transparency/v1717743095/crypto-icon-instance_ygqnhb.jpg',
+    tokenSymbol: 'LMN',
+    poolTotal: {
+      eth: 22.4,
+      auxiliary: 450_000,
+    },
+    emmisions: {
+      emmisions: 0.69,
+      id: 'raz',
+    },
+    lpMigrated: {
+      eth: 5.4,
+      auxiliary: 40_000,
+    },
+    id: 'lmn',
+    apy: 4.1,
+  },
+  {
+    tokenIcon: 'https://res.cloudinary.com/dxnd4k222/image/upload/fl_preserve_transparency/v1717743095/crypto-icon-instance_ygqnhb.jpg',
+    tokenSymbol: 'OPQ',
+    poolTotal: {
+      eth: 22.4,
+      auxiliary: 450_000,
+    },
+    emmisions: {
+      emmisions: 0.69,
+      id: 'raz',
+    },
+    lpMigrated: {
+      eth: 5.4,
+      auxiliary: 40_000,
+    },
+    id: 'opq',
+    apy: 3.9,
+  },
+  {
+    tokenIcon: 'https://res.cloudinary.com/dxnd4k222/image/upload/fl_preserve_transparency/v1717743095/crypto-icon-instance_ygqnhb.jpg',
+    tokenSymbol: 'DEF',
+    poolTotal: {
+      eth: 22.4,
+      auxiliary: 450_000,
+    },
+    emmisions: {
+      emmisions: 0.69,
+      id: 'raz',
+    },
+    lpMigrated: {
+      eth: 5.4,
+      auxiliary: 40_000,
+    },
+    id: 'def',
+    apy: 4.5,
+  },
+  {
+    tokenIcon: 'https://res.cloudinary.com/dxnd4k222/image/upload/fl_preserve_transparency/v1717743095/crypto-icon-instance_ygqnhb.jpg',
+    tokenSymbol: 'GHI',
+    poolTotal: {
+      eth: 22.4,
+      auxiliary: 450_000,
+    },
+    emmisions: {
+      emmisions: 0.69,
+      id: 'raz',
+    },
+    lpMigrated: {
+      eth: 5.4,
+      auxiliary: 40_000,
+    },
+    id: 'ghi',
+    apy: 4.0,
+  },
+  {
+    tokenIcon: 'https://res.cloudinary.com/dxnd4k222/image/upload/fl_preserve_transparency/v1717743095/crypto-icon-instance_ygqnhb.jpg',
+    tokenSymbol: 'JKL',
+    poolTotal: {
+      eth: 22.4,
+      auxiliary: 450_000,
+    },
+    emmisions: {
+      emmisions: 0.69,
+      id: 'raz',
+    },
+    lpMigrated: {
+      eth: 5.4,
+      auxiliary: 40_000,
+    },
+    id: 'jkl',
+    apy: 3.8,
+  },
+  {
+    tokenIcon: 'https://res.cloudinary.com/dxnd4k222/image/upload/fl_preserve_transparency/v1717743095/crypto-icon-instance_ygqnhb.jpg',
+    tokenSymbol: 'TUV',
+    poolTotal: {
+      eth: 22.4,
+      auxiliary: 450_000,
+    },
+    emmisions: {
+      emmisions: 0.69,
+      id: 'raz',
+    },
+    lpMigrated: {
+      eth: 5.4,
+      auxiliary: 40_000,
+    },
+    id: 'tuv',
+    apy: 4.3,
+  },
+  {
+    tokenIcon: 'https://res.cloudinary.com/dxnd4k222/image/upload/fl_preserve_transparency/v1717743095/crypto-icon-instance_ygqnhb.jpg',
+    tokenSymbol: 'WXY',
+    poolTotal: {
+      eth: 22.4,
+      auxiliary: 450_000,
+    },
+    emmisions: {
+      emmisions: 0.69,
+      id: 'raz',
+    },
+    lpMigrated: {
+      eth: 5.4,
+      auxiliary: 40_000,
+    },
+    id: 'wxy',
+    apy: 3.9,
+  },
+  {
+    tokenIcon: 'https://res.cloudinary.com/dxnd4k222/image/upload/fl_preserve_transparency/v1717743095/crypto-icon-instance_ygqnhb.jpg',
+    tokenSymbol: 'ABC',
+    poolTotal: {
+      eth: 22.4,
+      auxiliary: 450_000,
+    },
+    emmisions: {
+      emmisions: 0.69,
+      id: 'raz',
+    },
+    lpMigrated: {
+      eth: 5.4,
+      auxiliary: 40_000,
+    },
+    id: 'abc',
+    apy: 4.6,
+  },
+];
+
+export { walletOptions, tokenOptions, rates, allTableData, myTableData };
 export type { Rate };
