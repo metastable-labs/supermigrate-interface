@@ -64,7 +64,7 @@ const Emissions = ({ emissions, claimClick }: EmissionsProps) => {
   return (
     <div className="flex flex-col gap-2 text-[16px]">
       <span className="text-primary-3400 leading-[20px] font-medium">{emissions.emmisions} Aero</span>
-      <span onClick={handleClaimClick} className="text-primary-3350 leading-[30px] underline underline-offset-[3px]">
+      <span onClick={handleClaimClick} className="text-primary-3350 leading-[30px] underline underline-offset-[3px] max-w-fit">
         Claim
       </span>
     </div>
