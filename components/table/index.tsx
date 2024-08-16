@@ -8,7 +8,7 @@ import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { headers } from './utils';
 import Row from './row';
 
-const SMTable = ({ data, network, isConnected, variant = 'primary', loading, ctaAction, rowClick }: TableProps) => {
+const SMTable = ({ data, network, isConnected, variant = 'primary', loading, ctaAction, rowClick, claimClick }: TableProps) => {
   const { locale } = useSystemFunctions();
 
   const { next, page, previous } = locale.components.table.footer;
@@ -27,7 +27,7 @@ const SMTable = ({ data, network, isConnected, variant = 'primary', loading, cta
                 className={classNames('px-4 md:px-6 py-3 text-left text-xs font-medium', {
                   'whitespace-nowrap': index === 0 || index === 2,
                   'hidden md:table-cell': index === 1 || (index === 2 && variant === 'primary'),
-                  'hidden sm:table-cell': (index === 2 || index === 4) && variant === 'secondary',
+                  'hidden sm:table-cell': ((index === 2 || index === 4) && variant === 'secondary') || ((index === 3 || index === 4) && variant === 'tertiary'),
                   hidden: index === 4 && variant === 'primary',
                 })}>
                 {header[variant]} {variant === 'primary' && index === 2 && network}
@@ -39,7 +39,7 @@ const SMTable = ({ data, network, isConnected, variant = 'primary', loading, cta
         {Boolean(data.length) && !loading && (
           <tbody className="bg-white divide-y divide-gray-200">
             {data.map((item, index) => (
-              <Row key={index} variant={variant} item={item} index={index} ctaAction={ctaAction} rowClick={rowClick} network={network} />
+              <Row key={index} variant={variant} item={item} index={index} ctaAction={ctaAction} rowClick={rowClick} network={network} claimClick={claimClick} />
             ))}
           </tbody>
         )}
