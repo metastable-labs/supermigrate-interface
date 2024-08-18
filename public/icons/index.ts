@@ -100,6 +100,7 @@ import EthIcon from './eth-icon';
 import ChangeIndicatorIcon from './change-indicator-icon';
 import UniswapIcon from './uniswap-icon';
 import LayerTwoIcon from './LayerTwoIcon';
+import AeroIcon from './aero-icon.svg';
 
 export {
   Logo,
@@ -204,4 +205,5 @@ export {
   ChangeIndicatorIcon,
   UniswapIcon,
   LayerTwoIcon,
+  AeroIcon,
 };

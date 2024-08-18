@@ -128,6 +128,7 @@ const config: Config = {
         'very-light-gray': '0px 1.544px 3.089px 0px rgba(164, 172, 185, 0.24), 0px 0px 0px 1.544px rgba(18, 55, 105, 0.08)',
         'hero-header-alt': '0px 0px 10px -6px rgba(0, 0, 0, 0.10)',
         'welcome-button': '0px 1px 2px 0px rgba(0, 33, 50, 0.48), 0px 0px 0px 1px #002132',
+        'sm-shadow': '0px 1px 3px 0px rgba(16, 24, 40, 0.10), 0px 1px 2px 0px rgba(16, 24, 40, 0.06)',
       },
 
       borderRadius: {

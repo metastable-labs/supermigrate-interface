@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-import { IRow } from './types';
+import { EmissionsProps, IRow, LPMigratedProps } from './types';
 import Status from './status';
 import { EthIcon, LinkRightArrow } from '@/public/icons';
 import CTA from './cta';
@@ -39,7 +39,57 @@ const LiquidityComposition = ({ auxiliary, eth, itemNetwork }: { eth: number; au
   );
 };
 
-const Row = ({ index, item, variant, ctaAction, rowClick, network }: IRow) => {
+const PoolTotal = ({ eth, auxiliary, tokenSymbol }: { eth: number; auxiliary: number; tokenSymbol: string }) => {
+  const items = [
+    { value: eth, label: 'ETH' },
+    { value: auxiliary, label: tokenSymbol },
+  ];
+  return (
+    <div className="flex flex-col gap-2">
+      {items.map(({ value, label }, index) => (
+        <span key={index} className="text-primary-50 text-[14px] leading-[21px]">
+          {value.toLocaleString()}
+          <span className="text-primary-200 uppercase"> {label}</span>
+        </span>
+      ))}
+    </div>
+  );
+};
+
+const Emissions = ({ emissions, claimClick }: EmissionsProps) => {
+  const handleClaimClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    claimClick(emissions.id);
+  };
+  return (
+    <div className="flex flex-col gap-2 text-[16px]">
+      <span className="text-primary-3400 leading-[20px] font-medium">{emissions.emmisions} Aero</span>
+      <span onClick={handleClaimClick} className="text-primary-3350 leading-[30px] underline underline-offset-[3px] max-w-fit">
+        Claim
+      </span>
+    </div>
+  );
+};
+
+const LPMigrated = ({ auxiliary, eth, tokenIcon, tokenSymbol }: LPMigratedProps) => {
+  const Item = ({ icon, symbol, value }: { icon: ReactElement; value: number; symbol: string }) => (
+    <div className="flex gap-1">
+      {icon}
+      <span className="text-[14px] leading-[21px] text-primary-200">
+        (<span className="text-primary-50">{value.toLocaleString()}</span> {symbol})
+      </span>
+    </div>
+  );
+  return (
+    <div className="flex items-center gap-[15px]">
+      <Item icon={<EthIcon width={20} height={20} />} value={eth} symbol="ETH" />
+      <div className="w-[0.5px] h-[15px] bg-primary-1300" />
+      <Item icon={<Image src={tokenIcon} alt={`${tokenSymbol} icon`} width={200} height={200} className="w-5 h-5 object-cover" />} value={auxiliary} symbol={tokenSymbol} />
+    </div>
+  );
+};
+
+const Row = ({ index, item, variant, ctaAction, rowClick, network, claimClick }: IRow) => {
   const itemNetwork = networks.find(({ variant }) => variant === item.network);
   return (
     <tr
@@ -63,7 +113,7 @@ const Row = ({ index, item, variant, ctaAction, rowClick, network }: IRow) => {
           </>
         )}
 
-        {variant === 'secondary' && (
+        {(variant === 'secondary' || variant === 'tertiary') && (
           <>
             <div className="relative flex items-center justify-center -space-x-2">
               <Image
@@ -90,6 +140,7 @@ const Row = ({ index, item, variant, ctaAction, rowClick, network }: IRow) => {
             <span className="text-[16px] leading-[20px] font-medium text-primary-3400 capitalize">{item.network}</span>
           </div>
         )}
+        {variant === 'tertiary' && <PoolTotal eth={item?.poolTotal?.eth!} auxiliary={item?.poolTotal?.auxiliary!} tokenSymbol={item.tokenSymbol!} />}
       </td>
 
       <td
@@ -113,15 +164,19 @@ const Row = ({ index, item, variant, ctaAction, rowClick, network }: IRow) => {
             {item?.liquidity?.toLocaleString()}
           </span>
         )}
+
+        {variant === 'tertiary' && <Emissions emissions={item?.emmisions!} claimClick={claimClick!} />}
       </td>
 
-      <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap">
+      <td className={classNames('min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap', { 'hidden sm:table-cell': variant === 'tertiary' })}>
         {variant === 'primary' && <CTA title="View" onClick={() => ctaAction?.(item?.id!)} normal />}
 
         {variant === 'secondary' && <LiquidityComposition eth={item?.liquidityComposition?.eth!} auxiliary={item?.liquidityComposition?.auxiliary!} itemNetwork={itemNetwork!} />}
+
+        {variant === 'tertiary' && <LPMigrated eth={item?.lpMigrated?.eth!} auxiliary={item?.lpMigrated?.auxiliary!} tokenIcon={item?.tokenIcon!} tokenSymbol={item.tokenSymbol!} />}
       </td>
 
-      {variant === 'secondary' && (
+      {(variant === 'secondary' || variant === 'tertiary') && (
         <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap hidden sm:table-cell">
           <span>
             {item?.apy}

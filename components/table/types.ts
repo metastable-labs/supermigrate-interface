@@ -1,7 +1,7 @@
 import { Network } from '@/config/rainbow/config';
 
 type PullStatus = 'merged' | 'pending' | 'failed';
-type TableVariant = 'primary' | 'secondary';
+type TableVariant = 'primary' | 'secondary' | 'tertiary';
 
 interface TableItem {
   tokenIcon?: string;
@@ -19,6 +19,18 @@ interface TableItem {
     auxiliary: number;
   };
   apy?: number;
+  poolTotal?: {
+    eth: number;
+    auxiliary: number;
+  };
+  emmisions?: {
+    emmisions: number;
+    id: string;
+  };
+  lpMigrated?: {
+    eth: number;
+    auxiliary: number;
+  };
 }
 
 interface IRow {
@@ -28,6 +40,7 @@ interface IRow {
   ctaAction?: (id: string) => void;
   rowClick?: (id: string) => void;
   network: Network;
+  claimClick?: (id: string) => void;
 }
 
 interface TableProps {
@@ -38,6 +51,7 @@ interface TableProps {
   loading?: boolean;
   ctaAction?: (id?: string) => void;
   rowClick?: (id: string) => void;
+  claimClick?: (id: string) => void;
 }
 
 interface EmptyStateProps {
@@ -61,4 +75,19 @@ interface AddressProps {
   address?: string;
 }
 
-export type { TableItem, TableProps, PullStatus, EmptyStateProps, StatusProps, CTAProps, AddressProps, IRow };
+interface EmissionsProps {
+  emissions: {
+    emmisions: number;
+    id: string;
+  };
+  claimClick: (id: string) => void;
+}
+
+interface LPMigratedProps {
+  eth: number;
+  auxiliary: number;
+  tokenSymbol: string;
+  tokenIcon: string;
+}
+
+export type { TableItem, TableProps, PullStatus, EmptyStateProps, StatusProps, CTAProps, AddressProps, IRow, EmissionsProps, LPMigratedProps };

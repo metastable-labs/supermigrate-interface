@@ -22,7 +22,7 @@ const SMButton = ({ network, onClick, text, variant = 'git', fullWidth, disabled
       disabled={disabled || loading}
       className={classNames('px-[14px] flex items-center justify-center gap-1 font-Bitform', {
         'border-[0.5px] border-primary-1400': !disabled,
-        'bg-primary-150 pointer-events-none': disabled || loading,
+        'bg-primary-150 pointer-events-none border-[0.5px] border-transparent': disabled || loading,
         'bg-base-github-button shadow-base-github-button': network === 'base' && !disabled,
         'bg-optimism-github-button shadow-optimism-github-button': network === 'optimism' && !disabled,
         'bg-mode-github-button shadow-mode-github-button': network === 'mode' && !disabled,
