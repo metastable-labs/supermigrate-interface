@@ -8,12 +8,13 @@ import { SMContainer, SMTable, SMButton } from '@/components';
 import { PullStatus } from '@/components/table/types';
 import Connect from './connect';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
-import { Network } from '@/config/rainbow/config';
+import { Network } from '@/config/privy/config';
 import SMLoader from '@/components/loader';
 import useUserActions from '@/application/user/actions';
 import useMigrationActions from '@/application/migration/actions';
 import { useChainId } from 'wagmi';
 import { getScanLink } from '@/utils/helpers';
+import { toast } from 'react-toastify';
 
 const NetworkMigrationsView = ({ network }: { network: Network }) => {
   const { navigate, userState, migrationState, locale } = useSystemFunctions();
@@ -21,7 +22,7 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
   const { authenticateGithub } = useUserActions();
   const { getMigrationObject } = useMigrationActions();
   const searchParams = useSearchParams();
-  const [cookies] = useCookies(['SMauthtoken']);
+  const [cookies] = useCookies(['authtoken', 'isGithubConnected']);
 
   const { loading, user } = userState;
   const { migrations, loading: migration_loading } = migrationState;
@@ -43,7 +44,16 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
       };
     });
 
-  const action = () => navigate.push(`/${network}/migrate/new`);
+  const action = () => {
+    if (!cookies.isGithubConnected) {
+      return toast('Please connect your github', {
+        type: 'info',
+        autoClose: 7000,
+      });
+    }
+
+    navigate.push(`/${network}/migrate/new`);
+  };
 
   const handleTableAction = (id?: string) => {
     if (id) getMigrationObject(id);
@@ -83,10 +93,10 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
                 <p className="text-[14px] text-primary-350 md:text-base max-w-[450px] text-wrap">{subtitle}</p>
               </div>
 
-              {cookies.SMauthtoken && <SMButton onClick={action} text={buttonText} variant="new" network={network} />}
+              {cookies.isGithubConnected && <SMButton onClick={action} text={buttonText} variant="new" network={network} />}
             </div>
 
-            <SMTable isConnected={user ? true : false} data={tableData} network={network} ctaAction={handleTableAction} />
+            <SMTable isConnected={cookies.isGithubConnected ? true : false} data={tableData} network={network} ctaAction={handleTableAction} />
           </div>
         </motion.div>
       </SMContainer>

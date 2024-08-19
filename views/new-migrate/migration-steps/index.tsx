@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
 
-import { Network } from '@/config/rainbow/config';
+import { Network } from '@/config/privy/config';
 import readTokenData from '@/utils/read-contract';
 import Header from './header';
 import Step1 from './step-1';

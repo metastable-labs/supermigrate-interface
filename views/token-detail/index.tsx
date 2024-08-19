@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 
 import NewMigrateHeader from '../new-migrate/header';
-import { Network } from '@/config/rainbow/config';
+import { Network } from '@/config/privy/config';
 import { SMButton, SMContainer, SMLoader, SMModal } from '@/components';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 import useMigrationActions from '@/application/migration/actions';

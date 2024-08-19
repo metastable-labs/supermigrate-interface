@@ -2,7 +2,7 @@
 import { useLayoutEffect } from 'react';
 import { toast } from 'react-toastify';
 
-import { Network } from '@/config/rainbow/config';
+import { Network } from '@/config/privy/config';
 import { NewMigrateView } from '@/views';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 

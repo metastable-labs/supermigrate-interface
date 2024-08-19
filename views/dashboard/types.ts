@@ -1,4 +1,4 @@
-import { Network } from '@/config/rainbow/config';
+import { Network } from '@/config/privy/config';
 
 interface ISelectionComponent {
   setMigrateNetwork: (network: Network) => void;

@@ -1,25 +1,41 @@
 'use client';
-import { disconnect } from '@wagmi/core';
 import { useAccount } from 'wagmi';
 
 import SMClickAnimation from '@/components/click-animation';
 import useCopy from '@/hooks/useCopy';
 import useTruncateText from '@/hooks/useTruncateText';
 import { DisconnectIcon, CopyIcon, WalletIcon } from '@/public/icons';
-import { wagmiConfig } from '@/config/rainbow/rainbowkit';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
-import { Network } from '@/config/rainbow/config';
+import { Network } from '@/config/privy/config';
+import { usePrivy } from '@privy-io/react-auth';
+import { useCookies } from 'react-cookie';
+import { setTokenHeader } from '@/utils/axios';
+import { setUser } from '@/application/user';
+import { setMigration, setMigrations } from '@/application/migration';
 
 const WalletModal = ({ close, network }: { close: () => void; network: Network }) => {
   const copy = useCopy();
+  const { dispatch } = useSystemFunctions();
   const { address } = useAccount();
+  const { ready, authenticated, logout } = usePrivy();
+  const [cookies, setCookies, removeCookie] = useCookies(['authtoken', 'isGithubConnected']);
+
   const truncateWallet = useTruncateText((address as string) || '', 6, 6);
   const { navigate } = useSystemFunctions();
 
-  const disconnectAction = () => {
-    disconnect(wagmiConfig);
+  const disconnectAction = async () => {
+    if (authenticated && !ready) return;
+
+    await logout();
+    await removeCookie('authtoken');
+    await removeCookie('isGithubConnected');
+    await setTokenHeader();
+    dispatch(setUser(undefined));
+    dispatch(setMigrations([]));
+    dispatch(setMigration(undefined));
+
     close();
-    navigate.replace(`/${network}/migrate`);
+    navigate.replace(`/dashboard`);
   };
 
   return (

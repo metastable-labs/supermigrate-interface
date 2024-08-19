@@ -1,19 +1,20 @@
 import { useEffect } from 'react';
-import { useAccount, useSwitchChain, useChainId } from 'wagmi';
+import { useAccount } from 'wagmi';
+import { switchChain } from '@wagmi/core';
 
-import { wagmiConfig } from '@/config/rainbow/rainbowkit';
+import { wagmiConfig } from '@/config/privy/rainbowkit';
+import { usePrivy } from '@privy-io/react-auth';
 
 const useConnect = () => {
-  const { isConnected, connector, address } = useAccount();
-  const chainId = useChainId();
-  const { switchChain } = useSwitchChain();
+  const { connector, chainId } = useAccount();
+  const { ready, authenticated } = usePrivy();
 
   const listener = () => {
-    if (chainId) {
+    if (chainId && authenticated && ready) {
       const isAcceptedChain = wagmiConfig.chains.find((chain) => chain.id === chainId);
 
-      if (isConnected && !isAcceptedChain) {
-        return switchChain && switchChain({ chainId: wagmiConfig.chains[0].id });
+      if (!isAcceptedChain) {
+        return switchChain(wagmiConfig, { chainId: wagmiConfig.chains[0].id });
       }
     }
   };
@@ -21,7 +22,7 @@ const useConnect = () => {
   useEffect(() => {
     listener();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chainId, isConnected, address]);
+  }, [chainId, authenticated]);
 
   return {
     connector,

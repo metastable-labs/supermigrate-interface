@@ -1,5 +1,5 @@
 import { Locale } from '@/config/internationalization/i18n';
-import { Network } from '@/config/rainbow/config';
+import { Network } from '@/config/privy/config';
 import { MigrateLiquidityView } from '@/views';
 
 interface PageProps {

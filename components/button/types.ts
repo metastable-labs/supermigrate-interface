@@ -1,4 +1,4 @@
-import { Network } from '@/config/rainbow/config';
+import { Network } from '@/config/privy/config';
 
 type ButtonVariants = 'git' | 'new' | 'bland-new' | 'plain' | 'tertiary';
 

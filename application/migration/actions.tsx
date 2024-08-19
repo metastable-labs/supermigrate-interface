@@ -1,13 +1,13 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useAccount, useChainId } from 'wagmi';
+import { useAccount } from 'wagmi';
 import { trim } from 'viem';
 
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { FormProp } from '@/views/new-migrate/migration-steps/types';
 import useContract from '@/hooks/useContract';
-import { networks } from '@/config/rainbow/config';
+import { networks } from '@/config/privy/config';
 import { setLoading, setLoadingMigration, setMigration, setMigrations, setAddToBridgeLoading } from '.';
 import api from './api';
 import { CallbackProps } from '../store';
@@ -17,8 +17,7 @@ import { toast } from 'react-toastify';
 const useMigrationActions = () => {
   const { dispatch, migrationState } = useSystemFunctions();
   const { deployToken, isPending, isConfirmed, getTransactionData, deployTokenWithDecimal } = useContract();
-  const { address } = useAccount();
-  const chainId = useChainId();
+  const { address, chainId } = useAccount();
 
   const [data, setData] = useState<FormProp>();
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useChainId } from 'wagmi';
+import { useAccount } from 'wagmi';
 import { Chain } from '@/application/migration/types';
 import { CopySecondaryIcon } from '@/public/icons';
 import { SMClickAnimation } from '@/components';
@@ -13,7 +13,7 @@ function truncateAddress(address: string) {
 
 const TokenContract = ({ chains }: { chains: Chain[] }) => {
   const copy = useCopy();
-  const chainId = useChainId();
+  const { chainId } = useAccount();
   const { locale } = useSystemFunctions();
 
   const { title } = locale.tokenDetail.tokenContract;

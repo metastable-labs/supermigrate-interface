@@ -6,7 +6,7 @@ import { EmissionsProps, IRow, LPMigratedProps } from './types';
 import Status from './status';
 import { EthIcon, LinkRightArrow } from '@/public/icons';
 import CTA from './cta';
-import { NetworkProps, networks } from '@/config/rainbow/config';
+import { NetworkProps, networks } from '@/config/privy/config';
 import classNames from 'classnames';
 
 const LiquidityComposition = ({ auxiliary, eth, itemNetwork }: { eth: number; auxiliary: number; itemNetwork?: NetworkProps }) => {

@@ -1,4 +1,4 @@
-import { networks } from '@/config/rainbow/config';
+import { networks } from '@/config/privy/config';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 import classNames from 'classnames';
 import Link from 'next/link';

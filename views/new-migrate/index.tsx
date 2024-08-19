@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { SMContainer } from '@/components';
 import NewMigrateHeader from './header';
 import MigrationSteps from './migration-steps';
-import { Network } from '@/config/rainbow/config';
+import { Network } from '@/config/privy/config';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const NewMigrateView = ({ network }: { network: Network }) => {

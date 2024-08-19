@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import classNames from 'classnames';
 
 import { CheckIcon, RightCarretDarkIcon } from '@/public/icons';
-import { Network } from '@/config/rainbow/config';
+import { Network } from '@/config/privy/config';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const Step = ({ step, title, current, passed, network, onClick }: { step: number; title: string; current: boolean; passed: boolean; network: Network; onClick?: (step: number) => void }) => {

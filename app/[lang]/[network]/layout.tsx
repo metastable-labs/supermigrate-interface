@@ -1,4 +1,4 @@
-import { Network } from '@/config/rainbow/config';
+import { Network } from '@/config/privy/config';
 import App from './app';
 
 interface RootProps {

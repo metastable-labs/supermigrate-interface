@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import { SMModal, SMButton } from '@/components';
 import { AccountIcon, AuthorizeIcon, BlueCheckMarkIcon } from '@/public/icons';
-import { Network } from '@/config/rainbow/config';
+import { Network } from '@/config/privy/config';
 
 const ConnectModal = ({ connectModalOpen, handleConnectModal, network }: { network: Network; connectModalOpen: boolean; handleConnectModal: () => void }) => {
   const [hasReadInstructions, setHasReadInstructions] = useState(false);

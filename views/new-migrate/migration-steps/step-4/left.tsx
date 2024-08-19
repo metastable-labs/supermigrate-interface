@@ -1,11 +1,11 @@
 import { SMClickAnimation } from '@/components';
-import { networks } from '@/config/rainbow/config';
+import { networks } from '@/config/privy/config';
 import useCopy from '@/hooks/useCopy';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 import useTruncateText from '@/hooks/useTruncateText';
 import { CopySecondaryIcon, LinkRightArrow, MergedSecondaryIcon, MergedTertiaryIcon } from '@/public/icons';
 import { getScanLink } from '@/utils/helpers';
-import { useChainId } from 'wagmi';
+import { useAccount } from 'wagmi';
 
 const Link = ({ link, text }: { link: string; text: string }) => {
   return (
@@ -19,7 +19,7 @@ const Link = ({ link, text }: { link: string; text: string }) => {
 const Left = () => {
   const copy = useCopy();
   const { migrationState, locale } = useSystemFunctions();
-  const chainId = useChainId();
+  const { chainId } = useAccount();
   const { migration } = migrationState;
   const { linkTexts, subtitle, title, viewOn } = locale.newMigration.step4.left;
 

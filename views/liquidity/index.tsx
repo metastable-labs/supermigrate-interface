@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import classNames from 'classnames';
 
 import { LangParamProp } from '@/config/internationalization/i18n';
-import { Network } from '@/config/rainbow/config';
+import { Network } from '@/config/privy/config';
 import { SMContainer, SMTable } from '@/components';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { allTableData, myTableData } from './dummy';

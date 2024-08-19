@@ -8,11 +8,28 @@ import { setLoading, setUser } from '.';
 import api from './api';
 import { setTokenHeader } from '@/utils/axios';
 import useMigrationActions from '../migration/actions';
+import { usePrivy } from '@privy-io/react-auth';
+import { useEffect } from 'react';
 
 const useUserActions = () => {
   const { dispatch } = useSystemFunctions();
+  const { ready, authenticated, login, getAccessToken } = usePrivy();
   const { getMigrations } = useMigrationActions();
-  const [cookies, setCookie] = useCookies(['SMauthtoken']);
+  const [cookies, setCookies] = useCookies(['authtoken', 'isGithubConnected']);
+
+  const authenticateUser = async () => {
+    try {
+      if (!ready) return;
+      dispatch(setLoading(true));
+
+      login();
+    } catch (error: any) {
+      dispatch(setLoading(false));
+      return toast('Something went wrong!', {
+        type: 'error',
+      });
+    }
+  };
 
   const getUser = async (callback?: CallbackProps) => {
     try {
@@ -33,15 +50,11 @@ const useUserActions = () => {
       dispatch(setLoading(true));
       const user = await api.githubAuth(code);
 
-      setTokenHeader(user.token);
-
-      setCookie('SMauthtoken', user.token, {
-        expires: new Date(new Date().getTime() + user.expire * 1000),
-      });
-
       toast('Github connected sucessfully', {
         type: 'success',
       });
+
+      setCookies('isGithubConnected', 'true');
 
       return dispatch(setUser(user.user));
     } catch (error: any) {
@@ -59,9 +72,38 @@ const useUserActions = () => {
     }
   };
 
+  const _loginUser = async () => {
+    try {
+      const accessToken = await getAccessToken();
+      console.log('accessToken', accessToken);
+      if (!accessToken) return;
+
+      const response = await api.login(accessToken);
+
+      setCookies('authtoken', response.token, {
+        expires: new Date(new Date().getTime() + response.expire * 1000),
+      });
+
+      setTokenHeader(response.token);
+    } catch (error: any) {
+      return toast('Something went wrong!', {
+        type: 'error',
+      });
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
+
+  useEffect(() => {
+    if (!authenticated || cookies.authtoken) return;
+
+    _loginUser();
+  }, [authenticated, cookies]);
+
   return {
     getUser,
     authenticateGithub,
+    authenticateUser,
   };
 };
 

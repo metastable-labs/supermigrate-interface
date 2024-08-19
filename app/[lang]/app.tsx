@@ -4,7 +4,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { CookiesProvider } from 'react-cookie';
 
 import { store } from '@/application/store';
-import RainbowProvider from '@/config/rainbow/rainbowkit';
+import RainbowProvider from '@/config/privy/rainbowkit';
 import { LangParamProp } from '@/config/internationalization/i18n';
 import AppHome from '.';
 import { SMTiles } from '@/components';

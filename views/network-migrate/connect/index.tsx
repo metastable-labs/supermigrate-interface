@@ -3,12 +3,14 @@ import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { SMButton } from '@/components';
-import { Network } from '@/config/rainbow/config';
+import { Network } from '@/config/privy/config';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
+import { useCookies } from 'react-cookie';
 
 const Connect = ({ network }: { network: Network }) => {
   const { userState, pathname, locale } = useSystemFunctions();
-  const { loading, user } = userState;
+  const [cookies] = useCookies(['isGithubConnected']);
+  const { loading } = userState;
 
   const { buttonText, subtitle, title } = locale.migrate.connect;
 
@@ -30,7 +32,7 @@ const Connect = ({ network }: { network: Network }) => {
   return (
     <>
       <AnimatePresence>
-        {!user && (
+        {!cookies.isGithubConnected && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
