@@ -1,4 +1,4 @@
-import { Network } from '@/config/rainbow/config';
+import { Network } from '@/config/privy/config';
 
 type PullStatus = 'merged' | 'pending' | 'failed';
 type TableVariant = 'primary' | 'secondary' | 'tertiary';

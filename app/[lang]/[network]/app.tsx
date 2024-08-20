@@ -3,7 +3,7 @@ import { ReactNode, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 
-import { Network } from '@/config/rainbow/config';
+import { Network } from '@/config/privy/config';
 
 interface PageProps {
   params: { network: Network };

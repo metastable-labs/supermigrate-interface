@@ -11,17 +11,17 @@ import useUserActions from '@/application/user/actions';
 import 'react-toastify/dist/ReactToastify.css';
 
 const AppHome = ({ locale, children }: { locale: LangParamProp; children: ReactNode }) => {
-  const [cookies] = useCookies(['SMauthtoken']);
+  const [cookies] = useCookies(['authtoken']);
   const { getLocale } = useLocaleActions();
   const { getUser } = useUserActions();
 
   const fetchUser = async () => {
-    await setTokenHeader(cookies?.SMauthtoken);
+    await setTokenHeader(cookies?.authtoken);
     getUser();
   };
 
   useEffect(() => {
-    if (!cookies?.SMauthtoken) return;
+    if (!cookies?.authtoken) return;
 
     fetchUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps

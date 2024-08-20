@@ -19,7 +19,9 @@ import {
   RaysIcon,
 } from '@/public/icons';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
-import { Network, NetworkProps } from '@/config/rainbow/config';
+import { Network, NetworkProps } from '@/config/privy/config';
+import useUserActions from '@/application/user/actions';
+import { usePrivy } from '@privy-io/react-auth';
 
 const IconSection = ({ variant, comingSoon }: { variant: Network; comingSoon?: boolean }) => {
   const { locale } = useSystemFunctions();
@@ -59,19 +61,13 @@ const IconSection = ({ variant, comingSoon }: { variant: Network; comingSoon?: b
 
 const SMCard = ({ title, variant = 'base', chainId: id, comingSoon }: NetworkProps) => {
   const { navigate } = useSystemFunctions();
-  const chainId = useChainId();
-  const { switchChain } = useSwitchChain();
-  const { isConnected, isDisconnected } = useAccount();
-  const { openConnectModal } = useConnectModal();
+  const { authenticateUser } = useUserActions();
+  const { ready, authenticated } = usePrivy();
 
   const handleOnClick = async () => {
-    if (isDisconnected || !isConnected) {
-      return openConnectModal && openConnectModal();
+    if (!authenticated && ready) {
+      return authenticateUser();
     }
-
-    if (chainId === id) return navigate.push(`${variant}/migrate`);
-
-    await switchChain({ chainId: id });
 
     return navigate.push(`${variant}/migrate`);
   };

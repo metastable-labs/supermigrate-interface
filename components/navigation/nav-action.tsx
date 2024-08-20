@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { usePathname } from 'next/navigation';
-import { useAccount, useChainId } from 'wagmi';
+import { useAccount } from 'wagmi';
 
 import useTruncateText from '@/hooks/useTruncateText';
 import SMClickAnimation from '../click-animation';
 import { SelectIcon, GitHubMobileIcon, VerifiedIcon, SelectSecondaryIcon, WalletIcon } from '@/public/icons';
-import { networks } from '@/config/rainbow/config';
+import { networks } from '@/config/privy/config';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
+import { usePrivy } from '@privy-io/react-auth';
 
 interface NavActionProps {
   text?: string;
@@ -17,13 +18,12 @@ interface NavActionProps {
 }
 
 const NavAction = ({ text, onClick, variant = 'network' }: NavActionProps) => {
-  const chainId = useChainId();
-  const { isConnected } = useAccount();
+  const { chainId, address } = useAccount();
+  const { authenticated, logout } = usePrivy();
   const pathname = usePathname();
   const { userState } = useSystemFunctions();
   const truncateText = useTruncateText(text || '', 4, 4);
-  const shouldHide = /\/[a-zA-Z]{2}\/dashboard$/.test(pathname); // Hide network select on dashboard page
-
+  const shouldHide = /\/[a-zA-Z]{2}\/dashboard$/.test(pathname) || !authenticated || !address; // Hide network select on dashboard page
   const { user } = userState;
 
   const [icon, setIcon] = useState<any>();
@@ -41,7 +41,7 @@ const NavAction = ({ text, onClick, variant = 'network' }: NavActionProps) => {
       return setIcon(<GitHubMobileIcon />);
     }
 
-    if (variant === 'wallet') {
+    if (variant === 'wallet' && authenticated) {
       return setIcon(<WalletIcon />);
     }
   };
@@ -71,21 +71,21 @@ const NavAction = ({ text, onClick, variant = 'network' }: NavActionProps) => {
                 className={classNames('tracking-[-0.084px] text-sm font-medium ml-2', {
                   'hidden lg:block': variant !== 'wallet',
                 })}>
-                {variant === 'account' ? text : truncateText}
+                {variant === 'account' ? text : authenticated ? truncateText : text}
               </span>
             )}
 
-            {variant === 'wallet' && isConnected && <VerifiedIcon />}
+            {variant === 'wallet' && authenticated && <VerifiedIcon />}
           </div>
         </div>
 
-        {variant === 'network' && (
+        {variant === 'network' && authenticated && address && (
           <div className="absolute right-[3px] bottom-[5px] flex items-center justify-center bg-primary-650 rounded-full border-[0.171px] border-primary-1000">
             <SelectSecondaryIcon />
           </div>
         )}
 
-        {variant !== 'network' && isConnected && <SelectIcon />}
+        {variant !== 'network' && authenticated && <SelectIcon />}
       </div>
     </SMClickAnimation>
   );

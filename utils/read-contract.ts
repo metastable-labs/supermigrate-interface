@@ -2,7 +2,7 @@ import { erc20Abi } from 'viem';
 import { mainnet } from 'viem/chains';
 
 import { createPublicClient, http } from 'viem';
-import { networks } from '@/config/rainbow/config';
+import { networks } from '@/config/privy/config';
 
 const readTokenData = async (tokenAddress: `0x${string}`) => {
   const client = createPublicClient({

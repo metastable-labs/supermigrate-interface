@@ -11,7 +11,7 @@ import Header from './header';
 import { generateChartData, periods } from './dummy';
 import { MigrateLiquidityViewProps, Period } from './types';
 import LiquidityChart from './chart';
-import { networks } from '@/config/rainbow/config';
+import { networks } from '@/config/privy/config';
 import ChangeIndicator from './change-indicator';
 import MigrateLiquidtyForm from './migrate-liquidity-form';
 

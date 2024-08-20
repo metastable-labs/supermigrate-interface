@@ -1,27 +1,30 @@
 import classNames from 'classnames';
-import { useSwitchChain, useChainId, useAccount } from 'wagmi';
-import { useConnectModal } from '@rainbow-me/rainbowkit';
+import { useAccount } from 'wagmi';
+import { switchChain } from '@wagmi/core';
 
 import useSystemFunctions from '@/hooks/useSystemFunctions';
-import { networks } from '@/config/rainbow/config';
+import { networks } from '@/config/privy/config';
+import { usePrivy } from '@privy-io/react-auth';
+import useUserActions from '@/application/user/actions';
+import { wagmiConfig } from '@/config/privy/rainbowkit';
 
 const NetworkModal = ({ close }: { close: () => void }) => {
   const { navigate } = useSystemFunctions();
-  const chainId = useChainId();
-  const { switchChain } = useSwitchChain();
-  const { isConnected, isDisconnected } = useAccount();
-  const { openConnectModal } = useConnectModal();
+  const { chainId } = useAccount();
+  const { ready, authenticated } = usePrivy();
+  const { authenticateUser } = useUserActions();
 
   const handleOnClick = async (network: string, id: number) => {
-    if (isDisconnected || !isConnected) {
-      return openConnectModal && openConnectModal();
+    if (!authenticated && ready) {
+      return authenticateUser();
     }
 
     if (chainId === id) return close();
 
     try {
-      await switchChain({ chainId: id });
+      await switchChain(wagmiConfig, { chainId: id as 10 | 8453 | 34443 });
       navigate.replace(`/${network.toLowerCase()}/migrate`);
+
       close();
     } catch (error) {
       // Handle exceptions that may occur during the switch

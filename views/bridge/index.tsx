@@ -1,14 +1,14 @@
 'use client';
-import { useChainId } from 'wagmi';
+import { useAccount } from 'wagmi';
 
 import { LangParamProp } from '@/config/internationalization/i18n';
 import { SMButton } from '@/components';
 import { ExclaimIcon } from '@/public/icons';
-import { networks } from '@/config/rainbow/config';
+import { networks } from '@/config/privy/config';
 import { acceptedBridgeNetworks } from './dummy';
 
 const BridgeView = ({ lang }: LangParamProp) => {
-  const chainId = useChainId();
+  const { chainId } = useAccount();
 
   const currentNetwork = networks.find((item) => item.chainId === chainId);
   const network = currentNetwork?.title?.toLowerCase?.();

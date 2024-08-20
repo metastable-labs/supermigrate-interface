@@ -1,6 +1,6 @@
 'use client';
 
-import { Network } from '@/config/rainbow/config';
+import { Network } from '@/config/privy/config';
 import { NetworkMigrationsView } from '@/views';
 
 interface PageProps {

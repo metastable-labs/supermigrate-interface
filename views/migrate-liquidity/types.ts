@@ -1,5 +1,5 @@
 import { LangParamProp } from '@/config/internationalization/i18n';
-import { Network } from '@/config/rainbow/config';
+import { Network } from '@/config/privy/config';
 
 export type MigrateLiquidityViewProps = LangParamProp & { network: Network; migrationId: string };
 

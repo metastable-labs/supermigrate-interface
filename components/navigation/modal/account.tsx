@@ -6,13 +6,18 @@ import { DisconnectIcon, GitHubMobileIcon } from '@/public/icons';
 import { setTokenHeader } from '@/utils/axios';
 import { setUser } from '@/application/user';
 import { setMigration, setMigrations } from '@/application/migration';
+import { usePrivy } from '@privy-io/react-auth';
 
 const AccountModal = ({ close }: { close: () => void }) => {
-  const { userState, navigate, dispatch } = useSystemFunctions();
-  const [cookies, setCookies, removeCookie] = useCookies(['SMauthtoken']);
+  const { userState, dispatch } = useSystemFunctions();
+  const { ready, authenticated, logout } = usePrivy();
+  const [cookies, setCookies, removeCookie] = useCookies(['authtoken']);
 
   const action = async () => {
-    await removeCookie('SMauthtoken');
+    if (authenticated && !ready) return;
+
+    await logout();
+    await removeCookie('authtoken');
     await setTokenHeader();
     dispatch(setUser(undefined));
     dispatch(setMigrations([]));
@@ -20,7 +25,7 @@ const AccountModal = ({ close }: { close: () => void }) => {
     close();
   };
 
-  const modalTitle = `@${userState?.user?.username}`;
+  const modalTitle = `@${userState?.user?.name}`;
 
   return (
     <div className="flex flex-col gap-6 min-w-[300px] md:min-w-80">

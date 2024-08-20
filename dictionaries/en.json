@@ -117,7 +117,7 @@
     "migrate": "Migrate",
     "bridge": "Bridge",
     "liquidity": "Liquidity",
-    "connect": "Connect"
+    "connect": "Login / Signup"
   },
   "migrate": {
     "title": "Migrations",

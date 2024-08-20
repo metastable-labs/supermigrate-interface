@@ -1,7 +1,7 @@
 'use client';
 
 import { SMClickAnimation } from '@/components';
-import { Network } from '@/config/rainbow/config';
+import { Network } from '@/config/privy/config';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 import useTruncateText from '@/hooks/useTruncateText';
 import { HomeIcon, RightCarretLightIcon } from '@/public/icons';

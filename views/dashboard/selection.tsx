@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 import SMCard from '@/components/card';
-import { NetworkProps, networks } from '@/config/rainbow/config';
+import { NetworkProps, networks } from '@/config/privy/config';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const comingSoonNetworks: NetworkProps[] = [

@@ -1,5 +1,5 @@
 import { LangParamProp, Locale } from '@/config/internationalization/i18n';
-import { Network } from '@/config/rainbow/config';
+import { Network } from '@/config/privy/config';
 import { LiquidityView } from '@/views';
 
 interface PageProps {

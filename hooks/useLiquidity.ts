@@ -17,7 +17,7 @@ import { Pair } from '@uniswap/v2-sdk';
 import { addLiquidity, addLiquidityEth, getPair, getUniswapRouterAddress } from '@/utils/uniswap';
 import { Address, erc20Abi } from 'viem';
 import { readContract, writeContract } from '@wagmi/core';
-import { wagmiConfig } from '@/config/rainbow/rainbowkit';
+import { wagmiConfig } from '@/config/privy/rainbowkit';
 
 const useLiquidity = () => {
   const chainId: any = useChainId();

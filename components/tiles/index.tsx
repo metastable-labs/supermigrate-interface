@@ -2,9 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import { useChainId } from 'wagmi';
+import { useAccount } from 'wagmi';
 
-import { networks } from '@/config/rainbow/config';
+import { networks } from '@/config/privy/config';
 
 interface ColorConfig {
   primary: string;
@@ -22,7 +22,7 @@ const colors: { [key: string]: ColorConfig } = {
 const dashboardRegex = /^\/[a-z]{2}\/dashboard$/;
 
 const SMTiles = () => {
-  const chainId = useChainId();
+  const { chainId } = useAccount();
   const pathname = usePathname();
 
   const connectedNetwork = networks.find((chain) => chain.chainId === chainId);

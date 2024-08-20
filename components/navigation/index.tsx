@@ -1,16 +1,16 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import classNames from 'classnames';
-import { useAccount, useChainId, useSwitchChain } from 'wagmi';
+import { useAccount } from 'wagmi';
 import { useCookies } from 'react-cookie';
 
 import Left from './left';
 import Right from './right';
 import Menu from './menu';
 import { BridgeLinkIcon, LiquidityLinkIcon, MigrateLinkIcon } from '@/public/icons';
-import { networks } from '@/config/rainbow/config';
+import { networks } from '@/config/privy/config';
 import { INavActions, INavLinks } from './types';
 import SMModal from '../modal';
 import { ModalType } from './modal/types';
@@ -18,7 +18,8 @@ import AccountModal from './modal/account';
 import WalletModal from './modal/wallet';
 import NetworkModal from './modal/network';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
-import { useConnectModal } from '@rainbow-me/rainbowkit';
+import useUserActions from '@/application/user/actions';
+import { usePrivy } from '@privy-io/react-auth';
 
 export const isHomePage = (path: string): boolean => {
   const homePageRegex = /^\/[a-z]{2}\/?$/;
@@ -26,12 +27,13 @@ export const isHomePage = (path: string): boolean => {
 };
 
 const SMNavigation = () => {
-  const { isConnected, isDisconnected, address } = useAccount();
-  const [cookies] = useCookies(['SMauthtoken']);
-  const chainId = useChainId();
-  const { switchChain } = useSwitchChain();
-  const { openConnectModal } = useConnectModal();
+  const { address, chainId } = useAccount();
+  const [cookies] = useCookies(['authtoken']);
+
+  const { authenticateUser } = useUserActions();
+  const { ready, authenticated, logout } = usePrivy();
   const { userState, locale } = useSystemFunctions();
+
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [modalType, setModalType] = useState<ModalType>();
@@ -78,41 +80,26 @@ const SMNavigation = () => {
   const closeModal = () => setModalType(undefined);
 
   const handleModal = (type: ModalType) => {
-    if (type === 'wallet' && !isConnected) {
-      return openConnectModal && openConnectModal();
+    if (type === 'wallet' && ready && (!authenticated || !address)) {
+      return authenticateUser();
     }
 
     setModalType(type);
   };
 
-  const listenerToNetworkChange = () => {
-    if (!chainId) return;
-
-    const isAcceptedChain = networks.find((network) => network.chainId === chainId);
-
-    if (isConnected && !isAcceptedChain) {
-      return switchChain && switchChain({ chainId: networks[0].chainId });
-    }
-  };
-
   const actionItems: INavActions = [
     {
-      text: cookies.SMauthtoken ? user?.username : undefined,
+      text: cookies.authtoken ? user?.name : undefined,
       variant: 'account',
     },
     {
       variant: 'network',
     },
     {
-      text: address || connect,
+      text: authenticated && address ? address : connect,
       variant: 'wallet',
     },
   ];
-
-  useEffect(() => {
-    listenerToNetworkChange();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chainId, isConnected, isDisconnected, address]);
 
   return (
     <>

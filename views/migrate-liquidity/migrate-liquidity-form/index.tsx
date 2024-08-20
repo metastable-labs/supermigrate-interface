@@ -31,7 +31,7 @@ const MigrateLiquidtyForm = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(amount);
+
     setLoadingSteps(0);
   };
 

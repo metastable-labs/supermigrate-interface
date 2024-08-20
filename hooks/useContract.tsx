@@ -1,7 +1,7 @@
 import { useWaitForTransactionReceipt, useWriteContract, useChainId } from 'wagmi';
 import { getTransactionReceipt } from '@wagmi/core';
-import { wagmiConfig } from '@/config/rainbow/rainbowkit';
-import { networks } from '@/config/rainbow/config';
+import { wagmiConfig } from '@/config/privy/rainbowkit';
+import { networks } from '@/config/privy/config';
 
 const useContract = () => {
   const chainId: any = useChainId();
