@@ -93,10 +93,10 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
                 <p className="text-[14px] text-primary-350 md:text-base max-w-[450px] text-wrap">{subtitle}</p>
               </div>
 
-              {cookies.isGithubConnected && <SMButton onClick={action} text={buttonText} variant="new" network={network} />}
+              {cookies.isGithubConnected && user && <SMButton onClick={action} text={buttonText} variant="new" network={network} />}
             </div>
 
-            <SMTable isConnected={cookies.isGithubConnected ? true : false} data={tableData} network={network} ctaAction={handleTableAction} />
+            <SMTable isConnected={cookies.isGithubConnected && user ? true : false} data={tableData} network={network} ctaAction={handleTableAction} />
           </div>
         </motion.div>
       </SMContainer>
