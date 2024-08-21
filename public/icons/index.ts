@@ -101,6 +101,7 @@ import ChangeIndicatorIcon from './change-indicator-icon';
 import UniswapIcon from './uniswap-icon';
 import LayerTwoIcon from './LayerTwoIcon';
 import AeroIcon from './aero-icon.svg';
+import FlashIcon from './flash-icon';
 
 export {
   Logo,
@@ -206,4 +207,5 @@ export {
   UniswapIcon,
   LayerTwoIcon,
   AeroIcon,
+  FlashIcon,
 };
