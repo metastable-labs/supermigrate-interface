@@ -29,7 +29,7 @@ import OptimismPrimaryMobileIcon from './optimism-primary-mobile-icon';
 import ModePrimaryMobileIcon from './mode-primary-mobile-icon';
 import ScrollPrimaryMobileIcon from './scroll-primary-mobile-icon.svg';
 import DisconnectIcon from './disconnect-icon.svg';
-import CopyIcon from './copy-icon.svg';
+import CopyIcon from './copy-icon';
 import SelectSecondaryIcon from './select-secondary-icon.svg';
 import WalletIcon from './wallet-icon.svg';
 import RightArrowIcon from './right-arrow-icon.svg';
@@ -101,6 +101,20 @@ import ChangeIndicatorIcon from './change-indicator-icon';
 import UniswapIcon from './uniswap-icon';
 import LayerTwoIcon from './LayerTwoIcon';
 import AeroIcon from './aero-icon.svg';
+import EarnLinkIcon from './earn-link-icon';
+import EarnAnnouncement from './earn-announcement';
+import WalletAltIcon from './wallet-alt-icon';
+import BarcodeIcon from './barcode-icon';
+import DesktopEarnWelcome from './earn-welcome';
+import WarningIcon from './warning-icon.svg';
+import FlashIcon from './flash-icon';
+import BTCIcon from './btc-icon.svg';
+import TokenomyIcon from './tokenomy-icon.svg';
+import POKTIcon from './pokt-icon.svg';
+import SoftdaoIcon from './softdao-icon.svg';
+import MobileWalletIcon from './mobile-wallet-icon.svg';
+import MobileEarnWelcome from './mobile-earn-welcome.svg';
+import MobileFooterLogo from './mobile-footer-logo.svg';
 
 export {
   Logo,
@@ -206,4 +220,18 @@ export {
   UniswapIcon,
   LayerTwoIcon,
   AeroIcon,
+  EarnLinkIcon,
+  EarnAnnouncement,
+  WalletAltIcon,
+  BarcodeIcon,
+  DesktopEarnWelcome,
+  WarningIcon,
+  FlashIcon,
+  BTCIcon,
+  TokenomyIcon,
+  POKTIcon,
+  SoftdaoIcon,
+  MobileWalletIcon,
+  MobileEarnWelcome,
+  MobileFooterLogo,
 };
