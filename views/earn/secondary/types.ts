@@ -1,9 +1,11 @@
 import { ReactElement } from 'react';
+import { Address } from 'viem';
 
 interface InfoProps {
   title: string;
-  value: number;
-  hasIcon?: boolean;
+  value: string | number;
+  subtitle?: string;
+  flushLeft?: boolean;
 }
 
 type BadgeType = 'primary' | 'secondary';
@@ -14,7 +16,6 @@ interface Badge {
   mobileText?: string;
   type?: BadgeType;
   variant?: BadgeVariant;
-  fullWidth?: boolean;
 }
 
 interface ActionProps {
@@ -32,6 +33,27 @@ interface ActionProps {
 
 interface ReferralsSectionProps {
   copy: (text: string) => void;
+  referrals: number;
+  points: number;
+  link: string;
 }
 
-export type { InfoProps, ActionProps, Badge, BadgeType, BadgeVariant, ReferralsSectionProps };
+interface DashStatsProps {
+  points: number;
+  tier: 'bronze' | 'silver' | 'gold';
+  xpEarned: number;
+  multiplier: number;
+}
+
+interface LeaderboardTableData {
+  address: Address;
+  points: number;
+  xpEarned: number;
+}
+
+interface LeaderboardTableProps {
+  data: LeaderboardTableData[];
+  loading?: boolean;
+}
+
+export type { InfoProps, ActionProps, Badge, BadgeType, BadgeVariant, ReferralsSectionProps, DashStatsProps, LeaderboardTableProps, LeaderboardTableData };

@@ -2,30 +2,103 @@
 
 import { useMemo } from 'react';
 import classNames from 'classnames';
-import useScreenDetect from '@/hooks/useScreenDetect';
+import moment from 'moment';
+
 import useCopy from '@/hooks/useCopy';
-import { CopyIcon, DesktopEarnWelcome, Logo, MobileEarnWelcome } from '@/public/icons';
+import { CopyIcon, DesktopEarnWelcome, FlashIcon, Logo, MobileEarnWelcome, StarIcon } from '@/public/icons';
 import { SMClickAnimation, SMTable } from '@/components';
 import Action from './action';
 import { activities, featuredTokens, leaderBoard } from './dummy';
-import { InfoProps, ReferralsSectionProps } from './types';
+import { DashStatsProps, InfoProps, ReferralsSectionProps } from './types';
+import LeaderboardTable from './leaderboard-table';
 
-const Info = ({ hasIcon, title, value }: InfoProps) => (
-  <div className={classNames('p-6 bg-white border border-primary-3450 rounded-base w-full text-center', { 'flex items-center justify-center gap-2.5': hasIcon })}>
-    {hasIcon && (
-      <div className="bg-primary-3250 rounded-full pt-[10.35px] pr-[7.4px] pb-[10.2px] pl-[9.3px] flex items-center justify-center md:w-10 md:h-10">
-        <Logo />
+const DashStats = ({ multiplier, points, tier = 'bronze', xpEarned }: DashStatsProps) => {
+  const multipliers = {
+    bronze: 'No multipliers active',
+    silver: '0.5X multiplier active',
+    gold: '2X multiplier active',
+  };
+  const disableClaim = multiplier === 0;
+
+  return (
+    <div className="flex flex-col md:flex-row md:items-center justify-between lg:gap-10 xl:gap-5 gap-7 p-[18px] border border-primary-3450 bg-white w-full xl:w-2/3 rounded-base">
+      <div className="flex items-center lg:gap-10 xl:gap-5 gap-7">
+        <div className="bg-primary-3250 rounded-full pt-[10.35px] pr-[7.4px] pb-[10.2px] pl-[9.3px] flex items-center justify-center md:w-10 md:h-10">
+          <Logo />
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="flex flex-col">
+            <h5 className="text-sm tracking-[-0.084px] text-primary-4050 whitespace-nowrap">Migrate Points</h5>
+            <span className="text-primary-50 text-[24px] leading-[36px] font-Bitform">{points.toLocaleString()}</span>
+          </div>
+
+          <div
+            className={classNames('flex items-center gap-0.5 rounded-full py-1 pl-1 pr-2 transition-all duration-300', {
+              'bg-primary-4500': tier === 'bronze',
+              'bg-primary-150': tier === 'silver',
+              'bg-primary-4550': tier === 'gold',
+            })}>
+            <StarIcon color={tier === 'bronze' ? '#6E330C' : tier === 'silver' ? '#525866' : '#693D11'} />
+            <span
+              className={classNames('text-[11px] leading-[12px] tracking-[0.22px] font-medium capitalize', {
+                'text-primary-600': tier === 'bronze',
+                'text-primary-200': tier === 'silver',
+                'text-primary-2650': tier === 'gold',
+              })}>
+              {tier}
+            </span>
+          </div>
+        </div>
       </div>
-    )}
-    <div className="flex flex-col">
-      <h5 className="text-sm tracking-[-0.084px] text-primary-4100">{title}</h5>
-      <span className="text-lg md:text-[24px] md:leading-[36px] font-Bitform">{value.toLocaleString()}</span>
+
+      <div className="w-full h-[1px] md:w-[1px] md:h-[58px] bg-primary-4350" />
+
+      <div className="flex flex-col">
+        <h5 className="text-sm tracking-[-0.084px] text-primary-4050 whitespace-nowrap">$xpMigrate Earned</h5>
+        <span className="text-primary-50 text-[24px] leading-[36px] font-Bitform">{xpEarned.toLocaleString()}</span>
+      </div>
+
+      <div className="w-full h-[1px] md:w-[1px] md:h-[58px] bg-primary-4350" />
+
+      <div className="flex flex-col gap-3">
+        <div
+          className={classNames('flex items-center gap-0.5 rounded-full py-1 pl-1 pr-2 transition-all duration-300 w-fit', {
+            'bg-primary-150': tier === 'bronze',
+            'bg-primary-1000': tier === 'silver',
+            'bg-primary-1100 border border-primary-4600': tier === 'gold',
+          })}>
+          <FlashIcon width={12} height={12} color={tier === 'bronze' ? '#525866' : tier === 'silver' ? '#162664' : '#710E21'} />
+          <span
+            className={classNames('text-[11px] leading-[12px] tracking-[0.22px] font-medium whitespace-nowrap', {
+              'text-primary-200': tier === 'bronze',
+              'text-primary-700': tier === 'silver',
+              'text-primary-800': tier === 'gold',
+            })}>
+            {multipliers[tier]}
+          </span>
+        </div>
+
+        <SMClickAnimation
+          className={classNames('px-3 rounded-base flex items-center justify-center w-fit h-[26px]', { 'bg-primary-250 pointer-events-none': disableClaim, 'bg-primary-3400': !disableClaim })}>
+          <span className={classNames('text-[12px] leading-[17.4px] font-Bitform', { 'text-primary-2050': disableClaim, 'text-primary-3600': !disableClaim })}>Claim</span>
+        </SMClickAnimation>
+      </div>
+    </div>
+  );
+};
+
+const Info = ({ title, value, flushLeft, subtitle }: InfoProps) => (
+  <div className={classNames('p-[18px] border border-primary-3450 bg-white rounded-base w-full flex flex-col', { 'md:items-center': !flushLeft })}>
+    <h5 className="text-sm tracking-[-0.084px] text-primary-4050">{title}</h5>
+    <div className={classNames('', { 'flex items-center gap-3': subtitle })}>
+      <span className="text-[24px] leading-[36px] font-Bitform text-primary-50">{value.toLocaleString()}</span>
+      {subtitle && <span className="text-[14px] leading-[21px] text-primary-200">{subtitle}</span>}
     </div>
   </div>
 );
 
 const DashboardHeader = () => (
-  <div className="flex flex-col items-center justify-center md:space-y-1 lg:space-y-5 pb-2 md:pb-3.5 lg:pb-5 border-b border-b-primary-1350">
+  <div className="flex flex-col gap-5 pb-5 border-b border-b-primary-1350">
     <div className="hidden md:flex items-center justify-center overflow-hidden max-w-full">
       <DesktopEarnWelcome />
     </div>
@@ -33,33 +106,25 @@ const DashboardHeader = () => (
       <MobileEarnWelcome />
     </div>
 
-    <div className="flex items-center justify-start sm:justify-center md:justify-start text-primary-300 text-lg md:text-[30px] md:leading-[38px] w-full">Dashboard</div>
+    <span className="text-primary-300 text-[20px] leading-[38px] md:text-[30px] md:leading-[38px] font-Bitform">Dashboard</span>
   </div>
 );
 
-const InfoSection = ({ infoData }: { infoData: InfoProps[] }) => (
-  <div className="w-full lg:w-3/5 grid grid-cols-1 md:grid-cols-3 items-center justify-between gap-[22px]">
-    {infoData.map((info, index) => (
-      <Info key={index} {...info} />
-    ))}
-  </div>
-);
-
-const ReferralsSection = ({ copy }: ReferralsSectionProps) => (
-  <div className="p-6 w-full lg:w-2/5 flex items-center justify-between bg-white border border-primary-3450 rounded-base">
+const ReferralsSection = ({ copy, link, points, referrals }: ReferralsSectionProps) => (
+  <div className="p-[18px] border border-primary-3450 bg-white w-full xl:w-1/3 flex items-center justify-between rounded-base">
     <div className="flex flex-col">
-      <h5 className="text-sm tracking-[-0.084px] text-primary-4100">Referrals</h5>
-      <span className="text-lg md:text-[24px] md:leading-[36px] font-Bitform">
-        204 <span className="font-Aeonik text-[12px] leading-[18px] text-primary-200">(22,403 PTS)</span>
+      <h5 className="text-sm tracking-[-0.084px] text-primary-4050">Referrals</h5>
+      <span className="text-[24px] leading-[36px] font-Bitform text-primary-50">
+        {referrals.toLocaleString()} <span className="font-Aeonik text-[12px] leading-[18px] md:text-[14px] md:leading-[21px] text-primary-200">({points.toLocaleString()} PTS)</span>
       </span>
     </div>
 
     <div className="flex flex-col h-full justify-between items-end gap-1">
-      <h5 className="text-sm tracking-[-0.084px] text-primary-4100">Referral Link</h5>
+      <h5 className="text-sm tracking-[-0.084px] text-primary-4050">Referral Link</h5>
 
       <div className="flex items-center justify-center gap-3 px-3 rounded-base bg-primary-3400 h-[26px]">
-        <p className="text-ellipsis text-primary-3600 text-[12px] leading-[17.4px] font-Bitform">mgrt/3uck</p>
-        <SMClickAnimation onClick={() => copy('mgrt/3uck')}>
+        <p className="text-ellipsis text-primary-3600 text-[12px] leading-[17.4px] font-Bitform">{link}</p>
+        <SMClickAnimation onClick={() => copy(link)}>
           <CopyIcon color="#B3D400" />
         </SMClickAnimation>
       </div>
@@ -68,21 +133,20 @@ const ReferralsSection = ({ copy }: ReferralsSectionProps) => (
 );
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <div className="p-6 flex flex-col items-start gap-6 self-stretch bg-white">
-    <h2 className="tracking-[-0.48px] text-lg md:text-[24px] md:leading-[36px] font-Bitform text-primary-3400">{title}</h2>
+  <div className="flex flex-col gap-6 self-stretch">
+    <h2 className="text-[20px] leading-[30px] tracking-[0.4px] md:text-[24px] md:leading-[36px] md:tracking-[-0.48px] font-Bitform text-primary-3400">{title}</h2>
     {children}
   </div>
 );
 
 const Secondary = () => {
-  const { isMobile, isTablet, isDesktop } = useScreenDetect();
   const copy = useCopy();
 
   const infoData: InfoProps[] = useMemo(
     () => [
-      { title: 'Migrate Points', value: 12344, hasIcon: true },
-      { title: 'Migrate Points in Circulation', value: 12344567 },
-      { title: 'Your Rank', value: 303456, textRight: true },
+      { title: 'Migrate Points in Circulation', value: 12_344_567 },
+      { title: 'Your Rank', value: 303_456 },
+      { title: 'Claim window', value: moment('2024-08-23T14:00:00Z').fromNow(), subtitle: 'Till next cooldown', flushLeft: true },
     ],
     [],
   );
@@ -92,9 +156,17 @@ const Secondary = () => {
       <DashboardHeader />
 
       <div className="flex flex-col gap-12 self-stretch items-center flex-1">
-        <div className="self-stretch flex flex-col lg:flex-row items-start gap-[22px]">
-          <InfoSection infoData={infoData} />
-          <ReferralsSection copy={copy} />
+        <div className="self-stretch items-stretch flex flex-col gap-[22px]">
+          <div className="self-stretch flex flex-col xl:flex-row justify-between items-stretch gap-6">
+            <DashStats points={12345} tier="gold" xpEarned={123456} multiplier={0} />
+            <ReferralsSection copy={copy} link="mgrt/3uck" points={1050} referrals={23} />
+          </div>
+
+          <div className="w-full grid grid-cols-1 md:grid-cols-3 items-center justify-between gap-[22px]">
+            {infoData.map((info, index) => (
+              <Info key={index} {...info} />
+            ))}
+          </div>
         </div>
 
         <Section title="Activities">
@@ -114,7 +186,7 @@ const Secondary = () => {
         </Section>
 
         <Section title="Leaderboard">
-          <SMTable data={leaderBoard} variant="tertiary" network="base" loading={false} isConnected />
+          <LeaderboardTable data={leaderBoard} />
         </Section>
       </div>
     </div>

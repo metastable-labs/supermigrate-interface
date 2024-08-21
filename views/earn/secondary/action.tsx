@@ -19,15 +19,14 @@ const getIconColor = (variant?: BadgeVariant) => {
   }
 };
 
-const BadgeComponent = ({ text, type, variant, mobileText, fullWidth }: Badge) => (
+const BadgeComponent = ({ text, type, variant, mobileText }: Badge) => (
   <div
-    className={classNames('py-1 pl-1 pr-2 flex  items-center justify-center gap-0.5 rounded-full text-xs md:text-[14px] md:leading-[21px] font-medium whitespace-nowrap', {
-      'text-primary-4200 bg-primary-4500': variant === 'mint',
+    className={classNames('py-1 pl-1 pr-2 flex  items-center gap-0.5 rounded-full text-xs md:text-[14px] md:leading-[21px] font-medium', {
+      'text-primary-4650 bg-primary-4700': variant === 'mint',
       'text-primary-200 bg-primary-150': variant === 'plain',
-      'text-primary-2650 bg-primary-4450': variant === 'tertiary',
-      'text-primary-4250 bg-primary-4400': variant === 'secondary',
-      'text-primary-4300 bg-primary-4350': variant === 'primary',
-      'w-full md:w-auto': fullWidth,
+      'text-primary-2650 bg-primary-4550': variant === 'tertiary',
+      'text-primary-4750 bg-primary-4800': variant === 'secondary',
+      'text-primary-4850 bg-primary-4900': variant === 'primary',
     })}>
     {type === 'primary' && (
       <div className="min-w-fit">
@@ -39,8 +38,8 @@ const BadgeComponent = ({ text, type, variant, mobileText, fullWidth }: Badge) =
         <MigrateLinkIcon color={getIconColor(variant)} width={16} height={17} />
       </div>
     )}
-    <span className="block md:hidden">{mobileText}</span>
-    <span className="hidden md:block">{text}</span>
+    <p className="block md:hidden">{mobileText}</p>
+    <p className="hidden md:block">{text}</p>
   </div>
 );
 
@@ -80,7 +79,7 @@ const Action = ({ action, buttonText, icon, subtitle, title, badges, hasWarning,
         )}
 
         {hasWarning && (
-          <div className="py-3 px-4 md:px-6 flex items-center justify-center gap-1 self-stretch bg-primary-4150 rounded-xl text-primary-3400 text-xs md:text-[14px] md:leading-[21px]">
+          <div className="py-3 px-4 md:px-6 flex items-center justify-center gap-1 self-stretch bg-primary-4300 rounded-xl text-primary-3400 text-xs md:text-[14px] md:leading-[21px] w-fit">
             <div className="min-w-fit">
               <WarningIcon />
             </div>
@@ -89,7 +88,7 @@ const Action = ({ action, buttonText, icon, subtitle, title, badges, hasWarning,
         )}
       </div>
 
-      <div className="md:w-[117px]">
+      <div className="md:w-[140px]">
         <SMButton variant="tertiary" text={buttonText} type="submit" fullWidth onClick={action} />
       </div>
     </div>

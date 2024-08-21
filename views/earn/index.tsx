@@ -26,7 +26,7 @@ const EarnView = ({ lang }: LangParamProp) => {
         </div>
       </SMContainer>
 
-      <footer className="w-full bg-primary-3250 flex justify-center pt-3">
+      <footer className="w-full bg-primary-3250 flex justify-center pt-3 overflow-hidden">
         <div className="hidden lg:block">
           <FooterLogo />
         </div>

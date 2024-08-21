@@ -1,11 +1,17 @@
 import { TableItem } from '@/components/table/types';
-import { ActionProps } from './types';
+import { ActionProps, LeaderboardTableData } from './types';
 import { BTCIcon, TokenomyIcon, SoftdaoIcon, POKTIcon } from '@/public/icons';
 
 const activities: ActionProps[] = [
   {
-    title: 'Bridge on Supermigrate',
-    subtitle: 'All users on Supermigrate bridging through the bridge interface on supermigrate will earn points.',
+    title: 'Bridge',
+    titleBadge: {
+      text: '500 PTS',
+      mobileText: '500 PTS',
+      type: 'primary',
+      variant: 'mint',
+    },
+    subtitle: 'All users on Supermigrate bridging through the bridge interface on supermigrate will earn  500 points for every $1 bridged.',
     buttonText: 'Bridge',
     action: () => {},
     badges: [
@@ -14,14 +20,12 @@ const activities: ActionProps[] = [
         mobileText: '1.5x PTS multiplier for featured tokens',
         type: 'primary',
         variant: 'primary',
-        fullWidth: true,
       },
       {
         text: '3x Migrate PTS multiplier for tokens that migrated using Supermigrate',
         mobileText: '3x PTS multiplier for Supermigrate tokens',
         type: 'primary',
         variant: 'secondary',
-        fullWidth: true,
       },
     ],
     hasWarning: true,
@@ -39,7 +43,7 @@ const activities: ActionProps[] = [
     action: () => {},
     badges: [
       {
-        text: '1x PTS multipliers Verified account',
+        text: '1x PTS multipliers for Verified account',
         mobileText: '1x PTS multipliers Verified account',
         type: 'primary',
         variant: 'primary',
@@ -49,7 +53,6 @@ const activities: ActionProps[] = [
         mobileText: '2x PTS multiplier accounts with 2k followers',
         type: 'primary',
         variant: 'tertiary',
-        fullWidth: true,
       },
     ],
   },
@@ -77,10 +80,22 @@ const activities: ActionProps[] = [
     subtitle: 'Users who refer their friends will get 10% of the points your referrals earn.',
     buttonText: 'Copy',
     action: () => {},
+  },
+  {
+    title: 'Liquidity Migration',
+    titleBadge: {
+      text: '1000 PTS',
+      mobileText: '1000 PTS',
+      type: 'primary',
+      variant: 'tertiary',
+    },
+    subtitle: 'Users who migrate Liquidity will receive 1000 points for every $1 worth of Liquidity migrated.',
+    buttonText: 'Migrate Liquidity',
+    action: () => {},
     badges: [
       {
-        text: '10% of points from referrals',
-        mobileText: '10% of points from referrals',
+        text: '2.5x Migrate point multipliers for users who opt in to stake LP tokens.',
+        mobileText: '2.5x point multipliers for users who opt in to stake LP tokens.',
         type: 'primary',
         variant: 'primary',
       },
@@ -169,50 +184,81 @@ const featuredTokens: ActionProps[] = [
   },
 ];
 
-const leaderBoard: TableItem[] = [
+const leaderBoard: LeaderboardTableData[] = [
   {
-    tokenAddress: '0xa04f6b6b21bff727260edb156b65e03041652706',
-    points: 245678,
+    address: '0x1234567890123456789012345678901234567890',
+    points: 1000,
+    xpEarned: 100,
   },
   {
-    tokenAddress: '0xb15e6b1b32cff637361feb267c76f04051763817',
-    points: 123456,
+    address: '0x2345678901234567890123456789012345678901',
+    points: 1950,
+    xpEarned: 950,
   },
   {
-    tokenAddress: '0xc26f7b2c43dff747462fec278d87g05162874928',
-    points: 987654,
+    address: '0x3456789012345678901234567890123456789012',
+    points: 1900,
+    xpEarned: 900,
   },
   {
-    tokenAddress: '0xd37g8b3d54eff857573fed289e98h06273985039',
-    points: 543210,
+    address: '0x4567890123456789012345678901234567890123',
+    points: 1850,
+    xpEarned: 850,
   },
   {
-    tokenAddress: '0xe48h9b4e65gff967684gfe390f09i07384a96150',
-    points: 678901,
+    address: '0x5678901234567890123456789012345678901234',
+    points: 1800,
+    xpEarned: 800,
   },
   {
-    tokenAddress: '0xf59i0b5f76hff077795hgf401g10j08495b07261',
-    points: 112233,
+    address: '0x6789012345678901234567890123456789012345',
+    points: 1750,
+    xpEarned: 750,
   },
   {
-    tokenAddress: '0xg6aj1b6g87iff1878a6hfh512h21k095a1b18372',
-    points: 445566,
+    address: '0x7890123456789012345678901234567890123456',
+    points: 1700,
+    xpEarned: 700,
   },
   {
-    tokenAddress: '0xh7bk2b7h98jff2979b7ihg623i32l0a5b2c29483',
-    points: 789012,
+    address: '0x8901234567890123456789012345678901234567',
+    points: 1650,
+    xpEarned: 650,
   },
   {
-    tokenAddress: '0xi8cl3c8i09kff3a0ac8jih734j43m1b6c3d30594',
-    points: 234567,
+    address: '0x9012345678901234567890123456789012345678',
+    points: 1600,
+    xpEarned: 600,
   },
   {
-    tokenAddress: '0xj9dm4d9j10lff4b1bd9kjh845k54n2c7d4e41605',
-    points: 890123,
+    address: '0xA123456789012345678901234567890123456789',
+    points: 1550,
+    xpEarned: 550,
   },
   {
-    tokenAddress: '0xkaen5e0k21mff5c2ceakli956l65o3d8e5f52716',
-    points: 345678,
+    address: '0xB234567890123456789012345678901234567890',
+    points: 1500,
+    xpEarned: 500,
+  },
+  {
+    address: '0xC345678901234567890123456789012345678901',
+    points: 1450,
+    xpEarned: 450,
+  },
+  {
+    address: '0xD456789012345678901234567890123456789012',
+    points: 1400,
+    xpEarned: 400,
+  },
+  {
+    address: '0xE567890123456789012345678901234567890123',
+    points: 1350,
+    xpEarned: 350,
+  },
+  {
+    address: '0xF678901234567890123456789012345678901234',
+    points: 1300,
+    xpEarned: 300,
   },
 ];
 
