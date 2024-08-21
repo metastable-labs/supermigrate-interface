@@ -7,6 +7,7 @@ import Link from 'next/link';
 
 import { SMContainer } from '@/components';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
+import { FlashIcon } from '@/public/icons';
 
 const stepTexts = ['Layer 2', 'Base', 'Optimism', 'Mode'];
 const stepTextColors = ['#D7FF00', '#C2D6FF', '#F25976', '#DFFE00'];
@@ -37,6 +38,26 @@ const HeroSection = () => {
       <div className="z-30">
         <SMContainer>
           <div className="flex flex-col justify-center items-center gap-[29px]">
+            <div className="bg-primary-150 rounded-full px-2.5 py-2 flex items-center gap-2 w-fit">
+              <div className="min-w-fit">
+                <FlashIcon color="#525866" width={16} height={16} />
+              </div>
+
+              <p className="text-[16px] leading-[16px] font-medium text-primary-200">
+                Liquidity Migration is coming soon, read{' '}
+                <Link
+                  href="/assets/Liquidity Migration Litepaper.pdf"
+                  download="Liquidity Migration Litepaper.pdf"
+                  locale={false}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  aria-label="Download Whitepaper"
+                  className="text-primary-3250 underline cursor-pointer underline-offset-[3px]">
+                  whitepaper
+                </Link>{' '}
+                to learn more
+              </p>
+            </div>
             <div className="w-full flex flex-col justify-center items-center gap-8">
               <div className="font-Bitform text-[40px] leading-[79px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-white max-w-[674px] text-center w-full">
                 {title}
