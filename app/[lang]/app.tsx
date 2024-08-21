@@ -11,11 +11,12 @@ const App = ({ locale, children }: { locale: LangParamProp; children: ReactNode 
   const pathname = usePathname();
   const isHome = isHomePage(pathname);
   const isLiquidityRoutes = pathname.includes('liquidity');
+  const isEarnRoutes = pathname.includes('earn');
 
   return (
     <>
       <AppHome locale={locale}>{children}</AppHome>
-      {!isHome && !isLiquidityRoutes && (
+      {!isHome && !isLiquidityRoutes && !isEarnRoutes && (
         <div className="flex justify-center fixed w-screen bottom-0 -z-10">
           <SMTiles />
         </div>
