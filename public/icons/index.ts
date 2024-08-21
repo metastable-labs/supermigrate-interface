@@ -31,7 +31,7 @@ import ScrollPrimaryMobileIcon from './scroll-primary-mobile-icon.svg';
 import DisconnectIcon from './disconnect-icon.svg';
 import CopyIcon from './copy-icon';
 import SelectSecondaryIcon from './select-secondary-icon.svg';
-import WalletIcon from './wallet-icon.svg';
+import WalletIcon from './wallet-icon';
 import RightArrowIcon from './right-arrow-icon.svg';
 import LeftArrowIcon from './left-arrow-icon.svg';
 import AccountIcon from './account-icon';
@@ -115,6 +115,11 @@ import SoftdaoIcon from './softdao-icon.svg';
 import MobileWalletIcon from './mobile-wallet-icon.svg';
 import MobileEarnWelcome from './mobile-earn-welcome.svg';
 import MobileFooterLogo from './mobile-footer-logo.svg';
+import StarIcon from './star-icon';
+import RankIcon from './rank-icon';
+import WalletSecondaryIcon from './wallet-secondary-icon';
+import PointsIcon from './points-icon';
+import XPIcon from './xp-icon';
 
 export {
   Logo,
@@ -234,4 +239,9 @@ export {
   MobileWalletIcon,
   MobileEarnWelcome,
   MobileFooterLogo,
+  StarIcon,
+  RankIcon,
+  WalletSecondaryIcon,
+  PointsIcon,
+  XPIcon,
 };
