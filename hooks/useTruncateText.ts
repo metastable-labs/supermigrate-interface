@@ -1,8 +1,22 @@
-const useTruncateText = (text: string, startChars = 5, endChars = 5): string => {
-  if (text.length <= startChars + endChars) {
-    return text;
-  }
-  return `${text.substring(0, startChars)}...${text.substring(text.length - endChars)}`;
+import { useMemo } from 'react';
+
+const useTruncateText = (text?: string, startChars = 5, endChars = 5) => {
+  const truncate = (str: string) => {
+    if (str.length <= startChars + endChars) {
+      return str;
+    }
+    return `${str.substring(0, startChars)}...${str.substring(str.length - endChars)}`;
+  };
+
+  const truncatedText = useMemo(() => {
+    if (text !== undefined) {
+      return truncate(text);
+    }
+    return undefined;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [text]);
+
+  return { truncatedText, truncate };
 };
 
 export default useTruncateText;
