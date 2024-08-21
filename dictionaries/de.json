@@ -117,6 +117,7 @@
     "migrate": "Wandern",
     "bridge": "Brücke",
     "liquidity": "Liquidität",
+    "earn": "Verdienen",
     "connect": "Verbinden"
   },
   "migrate": {
@@ -183,7 +184,7 @@
     },
     "fileInput": {
       "title": "Wählen Sie eine Datei aus oder ziehen Sie sie per Drag & Drop hierher.",
-      "subtitle": "SVG-Formate, bis zu 10 MB.",
+      "subtitle": "SVG-Formate, bis zu 5 MB.",
       "buttonText": "Durchsuche",
       "completed": "Vollendet",
       "required": "Erforderlich"

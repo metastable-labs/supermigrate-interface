@@ -117,6 +117,7 @@
     "migrate": "Migrer",
     "bridge": "Pont",
     "liquidity": "Liquidité",
+    "earn": "Gagner",
     "connect": "Connecter"
   },
   "migrate": {
@@ -183,7 +184,7 @@
     },
     "fileInput": {
       "title": "Choisissez un fichier ou glissez-déposez-le ici.",
-      "subtitle": "Formats SVG, jusqu'à 10 Mo.",
+      "subtitle": "Formats SVG, jusqu'à 5 Mo.",
       "buttonText": "Parcourir",
       "completed": "Terminé",
       "required": "Requis"
