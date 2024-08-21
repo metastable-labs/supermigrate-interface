@@ -45,16 +45,15 @@ const HeroSection = () => {
 
               <p className="text-[16px] leading-[16px] font-medium text-primary-200">
                 Liquidity Migration is coming soon, read{' '}
-                <Link
-                  href="/assets/Liquidity Migration Litepaper.pdf"
-                  download="Liquidity Migration Litepaper.pdf"
-                  locale={false}
+                <a
+                  href="https://res.cloudinary.com/djzeufu4j/image/upload/v1724282738/Liquidity_Migration_Litepaper_ietyub.pdf"
+                  download
                   rel="noopener noreferrer"
                   target="_blank"
                   aria-label="Download Whitepaper"
                   className="text-primary-3250 underline cursor-pointer underline-offset-[3px]">
                   whitepaper
-                </Link>{' '}
+                </a>{' '}
                 to learn more
               </p>
             </div>
