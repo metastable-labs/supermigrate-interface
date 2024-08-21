@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 import { SMContainer } from '@/components';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
-import classNames from 'classnames';
+import { FlashIcon } from '@/public/icons';
 
 const stepTexts = ['Layer 2', 'Base', 'Optimism', 'Mode'];
 const stepTextColors = ['#D7FF00', '#C2D6FF', '#F25976', '#DFFE00'];
@@ -38,13 +38,45 @@ const HeroSection = () => {
       <div className="z-30">
         <SMContainer>
           <div className="flex flex-col justify-center items-center gap-[29px]">
+            <div className="bg-primary-150 rounded-full px-2.5 py-2 flex items-center gap-2 w-fit">
+              <div className="min-w-fit">
+                <FlashIcon color="#525866" width={16} height={16} />
+              </div>
+
+              <p className="text-[16px] leading-[16px] font-medium text-primary-200">
+                Liquidity Migration is coming soon, read{' '}
+                <Link
+                  href="/assets/Liquidity Migration Litepaper.pdf"
+                  download="Liquidity Migration Litepaper.pdf"
+                  locale={false}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  aria-label="Download Whitepaper"
+                  className="text-primary-3250 underline cursor-pointer underline-offset-[3px]">
+                  whitepaper
+                </Link>{' '}
+                to learn more
+              </p>
+            </div>
             <div className="w-full flex flex-col justify-center items-center gap-8">
               <div className="font-Bitform text-[40px] leading-[79px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-white max-w-[674px] text-center w-full">
                 {title}
-                <HeroText />
+
+                <AnimatePresence mode="popLayout" initial={false} key={step}>
+                  <motion.h1
+                    key={step}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1, color: stepTextColors[step] }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="whitespace-nowrap text-[40px] leading-[59px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-center w-full">
+                    {stepTexts[step]}
+                  </motion.h1>
+                </AnimatePresence>
               </div>
               <p className="text-white text-lg leading-[31px] max-w-[520px] text-center">{subtitle}</p>
             </div>
+
             <Link
               href="/dashboard"
               className="font-Bitform flex items-center justify-center px-[18px] py-3 rounded-base shadow-table-cta border-[0.3px] border-primary-3450 text-sm md:text-base min-w-[126px] md:min-w-[187px] transition-all duration-300 bg-white hover:bg-primary-3950 hover:rounded-lg">
@@ -60,47 +92,6 @@ const HeroSection = () => {
         </Player>
       </div>
     </motion.section>
-  );
-};
-
-const HeroText = () => {
-  const [step, setStep] = useState(0);
-
-  const checkIdTextShouldDisplay = (text: string) => {
-    return text === stepTexts[step];
-  };
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setStep((prev) => (prev + 1) % 4);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [step]);
-
-  return (
-    <AnimatePresence mode="popLayout" initial={false}>
-      {stepTexts.map(
-        (text, index) =>
-          step === index && (
-            <motion.h1
-              key={index}
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-                color: stepTextColors[index],
-              }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              className={classNames('whitespace-nowrap text-[40px] leading-[59px] md:text-[72px] md:leading-[93.6px] tracking-[0.72px] text-center w-full', {
-                hidden: !checkIdTextShouldDisplay(stepTexts[index]),
-              })}>
-              {text}
-            </motion.h1>
-          ),
-      )}
-    </AnimatePresence>
   );
 };
 export default HeroSection;
