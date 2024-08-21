@@ -10,7 +10,7 @@ import { Address } from 'viem';
 
 const Header = ({ network, tokenAddress, tokenSymbol }: { network: Network; tokenSymbol: string; tokenAddress: Address }) => {
   const { navigate } = useSystemFunctions();
-  const address = useTruncateText(tokenAddress, 4, 4);
+  const { truncatedText } = useTruncateText(tokenAddress, 4, 4);
 
   return (
     <div className="pb-5 self-stretch items-center border-b border-primary-1350 mx-0 md:mx-8">
@@ -28,7 +28,7 @@ const Header = ({ network, tokenAddress, tokenSymbol }: { network: Network; toke
         <RightCarretLightIcon />
 
         <span className="pointer-events-none">
-          {tokenSymbol}/ETH <span className="text-primary-2050">{address}</span>
+          {tokenSymbol}/ETH <span className="text-primary-2050">{truncatedText}</span>
         </span>
       </div>
     </div>
