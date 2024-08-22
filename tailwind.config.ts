@@ -117,6 +117,7 @@ const config: Config = {
           4900: '#C2EFFF',
           4950: '#9C23A9',
           5000: '#018558',
+          5050: '#1A1D1F',
         },
         grey: {
           50: '#717184',
@@ -140,6 +141,7 @@ const config: Config = {
         'hero-header-alt': '0px 0px 10px -6px rgba(0, 0, 0, 0.10)',
         'welcome-button': '0px 1px 2px 0px rgba(0, 33, 50, 0.48), 0px 0px 0px 1px #002132',
         'sm-shadow': '0px 1px 3px 0px rgba(16, 24, 40, 0.10), 0px 1px 2px 0px rgba(16, 24, 40, 0.06)',
+        'low-shadow': '0px 2px 4px -4px rgba(0, 0, 0, 0.15)',
       },
 
       borderRadius: {

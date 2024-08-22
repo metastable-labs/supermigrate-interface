@@ -1,4 +1,5 @@
 import { IOption } from '@/components/select/types';
+import { Network } from '@/config/privy/config';
 
 interface ILiquidityInput {
   value: string;
@@ -26,4 +27,10 @@ interface IInfo {
   step: number;
 }
 
-export type { ILiquidityInput, IAdd, IInfo };
+interface IStake {
+  network: Network;
+  rowClick: (id: string) => void;
+  claimClick: (id: string) => void;
+}
+
+export type { ILiquidityInput, IAdd, IInfo, IStake };

@@ -9,14 +9,15 @@ import { SMContainer, SMTable } from '@/components';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { allTableData, myTableData } from './dummy';
 import ClaimModal from './claim-modal';
+import Stake from './stake';
 
 export type LiquidityViewProps = LangParamProp & { network: Network };
 
-const tabs = ['all', 'my'];
+const tabs = ['all', 'my', 'stake'];
 
 const LiquidityView = ({ lang, network }: LiquidityViewProps) => {
   const { navigate } = useSystemFunctions();
-  const [tab, setTab] = useState<'all' | 'my'>('all');
+  const [tab, setTab] = useState<'all' | 'my' | 'stake'>('all');
   const [claimId, setClaimId] = useState<string>();
 
   const rowClick = (id: string) => {
@@ -28,6 +29,7 @@ const LiquidityView = ({ lang, network }: LiquidityViewProps) => {
   const tabViews = [
     <SMTable key="all" data={allTableData} network={network} isConnected variant="secondary" rowClick={rowClick} />,
     <SMTable key="my" data={myTableData} network={network} isConnected variant="tertiary" rowClick={rowClick} claimClick={claimClick} />,
+    <Stake key="stake" network={network} rowClick={rowClick} claimClick={claimClick} />,
   ];
 
   return (
@@ -41,13 +43,13 @@ const LiquidityView = ({ lang, network }: LiquidityViewProps) => {
             </div>
 
             <div className="flex items-center gap-[13px]">
-              {tabs.map((t) => (
+              {tabs.map((t, index) => (
                 <button
                   key={t}
                   className={classNames('flex items-center justify-center py-2 px-3 h-9 rounded-md transition-all duration-500', { 'bg-white shadow-sm-shadow': tab === t })}
                   onClick={() => setTab(t as 'all' | 'my')}>
                   <span className={classNames('text-sm font-medium', { 'text-primary-1600': tab === t, 'text-primary-3050': tab !== t })}>
-                    <span className="capitalize">{t}</span> pools
+                    <span className="capitalize">{t}</span> {index !== 2 && 'pools'}
                   </span>
                 </button>
               ))}

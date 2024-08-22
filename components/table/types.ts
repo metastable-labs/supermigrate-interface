@@ -41,6 +41,7 @@ interface IRow {
   rowClick?: (id: string) => void;
   network: Network;
   claimClick?: (id: string) => void;
+  collapseTertiary?: boolean;
 }
 
 interface TableProps {
@@ -52,6 +53,7 @@ interface TableProps {
   ctaAction?: (id?: string) => void;
   rowClick?: (id: string) => void;
   claimClick?: (id: string) => void;
+  collapseTertiary?: boolean;
 }
 
 interface EmptyStateProps {
