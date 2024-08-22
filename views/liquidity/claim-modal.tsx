@@ -4,7 +4,7 @@ import { NumericFormat, OnValueChange } from 'react-number-format';
 import { SMModal, SMButton, SMClickAnimation } from '@/components';
 import { AeroIcon } from '@/public/icons';
 
-function truncateToDecimals(num: number) {
+export function truncateToDecimals(num: number) {
   const factor = Math.pow(10, 5);
   return Math.floor(num * factor) / factor;
 }

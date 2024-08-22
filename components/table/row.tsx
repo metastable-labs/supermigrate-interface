@@ -89,7 +89,7 @@ const LPMigrated = ({ auxiliary, eth, tokenIcon, tokenSymbol }: LPMigratedProps)
   );
 };
 
-const Row = ({ index, item, variant, ctaAction, rowClick, network, claimClick }: IRow) => {
+const Row = ({ index, item, variant, ctaAction, rowClick, network, claimClick, collapseTertiary }: IRow) => {
   const itemNetwork = networks.find(({ variant }) => variant === item.network);
   return (
     <tr
@@ -132,7 +132,7 @@ const Row = ({ index, item, variant, ctaAction, rowClick, network, claimClick }:
         )}
       </td>
 
-      <td className="min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap hidden md:table-cell">
+      <td className={classNames('min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap', { 'hidden md:table-cell': !collapseTertiary, hidden: variant === 'tertiary' && collapseTertiary })}>
         {variant === 'primary' && <Status status={item?.pullStatus} />}
         {variant === 'secondary' && (
           <div className="flex items-center gap-3">
@@ -140,7 +140,7 @@ const Row = ({ index, item, variant, ctaAction, rowClick, network, claimClick }:
             <span className="text-[16px] leading-[20px] font-medium text-primary-3400 capitalize">{item.network}</span>
           </div>
         )}
-        {variant === 'tertiary' && <PoolTotal eth={item?.poolTotal?.eth!} auxiliary={item?.poolTotal?.auxiliary!} tokenSymbol={item.tokenSymbol!} />}
+        {variant === 'tertiary' && !collapseTertiary && <PoolTotal eth={item?.poolTotal?.eth!} auxiliary={item?.poolTotal?.auxiliary!} tokenSymbol={item.tokenSymbol!} />}
       </td>
 
       <td
@@ -168,7 +168,11 @@ const Row = ({ index, item, variant, ctaAction, rowClick, network, claimClick }:
         {variant === 'tertiary' && <Emissions emissions={item?.emmisions!} claimClick={claimClick!} />}
       </td>
 
-      <td className={classNames('min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap', { 'hidden sm:table-cell': variant === 'tertiary' })}>
+      <td
+        className={classNames('min-h-[71px] px-4 md:px-6 py-4 whitespace-nowrap', {
+          'hidden sm:table-cell': variant === 'tertiary' && !collapseTertiary,
+          hidden: variant === 'tertiary' && collapseTertiary,
+        })}>
         {variant === 'primary' && <CTA title="View" onClick={() => ctaAction?.(item?.id!)} normal />}
 
         {variant === 'secondary' && <LiquidityComposition eth={item?.liquidityComposition?.eth!} auxiliary={item?.liquidityComposition?.auxiliary!} itemNetwork={itemNetwork!} />}
