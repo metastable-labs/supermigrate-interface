@@ -1,14 +1,14 @@
 {
   "landingPage": {
     "navigation": {
-      "about": "About",
+      "about": "Litepaper",
       "whitepaper": "Blog",
       "faq": "FAQ",
       "actionText": "Launch App"
     },
     "hero": {
       "title": "Your gateway to",
-      "subtitle": "Automatically deploy canonical bridged ERC20 to an L2. Start bridging and adding liquidity to earn rewards all in one place.",
+      "subtitle": "Automatically deploy canonical bridged ERC20 to the Superchain. Start bridging and adding liquidity to earn rewards all in one place.",
       "actionText": "Start Migrating"
     },
     "section1": {

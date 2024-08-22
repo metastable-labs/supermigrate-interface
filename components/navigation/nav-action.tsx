@@ -19,10 +19,10 @@ interface NavActionProps {
 
 const NavAction = ({ text, onClick, variant = 'network' }: NavActionProps) => {
   const { chainId, address } = useAccount();
-  const { authenticated, logout } = usePrivy();
+  const { authenticated } = usePrivy();
   const pathname = usePathname();
   const { userState } = useSystemFunctions();
-  const truncateText = authenticated ? useTruncateText(text || '', 4, 4) : text;
+  const truncateText = useTruncateText(text || '', 4, 4);
   const shouldHide = /\/[a-zA-Z]{2}\/dashboard$/.test(pathname) || !authenticated || !address; // Hide network select on dashboard page
   const { user } = userState;
 
@@ -71,7 +71,7 @@ const NavAction = ({ text, onClick, variant = 'network' }: NavActionProps) => {
                 className={classNames('tracking-[-0.084px] text-sm font-medium ml-2', {
                   'hidden lg:block': variant !== 'wallet',
                 })}>
-                {variant === 'account' ? text : truncateText}
+                {variant === 'account' ? text : authenticated ? truncateText : text}
               </span>
             )}
 
