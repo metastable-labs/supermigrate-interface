@@ -36,7 +36,7 @@ const SectionTwo = () => {
   ];
 
   return (
-    <section id="about" className="pt-[50px] lg:pt-[50px] flex flex-col items-stretch gap-12 lg:gap-16">
+    <section id="litepaper" className="pt-[50px] lg:pt-[50px] flex flex-col items-stretch gap-12 lg:gap-16">
       <div className="flex flex-col gap-12 lg:gap-16 min-w-full">
         <h1 className="text-left text-[30px] lg:text-[44px] text-black tracking-[0.44px] px-6 lg:px-20 font-Bitform">{title}</h1>
 

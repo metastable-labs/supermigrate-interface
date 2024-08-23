@@ -32,7 +32,7 @@ const LandingHeader = () => {
   const { navigation } = landingPage;
 
   const navLinks: NavLink[] = [
-    { name: navigation.about, href: '#about' },
+    { name: navigation.about, href: '#litepaper' },
     { name: navigation.whitepaper, href: 'https://mirror.xyz/supermigrate.eth/' },
     { name: navigation.faq, href: '#faq' },
   ];
