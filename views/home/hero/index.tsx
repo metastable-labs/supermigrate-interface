@@ -52,7 +52,7 @@ const HeroSection = () => {
                   target="_blank"
                   aria-label="Download Whitepaper"
                   className="text-primary-3250 underline cursor-pointer underline-offset-[3px]">
-                  whitepaper
+                  litepaper
                 </a>{' '}
                 to learn more
               </p>
