@@ -44,7 +44,7 @@ const HeroSection = () => {
               </div>
 
               <p className="text-[16px] leading-[16px] font-medium text-primary-200">
-                Liquidity Migration is coming soon, read{' '}
+                Liquidity Migration is coming soon, read our{' '}
                 <a
                   href="https://res.cloudinary.com/djzeufu4j/image/upload/v1724282738/Liquidity_Migration_Litepaper_ietyub.pdf"
                   download
