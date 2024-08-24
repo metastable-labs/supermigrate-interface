@@ -9,11 +9,8 @@ import { setTokenHeader } from '@/utils/axios';
 import useUserActions from '@/application/user/actions';
 
 import 'react-toastify/dist/ReactToastify.css';
-import { useConnect } from 'wagmi';
 
 const AppHome = ({ locale, children }: { locale: LangParamProp; children: ReactNode }) => {
-  const {} = useConnect();
-
   const [cookies] = useCookies(['authtoken']);
   const { getLocale } = useLocaleActions();
   const { getUser } = useUserActions();

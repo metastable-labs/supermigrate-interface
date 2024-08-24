@@ -66,7 +66,6 @@ const Add = ({ defaultId }: IAdd) => {
     }
 
     if (step === 1) {
-      console.log('values', values);
       setButtonText('Confirming Transaction...');
       setStep(2);
     }

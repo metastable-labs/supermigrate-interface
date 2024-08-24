@@ -2,7 +2,8 @@ import './globals.css';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { LangParamProp } from '@/config/internationalization/i18n';
-import App from './[lang]/app';
+import PrivyQueryProvider from '@/config/privy/rainbowkit';
+import Wrapper from './wrapper';
 
 interface RootProps {
   params: LangParamProp;
@@ -58,7 +59,10 @@ export default function RootLayout({ params, children }: Readonly<RootProps>) {
           gtag('config', 'G-KP3SGTMZQD');
         `}
         </Script>
-        {children}
+
+        <PrivyQueryProvider>
+          <Wrapper>{children}</Wrapper>
+        </PrivyQueryProvider>
       </body>
     </html>
   );

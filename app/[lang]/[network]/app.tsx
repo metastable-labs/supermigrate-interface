@@ -27,19 +27,20 @@ const App = ({ params, children }: PageProps) => {
   const pathname = usePathname();
 
   const isLiquidityRoutes = pathname.includes('liquidity');
+  const isEarnRoutes = pathname.includes('earn');
 
   useEffect(() => {
-    if (isLiquidityRoutes) {
+    if (isLiquidityRoutes || isEarnRoutes) {
       document.body.classList.add('bg-peach-gradient');
     } else {
       document.body.classList.remove('bg-peach-gradient');
     }
-  }, [isLiquidityRoutes]);
+  }, [isLiquidityRoutes, isEarnRoutes]);
 
   return (
     <main>
       {children}
-      {!isLiquidityRoutes && (
+      {!isLiquidityRoutes && !isEarnRoutes && (
         <motion.div
           animate={{ backgroundImage: networkBackgrounds[params.network] }}
           className="fixed top-0 left-0 w-screen h-screen bg-cover bg-center -z-10 opacity-10 transition-all duration-300 ease-in-out pointer-events-none"

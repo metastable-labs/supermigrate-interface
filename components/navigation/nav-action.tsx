@@ -22,7 +22,7 @@ const NavAction = ({ text, onClick, variant = 'network' }: NavActionProps) => {
   const { authenticated } = usePrivy();
   const pathname = usePathname();
   const { userState } = useSystemFunctions();
-  const truncateText = useTruncateText(text || '', 4, 4);
+  const { truncatedText } = useTruncateText(text || '', 4, 4);
   const shouldHide = /\/[a-zA-Z]{2}\/dashboard$/.test(pathname) || !authenticated || !address; // Hide network select on dashboard page
   const { user } = userState;
 
@@ -66,12 +66,12 @@ const NavAction = ({ text, onClick, variant = 'network' }: NavActionProps) => {
           {icon}
 
           <div className="flex items-center justify-center gap-[2px]">
-            {truncateText && (
+            {truncatedText && (
               <span
                 className={classNames('tracking-[-0.084px] text-sm font-medium ml-2', {
                   'hidden lg:block': variant !== 'wallet',
                 })}>
-                {variant === 'account' ? text : authenticated ? truncateText : text}
+                {variant === 'account' ? text : authenticated ? truncatedText : text}
               </span>
             )}
 

@@ -1,0 +1,13 @@
+const WalletIcon = ({ height = 24, width = 24 }: { width?: number; height?: number }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 24 24" fill="none">
+    <rect width="24" height="24" rx="12" fill="url(#paint0_linear_2175_1988)" />
+    <defs>
+      <linearGradient id="paint0_linear_2175_1988" x1="5.5" y1="4" x2="36.5" y2="40" gradientUnits="userSpaceOnUse">
+        <stop offset="0.015" stop-color="#D6FE00" />
+        <stop offset="1" stop-color="#002132" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
+
+export default WalletIcon;

@@ -26,7 +26,7 @@ const privyConfig: PrivyClientConfig = {
 
 const queryClient = new QueryClient();
 
-const RainbowProvider = ({ children }: { children: ReactNode }) => {
+const PrivyQueryProvider = ({ children }: { children: ReactNode }) => {
   return (
     <PrivyProvider appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID!} config={privyConfig}>
       <QueryClientProvider client={queryClient}>
@@ -38,4 +38,4 @@ const RainbowProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export default RainbowProvider;
+export default PrivyQueryProvider;

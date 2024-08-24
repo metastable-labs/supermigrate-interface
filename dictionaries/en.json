@@ -20,7 +20,7 @@
       },
       "second": {
         "title": "Fast",
-        "content": "Never lose sleep, fully automated process."
+        "content": "Never loose a sleep, fully automated process."
       },
       "third": {
         "title": "Earn",
@@ -117,6 +117,7 @@
     "migrate": "Migrate",
     "bridge": "Bridge",
     "liquidity": "Liquidity",
+    "earn": "Earn",
     "connect": "Login / Signup"
   },
   "migrate": {
@@ -183,7 +184,7 @@
     },
     "fileInput": {
       "title": "Choose a file or drag & drop it here.",
-      "subtitle": "SVG formats, up to 10 MB.",
+      "subtitle": "SVG formats, up to 5 MB.",
       "buttonText": "Browse",
       "completed": "Completed",
       "required": "Required"

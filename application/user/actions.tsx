@@ -75,7 +75,7 @@ const useUserActions = () => {
   const _loginUser = async () => {
     try {
       const accessToken = await getAccessToken();
-      console.log('accessToken', accessToken);
+
       if (!accessToken) return;
 
       const response = await api.login(accessToken);

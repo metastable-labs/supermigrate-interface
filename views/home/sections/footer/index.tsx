@@ -1,6 +1,6 @@
 'use client';
 
-import { FooterLogo } from '@/public/icons';
+import { FooterLogo, MobileFooterLogo } from '@/public/icons';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const Extra = ({ title, links }: { title: string; links: { titile: string; url: string }[] }) => {
@@ -30,7 +30,7 @@ const Footer = () => {
       title: resources.title,
       links: [
         { titile: resources.blog, url: 'https://mirror.xyz/supermigrate.eth/' },
-        { titile: resources.github, url: 'https://github.com/metastable-labs' },
+        { titile: resources.github, url: 'https://github.com/supermigrate' },
       ],
     },
     {
@@ -43,7 +43,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full px-8 pb-10 lg:pb-6 pt-16 md:px-20 md:pb-12 bg-primary-3250 relative lg:min-h-[384px]">
+    <footer className="w-full px-8 pb-20 lg:pb-6 pt-16 md:px-20 md:pb-12 bg-primary-3250 relative lg:min-h-[384px]">
       <div className="self-stretch flex gap-x-10 gap-y-32 flex-row items-end justify-between flex-wrap">
         <div className="flex self-stretch md:self-auto items-start gap-8">
           {extras.map((extra) => (
@@ -56,6 +56,10 @@ const Footer = () => {
 
       <div className="absolute top-[70%] right-0 lg:flex items-center justify-center hidden w-full">
         <FooterLogo />
+      </div>
+
+      <div className="absolute bottom-0 right-0 flex items-center justify-center lg:hidden w-full">
+        <MobileFooterLogo />
       </div>
     </footer>
   );
