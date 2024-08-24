@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -9,11 +9,27 @@ import Secondary from './secondary';
 import { LangParamProp } from '@/config/internationalization/i18n';
 import { SMContainer } from '@/components';
 import { FooterLogo, MobileFooterLogo } from '@/public/icons';
+import useEarnActions from '@/application/earn/actions';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const steps = [<Primary key={0} />, <Secondary key={1} />];
 
 const EarnView = ({ lang }: LangParamProp) => {
+  const { userState } = useSystemFunctions();
+  const { getActivities, getEarning, getLeaderboard, getTransactions } = useEarnActions();
   const [step, setStep] = useState(1);
+
+  useEffect(() => {
+    getActivities();
+    getLeaderboard();
+  }, []);
+
+  useEffect(() => {
+    if (!userState.user) return;
+
+    getEarning();
+    getTransactions();
+  }, [userState.user]);
   return (
     <>
       <SMContainer>

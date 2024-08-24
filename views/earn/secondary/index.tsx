@@ -11,6 +11,7 @@ import Action from './action';
 import { activities, featuredTokens, leaderBoard } from './dummy';
 import { DashStatsProps, InfoProps, ReferralsSectionProps } from './types';
 import LeaderboardTable from './leaderboard-table';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
 
 const DashStats = ({ multiplier, points, tier = 'bronze', xpEarned }: DashStatsProps) => {
   const multipliers = {
@@ -110,27 +111,37 @@ const DashboardHeader = () => (
   </div>
 );
 
-const ReferralsSection = ({ copy, link, points, referrals }: ReferralsSectionProps) => (
-  <div className="p-[18px] border border-primary-3450 bg-white w-full xl:w-1/3 flex items-center justify-between rounded-base">
-    <div className="flex flex-col">
-      <h5 className="text-sm tracking-[-0.084px] text-primary-4050">Referrals</h5>
-      <span className="text-[24px] leading-[36px] font-Bitform text-primary-50">
-        {referrals.toLocaleString()} <span className="font-Aeonik text-[12px] leading-[18px] md:text-[14px] md:leading-[21px] text-primary-200">({points.toLocaleString()} PTS)</span>
-      </span>
-    </div>
+const ReferralsSection = () => {
+  const { earnState } = useSystemFunctions();
+  const copy = useCopy();
 
-    <div className="flex flex-col h-full justify-between items-end gap-1">
-      <h5 className="text-sm tracking-[-0.084px] text-primary-4050">Referral Link</h5>
+  const { earning } = earnState;
+  const referalCount = earning?.referral?.counts?.toLocaleString?.() || 0;
+  const referalPoint = earning?.referral?.points?.toLocaleString?.() || 0;
+  const referalCode = earning?.referral_code || '';
 
-      <div className="flex items-center justify-center gap-3 px-3 rounded-base bg-primary-3400 h-[26px]">
-        <p className="text-ellipsis text-primary-3600 text-[12px] leading-[17.4px] font-Bitform">{link}</p>
-        <SMClickAnimation onClick={() => copy(link)}>
-          <CopyIcon color="#B3D400" />
-        </SMClickAnimation>
+  return (
+    <div className="p-[18px] border border-primary-3450 bg-white w-full xl:w-1/3 flex items-center justify-between rounded-base">
+      <div className="flex flex-col">
+        <h5 className="text-sm tracking-[-0.084px] text-primary-4050">Referrals</h5>
+        <span className="text-[24px] leading-[36px] font-Bitform text-primary-50">
+          {referalCount} <span className="font-Aeonik text-[12px] leading-[18px] md:text-[14px] md:leading-[21px] text-primary-200">({referalPoint} PTS)</span>
+        </span>
+      </div>
+
+      <div className="flex flex-col h-full justify-between items-end gap-1">
+        <h5 className="text-sm tracking-[-0.084px] text-primary-4050">Referral Link</h5>
+
+        <div className="flex items-center justify-center gap-3 px-3 rounded-base bg-primary-3400 h-[26px]">
+          <p className="text-ellipsis text-primary-3600 text-[12px] leading-[17.4px] font-Bitform">{referalCode}</p>
+          <SMClickAnimation onClick={() => copy(referalCode)}>
+            <CopyIcon color="#B3D400" />
+          </SMClickAnimation>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="flex flex-col gap-6 self-stretch">
@@ -140,12 +151,14 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 );
 
 const Secondary = () => {
-  const copy = useCopy();
+  const { earnState } = useSystemFunctions();
+
+  const { earning } = earnState;
 
   const infoData: InfoProps[] = useMemo(
     () => [
-      { title: 'Migrate Points in Circulation', value: 12_344_567 },
-      { title: 'Your Rank', value: 303_456 },
+      { title: 'Migrate Points in Circulation', value: earning?.total_circulation_points || 0 },
+      { title: 'Your Rank', value: earning?.rank || 0 },
       { title: 'Claim window', value: moment('2024-08-23T14:00:00Z').fromNow(), subtitle: 'Till next cooldown', flushLeft: true },
     ],
     [],
@@ -159,7 +172,7 @@ const Secondary = () => {
         <div className="self-stretch items-stretch flex flex-col gap-[22px]">
           <div className="self-stretch flex flex-col xl:flex-row justify-between items-stretch gap-6">
             <DashStats points={12345} tier="gold" xpEarned={123456} multiplier={0} />
-            <ReferralsSection copy={copy} link="mgrt/3uck" points={1050} referrals={23} />
+            <ReferralsSection />
           </div>
 
           <div className="w-full grid grid-cols-1 md:grid-cols-3 items-center justify-between gap-[22px]">
