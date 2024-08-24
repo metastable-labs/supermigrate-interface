@@ -1,6 +1,7 @@
 type NavLink = {
   name: string;
   href: string;
+  download?: boolean;
 };
 
 interface MenuProps {
