@@ -7,11 +7,12 @@ import moment from 'moment';
 import useCopy from '@/hooks/useCopy';
 import { CopyIcon, DesktopEarnWelcome, FlashIcon, Logo, MobileEarnWelcome, StarIcon } from '@/public/icons';
 import { SMClickAnimation, SMTable } from '@/components';
-import Action from './action';
+import Action, { ActionSkeleton } from './action';
 import { activities, featuredTokens, leaderBoard } from './dummy';
-import { DashStatsProps, InfoProps, ReferralsSectionProps } from './types';
+import { ActionProps, DashStatsProps, InfoProps, ReferralsSectionProps } from './types';
 import LeaderboardTable from './leaderboard-table';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
+import { getActivityButtonAction, getActivityButtonText } from './utils';
 
 const DashStats = ({ multiplier, points, tier = 'bronze', xpEarned }: DashStatsProps) => {
   const multipliers = {
@@ -153,16 +154,33 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 const Secondary = () => {
   const { earnState } = useSystemFunctions();
 
-  const { earning } = earnState;
+  const { earning, activities, loadingActivities } = earnState;
 
-  const infoData: InfoProps[] = useMemo(
-    () => [
-      { title: 'Migrate Points in Circulation', value: earning?.total_circulation_points || 0 },
-      { title: 'Your Rank', value: earning?.rank || 0 },
-      { title: 'Claim window', value: moment('2024-08-23T14:00:00Z').fromNow(), subtitle: 'Till next cooldown', flushLeft: true },
-    ],
-    [],
-  );
+  const infoData = [
+    { title: 'Migrate Points in Circulation', value: earning?.total_circulation_points || 0 },
+    { title: 'Your Rank', value: earning?.rank || 0 },
+    { title: 'Claim window', value: moment('2024-08-23T14:00:00Z').fromNow(), subtitle: 'Till next cooldown', flushLeft: true },
+  ];
+
+  const activitiesMap: ActionProps[] = (activities || [])?.map((activity) => ({
+    title: activity.name,
+    titleBadge: {
+      text: `${activity.points.toLocaleString()} PTS`,
+      mobileText: `${activity.points.toLocaleString()} PTS`,
+      type: 'primary',
+      variant: activity.points >= 3000 ? 'secondary' : activity.points >= 1000 ? 'tertiary' : 'mint',
+    },
+    subtitle: activity.description,
+    buttonText: getActivityButtonText(activity.slug),
+    action: getActivityButtonAction(activity.slug),
+    badges: activity.multipliers.map((multiplier) => ({
+      text: multiplier.description,
+      mobileText: multiplier.description,
+      type: 'primary',
+      variant: multiplier.multiplier >= 3 ? 'secondary' : multiplier.multiplier >= 2 ? 'tertiary' : 'primary',
+    })),
+    hasWarning: activity.slug === 'bridge',
+  }));
 
   return (
     <div className="flex flex-col gap-8 self-stretch pb-[86px] lg:px-8">
@@ -184,9 +202,9 @@ const Secondary = () => {
 
         <Section title="Activities">
           <div className="flex flex-col items-stretch gap-8">
-            {activities.map((activity, index) => (
-              <Action key={index} {...activity} />
-            ))}
+            {!loadingActivities && Boolean(activities?.length) && activitiesMap?.map((activity, index) => <Action key={index} {...activity} />)}
+
+            {loadingActivities && Array.from({ length: 3 }).map((_, index) => <ActionSkeleton key={index} />)}
           </div>
         </Section>
 
@@ -199,7 +217,7 @@ const Secondary = () => {
         </Section>
 
         <Section title="Leaderboard">
-          <LeaderboardTable data={leaderBoard} />
+          <LeaderboardTable />
         </Section>
       </div>
     </div>

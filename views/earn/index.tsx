@@ -11,10 +11,12 @@ import { SMContainer } from '@/components';
 import { FooterLogo, MobileFooterLogo } from '@/public/icons';
 import useEarnActions from '@/application/earn/actions';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
+import useUserActions from '@/application/user/actions';
 
 const steps = [<Primary key={0} />, <Secondary key={1} />];
 
 const EarnView = ({ lang }: LangParamProp) => {
+  const { authenticateUser } = useUserActions();
   const { userState } = useSystemFunctions();
   const { getActivities, getEarning, getLeaderboard, getTransactions } = useEarnActions();
   const [step, setStep] = useState(1);
@@ -22,13 +24,18 @@ const EarnView = ({ lang }: LangParamProp) => {
   useEffect(() => {
     getActivities();
     getLeaderboard();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    if (!userState.user) return;
+    if (!userState.user) {
+      authenticateUser();
+      return;
+    }
 
     getEarning();
     getTransactions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userState.user]);
   return (
     <>

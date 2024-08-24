@@ -25,10 +25,11 @@ type TransactionResponse = {
 
 type Leaderboard = {
   id: string;
-  ip_address: string;
-  points_balance: number;
-  referral_code: string;
-  connected_addressess: Address[];
+  wallet_address: Address;
+  total_balance: number;
+  pending_balance: 0;
+  is_active: true;
+  user_id: '83ea750b-6797-462c-bdd7-3a78cd45c2e7';
   created_at: string;
   updated_at: string;
   rank: number;
