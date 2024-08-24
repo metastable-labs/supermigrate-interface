@@ -27,7 +27,7 @@ const SectionOne = () => {
 
   return (
     <SMContainer>
-      <section id="litepaper" className="py-[58px] lg:py-[72px] flex flex-col items-stretch gap-12 lg:gap-16">
+      <section id="about" className="py-[58px] lg:py-[72px] flex flex-col items-stretch gap-12 lg:gap-16">
         <div className="flex flex-col gap-12 lg:gap-16 min-w-full">
           <h1 className="font-Bitform text-left text-[30px] lg:text-[44px] text-black tracking-[0.44px]">
             {title} <br className="hidden lg:block" />
