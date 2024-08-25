@@ -12,10 +12,12 @@ import { SMAuthenticationModal, SMContainer } from '@/components';
 import { FooterLogo, MobileFooterLogo } from '@/public/icons';
 import useEarnActions from '@/application/earn/actions';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
+import { usePrivy } from '@privy-io/react-auth';
 
 export type EarnViewProps = LangParamProp & { network: Network };
 
 const EarnView = ({ lang, network }: EarnViewProps) => {
+  const { ready } = usePrivy();
   const { userState } = useSystemFunctions();
   const { getActivities, getEarning, getLeaderboard, getTransactions, getFeaturedTokens } = useEarnActions();
   const [step, setStep] = useState(1);
@@ -31,15 +33,19 @@ const EarnView = ({ lang, network }: EarnViewProps) => {
   }, []);
 
   useEffect(() => {
-    if (!userState.user) {
-      return setShowAuthentication(true);
-    }
+    if (!userState.user) return;
 
-    setShowAuthentication(false);
     getEarning();
     getTransactions();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userState.user]);
+
+  useEffect(() => {
+    if (!ready || userState.user) return;
+
+    setShowAuthentication(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userState.user, ready]);
   return (
     <>
       <SMContainer>
