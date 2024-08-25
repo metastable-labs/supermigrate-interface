@@ -47,9 +47,3 @@ export const formatAmount = (amount?: number | string, decimals = 4): number => 
   const truncatedValue = Math.floor(Number(amount) * factor) / factor;
   return truncatedValue;
 };
-
-export const injectCSS = (css: string) => {
-  const style = document.createElement('style');
-  style.innerHTML = css;
-  document.head.appendChild(style);
-};

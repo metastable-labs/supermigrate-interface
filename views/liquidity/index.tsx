@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import { LangParamProp } from '@/config/internationalization/i18n';
 import { Network } from '@/config/privy/config';
-import { SMContainer, SMTable } from '@/components';
+import { SMAuthenticationModal, SMContainer, SMTable } from '@/components';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 import useUserActions from '@/application/user/actions';
 import { allTableData, myTableData } from './dummy';
@@ -21,6 +21,7 @@ const LiquidityView = ({ lang, network }: LiquidityViewProps) => {
   const { authenticateUser } = useUserActions();
   const [tab, setTab] = useState<'all' | 'my' | 'stake'>('all');
   const [claimId, setClaimId] = useState<string>();
+  const [showAuthentication, setShowAuthentication] = useState(false);
 
   const rowClick = (id: string) => {
     navigate.push(`/${network}/liquidity/${id}`);
@@ -28,8 +29,7 @@ const LiquidityView = ({ lang, network }: LiquidityViewProps) => {
 
   const claimClick = (id: string) => {
     if (!userState.user) {
-      authenticateUser({ nonCancelable: true });
-      return;
+      return setShowAuthentication(true);
     }
     setClaimId(id);
   };
@@ -42,10 +42,11 @@ const LiquidityView = ({ lang, network }: LiquidityViewProps) => {
 
   useEffect(() => {
     if ((tab === 'my' || tab === 'stake') && !userState.user) {
-      authenticateUser({ nonCancelable: true });
+      return setShowAuthentication(true);
     }
+    setShowAuthentication(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tab]);
+  }, [tab, userState.user]);
 
   return (
     <>
@@ -80,6 +81,8 @@ const LiquidityView = ({ lang, network }: LiquidityViewProps) => {
       </SMContainer>
 
       <ClaimModal show={Boolean(claimId)} id={claimId} close={() => setClaimId(undefined)} />
+
+      <SMAuthenticationModal show={showAuthentication} />
     </>
   );
 };

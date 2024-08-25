@@ -1,11 +1,14 @@
 'use client';
 
 import { useEffect } from 'react';
-
-import { AnimatePresence, motion } from 'framer-motion';
-import { Modal } from './types';
-import { RoundedCloseIcon } from '@/public/icons';
 import classNames from 'classnames';
+import { AnimatePresence, motion } from 'framer-motion';
+
+import { Logo, RoundedCloseIcon } from '@/public/icons';
+import useUserActions from '@/application/user/actions';
+import { Modal } from './types';
+import SMClickAnimation from '../click-animation';
+import SMButton from '../button';
 
 const modalAnimation = {
   initial: { scale: 0, x: '100%' },
@@ -27,7 +30,7 @@ const noAnimation = {
   exit: { opacity: 0 },
 };
 
-const SMModal = ({ children, close, show, variant = 'default' }: Modal) => {
+const SMModal = ({ children, close, show, variant = 'default', blur }: Modal) => {
   const animation = variant === 'git-connect' ? modalAnimation : noAnimation;
 
   useEffect(() => {
@@ -52,6 +55,7 @@ const SMModal = ({ children, close, show, variant = 'default' }: Modal) => {
           className={classNames('fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-70 flex items-center z-[9999] p-[15px]', {
             'justify-center': variant === 'default' || variant === 'secondary',
             'justify-end': variant === 'git-connect',
+            'backdrop-blur-sm': blur,
           })}>
           <motion.div
             initial={animation.initial}
@@ -79,4 +83,33 @@ const SMModal = ({ children, close, show, variant = 'default' }: Modal) => {
   );
 };
 
+const SMAuthenticationModal = ({ show }: { show: boolean }) => {
+  const { authenticateUser } = useUserActions();
+
+  return (
+    <SMModal show={show} blur>
+      <div className="h-[184px] w-72 sm:w-80 flex flex-col gap-5 justify-between">
+        <div className="flex items-center justify-between">
+          <div className="bg-primary-3250 rounded-full pt-[10.35px] pr-[7.4px] pb-[10.2px] pl-[9.3px] flex items-center justify-center md:w-10 md:h-10">
+            <Logo />
+          </div>
+
+          <SMClickAnimation
+            onClick={authenticateUser}
+            className="bg-white rounded-base border border-primary-250 shadow-nav-select-shadow py-1 px-2 flex items-center justify-center text-primary-50 text-sm tracking-[-0.084px] font-medium font-Bitform">
+            Login / Signup
+          </SMClickAnimation>
+        </div>
+
+        <h1 className="text-primary-50 text-lg text-center">
+          To proceed, you have to be <span className="font-Bitform">authenticated</span>.
+        </h1>
+
+        <SMButton variant="tertiary" text="Continue" fullWidth onClick={authenticateUser} />
+      </div>
+    </SMModal>
+  );
+};
+
 export default SMModal;
+export { SMAuthenticationModal };

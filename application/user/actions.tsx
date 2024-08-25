@@ -10,7 +10,6 @@ import { setTokenHeader } from '@/utils/axios';
 import useMigrationActions from '../migration/actions';
 import { usePrivy } from '@privy-io/react-auth';
 import { useEffect } from 'react';
-import { injectCSS } from '@/utils/helpers';
 
 const useUserActions = () => {
   const { dispatch } = useSystemFunctions();
@@ -18,18 +17,10 @@ const useUserActions = () => {
   const { getMigrations } = useMigrationActions();
   const [cookies, setCookies] = useCookies(['authtoken', 'isGithubConnected']);
 
-  const authenticateUser = async ({ nonCancelable }: { nonCancelable?: boolean } = {}) => {
+  const authenticateUser = async () => {
     try {
       if (!ready) return;
       dispatch(setLoading(true));
-
-      if (nonCancelable) {
-        injectCSS(`
-          .sc-kpDqfm.iyWeAT {
-            display: none !important;
-          }
-        `);
-      }
 
       login();
     } catch (error: any) {

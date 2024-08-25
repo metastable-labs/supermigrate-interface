@@ -7,7 +7,7 @@ import Primary from './primary';
 import Secondary from './secondary';
 
 import { LangParamProp } from '@/config/internationalization/i18n';
-import { SMContainer } from '@/components';
+import { SMAuthenticationModal, SMContainer } from '@/components';
 import { FooterLogo, MobileFooterLogo } from '@/public/icons';
 import useEarnActions from '@/application/earn/actions';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
@@ -16,10 +16,10 @@ import useUserActions from '@/application/user/actions';
 const steps = [<Primary key={0} />, <Secondary key={1} />];
 
 const EarnView = ({ lang }: LangParamProp) => {
-  const { authenticateUser } = useUserActions();
   const { userState } = useSystemFunctions();
   const { getActivities, getEarning, getLeaderboard, getTransactions } = useEarnActions();
   const [step, setStep] = useState(1);
+  const [showAuthentication, setShowAuthentication] = useState(false);
 
   useEffect(() => {
     getActivities();
@@ -29,10 +29,10 @@ const EarnView = ({ lang }: LangParamProp) => {
 
   useEffect(() => {
     if (!userState.user) {
-      authenticateUser({ nonCancelable: true });
-      return;
+      return setShowAuthentication(true);
     }
 
+    setShowAuthentication(false);
     getEarning();
     getTransactions();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -57,6 +57,8 @@ const EarnView = ({ lang }: LangParamProp) => {
           <MobileFooterLogo />
         </div>
       </footer>
+
+      <SMAuthenticationModal show={showAuthentication} />
     </>
   );
 };
