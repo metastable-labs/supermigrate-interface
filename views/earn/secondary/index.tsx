@@ -1,8 +1,8 @@
 'use client';
 
-import { useMemo } from 'react';
 import classNames from 'classnames';
 import moment from 'moment';
+import { motion } from 'framer-motion';
 
 import useCopy from '@/hooks/useCopy';
 import { CopyIcon, DesktopEarnWelcome, FlashIcon, Logo, MobileEarnWelcome, StarIcon } from '@/public/icons';
@@ -89,12 +89,18 @@ const DashStats = ({ multiplier, points, tier = 'bronze', xpEarned }: DashStatsP
   );
 };
 
-const Info = ({ title, value, flushLeft, subtitle }: InfoProps) => (
+const Info = ({ title, value, flushLeft, subtitle, loading }: InfoProps) => (
   <div className={classNames('p-[18px] border border-primary-3450 bg-white rounded-base w-full flex flex-col', { 'md:items-center': !flushLeft })}>
     <h5 className="text-sm tracking-[-0.084px] text-primary-4050">{title}</h5>
     <div className={classNames('', { 'flex items-center gap-3': subtitle })}>
-      <span className="text-[24px] leading-[36px] font-Bitform text-primary-50">{value.toLocaleString()}</span>
-      {subtitle && <span className="text-[14px] leading-[21px] text-primary-200">{subtitle}</span>}
+      {loading ? (
+        <div className="w-24 h-[29px] bg-primary-1350 animate-pulse rounded mt-[7px]" />
+      ) : (
+        <>
+          <span className="text-[24px] leading-[36px] font-Bitform text-primary-50">{value.toLocaleString()}</span>
+          {subtitle && <span className="text-[14px] leading-[21px] text-primary-200">{subtitle}</span>}
+        </>
+      )}
     </div>
   </div>
 );
@@ -116,7 +122,7 @@ const ReferralsSection = () => {
   const { earnState } = useSystemFunctions();
   const copy = useCopy();
 
-  const { earning } = earnState;
+  const { earning, loadingEarning } = earnState;
   const referalCount = earning?.referral?.counts?.toLocaleString?.() || 0;
   const referalPoint = earning?.referral?.points?.toLocaleString?.() || 0;
   const referalCode = earning?.referral_code || '';
@@ -125,16 +131,34 @@ const ReferralsSection = () => {
     <div className="p-[18px] border border-primary-3450 bg-white w-full xl:w-1/3 flex items-center justify-between rounded-base">
       <div className="flex flex-col">
         <h5 className="text-sm tracking-[-0.084px] text-primary-4050">Referrals</h5>
-        <span className="text-[24px] leading-[36px] font-Bitform text-primary-50">
-          {referalCount} <span className="font-Aeonik text-[12px] leading-[18px] md:text-[14px] md:leading-[21px] text-primary-200">({referalPoint} PTS)</span>
-        </span>
+        {loadingEarning ? (
+          <div className="flex gap-2 items-end">
+            <div className="h-9 w-10 bg-primary-1350 rounded" />
+            <div className="h-5 w-14 bg-primary-1350 rounded" />
+          </div>
+        ) : (
+          <span className="text-[24px] leading-[36px] font-Bitform text-primary-50">
+            {referalCount} <span className="font-Aeonik text-[12px] leading-[18px] md:text-[14px] md:leading-[21px] text-primary-200">({referalPoint} PTS)</span>
+          </span>
+        )}
       </div>
 
       <div className="flex flex-col h-full justify-between items-end gap-1">
         <h5 className="text-sm tracking-[-0.084px] text-primary-4050">Referral Link</h5>
 
         <div className="flex items-center justify-center gap-3 px-3 rounded-base bg-primary-3400 h-[26px]">
-          <p className="text-ellipsis text-primary-3600 text-[12px] leading-[17.4px] font-Bitform">{referalCode}</p>
+          <motion.p
+            className="text-ellipsis text-primary-3600 text-[12px] leading-[17.4px] font-Bitform"
+            animate={
+              loadingEarning
+                ? {
+                    scale: [0.9, 1, 1.1],
+                    transition: { duration: 0.5, repeat: Infinity, repeatType: 'loop' },
+                  }
+                : undefined
+            }>
+            {loadingEarning ? '...' : referalCode}
+          </motion.p>
           <SMClickAnimation onClick={() => copy(referalCode)}>
             <CopyIcon color="#B3D400" />
           </SMClickAnimation>
@@ -154,7 +178,7 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 const Secondary = () => {
   const { earnState } = useSystemFunctions();
 
-  const { earning, activities, loadingActivities } = earnState;
+  const { earning, activities, loadingActivities, loadingEarning } = earnState;
 
   const infoData = [
     { title: 'Migrate Points in Circulation', value: earning?.total_circulation_points || 0 },
@@ -195,7 +219,7 @@ const Secondary = () => {
 
           <div className="w-full grid grid-cols-1 md:grid-cols-3 items-center justify-between gap-[22px]">
             {infoData.map((info, index) => (
-              <Info key={index} {...info} />
+              <Info key={index} {...info} loading={loadingEarning} />
             ))}
           </div>
         </div>

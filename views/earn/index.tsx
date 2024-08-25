@@ -29,7 +29,7 @@ const EarnView = ({ lang }: LangParamProp) => {
 
   useEffect(() => {
     if (!userState.user) {
-      authenticateUser();
+      authenticateUser({ nonCancelable: true });
       return;
     }
 

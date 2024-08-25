@@ -6,6 +6,7 @@ interface InfoProps {
   value: string | number;
   subtitle?: string;
   flushLeft?: boolean;
+  loading?: boolean;
 }
 
 type BadgeType = 'primary' | 'secondary';
