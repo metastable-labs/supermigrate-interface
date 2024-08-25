@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
+import { usePrivy } from '@privy-io/react-auth';
 
 import Primary from './primary';
 import Secondary from './secondary';
@@ -12,7 +13,6 @@ import { SMAuthenticationModal, SMContainer } from '@/components';
 import { FooterLogo, MobileFooterLogo } from '@/public/icons';
 import useEarnActions from '@/application/earn/actions';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
-import { usePrivy } from '@privy-io/react-auth';
 
 export type EarnViewProps = LangParamProp & { network: Network };
 
