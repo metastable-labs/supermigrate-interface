@@ -5,10 +5,10 @@ const getActivityButtonText = (slug: string) => {
     case 'social':
       return 'Follow';
     case 'nft':
-      return 'Mint';
+      return 'Claim';
     case 'referral':
       return 'Copy';
-    case 'liquidity':
+    case 'liquidity-migration':
       return 'Migrate Liquidity';
     default:
       return 'Bridge';

@@ -3,16 +3,18 @@
 import classNames from 'classnames';
 import moment from 'moment';
 import { motion } from 'framer-motion';
+import { useAccount } from 'wagmi';
 
+import { Network } from '@/config/privy/config';
 import useCopy from '@/hooks/useCopy';
 import { CopyIcon, DesktopEarnWelcome, FlashIcon, Logo, MobileEarnWelcome, StarIcon } from '@/public/icons';
 import { SMClickAnimation, SMTable } from '@/components';
-import Action, { ActionSkeleton } from './action';
-import { activities, featuredTokens, leaderBoard } from './dummy';
-import { ActionProps, DashStatsProps, InfoProps, ReferralsSectionProps } from './types';
-import LeaderboardTable from './leaderboard-table';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
-import { getActivityButtonAction, getActivityButtonText } from './utils';
+import Action, { ActionSkeleton } from './action';
+import { ActionProps, DashStatsProps, InfoProps } from './types';
+import LeaderboardTable from './leaderboard-table';
+import { getActivityButtonText } from './utils';
+import useEarnActions from '@/application/earn/actions';
 
 const DashStats = ({ multiplier, points, tier = 'bronze', xpEarned }: DashStatsProps) => {
   const multipliers = {
@@ -175,10 +177,13 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
   </div>
 );
 
-const Secondary = () => {
-  const { earnState } = useSystemFunctions();
+const Secondary = ({ network }: { network: Network }) => {
+  const { earnState, navigate } = useSystemFunctions();
+  const { address } = useAccount();
+  const { claimNFTEarnings } = useEarnActions();
+  const copy = useCopy();
 
-  const { earning, activities, loadingActivities, loadingEarning } = earnState;
+  const { earning, activities, featuredTokens, loadingActivities, loadingEarning, loadingClaimNFTEarnings, loadingFeaturedTokens } = earnState;
 
   const infoData = [
     { title: 'Migrate Points in Circulation', value: earning?.total_circulation_points || 0 },
@@ -186,7 +191,28 @@ const Secondary = () => {
     { title: 'Claim window', value: moment('2024-08-23T14:00:00Z').fromNow(), subtitle: 'Till next cooldown', flushLeft: true },
   ];
 
-  const activitiesMap: ActionProps[] = (activities || [])?.map((activity) => ({
+  const activeActivities = (activities || []).filter((activity) => activity.is_active);
+  const activeFeaturedTokens = (featuredTokens || []).filter((token) => token.featured);
+  const referalCode = earning?.referral_code || '';
+
+  const getActivityButtonAction = (slug: string) => {
+    switch (slug) {
+      case 'bridge':
+        return () => navigate.push(`/${network}/bridge`);
+      case 'social':
+        return () => window.open('https://twitter.com/supermigrate', '_blank');
+      case 'nft':
+        return () => claimNFTEarnings(address!);
+      case 'referral':
+        return () => copy(referalCode);
+      case 'liquidity-migration':
+        return () => navigate.push(`/${network}/liquidity`);
+      default:
+        return () => {};
+    }
+  };
+
+  const activitiesMap: ActionProps[] = activeActivities?.map((activity) => ({
     title: activity.name,
     titleBadge: {
       text: `${activity.points.toLocaleString()} PTS`,
@@ -197,6 +223,7 @@ const Secondary = () => {
     subtitle: activity.description,
     buttonText: getActivityButtonText(activity.slug),
     action: getActivityButtonAction(activity.slug),
+    actionLoading: activity.slug === 'nft' ? loadingClaimNFTEarnings : undefined,
     badges: activity.multipliers.map((multiplier) => ({
       text: multiplier.description,
       mobileText: multiplier.description,
@@ -204,6 +231,28 @@ const Secondary = () => {
       variant: multiplier.multiplier >= 3 ? 'secondary' : multiplier.multiplier >= 2 ? 'tertiary' : 'primary',
     })),
     hasWarning: activity.slug === 'bridge',
+  }));
+
+  const featuredTokensMap: ActionProps[] = activeFeaturedTokens?.map((token) => ({
+    title: token.name,
+    titleAlt: `$${token.symbol}`,
+    icon: token.logo_url,
+    buttonText: 'Bridge',
+    action: () => navigate.push(`/${network}/bridge`),
+    badges: [
+      {
+        text: 'Migrate Points',
+        mobileText: 'Migrate Points',
+        type: 'primary',
+        variant: 'plain',
+      },
+      {
+        text: 'Migrated with Supermigrate',
+        mobileText: 'Migrated with Supermigrate',
+        type: 'secondary',
+        variant: 'mint',
+      },
+    ],
   }));
 
   return (
@@ -226,17 +275,23 @@ const Secondary = () => {
 
         <Section title="Activities">
           <div className="flex flex-col items-stretch gap-8">
-            {!loadingActivities && Boolean(activities?.length) && activitiesMap?.map((activity, index) => <Action key={index} {...activity} />)}
+            {!loadingActivities && Boolean(activitiesMap?.length) && activitiesMap?.map((activity, index) => <Action key={index} {...activity} />)}
 
             {loadingActivities && Array.from({ length: 3 }).map((_, index) => <ActionSkeleton key={index} />)}
           </div>
         </Section>
 
         <Section title="Featured Tokens">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8 w-full">
-            {featuredTokens.map((token, index) => (
-              <Action key={index} {...token} />
-            ))}
+          <div className={classNames('grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8 w-full', { 'lg:grid-cols-1': !loadingFeaturedTokens && !Boolean(featuredTokensMap?.length) })}>
+            {!loadingFeaturedTokens && Boolean(featuredTokensMap?.length) && featuredTokensMap.map((token, index) => <Action key={index} {...token} />)}
+
+            {loadingFeaturedTokens && Array.from({ length: 4 }).map((_, index) => <ActionSkeleton key={index} />)}
+
+            {!loadingFeaturedTokens && !Boolean(featuredTokensMap?.length) && (
+              <div className="flex items-center justify-center w-full h-[200px] bg-white border border-primary-3450 rounded-base">
+                <p className="text-primary-200 text-lg md:text-xl font-Bitform">No featured tokens available</p>
+              </div>
+            )}
           </div>
         </Section>
 

@@ -27,9 +27,10 @@ type Leaderboard = {
   id: string;
   wallet_address: Address;
   total_balance: number;
-  pending_balance: 0;
-  is_active: true;
-  user_id: '83ea750b-6797-462c-bdd7-3a78cd45c2e7';
+  pending_balance: number;
+  xpMigrate_earned: number;
+  is_active: boolean;
+  user_id: string;
   created_at: string;
   updated_at: string;
   rank: number;
@@ -83,4 +84,32 @@ type Earnings = {
   total_circulation_points: number;
 };
 
-export type { Transaction, TransactionMeta, TransactionResponse, Leaderboard, Activity, Earnings };
+type FeaturedToken = {
+  id: string;
+  name: string;
+  symbol: string;
+  decimals: string;
+  logo_url: string;
+  chains: {
+    id: number;
+    name: string;
+    token_address: string;
+  }[];
+  pull_requests: {
+    id: number;
+    url: string;
+    status: string;
+    repo: string;
+    owner: string;
+    chain: string;
+    installation_id: number;
+  }[];
+  status: string;
+  featured: boolean;
+  is_custom: boolean;
+  user_id: string;
+  created_at: string;
+  updated_at: string;
+};
+
+export type { Transaction, TransactionMeta, TransactionResponse, Leaderboard, Activity, Earnings, FeaturedToken };

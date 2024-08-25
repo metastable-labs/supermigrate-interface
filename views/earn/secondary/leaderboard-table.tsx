@@ -30,10 +30,10 @@ const LeaderboardTable = () => {
     },
   ];
 
-  const data: LeaderboardTableData[] = (leaderboard || []).map((item) => ({
-    address: item.wallet_address,
-    points: item.total_balance,
-    xpEarned: 1_500,
+  const data: LeaderboardTableData[] = (leaderboard || [])?.map((item) => ({
+    address: item?.wallet_address,
+    points: item?.total_balance,
+    xpEarned: item?.xpMigrate_earned,
   }));
 
   const skeletonRows = Array.from({ length: 8 });
@@ -87,19 +87,19 @@ const LeaderboardTable = () => {
                 <td className="w-full sm:w-1/2 md:w-1/3 sm:border-r border-primary-1350">
                   <div className="min-h-[72px] px-4 md:px-6 py-4 w-full flex items-center gap-3">
                     <WalletIcon width={16} height={16} />
-                    <span className="text-primary-300">{truncate(item.address)}</span>
+                    <span className="text-primary-300">{truncate(item?.address)}</span>
                   </div>
                 </td>
 
                 <td className="w-full sm:w1/2 md:w-1/3 md:border-r border-primary-1350 hidden sm:table-cell">
                   <div className="min-h-[72px] px-4 md:px-6 py-4 w-full flex items-center">
-                    <span className="text-primary-5000">{item.points.toLocaleString()}</span>
+                    <span className="text-primary-5000">{item?.points?.toLocaleString()}</span>
                   </div>
                 </td>
 
                 <td className="w-1/3 hidden md:table-cell">
                   <div className="min-h-[72px] px-4 md:px-6 py-4 w-full flex items-center">
-                    <span className="text-primary-300">{item.xpEarned.toLocaleString()}</span>
+                    <span className="text-primary-300">{item?.xpEarned?.toLocaleString()}</span>
                   </div>
                 </td>
               </tr>

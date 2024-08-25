@@ -7,23 +7,26 @@ import Primary from './primary';
 import Secondary from './secondary';
 
 import { LangParamProp } from '@/config/internationalization/i18n';
+import { Network } from '@/config/privy/config';
 import { SMAuthenticationModal, SMContainer } from '@/components';
 import { FooterLogo, MobileFooterLogo } from '@/public/icons';
 import useEarnActions from '@/application/earn/actions';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
-import useUserActions from '@/application/user/actions';
 
-const steps = [<Primary key={0} />, <Secondary key={1} />];
+export type EarnViewProps = LangParamProp & { network: Network };
 
-const EarnView = ({ lang }: LangParamProp) => {
+const EarnView = ({ lang, network }: EarnViewProps) => {
   const { userState } = useSystemFunctions();
-  const { getActivities, getEarning, getLeaderboard, getTransactions } = useEarnActions();
+  const { getActivities, getEarning, getLeaderboard, getTransactions, getFeaturedTokens } = useEarnActions();
   const [step, setStep] = useState(1);
   const [showAuthentication, setShowAuthentication] = useState(false);
+
+  const steps = [<Primary key={0} />, <Secondary network={network} key={1} />];
 
   useEffect(() => {
     getActivities();
     getLeaderboard();
+    getFeaturedTokens();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

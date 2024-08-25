@@ -82,7 +82,7 @@ const LiquidityView = ({ lang, network }: LiquidityViewProps) => {
 
       <ClaimModal show={Boolean(claimId)} id={claimId} close={() => setClaimId(undefined)} />
 
-      <SMAuthenticationModal show={showAuthentication} />
+      <SMAuthenticationModal show={showAuthentication} goBack={() => setTab('all')} />
     </>
   );
 };

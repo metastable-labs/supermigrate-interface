@@ -29,7 +29,8 @@ interface ActionProps {
   hasWarning?: boolean;
   buttonText: string;
   action: () => void;
-  icon?: ReactElement;
+  actionLoading?: boolean;
+  icon?: string;
 }
 
 interface ReferralsSectionProps {

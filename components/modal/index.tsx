@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import { Logo, RoundedCloseIcon } from '@/public/icons';
 import useUserActions from '@/application/user/actions';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { Modal } from './types';
 import SMClickAnimation from '../click-animation';
 import SMButton from '../button';
@@ -83,12 +84,25 @@ const SMModal = ({ children, close, show, variant = 'default', blur }: Modal) =>
   );
 };
 
-const SMAuthenticationModal = ({ show }: { show: boolean }) => {
+const SMAuthenticationModal = ({ show, goBack }: { show: boolean; goBack?: () => void }) => {
   const { authenticateUser } = useUserActions();
+  const { navigate } = useSystemFunctions();
+
+  const handleBackClick = () => {
+    if (goBack) {
+      return goBack();
+    }
+
+    if (window.history.length > 1) {
+      navigate.back();
+    } else {
+      navigate.push('/dashboard');
+    }
+  };
 
   return (
     <SMModal show={show} blur>
-      <div className="h-[184px] w-72 sm:w-80 flex flex-col gap-5 justify-between">
+      <div className="h-fit w-72 sm:w-80 flex flex-col gap-5 justify-between">
         <div className="flex items-center justify-between">
           <div className="bg-primary-3250 rounded-full pt-[10.35px] pr-[7.4px] pb-[10.2px] pl-[9.3px] flex items-center justify-center md:w-10 md:h-10">
             <Logo />
@@ -106,6 +120,10 @@ const SMAuthenticationModal = ({ show }: { show: boolean }) => {
         </h1>
 
         <SMButton variant="tertiary" text="Continue" fullWidth onClick={authenticateUser} />
+
+        <SMClickAnimation onClick={handleBackClick} className="font-bold tracking-[-0.084px] text-sm text-center whitespace-nowrap font-Bitform text-primary-50 ">
+          Back
+        </SMClickAnimation>
       </div>
     </SMModal>
   );

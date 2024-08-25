@@ -1,7 +1,23 @@
 'use client';
 
+import { toast } from 'react-toastify';
+import { Address } from 'viem';
+
 import useSystemFunctions from '@/hooks/useSystemFunctions';
-import { setActivities, setEarning, setLeaderboard, setLoadingActivities, setLoadingEarning, setLoadingLeaderboard, setLoadingTransactions, setTransactionMeta, setTransactions } from '.';
+import {
+  setActivities,
+  setEarning,
+  setLeaderboard,
+  setLoadingActivities,
+  setLoadingEarning,
+  setLoadingLeaderboard,
+  setLoadingTransactions,
+  setTransactionMeta,
+  setTransactions,
+  setLoadingClaimNFTEarnings,
+  setFeaturedTokens,
+  setLoadingFeaturedTokens,
+} from '.';
 import api from './api';
 
 const useEarnActions = () => {
@@ -63,11 +79,43 @@ const useEarnActions = () => {
     }
   };
 
+  const claimNFTEarnings = async (address: Address) => {
+    try {
+      dispatch(setLoadingClaimNFTEarnings(true));
+      await api.claimNFTEarnings(address);
+      toast('Successfully claimed NFT earnings', {
+        type: 'success',
+      });
+      await getActivities();
+    } catch (error: any) {
+      toast('Failed to claim NFT earnings', {
+        type: 'error',
+      });
+    } finally {
+      dispatch(setLoadingClaimNFTEarnings(false));
+    }
+  };
+
+  const getFeaturedTokens = async () => {
+    try {
+      dispatch(setLoadingFeaturedTokens(true));
+      const featuredTokens = await api.fetchFeaturedTokens();
+
+      dispatch(setFeaturedTokens(featuredTokens));
+    } catch (error: any) {
+      //
+    } finally {
+      dispatch(setLoadingFeaturedTokens(false));
+    }
+  };
+
   return {
     getEarning,
     getActivities,
     getLeaderboard,
     getTransactions,
+    claimNFTEarnings,
+    getFeaturedTokens,
   };
 };
 

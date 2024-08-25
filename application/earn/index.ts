@@ -1,18 +1,21 @@
 'use client';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { Activity, Earnings, Leaderboard, Transaction, TransactionMeta } from './types';
+import { Activity, Earnings, Leaderboard, Transaction, TransactionMeta, FeaturedToken } from './types';
 
 export interface EarningState {
   loadingEarning: boolean;
   loadingLeaderboard: boolean;
   loadingTransactions: boolean;
   loadingActivities: boolean;
+  loadingClaimNFTEarnings: boolean;
+  loadingFeaturedTokens: boolean;
   earning: Earnings | undefined;
   transactions: Transaction[] | undefined;
   transactionMeta: TransactionMeta | undefined;
   activities: Activity[] | undefined;
   leaderboard: Leaderboard[] | undefined;
+  featuredTokens: FeaturedToken[] | undefined;
 }
 
 const initialState: EarningState = {
@@ -20,11 +23,14 @@ const initialState: EarningState = {
   loadingLeaderboard: false,
   loadingTransactions: false,
   loadingActivities: false,
+  loadingClaimNFTEarnings: false,
+  loadingFeaturedTokens: false,
   earning: undefined,
   transactions: undefined,
   transactionMeta: undefined,
   activities: undefined,
   leaderboard: undefined,
+  featuredTokens: undefined,
 };
 
 export const earningReducer = createSlice({
@@ -45,6 +51,14 @@ export const earningReducer = createSlice({
 
     setLoadingActivities: (state, action: PayloadAction<boolean>) => {
       state.loadingActivities = action.payload;
+    },
+
+    setLoadingClaimNFTEarnings: (state, action: PayloadAction<boolean>) => {
+      state.loadingClaimNFTEarnings = action.payload;
+    },
+
+    setLoadingFeaturedTokens: (state, action: PayloadAction<boolean>) => {
+      state.loadingFeaturedTokens = action.payload;
     },
 
     setEarning: (state, action: PayloadAction<Earnings | undefined>) => {
@@ -86,10 +100,30 @@ export const earningReducer = createSlice({
         state.leaderboard = undefined;
       }
     },
+
+    setFeaturedTokens: (state, action: PayloadAction<FeaturedToken[] | undefined>) => {
+      if (action.payload) {
+        state.featuredTokens = [...action.payload];
+      } else {
+        state.featuredTokens = undefined;
+      }
+    },
   },
 });
 
-export const { setLoadingActivities, setLoadingEarning, setLoadingLeaderboard, setLoadingTransactions, setActivities, setEarning, setTransactionMeta, setTransactions, setLeaderboard } =
-  earningReducer.actions;
+export const {
+  setLoadingActivities,
+  setLoadingEarning,
+  setLoadingLeaderboard,
+  setLoadingTransactions,
+  setLoadingClaimNFTEarnings,
+  setLoadingFeaturedTokens,
+  setActivities,
+  setEarning,
+  setTransactionMeta,
+  setTransactions,
+  setLeaderboard,
+  setFeaturedTokens,
+} = earningReducer.actions;
 
 export default earningReducer.reducer;
