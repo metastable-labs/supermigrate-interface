@@ -46,7 +46,7 @@ const HeroSection = () => {
               <p className="text-[16px] leading-[16px] font-medium text-primary-200">
                 Liquidity Migration is coming soon, read our{' '}
                 <a
-                  href="https://res.cloudinary.com/djzeufu4j/image/upload/v1724669999/Liquidity_Migration_Litepaper_odydcy.pdf"
+                  href="https://res.cloudinary.com/djzeufu4j/image/upload/v1724698235/Liquidity_Migration_Litepaper_1_tbcbym.pdf"
                   download
                   rel="noopener noreferrer"
                   target="_blank"

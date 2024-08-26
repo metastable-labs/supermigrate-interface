@@ -28,7 +28,7 @@ const LandingHeader = () => {
   const navLinks: NavLink[] = [
     {
       name: 'Litepaper',
-      href: 'https://res.cloudinary.com/djzeufu4j/image/upload/v1724669999/Liquidity_Migration_Litepaper_odydcy.pdf',
+      href: 'https://res.cloudinary.com/djzeufu4j/image/upload/v1724698235/Liquidity_Migration_Litepaper_1_tbcbym.pdf',
       download: true,
     },
     // { name: navigation.about, href: '#about' },
