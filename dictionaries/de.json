@@ -8,7 +8,7 @@
     },
     "hero": {
       "title": "Ihr Tor zu",
-      "subtitle": "Stellen Sie automatisch kanonisch überbrücktes ERC20 bereit, um eine PR auf dem Superchain-Token-List-Repo zu erstellen.",
+      "subtitle": "Stellen Sie kanonisch überbrücktes ERC20 automatisch in der Superchain bereit. Beginnen Sie mit der Überbrückung und Migration von Liquidität, um an einem Ort Prämien zu verdienen.",
       "actionText": "Beginnen Sie mit der Migration"
     },
     "section1": {
@@ -41,8 +41,8 @@
       },
       "third": {
         "actionText": "Liquidität",
-        "title": "Fügen Sie Liquidität für neu bereitgestellte Token hinzu",
-        "content": "Eine Schnittstelle, die es den Menschen erleichtert, Liquidität für alle kürzlich migrierten Token auf L2 bereitzustellen und dafür Anreize zu erhalten."
+        "title": "Migrieren Sie Liquidität von Ethereum zur Superchain",
+        "content": "Eine Schnittstelle zum Migrieren Ihrer Liquiditätspools von Ethereum zur Superchain und zum Verdienen von $xpMigrate-Tokens."
       }
     },
     "testimonial": {
