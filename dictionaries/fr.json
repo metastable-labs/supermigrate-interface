@@ -8,7 +8,7 @@
     },
     "hero": {
       "title": "Votre passerelle vers",
-      "subtitle": "Déployez automatiquement des ERC20 canoniques pontés sur une L2. Commencez à migrer et à ajouter de la liquidité pour gagner des récompenses, le tout en un seul endroit.",
+      "subtitle": "Déployez automatiquement l'ERC20 ponté canonique sur la Superchain. Commencez à combler et à migrer des liquidités pour gagner des récompenses en un seul endroit.",
       "actionText": "Commencer la migration"
     },
     "section1": {
@@ -41,8 +41,8 @@
       },
       "third": {
         "actionText": "Liquidité",
-        "title": "Ajouter de la liquidité pour les nouveaux tokens déployés",
-        "content": "Une interface qui permet aux gens de fournir facilement de la liquidité pour tous les tokens récemment migrés sur L2 et de recevoir des récompenses pour cela."
+        "title": "Migrer la liquidité vers la Superchain depuis Ethereum",
+        "content": "Une interface pour migrer vos pools de liquidités d'Ethereum vers la Superchain et gagner des jetons $xpMigrate."
       }
     },
     "testimonial": {
