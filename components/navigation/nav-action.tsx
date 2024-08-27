@@ -19,7 +19,7 @@ interface NavActionProps {
 
 const NavAction = ({ text, onClick, variant = 'network' }: NavActionProps) => {
   const { chainId, address } = useAccount();
-  const { authenticated, logout } = usePrivy();
+  const { authenticated } = usePrivy();
   const pathname = usePathname();
   const { userState } = useSystemFunctions();
   const { truncatedText } = useTruncateText(text || '', 4, 4);

@@ -8,7 +8,7 @@
     },
     "hero": {
       "title": "Your gateway to",
-      "subtitle": "Automatically deploy canonical bridged ERC20 to an L2. Start bridging and adding liquidity to earn rewards all in one place.",
+      "subtitle": "Automatically deploy canonical bridged ERC20 to the Superchain. Start bridging and migrating liquidity to earn rewards all in one place.",
       "actionText": "Start Migrating"
     },
     "section1": {
@@ -41,8 +41,8 @@
       },
       "third": {
         "actionText": "Liquidity",
-        "title": "Add Liquidity for newly deployed tokens",
-        "content": "An interface that makes it easy for people to provide liquidity for any recently migrated tokens on L2 and get rewarding for doing that."
+        "title": "Migrate Liquidity to the Superchain from Ethereum",
+        "content": "An interface to migrate your Liquidity pools from Ethereum to the Superchain and earn $xpMigrate tokens."
       }
     },
     "testimonial": {

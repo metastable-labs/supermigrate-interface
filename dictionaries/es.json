@@ -8,7 +8,7 @@
     },
     "hero": {
       "title": "Tu puerta de entrada a",
-      "subtitle": "Implementa automáticamente ERC20 puenteados canónicos en una L2. Comienza a migrar y agregar liquidez para ganar recompensas, todo en un solo lugar.",
+      "subtitle": "Implemente automáticamente ERC20 canónico puenteado en la Superchain. Comience a unir y migrar liquidez para ganar recompensas, todo en un solo lugar.",
       "actionText": "Comenzar a migrar"
     },
     "section1": {
@@ -41,8 +41,8 @@
       },
       "third": {
         "actionText": "Liquidez",
-        "title": "Agregar liquidez para tokens recién implementados",
-        "content": "Una interfaz que facilita a las personas proporcionar liquidez para cualquier token recién migrado en L2 y ser recompensados por hacerlo."
+        "title": "Migrar liquidez a la supercadena desde Ethereum",
+        "content": "Una interfaz para migrar sus fondos de liquidez de Ethereum a Superchain y ganar tokens $xpMigrate."
       }
     },
     "testimonial": {

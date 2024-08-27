@@ -3,19 +3,13 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import classNames from 'classnames';
 
-import { Logo, LogoAlt, SuperMigrateLogo } from '@/public/icons';
+import { Logo, LogoAlt } from '@/public/icons';
 import Action from './action';
 import useScreenDetect from '@/hooks/useScreenDetect';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 import SMHam from '@/components/ham';
 import { NavLink } from './type';
 import Menu from './menu';
-
-const navLinks: NavLink[] = [
-  { name: 'About', href: '#about' },
-  { name: 'Blog', href: 'https://mirror.xyz/supermigrate.eth' },
-  { name: 'FAQ', href: '#faq' },
-];
 
 const LandingHeader = () => {
   const { locale } = useSystemFunctions();
@@ -32,7 +26,12 @@ const LandingHeader = () => {
   const { navigation } = landingPage;
 
   const navLinks: NavLink[] = [
-    { name: navigation.about, href: '#about' },
+    {
+      name: 'Litepaper',
+      href: 'https://res.cloudinary.com/djzeufu4j/image/upload/v1724698235/Liquidity_Migration_Litepaper_1_tbcbym.pdf',
+      download: true,
+    },
+    // { name: navigation.about, href: '#about' },
     { name: navigation.whitepaper, href: 'https://mirror.xyz/supermigrate.eth/' },
     { name: navigation.faq, href: '#faq' },
   ];
@@ -91,10 +90,11 @@ const LandingHeader = () => {
           )}
 
           <div className="hidden md:flex items-center justify-between min-w-[250px]">
-            {navLinks.map(({ name, href }, index) => (
+            {navLinks.map(({ name, href, download }, index) => (
               <a
                 key={index}
                 href={href}
+                download={download}
                 target={href.startsWith('http') ? '_blank' : '_self'}
                 className={classNames('px-3 py-2 text-sm tracking-[-0.14px]', {
                   'text-primary-3400': !isTop,
