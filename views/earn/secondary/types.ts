@@ -6,6 +6,7 @@ interface InfoProps {
   value: string | number;
   subtitle?: string;
   flushLeft?: boolean;
+  loading?: boolean;
 }
 
 type BadgeType = 'primary' | 'secondary';
@@ -28,7 +29,8 @@ interface ActionProps {
   hasWarning?: boolean;
   buttonText: string;
   action: () => void;
-  icon?: ReactElement;
+  actionLoading?: boolean;
+  icon?: string;
 }
 
 interface ReferralsSectionProps {

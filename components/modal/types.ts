@@ -3,4 +3,5 @@ export interface Modal {
   show: boolean;
   close?: () => void;
   variant?: 'default' | 'git-connect' | 'secondary';
+  blur?: boolean;
 }

@@ -1,4 +1,4 @@
-import { LangParamProp, Locale } from '@/config/internationalization/i18n';
+import { Locale } from '@/config/internationalization/i18n';
 import { Network } from '@/config/privy/config';
 import { LiquidityView } from '@/views';
 

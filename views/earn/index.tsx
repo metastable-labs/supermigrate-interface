@@ -1,19 +1,51 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
+import { usePrivy } from '@privy-io/react-auth';
 
 import Primary from './primary';
 import Secondary from './secondary';
 
 import { LangParamProp } from '@/config/internationalization/i18n';
-import { SMContainer } from '@/components';
+import { Network } from '@/config/privy/config';
+import { SMAuthenticationModal, SMContainer } from '@/components';
 import { FooterLogo, MobileFooterLogo } from '@/public/icons';
+import useEarnActions from '@/application/earn/actions';
+import useSystemFunctions from '@/hooks/useSystemFunctions';
 
-const steps = [<Primary key={0} />, <Secondary key={1} />];
+export type EarnViewProps = LangParamProp & { network: Network };
 
-const EarnView = ({ lang }: LangParamProp) => {
+const EarnView = ({ lang, network }: EarnViewProps) => {
+  const { ready } = usePrivy();
+  const { userState } = useSystemFunctions();
+  const { getActivities, getEarning, getLeaderboard, getTransactions, getFeaturedTokens } = useEarnActions();
   const [step, setStep] = useState(1);
+  const [showAuthentication, setShowAuthentication] = useState(false);
+
+  const steps = [<Primary key={0} />, <Secondary network={network} key={1} />];
+
+  useEffect(() => {
+    getActivities();
+    getLeaderboard();
+    getFeaturedTokens();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (!userState.user) return;
+
+    getEarning();
+    getTransactions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userState.user]);
+
+  useEffect(() => {
+    if (!ready || userState.user) return;
+
+    setShowAuthentication(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userState.user, ready]);
   return (
     <>
       <SMContainer>
@@ -34,6 +66,8 @@ const EarnView = ({ lang }: LangParamProp) => {
           <MobileFooterLogo />
         </div>
       </footer>
+
+      <SMAuthenticationModal show={showAuthentication} />
     </>
   );
 };

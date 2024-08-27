@@ -1,12 +1,13 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import classNames from 'classnames';
 
 import { LangParamProp } from '@/config/internationalization/i18n';
 import { Network } from '@/config/privy/config';
-import { SMContainer, SMTable } from '@/components';
+import { SMAuthenticationModal, SMContainer, SMTable } from '@/components';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
+import useUserActions from '@/application/user/actions';
 import { allTableData, myTableData } from './dummy';
 import ClaimModal from './claim-modal';
 import Stake from './stake';
@@ -16,21 +17,36 @@ export type LiquidityViewProps = LangParamProp & { network: Network };
 const tabs = ['all', 'my', 'stake'];
 
 const LiquidityView = ({ lang, network }: LiquidityViewProps) => {
-  const { navigate } = useSystemFunctions();
+  const { navigate, userState } = useSystemFunctions();
+  const { authenticateUser } = useUserActions();
   const [tab, setTab] = useState<'all' | 'my' | 'stake'>('all');
   const [claimId, setClaimId] = useState<string>();
+  const [showAuthentication, setShowAuthentication] = useState(false);
 
   const rowClick = (id: string) => {
     navigate.push(`/${network}/liquidity/${id}`);
   };
 
-  const claimClick = (id: string) => setClaimId(id);
+  const claimClick = (id: string) => {
+    if (!userState.user) {
+      return setShowAuthentication(true);
+    }
+    setClaimId(id);
+  };
 
   const tabViews = [
     <SMTable key="all" data={allTableData} network={network} isConnected variant="secondary" rowClick={rowClick} />,
     <SMTable key="my" data={myTableData} network={network} isConnected variant="tertiary" rowClick={rowClick} claimClick={claimClick} />,
     <Stake key="stake" network={network} rowClick={rowClick} claimClick={claimClick} />,
   ];
+
+  useEffect(() => {
+    if ((tab === 'my' || tab === 'stake') && !userState.user) {
+      return setShowAuthentication(true);
+    }
+    setShowAuthentication(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tab, userState.user]);
 
   return (
     <>
@@ -47,7 +63,7 @@ const LiquidityView = ({ lang, network }: LiquidityViewProps) => {
                 <button
                   key={t}
                   className={classNames('flex items-center justify-center py-2 px-3 h-9 rounded-md transition-all duration-500', { 'bg-white shadow-sm-shadow': tab === t })}
-                  onClick={() => setTab(t as 'all' | 'my')}>
+                  onClick={() => setTab(t as 'all' | 'my' | 'stake')}>
                   <span className={classNames('text-sm font-medium', { 'text-primary-1600': tab === t, 'text-primary-3050': tab !== t })}>
                     <span className="capitalize">{t}</span> {index !== 2 && 'pools'}
                   </span>
@@ -65,6 +81,8 @@ const LiquidityView = ({ lang, network }: LiquidityViewProps) => {
       </SMContainer>
 
       <ClaimModal show={Boolean(claimId)} id={claimId} close={() => setClaimId(undefined)} />
+
+      <SMAuthenticationModal show={showAuthentication} goBack={() => setTab('all')} />
     </>
   );
 };

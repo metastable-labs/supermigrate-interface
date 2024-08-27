@@ -21,6 +21,7 @@ const useSystemFunctions = () => {
   const locale = localeState.locale as Lang;
   const migrationState = useAppSelector((state) => state.migration);
   const liquidityState = useAppSelector((state) => state.liquidity);
+  const earnState = useAppSelector((state) => state.earn);
 
   return {
     dispatch,
@@ -32,6 +33,7 @@ const useSystemFunctions = () => {
     locale,
     migrationState,
     liquidityState,
+    earnState,
   };
 };
 
