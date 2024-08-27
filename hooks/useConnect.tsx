@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useAccount } from 'wagmi';
 import { switchChain } from '@wagmi/core';
 
-import { wagmiConfig } from '@/config/privy/rainbowkit';
+import { wagmiConfig } from '@/config/privy/privy';
 import { usePrivy } from '@privy-io/react-auth';
 
 const useConnect = () => {

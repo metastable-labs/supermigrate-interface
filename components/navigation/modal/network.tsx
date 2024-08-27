@@ -6,7 +6,7 @@ import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { networks } from '@/config/privy/config';
 import { usePrivy } from '@privy-io/react-auth';
 import useUserActions from '@/application/user/actions';
-import { wagmiConfig } from '@/config/privy/rainbowkit';
+import { wagmiConfig } from '@/config/privy/privy';
 
 const NetworkModal = ({ close }: { close: () => void }) => {
   const { navigate } = useSystemFunctions();
