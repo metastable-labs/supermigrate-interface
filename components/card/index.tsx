@@ -1,6 +1,4 @@
 import classNames from 'classnames';
-import { useSwitchChain, useChainId, useAccount } from 'wagmi';
-import { useConnectModal } from '@rainbow-me/rainbowkit';
 
 import { SMClickAnimation } from '@/components';
 import {

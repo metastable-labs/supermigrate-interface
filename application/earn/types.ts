@@ -82,6 +82,10 @@ type Earnings = {
   };
   rank: number;
   total_circulation_points: number;
+  point_balance?: number;
+  last_claim_timestamp?: number;
+  tier?: number;
+  consecutive_weeks_claimed?: number;
 };
 
 type FeaturedToken = {

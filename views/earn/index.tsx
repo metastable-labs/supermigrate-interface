@@ -13,13 +13,15 @@ import { SMAuthenticationModal, SMContainer } from '@/components';
 import { FooterLogo, MobileFooterLogo } from '@/public/icons';
 import useEarnActions from '@/application/earn/actions';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
+import { useAccount } from 'wagmi';
 
 export type EarnViewProps = LangParamProp & { network: Network };
 
 const EarnView = ({ lang, network }: EarnViewProps) => {
   const { ready } = usePrivy();
+  const { chainId, address } = useAccount();
   const { userState } = useSystemFunctions();
-  const { getActivities, getEarning, getLeaderboard, getTransactions, getFeaturedTokens } = useEarnActions();
+  const { getActivities, getEarning, getLeaderboard, getTransactions, getFeaturedTokens, getUserPointDetails } = useEarnActions();
   const [step, setStep] = useState(1);
   const [showAuthentication, setShowAuthentication] = useState(false);
 
@@ -39,6 +41,13 @@ const EarnView = ({ lang, network }: EarnViewProps) => {
     getTransactions();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userState.user]);
+
+  useEffect(() => {
+    if (!ready || !userState.user || !address || !chainId) return;
+
+    getUserPointDetails();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userState.user, ready, address, chainId]);
 
   useEffect(() => {
     if (!ready || userState.user) return;

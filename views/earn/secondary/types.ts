@@ -40,13 +40,6 @@ interface ReferralsSectionProps {
   link: string;
 }
 
-interface DashStatsProps {
-  points: number;
-  tier: 'bronze' | 'silver' | 'gold';
-  xpEarned: number;
-  multiplier: number;
-}
-
 interface LeaderboardTableData {
   address: Address;
   points: number;
@@ -58,4 +51,4 @@ interface LeaderboardTableProps {
   loading?: boolean;
 }
 
-export type { InfoProps, ActionProps, Badge, BadgeType, BadgeVariant, ReferralsSectionProps, DashStatsProps, LeaderboardTableProps, LeaderboardTableData };
+export type { InfoProps, ActionProps, Badge, BadgeType, BadgeVariant, ReferralsSectionProps, LeaderboardTableProps, LeaderboardTableData };

@@ -62,8 +62,20 @@ export const earningReducer = createSlice({
     },
 
     setEarning: (state, action: PayloadAction<Earnings | undefined>) => {
-      if (action.payload) {
+      if (action.payload && !state.earning) {
         state.earning = { ...action.payload };
+      } else if (action.payload && state.earning) {
+        state.earning = { ...state.earning, ...action.payload };
+      } else {
+        state.earning = undefined;
+      }
+    },
+
+    setEarningPoints: (state, action: PayloadAction<any>) => {
+      if (action.payload && !state.earning) {
+        state.earning = { ...action.payload };
+      } else if (action.payload && state.earning) {
+        state.earning = { ...state.earning, ...action.payload };
       } else {
         state.earning = undefined;
       }
@@ -124,6 +136,7 @@ export const {
   setTransactions,
   setLeaderboard,
   setFeaturedTokens,
+  setEarningPoints,
 } = earningReducer.actions;
 
 export default earningReducer.reducer;

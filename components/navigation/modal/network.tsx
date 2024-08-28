@@ -22,7 +22,7 @@ const NetworkModal = ({ close }: { close: () => void }) => {
     if (chainId === id) return close();
 
     try {
-      await switchChain(wagmiConfig, { chainId: id as 10 | 8453 | 34443 });
+      await switchChain(wagmiConfig, { chainId: id as 10 | 8453 | 34443 | 84532 });
       navigate.replace(`/${network.toLowerCase()}/migrate`);
 
       close();

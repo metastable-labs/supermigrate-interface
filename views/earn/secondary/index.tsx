@@ -11,18 +11,25 @@ import { CopyIcon, DesktopEarnWelcome, FlashIcon, Logo, MobileEarnWelcome, StarI
 import { SMClickAnimation, SMTable } from '@/components';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 import Action, { ActionSkeleton } from './action';
-import { ActionProps, DashStatsProps, InfoProps } from './types';
+import { ActionProps, InfoProps } from './types';
 import LeaderboardTable from './leaderboard-table';
 import { getActivityButtonText } from './utils';
 import useEarnActions from '@/application/earn/actions';
 
-const DashStats = ({ multiplier, points, tier = 'bronze', xpEarned }: DashStatsProps) => {
+const DashStats = () => {
+  const { earnState } = useSystemFunctions();
+
+  const { earning } = earnState;
+  const { consecutive_weeks_claimed, point_balance, tier, last_claim_timestamp } = earning || {};
+
+  const userTier = !tier || tier == 0 ? 'bronze' : tier == 1 ? 'silver' : 'gold';
+
   const multipliers = {
     bronze: 'No multipliers active',
     silver: '0.5X multiplier active',
     gold: '2X multiplier active',
   };
-  const disableClaim = multiplier === 0;
+  const disableClaim = false;
 
   return (
     <div className="flex flex-col md:flex-row md:items-center justify-between lg:gap-10 xl:gap-5 gap-7 p-[18px] border border-primary-3450 bg-white w-full xl:w-2/3 rounded-base">
@@ -33,23 +40,23 @@ const DashStats = ({ multiplier, points, tier = 'bronze', xpEarned }: DashStatsP
         <div className="flex items-center gap-4">
           <div className="flex flex-col">
             <h5 className="text-sm tracking-[-0.084px] text-primary-4050 whitespace-nowrap">Migrate Points</h5>
-            <span className="text-primary-50 text-[24px] leading-[36px] font-Bitform">{points.toLocaleString()}</span>
+            <span className="text-primary-50 text-[24px] leading-[36px] font-Bitform">{(point_balance || 0).toLocaleString()}</span>
           </div>
 
           <div
             className={classNames('flex items-center gap-0.5 rounded-full py-1 pl-1 pr-2 transition-all duration-300', {
-              'bg-primary-4500': tier === 'bronze',
-              'bg-primary-150': tier === 'silver',
-              'bg-primary-4550': tier === 'gold',
+              'bg-primary-4500': userTier === 'bronze',
+              'bg-primary-150': userTier === 'silver',
+              'bg-primary-4550': userTier === 'gold',
             })}>
-            <StarIcon color={tier === 'bronze' ? '#6E330C' : tier === 'silver' ? '#525866' : '#693D11'} />
+            <StarIcon color={userTier === 'bronze' ? '#6E330C' : userTier === 'silver' ? '#525866' : '#693D11'} />
             <span
               className={classNames('text-[11px] leading-[12px] tracking-[0.22px] font-medium capitalize', {
-                'text-primary-600': tier === 'bronze',
-                'text-primary-200': tier === 'silver',
-                'text-primary-2650': tier === 'gold',
+                'text-primary-600': userTier === 'bronze',
+                'text-primary-200': userTier === 'silver',
+                'text-primary-2650': userTier === 'gold',
               })}>
-              {tier}
+              {userTier}
             </span>
           </div>
         </div>
@@ -59,7 +66,7 @@ const DashStats = ({ multiplier, points, tier = 'bronze', xpEarned }: DashStatsP
 
       <div className="flex flex-col">
         <h5 className="text-sm tracking-[-0.084px] text-primary-4050 whitespace-nowrap">$xpMigrate Earned</h5>
-        <span className="text-primary-50 text-[24px] leading-[36px] font-Bitform">{xpEarned.toLocaleString()}</span>
+        <span className="text-primary-50 text-[24px] leading-[36px] font-Bitform">{(2345).toLocaleString()}</span>
       </div>
 
       <div className="w-full h-[1px] md:w-[1px] md:h-[58px] bg-primary-4350" />
@@ -67,18 +74,18 @@ const DashStats = ({ multiplier, points, tier = 'bronze', xpEarned }: DashStatsP
       <div className="flex flex-col gap-3">
         <div
           className={classNames('flex items-center gap-0.5 rounded-full py-1 pl-1 pr-2 transition-all duration-300 w-fit', {
-            'bg-primary-150': tier === 'bronze',
-            'bg-primary-1000': tier === 'silver',
-            'bg-primary-1100 border border-primary-4600': tier === 'gold',
+            'bg-primary-150': userTier === 'bronze',
+            'bg-primary-1000': userTier === 'silver',
+            'bg-primary-1100 border border-primary-4600': userTier === 'gold',
           })}>
-          <FlashIcon width={12} height={12} color={tier === 'bronze' ? '#525866' : tier === 'silver' ? '#162664' : '#710E21'} />
+          <FlashIcon width={12} height={12} color={userTier === 'bronze' ? '#525866' : userTier === 'silver' ? '#162664' : '#710E21'} />
           <span
             className={classNames('text-[11px] leading-[12px] tracking-[0.22px] font-medium whitespace-nowrap', {
-              'text-primary-200': tier === 'bronze',
-              'text-primary-700': tier === 'silver',
-              'text-primary-800': tier === 'gold',
+              'text-primary-200': userTier === 'bronze',
+              'text-primary-700': userTier === 'silver',
+              'text-primary-800': userTier === 'gold',
             })}>
-            {multipliers[tier]}
+            {multipliers[userTier]}
           </span>
         </div>
 
@@ -262,7 +269,7 @@ const Secondary = ({ network }: { network: Network }) => {
       <div className="flex flex-col gap-12 self-stretch items-center flex-1">
         <div className="self-stretch items-stretch flex flex-col gap-[22px]">
           <div className="self-stretch flex flex-col xl:flex-row justify-between items-stretch gap-6">
-            <DashStats points={12345} tier="gold" xpEarned={123456} multiplier={0} />
+            <DashStats />
             <ReferralsSection />
           </div>
 

@@ -38,7 +38,7 @@ const earning: IEarning = {
   },
 
   claimNFTEarnings: async (address: Address): Promise<void> => {
-    const response = await axiosInstance.post(`earnings/nft/claim/${address}`);
+    const response = await axiosInstance.post(`earnings/nft/claim`);
 
     return response.data.data;
   },
