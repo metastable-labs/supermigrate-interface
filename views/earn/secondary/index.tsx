@@ -10,11 +10,13 @@ import useCopy from '@/hooks/useCopy';
 import { CopyIcon, DesktopEarnWelcome, FlashIcon, Logo, MobileEarnWelcome, StarIcon } from '@/public/icons';
 import { SMClickAnimation, SMTable } from '@/components';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
+import useCountdown from '@/hooks/useCountdown';
+import useEarnActions from '@/application/earn/actions';
+import { formatDecimalNumber } from '@/utils/helpers';
 import Action, { ActionSkeleton } from './action';
 import { ActionProps, InfoProps } from './types';
 import LeaderboardTable from './leaderboard-table';
 import { getActivityButtonText } from './utils';
-import useEarnActions from '@/application/earn/actions';
 
 const DashStats = () => {
   const { earnState } = useSystemFunctions();
@@ -24,12 +26,18 @@ const DashStats = () => {
 
   const userTier = !tier || tier == 0 ? 'bronze' : tier == 1 ? 'silver' : 'gold';
 
+  const migrate_points = formatDecimalNumber(point_balance || 0).value;
+
+  const now = moment();
+  const lastClaimMoment = moment.unix(last_claim_timestamp! || 0);
+  const hoursSinceLastClaim = now.diff(lastClaimMoment, 'hours');
+  const disableClaim = hoursSinceLastClaim < 72;
+
   const multipliers = {
     bronze: 'No multipliers active',
     silver: '0.5X multiplier active',
     gold: '2X multiplier active',
   };
-  const disableClaim = false;
 
   return (
     <div className="flex flex-col md:flex-row md:items-center justify-between lg:gap-10 xl:gap-5 gap-7 p-[18px] border border-primary-3450 bg-white w-full xl:w-2/3 rounded-base">
@@ -40,7 +48,7 @@ const DashStats = () => {
         <div className="flex items-center gap-4">
           <div className="flex flex-col">
             <h5 className="text-sm tracking-[-0.084px] text-primary-4050 whitespace-nowrap">Migrate Points</h5>
-            <span className="text-primary-50 text-[24px] leading-[36px] font-Bitform">{(point_balance || 0).toLocaleString()}</span>
+            <span className="text-primary-50 text-[24px] leading-[36px] font-Bitform">{migrate_points}</span>
           </div>
 
           <div
@@ -192,10 +200,12 @@ const Secondary = ({ network }: { network: Network }) => {
 
   const { earning, activities, featuredTokens, loadingActivities, loadingEarning, loadingClaimNFTEarnings, loadingFeaturedTokens } = earnState;
 
+  const countdown = useCountdown(earning?.last_claim_timestamp || 0, 72);
+
   const infoData = [
     { title: 'Migrate Points in Circulation', value: earning?.total_circulation_points || 0 },
     { title: 'Your Rank', value: earning?.rank || 0 },
-    { title: 'Claim window', value: moment('2024-08-23T14:00:00Z').fromNow(), subtitle: 'Till next cooldown', flushLeft: true },
+    { title: 'Claim window', value: countdown, subtitle: 'Till next cooldown', flushLeft: true },
   ];
 
   const activeActivities = (activities || []).filter((activity) => activity.is_active);
