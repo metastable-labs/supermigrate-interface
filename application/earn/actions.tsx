@@ -136,7 +136,7 @@ const useEarnActions = () => {
 
       dispatch(
         setEarningPoints({
-          point_balance,
+          point_balance: Number(point_balance),
           last_claim_timestamp,
           tier,
           consecutive_weeks_claimed,
