@@ -2,7 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { LangParamProp } from '@/config/internationalization/i18n';
-import PrivyQueryProvider from '@/config/privy/rainbowkit';
+import PrivyQueryProvider from '@/config/privy/privy';
 import Wrapper from './wrapper';
 
 interface RootProps {

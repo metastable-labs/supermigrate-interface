@@ -6,6 +6,7 @@ interface InfoProps {
   value: string | number;
   subtitle?: string;
   flushLeft?: boolean;
+  loading?: boolean;
 }
 
 type BadgeType = 'primary' | 'secondary';
@@ -28,7 +29,8 @@ interface ActionProps {
   hasWarning?: boolean;
   buttonText: string;
   action: () => void;
-  icon?: ReactElement;
+  actionLoading?: boolean;
+  icon?: string;
 }
 
 interface ReferralsSectionProps {
@@ -36,13 +38,6 @@ interface ReferralsSectionProps {
   referrals: number;
   points: number;
   link: string;
-}
-
-interface DashStatsProps {
-  points: number;
-  tier: 'bronze' | 'silver' | 'gold';
-  xpEarned: number;
-  multiplier: number;
 }
 
 interface LeaderboardTableData {
@@ -56,4 +51,4 @@ interface LeaderboardTableProps {
   loading?: boolean;
 }
 
-export type { InfoProps, ActionProps, Badge, BadgeType, BadgeVariant, ReferralsSectionProps, DashStatsProps, LeaderboardTableProps, LeaderboardTableData };
+export type { InfoProps, ActionProps, Badge, BadgeType, BadgeVariant, ReferralsSectionProps, LeaderboardTableProps, LeaderboardTableData };

@@ -5,6 +5,7 @@ import userReducer from './user';
 import localeReducer from './locale';
 import migrationReducer from './migration';
 import liquidityReducer from './liquidity';
+import earnReducer from './earn';
 
 export interface CallbackProps {
   onSuccess?: Function;
@@ -17,6 +18,7 @@ export const store = configureStore({
     locale: localeReducer,
     migration: migrationReducer,
     liquidity: liquidityReducer,
+    earn: earnReducer,
   },
 });
 

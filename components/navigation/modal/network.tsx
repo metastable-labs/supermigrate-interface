@@ -6,7 +6,7 @@ import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { networks } from '@/config/privy/config';
 import { usePrivy } from '@privy-io/react-auth';
 import useUserActions from '@/application/user/actions';
-import { wagmiConfig } from '@/config/privy/rainbowkit';
+import { wagmiConfig } from '@/config/privy/privy';
 
 const NetworkModal = ({ close }: { close: () => void }) => {
   const { navigate } = useSystemFunctions();
@@ -22,7 +22,7 @@ const NetworkModal = ({ close }: { close: () => void }) => {
     if (chainId === id) return close();
 
     try {
-      await switchChain(wagmiConfig, { chainId: id as 10 | 8453 | 34443 });
+      await switchChain(wagmiConfig, { chainId: id as 10 | 8453 | 34443 | 84532 });
       navigate.replace(`/${network.toLowerCase()}/migrate`);
 
       close();

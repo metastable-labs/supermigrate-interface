@@ -14,5 +14,24 @@ import SMWelcome from './welcome';
 import SMTiles from './tiles';
 import SMAnnouncement from './announcement';
 import SMFileSample from './file-sample';
+import { SMAuthenticationModal } from './modal';
 
-export { SMContainer, SMClickAnimation, SMNavigation, SMModal, SMTable, SMButton, SMInput, SMFileInput, SMTestimonial, SMFAQ, SMSelect, SMLoader, SMWelcome, SMTiles, SMAnnouncement, SMFileSample };
+export {
+  SMContainer,
+  SMClickAnimation,
+  SMNavigation,
+  SMModal,
+  SMTable,
+  SMButton,
+  SMInput,
+  SMFileInput,
+  SMTestimonial,
+  SMFAQ,
+  SMSelect,
+  SMLoader,
+  SMWelcome,
+  SMTiles,
+  SMAnnouncement,
+  SMFileSample,
+  SMAuthenticationModal,
+};

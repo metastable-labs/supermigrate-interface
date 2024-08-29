@@ -23,7 +23,7 @@ const SMLoader = ({ variant = 'small', color }: ISMLoader) => {
   }
 
   return (
-    <motion.span
+    <motion.div
       animate={{
         rotate: 360,
         transition: {
@@ -34,7 +34,7 @@ const SMLoader = ({ variant = 'small', color }: ISMLoader) => {
         },
       }}>
       <LoadingIcon color={color} width={width} height={height} />
-    </motion.span>
+    </motion.div>
   );
 };
 

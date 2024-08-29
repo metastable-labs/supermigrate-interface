@@ -4,7 +4,7 @@
  * 2. Create pairs with ERC20 tokens or with ETH
  */
 
-import { wagmiConfig } from '@/config/privy/rainbowkit';
+import { wagmiConfig } from '@/config/privy/privy';
 import { readContract, writeContract } from '@wagmi/core';
 import { getAccount } from '@wagmi/core';
 import { Address } from 'viem';
