@@ -1,11 +1,11 @@
-const getActivityButtonText = (slug: string) => {
+const getActivityButtonText = (slug: string, nft_points_earned?: boolean) => {
   switch (slug) {
     case 'bridge':
       return 'Bridge';
     case 'social':
       return 'Follow';
     case 'nft':
-      return 'Claim';
+      return nft_points_earned ? 'Claim' : 'Mint';
     case 'referral':
       return 'Copy';
     case 'liquidity-migration':
