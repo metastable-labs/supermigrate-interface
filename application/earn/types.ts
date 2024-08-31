@@ -56,6 +56,7 @@ type Activity = {
   }[];
   created_at: string;
   updated_at: string;
+  mint_url?: string;
 };
 
 type Earnings = {
@@ -86,6 +87,7 @@ type Earnings = {
   last_claim_timestamp?: number;
   tier?: number;
   consecutive_weeks_claimed?: number;
+  nft_points_earned?: boolean;
 };
 
 type FeaturedToken = {

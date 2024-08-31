@@ -212,14 +212,14 @@ const Secondary = ({ network }: { network: Network }) => {
   const activeFeaturedTokens = (featuredTokens || []).filter((token) => token.featured);
   const referalCode = earning?.referral_code || '';
 
-  const getActivityButtonAction = (slug: string) => {
+  const getActivityButtonAction = (slug: string, mint_url?: string) => {
     switch (slug) {
       case 'bridge':
         return () => navigate.push(`/${network}/bridge`);
       case 'social':
         return () => window.open('https://twitter.com/supermigrate', '_blank');
       case 'nft':
-        return () => claimNFTEarnings(address!);
+        return earning?.nft_points_earned ? () => claimNFTEarnings(address!) : () => window.open(mint_url, '_blank');
       case 'referral':
         return () => copy(referalCode);
       case 'liquidity-migration':
@@ -238,8 +238,8 @@ const Secondary = ({ network }: { network: Network }) => {
       variant: activity.points >= 3000 ? 'secondary' : activity.points >= 1000 ? 'tertiary' : 'mint',
     },
     subtitle: activity.description,
-    buttonText: getActivityButtonText(activity.slug),
-    action: getActivityButtonAction(activity.slug),
+    buttonText: getActivityButtonText(activity.slug, earning?.nft_points_earned),
+    action: getActivityButtonAction(activity.slug, activity.mint_url),
     actionLoading: activity.slug === 'nft' ? loadingClaimNFTEarnings : undefined,
     badges: activity.multipliers.map((multiplier) => ({
       text: multiplier.description,
@@ -299,7 +299,11 @@ const Secondary = ({ network }: { network: Network }) => {
         </Section>
 
         <Section title="Featured Tokens">
-          <div className={classNames('grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-8 w-full', { 'lg:grid-cols-1': !loadingFeaturedTokens && !Boolean(featuredTokensMap?.length) })}>
+          <div
+            className={classNames('grid grid-cols-1 gap-x-6 gap-y-8 w-full', {
+              'lg:grid-cols-1': !loadingFeaturedTokens && !Boolean(featuredTokensMap?.length),
+              'lg:grid-cols-2': loadingFeaturedTokens || Boolean(featuredTokensMap?.length),
+            })}>
             {!loadingFeaturedTokens && Boolean(featuredTokensMap?.length) && featuredTokensMap.map((token, index) => <Action key={index} {...token} />)}
 
             {loadingFeaturedTokens && Array.from({ length: 4 }).map((_, index) => <ActionSkeleton key={index} />)}
