@@ -9,7 +9,7 @@ import { useCookies } from 'react-cookie';
 
 const Connect = ({ network }: { network: Network }) => {
   const { userState, pathname, locale } = useSystemFunctions();
-  const [cookies] = useCookies(['isGithubConnected']);
+  const [cookies] = useCookies(['isGithubConnected', 'authtoken']);
   const { loading } = userState;
 
   const { buttonText, subtitle, title } = locale.migrate.connect;
@@ -64,7 +64,7 @@ const Connect = ({ network }: { network: Network }) => {
               </p>
             </div>
 
-            <a href={githubAuthUrl}>
+            <a href={!cookies.authtoken ? '#' : 'githubAuthUrl'}>
               <SMButton disabled={loading} network={network} text={buttonText} variant="git" />
             </a>
           </motion.div>

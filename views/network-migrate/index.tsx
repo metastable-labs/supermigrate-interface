@@ -70,7 +70,7 @@ const NetworkMigrationsView = ({ network }: { network: Network }) => {
   useEffect(() => {
     handleGithubConnection();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [code]);
+  }, [code, cookies.authtoken]);
 
   if (loading || migration_loading) {
     return (

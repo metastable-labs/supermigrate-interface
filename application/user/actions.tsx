@@ -47,6 +47,9 @@ const useUserActions = () => {
 
   const authenticateGithub = async (code: string, callback?: CallbackProps) => {
     try {
+      if (!cookies.authtoken) return;
+      await setTokenHeader(cookies?.authtoken);
+
       dispatch(setLoading(true));
       const user = await api.githubAuth(code);
 
@@ -75,7 +78,6 @@ const useUserActions = () => {
   const _loginUser = async () => {
     try {
       const accessToken = await getAccessToken();
-      console.log('accessToken', accessToken);
       if (!accessToken) return;
 
       const response = await api.login(accessToken);
