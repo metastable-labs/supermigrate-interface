@@ -64,7 +64,7 @@ const Connect = ({ network }: { network: Network }) => {
               </p>
             </div>
 
-            <a href={!cookies.authtoken ? '#' : 'githubAuthUrl'}>
+            <a href={githubAuthUrl}>
               <SMButton disabled={loading} network={network} text={buttonText} variant="git" />
             </a>
           </motion.div>
