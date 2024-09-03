@@ -66,10 +66,10 @@ const useUserActions = () => {
 
       if (message === 'Invalid authentication code') return;
 
-      return toast('Github authentication failed! Please try again.', {
-        type: 'error',
-        autoClose: 7000,
-      });
+      // return toast('Github authentication failed! Please try again.', {
+      //   type: 'error',
+      //   autoClose: 7000,
+      // });
     } finally {
       dispatch(setLoading(false));
     }
