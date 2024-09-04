@@ -51,15 +51,13 @@ const useUserActions = () => {
       await setTokenHeader(cookies?.authtoken);
 
       dispatch(setLoading(true));
-      const user = await api.githubAuth(code);
+      await api.githubAuth(code);
 
       toast('Github connected sucessfully', {
         type: 'success',
       });
 
       setCookies('isGithubConnected', 'true');
-
-      return dispatch(setUser(user.user));
     } catch (error: any) {
       callback?.onError?.(error);
       const message = error?.response?.data?.message;
