@@ -57,12 +57,12 @@ const SMNavigation = () => {
       href: '/bridge',
       isActive: false,
     },
-    {
-      title: liquidity,
-      icon: <LiquidityLinkIcon />,
-      href: '/liquidity',
-      isActive: false,
-    },
+    // {
+    //   title: liquidity,
+    //   icon: <LiquidityLinkIcon />,
+    //   href: '/liquidity',
+    //   isActive: false,
+    // },
   ];
 
   const updatedLinks = links?.map((link) => {
