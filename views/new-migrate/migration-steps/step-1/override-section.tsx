@@ -14,6 +14,7 @@ const OverrideIcon = ({ overridden, onClick, network }: { overridden: boolean; o
         'bg-primary-1950': network === 'optimism' && overridden,
         'bg-primary-500': network === 'mode' && overridden,
         'bg-primary-550': network === 'scroll' && overridden,
+        'bg-primary-4600': network.includes('ink') && overridden,
       })}
       onClick={onClick}>
       <motion.div
@@ -30,6 +31,7 @@ const OverrideIcon = ({ overridden, onClick, network }: { overridden: boolean; o
               'bg-primary-1950': network === 'optimism' && overridden,
               'bg-primary-500': network === 'mode' && overridden,
               'bg-primary-550': network === 'scroll' && overridden,
+              'bg-primary-4600': network.includes('ink') && overridden,
             })}
           />
         </div>

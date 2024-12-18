@@ -1,6 +1,5 @@
 import classNames from 'classnames';
-import { useSwitchChain, useChainId, useAccount } from 'wagmi';
-import { useConnectModal } from '@rainbow-me/rainbowkit';
+import { switchChain } from '@wagmi/core';
 
 import { SMClickAnimation } from '@/components';
 import {
@@ -17,11 +16,13 @@ import {
   WorldChainIcon,
   DegenIcon,
   RaysIcon,
+  InkIcon,
 } from '@/public/icons';
 import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { Network, NetworkProps } from '@/config/privy/config';
 import useUserActions from '@/application/user/actions';
 import { usePrivy } from '@privy-io/react-auth';
+import { wagmiConfig } from '@/config/privy/rainbowkit';
 
 const IconSection = ({ variant, comingSoon }: { variant: Network; comingSoon?: boolean }) => {
   const { locale } = useSystemFunctions();
@@ -43,6 +44,7 @@ const IconSection = ({ variant, comingSoon }: { variant: Network; comingSoon?: b
         {variant === 'zora' && <ZoraIcon />}
         {variant === 'world-chain' && <WorldChainIcon />}
         {variant === 'degen' && <DegenIcon />}
+        {variant === 'ink' && <InkIcon />}
       </div>
 
       <div className="flex md:hidden">
@@ -54,6 +56,7 @@ const IconSection = ({ variant, comingSoon }: { variant: Network; comingSoon?: b
         {variant === 'zora' && <ZoraIcon />}
         {variant === 'world-chain' && <WorldChainIcon />}
         {variant === 'degen' && <DegenIcon />}
+        {variant === 'ink' && <InkIcon />}
       </div>
     </div>
   );
@@ -65,11 +68,17 @@ const SMCard = ({ title, variant = 'base', chainId: id, comingSoon }: NetworkPro
   const { ready, authenticated } = usePrivy();
 
   const handleOnClick = async () => {
-    if (!authenticated && ready) {
-      return authenticateUser();
-    }
+    try {
+      if (!authenticated && ready) {
+        return authenticateUser();
+      }
 
-    return navigate.push(`${variant}/migrate`);
+      await switchChain(wagmiConfig, { chainId: id as 10 | 8453 | 34443 | 763373 });
+      return navigate.push(`${variant}/migrate`);
+    } catch (error) {
+      console.error('Error switching chains:', error);
+      alert('An error occurred while switching chains.');
+    }
   };
 
   return (
@@ -88,6 +97,7 @@ const SMCard = ({ title, variant = 'base', chainId: id, comingSoon }: NetworkPro
           'bg-primary-2400 relative': variant === 'zora',
           'bg-black': variant === 'world-chain',
           'bg-primary-2450': variant === 'degen',
+          'bg-primary-4550': variant === 'ink',
           'pt-4 justify-between': comingSoon,
           'justify-center': !comingSoon,
         })}>
@@ -95,7 +105,7 @@ const SMCard = ({ title, variant = 'base', chainId: id, comingSoon }: NetworkPro
 
         <span
           className={classNames('font-bold text-[14px] leading-[21.7px] text-center whitespace-nowrap', {
-            'text-white': variant === 'base' || variant === 'optimism' || variant === 'linea' || variant === 'zora' || variant === 'world-chain' || variant === 'degen',
+            'text-white': variant === 'base' || variant === 'optimism' || variant === 'linea' || variant === 'zora' || variant === 'world-chain' || variant === 'degen' || variant === 'ink',
             'text-black': variant === 'mode',
             'text-primary-600': variant === 'scroll',
           })}>

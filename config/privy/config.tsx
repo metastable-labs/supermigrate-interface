@@ -7,10 +7,10 @@ import OptimismMintableERC20Factory from './abis/OptimismMintableERC20Factory.js
 import BasedERC20FactoryMain from './abis/BasedERC20FactoryMain.json';
 import SuperERC20Factory from './abis/SuperERC20Factory.json';
 
-import { BasePrimaryMobileIcon, ModePrimaryMobileIcon, OptimismPrimaryMobileIcon } from '@/public/icons';
+import { BasePrimaryMobileIcon, InkIcon, InkiconSm, ModePrimaryMobileIcon, OptimismPrimaryMobileIcon } from '@/public/icons';
 
-export type Network = 'base' | 'optimism' | 'mode' | 'scroll' | 'linea' | 'zora' | 'world-chain' | 'degen';
-
+export type Network = 'base' | 'optimism' | 'mode' | 'scroll' | 'linea' | 'zora' | 'world-chain' | 'degen' | 'ink';
+export const inkChainID = 763373;
 export interface NetworkProps {
   title: string;
   variant?: Network;
@@ -56,6 +56,17 @@ export const networks: NetworkProps[] = [
     rpcUrl: 'https://mainnet.mode.network/',
     factoryAddress: '0x49e14991C9E735975a782F3C2AAc8C26DE8245fA',
     superFactoryAddress: '0x49e14991C9E735975a782F3C2AAc8C26DE8245fA',
+    abi: OptimismMintableERC20Factory.abi,
+    superAbi: SuperERC20Factory.abi,
+  },
+  {
+    title: 'Ink',
+    variant: 'ink',
+    chainId: inkChainID,
+    icon: <InkiconSm />,
+    rpcUrl: 'https://rpc-gel-sepolia.inkonchain.com',
+    factoryAddress: '0x18196CCaA8C2844c82B40a8bDCa27349C7466280',
+    superFactoryAddress: '0x18196CCaA8C2844c82B40a8bDCa27349C7466280',
     abi: OptimismMintableERC20Factory.abi,
     superAbi: SuperERC20Factory.abi,
   },

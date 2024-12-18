@@ -15,6 +15,7 @@ const config: Config = {
         'very-light-gray': 'linear-gradient(180deg, rgba(228, 229, 231, 0.48) 0%, rgba(247, 248, 248, 0.00) 100%, rgba(228, 229, 231, 0.00) 100%)',
         'welcome-button': 'linear-gradient(180deg, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.00) 100%), #002132',
         'peach-gradient': 'linear-gradient(180deg, #FFF 0%, #FFFEF7 23.69%)',
+        'ink-github-button': 'linear-gradient(180deg, rgba(73, 222, 128, 0.7) 0%, rgba(73, 222, 128, 1) 100%)',
       },
       colors: {
         primary: {
@@ -106,6 +107,10 @@ const config: Config = {
           4350: '#F2F4F7',
           4400: 'rgba(214, 254, 0, 0.85)',
           4450: '#002132',
+          4500: '#7132F5',
+          4550: '#1E1F20',
+          4600: '#101114',
+          4650: '#221C37',
         },
         grey: {
           50: '#717184',

@@ -17,6 +17,7 @@ const colors: { [key: string]: ColorConfig } = {
   optimism: { primary: '#F8D2D2', secondary: '#FFDADA', tertiary: '#FAF6F7' },
   mode: { primary: '#D2E5F8', secondary: '#DAECFF', tertiary: '#F6F8FA' },
   scroll: { primary: '#D2E5F8', secondary: '#DAECFF', tertiary: '#F6F8FA' },
+  ink: { primary: '#D2E5F8', secondary: '#DAECFF', tertiary: '#F6F8FA' },
 };
 
 const dashboardRegex = /^\/[a-z]{2}\/dashboard$/;

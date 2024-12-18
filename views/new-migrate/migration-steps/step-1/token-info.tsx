@@ -25,6 +25,7 @@ const TokenInfo = ({ decimal, name, symbol, loading, network }: ITokenInfo) => {
                 'text-primary-2150': network === 'optimism',
                 'text-primary-4000': network === 'mode',
                 'text-primary-550': network === 'scroll',
+                'text-primary-4650': network.includes('ink'),
               })}>
               {item.value}
             </span>

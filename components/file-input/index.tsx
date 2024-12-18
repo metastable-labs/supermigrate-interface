@@ -62,6 +62,7 @@ const SMFileInput = ({ name, handleFileChange, disabled, isRequired, label, netw
               'border-primary-1950': network === 'optimism' && isDragOver,
               'border-primary-500': network === 'mode' && isDragOver,
               'border-primary-550': network === 'scroll' && isDragOver,
+              'border-primary-4600': network.includes('ink') && isDragOver,
             })}
             onDrop={handleDocumentDrop}
             onDragOver={handleDragOver}

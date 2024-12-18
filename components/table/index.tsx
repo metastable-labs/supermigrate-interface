@@ -30,7 +30,7 @@ const SMTable = ({ data, network, isConnected, variant = 'primary', loading, cta
                   'hidden sm:table-cell': ((index === 2 || index === 4) && variant === 'secondary') || ((index === 3 || index === 4) && variant === 'tertiary'),
                   hidden: index === 4 && variant === 'primary',
                 })}>
-                {header[variant]} {variant === 'primary' && index === 2 && network}
+                {header[variant]} {variant === 'primary' && index === 2 && decodeURIComponent(network)}
               </th>
             ))}
           </tr>
