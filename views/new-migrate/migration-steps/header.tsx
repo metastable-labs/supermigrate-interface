@@ -18,6 +18,7 @@ const Step = ({ step, title, current, passed, network, onClick }: { step: number
           'bg-primary-1950': current && network === 'optimism',
           'bg-primary-4000': current && network === 'mode',
           'bg-primary-550': current && network === 'scroll',
+          'bg-primary-4600': current && network.includes('ink'),
           'bg-primary-1800': passed,
           'bg-white border border-primary-250': !current && !passed,
           'text-white': current,

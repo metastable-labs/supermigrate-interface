@@ -102,6 +102,8 @@ import UniswapIcon from './uniswap-icon';
 import LayerTwoIcon from './LayerTwoIcon';
 import AeroIcon from './aero-icon.svg';
 import FlashIcon from './flash-icon';
+import InkIcon from './ink-icon.svg';
+import InkiconSm from './inc-icon-sm.svg';
 
 export {
   Logo,
@@ -208,4 +210,6 @@ export {
   LayerTwoIcon,
   AeroIcon,
   FlashIcon,
+  InkIcon,
+  InkiconSm,
 };

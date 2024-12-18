@@ -17,6 +17,7 @@ const networkBackgrounds: Record<Network, string> = {
   optimism: 'linear-gradient(180deg, #FFF 0%, #FCFCFC 43%, #FF1636 100%)',
   mode: 'linear-gradient(180deg, #FFF 0%, #FCFCFC 43%, #CDFF00 100%)',
   scroll: 'linear-gradient(180deg, #FFF 0%, #FCFCFC 43%, #F1C087 100%)',
+  ink: 'linear-gradient(180deg, #FFF 0%, #FCFCFC 43%, #7132F5 100%)',
   linea: defaultGradient,
   zora: defaultGradient,
   'world-chain': defaultGradient,

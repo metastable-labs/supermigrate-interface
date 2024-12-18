@@ -8,6 +8,7 @@ import useSystemFunctions from '@/hooks/useSystemFunctions';
 import { useCookies } from 'react-cookie';
 
 const Connect = ({ network }: { network: Network }) => {
+  console.log('network', network);
   const { userState, pathname, locale } = useSystemFunctions();
   const [cookies] = useCookies(['isGithubConnected', 'authtoken']);
   const { loading } = userState;
@@ -42,6 +43,7 @@ const Connect = ({ network }: { network: Network }) => {
               'bg-primary-800': network === 'optimism',
               'bg-primary-850': network === 'mode',
               'bg-primary-900': network === 'scroll',
+              'bg-primary-4650': network.includes('ink'),
             })}>
             <div className="flex-1 flex flex-col gap-[10px] md:gap-2 items-start">
               <h1
@@ -50,6 +52,7 @@ const Connect = ({ network }: { network: Network }) => {
                   'text-primary-1050': network === 'optimism',
                   'text-primary-1150': network === 'mode',
                   'text-primary-550': network === 'scroll',
+                  'text-white': network.includes('ink'),
                 })}>
                 {title}
               </h1>
@@ -59,6 +62,7 @@ const Connect = ({ network }: { network: Network }) => {
                   'text-primary-1100': network === 'optimism',
                   'text-primary-1200': network === 'mode',
                   'text-primary-1250': network === 'scroll',
+                  'text-primary-150': network.includes('ink'),
                 })}>
                 {subtitle}
               </p>

@@ -10,7 +10,7 @@ const SMButton = ({ network, onClick, text, variant = 'git', fullWidth, disabled
   if (network === 'base' || network === 'optimism' || variant === 'bland-new') {
     iconColor = 'white';
   }
-  if (network === 'mode' || network === 'scroll') {
+  if (network === 'mode' || network === 'scroll' || network?.includes('ink')) {
     iconColor = '#242D01';
   }
 
@@ -24,6 +24,7 @@ const SMButton = ({ network, onClick, text, variant = 'git', fullWidth, disabled
         'border-[0.5px] border-primary-1400': !disabled,
         'bg-primary-150 pointer-events-none border-[0.5px] border-transparent': disabled || loading,
         'bg-base-github-button shadow-base-github-button': network === 'base' && !disabled,
+        'bg-ink-github-button shadow-base-github-button': network?.includes('ink') && !disabled,
         'bg-optimism-github-button shadow-optimism-github-button': network === 'optimism' && !disabled,
         'bg-mode-github-button shadow-mode-github-button': network === 'mode' && !disabled,
         'bg-scroll-github-button shadow-scroll-github-button': network === 'scroll' && !disabled,
@@ -40,7 +41,7 @@ const SMButton = ({ network, onClick, text, variant = 'git', fullWidth, disabled
       <div
         className={classNames('font-medium tracking-[-0.084px] text-sm text-center transition-all duration-300 capitalize whitespace-nowrap', {
           'text-white': (network === 'base' || network === 'optimism' || variant === 'bland-new') && !disabled,
-          'text-primary-950': (network === 'mode' || network === 'scroll') && !disabled,
+          'text-primary-950': (network === 'mode' || network === 'scroll' || network?.includes('ink')) && !disabled,
           'text-primary-1300': disabled,
           'text-primary-4400': variant === 'tertiary' && !disabled,
         })}>
